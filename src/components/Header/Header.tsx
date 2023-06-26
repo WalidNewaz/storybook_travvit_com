@@ -34,12 +34,12 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps
             />
           </g>
         </svg>
-        <h1>Acme</h1>
+        <h1 className='dark:text-white'>Acme</h1>
       </div>
       <div>
         {user ? (
           <>
-            <span className="welcome">
+            <span className="welcome dark:text-white">
               Welcome, <b>{user.name}</b>!
             </span>
             <Button size="small" onClick={onLogout} label="Log out" />

@@ -49,14 +49,8 @@ const BASE_BUTTON_CLASSES =
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
-  ...props
-}: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+export const Button = ({ primary = false, size = 'medium', label, ...props }: ButtonProps) => {
+  // const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
 
   const computedClasses = useMemo(() => {
     const modeClass = getModeClasses(primary);
