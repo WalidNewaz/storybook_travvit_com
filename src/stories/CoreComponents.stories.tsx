@@ -4,12 +4,15 @@ import React from 'react';
 
 const meta = {
   title: 'ReactCore/View',
+  tags: ['autodocs'],
   component: View,
 } satisfies Meta<typeof View>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof View>;
 
 export const Primary: Story = {
-  render: () => <View />,
+  args: {
+    text: 'Hello Walid',
+  },
 };

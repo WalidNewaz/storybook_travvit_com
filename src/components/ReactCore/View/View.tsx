@@ -1,7 +1,11 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-const ViewBoxesWithColorAndText = () => {
+interface ViewBoxesWithColorAndTextProps {
+  text: string;
+}
+
+const ViewBoxesWithColorAndText = ({ text }: ViewBoxesWithColorAndTextProps) => {
   return (
     <View
       style={{
@@ -11,7 +15,7 @@ const ViewBoxesWithColorAndText = () => {
       }}>
       <View style={{backgroundColor: 'blue', flex: 0.3}} />
       <View style={{backgroundColor: 'red', flex: 0.5}} />
-      <Text>Hello World!</Text>
+      <Text>{ text }</Text>
     </View>
   );
 };
