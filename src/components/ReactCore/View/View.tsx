@@ -5,6 +5,9 @@ interface ViewBoxesWithColorAndTextProps {
   text: string;
 }
 
+/**
+ * Primary UI view component for user interaction
+ */
 const ViewBoxesWithColorAndText = ({ text }: ViewBoxesWithColorAndTextProps) => {
   return (
     <View
