@@ -1,49 +1,15 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal TypeScript Starter
-</h1>
+<p align="center"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgd2lkdGg9Ijg3NXB4IiBoZWlnaHQ9Ijg3NnB4IiBzdHlsZT0ic2hhcGUtcmVuZGVyaW5nOmdlb21ldHJpY1ByZWNpc2lvbjsgdGV4dC1yZW5kZXJpbmc6Z2VvbWV0cmljUHJlY2lzaW9uOyBpbWFnZS1yZW5kZXJpbmc6b3B0aW1pemVRdWFsaXR5OyBmaWxsLXJ1bGU6ZXZlbm9kZDsgY2xpcC1ydWxlOmV2ZW5vZGQiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KPGc+PHBhdGggc3R5bGU9Im9wYWNpdHk6MC45OTIiIGZpbGw9IiNmZTk2MDAiIGQ9Ik0gNDMwLjUsNi41IEMgNTUyLjQ0OCwyLjIyMDgzIDY0Ny4yODEsNTAuMjIwOCA3MTUsMTUwLjVDIDc0OS4yNzksMjA1LjYxNCA3NjQuNDQ1LDI2NS42MTQgNzYwLjUsMzMwLjVDIDczNi4xOTQsMzEzLjM2MSA3MTIuMDI3LDI5Ni4wMjcgNjg4LDI3OC41QyA2NzIuMjgxLDE5Ni44MjcgNjI3LjQ0NywxMzcuMzI3IDU1My41LDEwMEMgNDgyLjM4Niw2OC42NTcxIDQxMi4wNTIsNzAuMzIzOCAzNDIuNSwxMDVDIDI3OS41NDksMTM5Ljk3NyAyMzkuMDQ5LDE5Mi40NzcgMjIxLDI2Mi41QyAxOTUuNjY3LDI4MS44MzMgMTcwLjMzMywzMDEuMTY3IDE0NSwzMjAuNUMgMTQ0LjU4MSwyMTYuODQ5IDE4NC43NDgsMTMzLjAxNiAyNjUuNSw2OUMgMzE0LjQ5OSwzMi40OTc5IDM2OS40OTksMTEuNjY0NSA0MzAuNSw2LjUgWiIvPjwvZz4KPGc+PHBhdGggc3R5bGU9Im9wYWNpdHk6MC45OTUiIGZpbGw9IiNiNjY2MGUiIGQ9Ik0gNDU0LjUsMTkwLjUgQyA0OTcuMjc2LDIyOS40MzkgNTM5Ljk0MywyNjguNjA1IDU4Mi41LDMwOEMgNTg0LjQ3MSwzMDcuMDY2IDU4Ni4zMDQsMzA1LjU2NiA1ODgsMzAzLjVDIDU5Ni43NjEsMjkyLjMxNiA2MDUuNzYxLDI4MS4zMTYgNjE1LDI3MC41QyA2NDMuMTEsMjg5LjYxMSA2NzAuOTQzLDMwOS4xMTEgNjk4LjUsMzI5QyA2MjMuODY5LDM0MS40NTkgNTUwLjIwMywzNTguMTI2IDQ3Ny41LDM3OUMgNDM4Ljc4LDM4OS44NjQgNDAxLjc4LDQwNC44NjQgMzY2LjUsNDI0QyAzNTUuMDcyLDQzMS4wOTYgMzQ1LjIzOSw0MzkuOTI5IDMzNyw0NTAuNUMgMzMyLjMzMyw0NTYuODMzIDMzMi4zMzMsNDYzLjE2NyAzMzcsNDY5LjVDIDM0NC41NjEsNDc4LjAzMiAzNTMuNzI3LDQ4NC4xOTkgMzY0LjUsNDg4QyAzODYuNDgzLDQ5Ni4wOCA0MDguODE2LDUwMy4wOCA0MzEuNSw1MDlDIDQzOS4zMjUsNTExLjYwOCA0NDYuOTkxLDUxNC42MDggNDU0LjUsNTE4QyA0NjUuMDA1LDUyMy40OTIgNDY2LjAwNSw1MzAuMTU4IDQ1Ny41LDUzOEMgNDM4LjgzOSw1NDcuODg5IDQxOS4xNzIsNTU1LjIyMiAzOTguNSw1NjBDIDM0OS4zMyw1NzIuNTAxIDI5OS42NjMsNTgyLjE2OCAyNDkuNSw1ODlDIDIxNy4yMDUsNTM2LjMyOSAxODkuNzA1LDQ4MS4xNjIgMTY3LDQyMy41QyAxNTkuMTMyLDQwMy4zNTMgMTUzLjQ2NSwzODIuNjg3IDE1MCwzNjEuNUMgMjA3LjQxLDMxNy41NDUgMjY0LjkxLDI3My43MTIgMzIyLjUsMjMwQyAzNDAuNDMyLDI0MS4yMTkgMzU3LjkzMiwyNTMuMzg1IDM3NSwyNjYuNUMgNDAxLjY5OSwyNDEuMyA0MjguMTk5LDIxNS45NjcgNDU0LjUsMTkwLjUgWiIvPjwvZz4KPGc+PHBhdGggc3R5bGU9Im9wYWNpdHk6MC45OTkiIGZpbGw9IiMzNWI1ZTgiIGQ9Ik0gNzA1LjUsMzM2LjUgQyA3MDcuOTg5LDMzNi4yOTggNzEwLjMyMywzMzYuNzk4IDcxMi41LDMzOEMgNzI1LjMyNiwzNDcuMjQ3IDczOC4zMjYsMzU2LjI0NyA3NTEuNSwzNjVDIDc1My4xMjIsMzY2LjI5NSA3NTQuNDU1LDM2Ny43OTUgNzU1LjUsMzY5LjVDIDc0NS4yNzMsNDA5Ljk1IDczMS4xMDYsNDQ4Ljk1IDcxMyw0ODYuNUMgNjc5LjIwNiw1NTQuNzkzIDY0MC44NzMsNjIwLjEyNiA1OTgsNjgyLjVDIDU1Mi41ODMsNzQ4LjY1MiA1MDQuMjQ5LDgxMi42NTIgNDUzLDg3NC41QyA0MTIuNzUxLDgyNS45MjQgMzc0LjQxOCw3NzUuOTI0IDMzOCw3MjQuNUMgMzM1LjczMyw3MjEuMjk5IDMzNC4wNjYsNzE3Ljk2NiAzMzMsNzE0LjVDIDQwNi42MTksNjg3LjEwOCA0NzguMTE5LDY1NC45NDIgNTQ3LjUsNjE4QyA1NjkuMDgsNjA2LjA0NSA1ODkuMDgsNTkxLjg3OCA2MDcuNSw1NzUuNUMgNjE0LjQ1OSw1NjkuMDQxIDYxOS42MjYsNTYxLjM3NCA2MjMsNTUyLjVDIDYyNC41NzEsNTQyLjM4NSA2MjMuMjM4LDUzMi43MTggNjE5LDUyMy41QyA2MDguODE1LDUwOS4zMiA1OTUuNjQ4LDQ5OC44MiA1NzkuNSw0OTJDIDU3MC4yNDYsNDg4LjEzNyA1NjAuOTEyLDQ4NC40NzEgNTUxLjUsNDgxQyA1MjEuOTc1LDQ3Mi42MDIgNDkyLjY0MSw0NjMuNjAyIDQ2My41LDQ1NEMgNDU2LjIxLDQ1MS40NDIgNDUwLjA0Myw0NDcuMjc2IDQ0NSw0NDEuNUMgNDQzLjA4Myw0MzMuNDcxIDQ0NS41ODMsNDI2Ljk3MSA0NTIuNSw0MjJDIDQ3Mi40ODcsNDA5LjAwNyA0OTMuODIxLDM5OC42NzQgNTE2LjUsMzkxQyA1NzguNjk2LDM2OS42NTIgNjQxLjY5NiwzNTEuNDg1IDcwNS41LDMzNi41IFoiLz48L2c+Cjwvc3ZnPgo=" style="width:150px;margin-top:50px"></>
 
-## 🚀 Quick start
+# Travvit.com - UI Components library
 
-1.  **Create a Gatsby site.**
+This repository contains the UI components that are used for building the site [Travvit](https://www.travvit.com/).
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+## License
+0BSD
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby -- -ts
-    ```
+## Contact
 
-2.  **Start developing.**
+Please feel free to reach out for support, feedback, or questions via the following:
 
-    Navigate into your new site’s directory and start it up.
-
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
-
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.tsx` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-## 🚀 Quick start (Netlify)
-
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+- Email: wnewaz@travvit.com
+- @GitHub: WalidNewaz
