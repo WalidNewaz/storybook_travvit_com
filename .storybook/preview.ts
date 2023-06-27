@@ -1,5 +1,6 @@
-import type { Preview } from "@storybook/react";
+import type { Preview, Parameters } from "@storybook/react";
 import { withThemeByDataAttribute } from '@storybook/addon-styling';
+// import { withControls } from '@storybook/addon-controls';
 
 import '../src/tailwind.css'; // replace with the name of your tailwind css file
 
@@ -27,3 +28,12 @@ export const decorators = [
     attributeName: 'data-mode',
   }),
 ];
+
+// // Add global parameters or decorators here
+// addParameters({
+//   controls: { expanded: true },
+// });
+
+export const parameters: Parameters = {
+  controls: { expanded: true },
+};

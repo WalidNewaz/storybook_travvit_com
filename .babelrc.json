@@ -18,6 +18,7 @@
       {
         "commonjs": true
       }
-    ]
+    ],
+    "@babel/plugin-transform-runtime"
   ]
 }

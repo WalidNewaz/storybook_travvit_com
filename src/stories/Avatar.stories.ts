@@ -44,3 +44,11 @@ export const XL: Story = {
     src: face1,
   },
 };
+
+export const XS: Story = {
+  name: 'Extra Small',
+  args: {
+    size: 'xs',
+    src: face1,
+  },
+};

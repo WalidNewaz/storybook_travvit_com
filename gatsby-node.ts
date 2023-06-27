@@ -1,6 +1,15 @@
-const path = require('path');
+// const path = require('path');
+import path from 'path';
 
-exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
+interface CreateWebpackConfigProps {
+  actions: any;
+  getConfig: any;
+}
+
+exports.onCreateWebpackConfig = ({
+  actions,
+  getConfig,
+}: CreateWebpackConfigProps) => {
   const config = getConfig();
 
   // Add the resolve configuration for react-native
@@ -25,6 +34,20 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
         plugins: ['babel-plugin-react-native-web'],
       },
     },
+  });
+
+  // Add the necesary loader for files
+  config.module.rules.push({
+    test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2|csv)$/,
+    use: [
+      {
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          esModule: false,
+        },
+      },
+    ],
   });
 
   // // Customize the webpack config here
