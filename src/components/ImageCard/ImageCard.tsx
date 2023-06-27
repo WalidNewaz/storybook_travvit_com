@@ -20,14 +20,6 @@ interface ImageCardProps {
    */
   alt?: string;
   /**
-   * Image width
-   */
-  width?: number;
-  /**
-   * Image height
-   */
-  height?: number;
-  /**
    * Image border radius
    * @default small
    */
@@ -66,24 +58,17 @@ const getBorderRadius = (radius: RadiusType) => {
 export const ImageCard: React.FC<ImageCardProps> = ({
   src,
   alt,
-  width = 200,
-  height = 200,
   borderRadius = 'small',
 }) => {
   const br = getBorderRadius(borderRadius);
 
   return (
-    <div
-      className={`${br} overflow-hidden col-span-1 sm:w-full sm:h-full`}
-      // style={{ width: `${width}px`, height: `${height}px` }}
-    >
+    <div className={`${br} overflow-hidden w-64 h-64 m-3`}>
       <img
         src={src}
         alt={alt}
-        // width={width}
-        // height={height}
         style={{ borderRadius }}
-        className="object-cover "
+        className="object-cover w-full h-full dark:filter dark:brightness-75"
       />
     </div>
   );
