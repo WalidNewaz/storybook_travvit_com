@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Text from '../components/ReactCore/Text/Text';
 
 const meta = {
-  title: 'ReactCore/Text',
+  title: 'ReactNative/Text',
   tags: ['autodocs'],
   component: Text,
 } satisfies Meta<typeof Text>;

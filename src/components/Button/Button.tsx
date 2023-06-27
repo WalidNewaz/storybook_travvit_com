@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import './button.css';
 
-interface ButtonProps {
+export interface ButtonProps {
   /**
    * Is this the principal call to action on the page?
    */
@@ -50,7 +50,6 @@ const BASE_BUTTON_CLASSES =
  * Primary UI component for user interaction
  */
 export const Button = ({ primary = false, size = 'medium', label, ...props }: ButtonProps) => {
-  // const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
 
   const computedClasses = useMemo(() => {
     const modeClass = getModeClasses(primary);
@@ -63,9 +62,7 @@ export const Button = ({ primary = false, size = 'medium', label, ...props }: Bu
   return (
     <button
       type="button"
-      // className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
       className={`${BASE_BUTTON_CLASSES} ${computedClasses}`}
-      // style={{ backgroundColor }}
       {...props}
     >
       {label}
