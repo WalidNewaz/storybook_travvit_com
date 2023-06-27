@@ -13,7 +13,8 @@ const sizeClasses: Record<string, string> = {
   xl: 'h-48 w-48',
 };
 
-const BASE_AVATAR_CLASSES = 'inline-block rounded-full ring-2 ring-white';
+const BASE_AVATAR_CLASSES =
+  'inline-block rounded-full ring-2 ring-white dark:filter dark:brightness-75';
 
 const getSizeClasses = (size: string) => sizeClasses[size];
 
