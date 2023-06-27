@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from '../components/Button/Button';
-import { ButtonWithHooks } from '../components/Button/ButtonWithHooks';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
@@ -28,7 +27,16 @@ export const Primary: Story = {
 export const Secondary: Story = {
   name: 'Secondary representation',
   args: {
-    label: 'Button',
+    label: '😄👍😍💯',
+  },
+  parameters: {
+    backgrounds: { // This is where you can customize light and dark mode
+      values: [
+        { name: 'red', value: '#f00' },
+        { name: 'green', value: '#0f0' },
+        { name: 'blue', value: '#00f' },
+      ],
+    },
   },
 };
 
@@ -45,8 +53,4 @@ export const Small: Story = {
     label: 'Button',
   },
 };
-
-// export const WithHooks: Story = {
-//   render: () => <ButtonWithHooks />,
-// };
 

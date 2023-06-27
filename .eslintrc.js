@@ -3,7 +3,7 @@ module.exports = {
   parserOptions: {
     project: 'tsconfig.json',
     tsconfigRootDir: __dirname,
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: ['@typescript-eslint/eslint-plugin'],
   extends: [
@@ -22,4 +22,21 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
   },
+  overrides: [
+    {
+      files: ['**/*.ts', '**/*.tsx', '**/*.d.ts'],
+      parserOptions: {
+        project: ['./tsconfig.json'],
+        // Exclude 'tailwind.config.ts' from ESLint analysis
+        exclude: ['tailwind.config.ts', './src/stories/index.d.ts'],
+      },
+    },
+    {
+      "files": ["src/stories/index.d.ts"],
+      "rules": {
+        "@typescript-eslint/no-empty-function": "off"
+        // ... other rules specific to TypeScript files
+      }
+    }
+  ],
 };
