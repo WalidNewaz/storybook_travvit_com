@@ -19,7 +19,7 @@ const sizeClasses: Record<string, string> = {
 };
 
 const BASE_AVATAR_CLASSES =
-  'inline-block rounded-full object-cover ring-2 ring-white dark:filter dark:brightness-75';
+  'inline-block rounded-full object-cover ring-2 ring-white dark-img';
 
 const getSizeClasses = (size: string) => sizeClasses[size];
 

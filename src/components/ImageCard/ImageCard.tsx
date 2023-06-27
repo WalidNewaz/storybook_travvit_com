@@ -68,7 +68,7 @@ export const ImageCard: React.FC<ImageCardProps> = ({
         src={src}
         alt={alt}
         style={{ borderRadius }}
-        className="object-cover w-full h-full dark:filter dark:brightness-75"
+        className="object-cover w-full h-full dark-img"
       />
     </div>
   );
