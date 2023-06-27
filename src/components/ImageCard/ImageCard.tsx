@@ -63,7 +63,7 @@ export const ImageCard: React.FC<ImageCardProps> = ({
   const br = getBorderRadius(borderRadius);
 
   return (
-    <div className={`${br} overflow-hidden w-64 h-64 m-3`}>
+    <div className={`${br} overflow-hidden w-64 h-64 m-3 drop-shadow-xl`}>
       <img
         src={src}
         alt={alt}
