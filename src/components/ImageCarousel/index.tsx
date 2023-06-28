@@ -39,18 +39,42 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
             />
           ))}
         </div>
-        <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center">
+        <div className="absolute top-56 left-0 right-0 bottom-0 flex items-center justify-center opacity-60">
           <button
-            className="bg-gray-800 text-white px-3 py-2 rounded-full hover:bg-gray-700"
+            className="bg-gray-800 text-white m-1 px-2 py-2 rounded-full hover:bg-gray-700"
             onClick={handlePrevious}
           >
-            Previous
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
           </button>
           <button
-            className="bg-gray-800 text-white px-3 py-2 rounded-full hover:bg-gray-700"
+            className="bg-gray-800 text-white m-1 px-2 py-2 rounded-full hover:bg-gray-700"
             onClick={handleNext}
           >
-            Next
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 18l6-6-6-6" />
+            </svg>
           </button>
         </div>
       </div>
