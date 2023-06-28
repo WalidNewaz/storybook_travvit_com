@@ -24,6 +24,11 @@ interface ImageCardProps {
    * @default small
    */
   borderRadius?: RadiusType;
+  /**
+   * Custom style classes
+   * @default ''
+   */
+  styleClasses?: string;
 }
 
 const getBorderRadius = (radius: RadiusType) => {
@@ -59,11 +64,14 @@ export const ImageCard: React.FC<ImageCardProps> = ({
   src,
   alt,
   borderRadius = 'small',
+  styleClasses = '',
 }) => {
   const br = getBorderRadius(borderRadius);
 
   return (
-    <div className={`${br} overflow-hidden w-64 h-64 m-3 drop-shadow-xl`}>
+    <div
+      className={`${br} overflow-hidden w-64 h-64 m-3 drop-shadow-xl shrink-0 ${styleClasses}`}
+    >
       <img
         src={src}
         alt={alt}

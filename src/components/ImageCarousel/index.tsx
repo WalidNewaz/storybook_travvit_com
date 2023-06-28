@@ -1,11 +1,16 @@
 import React from 'react';
 
 interface ImageCarouselProps {
-  images: string[];
+  images: any[];
   ImageCardComponent: React.FC<any>;
+  limit?: number;
+  size?: 'xs' | 'small' | 'medium' | 'large' | 'xl';
 }
 
-export const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
+export const ImageCarousel: React.FC<ImageCarouselProps> = ({
+  ImageCardComponent,
+  images,
+}) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
 
   const handleNext = () => {
@@ -21,21 +26,30 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto rounded overflow-hidden shadow-lg">
+    <div className="max-w-lg mx-auto rounded overflow-hidden">
       <div className="relative">
         <div
           className="flex transition-transform duration-300"
           style={{ transform: `translateX(-${currentIndex * 33.33}%)` }}
         >
           {images.map((image, index) => (
-            <img
+            // <img
+            //   key={index}
+            //   src={image}
+            //   alt="Carousel"
+            //   className={`rounded-lg mx-1 ${
+            //     index === currentIndex ? 'highlighted-image' : 'other-image'
+            //   }`}
+            //   style={{ flex: `0 0 33.33%` }}
+            // />
+            <ImageCardComponent
+              src={image.src}
+              alt={image.alt}
+              borderRadius="large"
               key={index}
-              src={image}
-              alt="Carousel"
-              className={`rounded-lg mx-1 ${
+              styleClasses={`rounded-lg mx-1 ${
                 index === currentIndex ? 'highlighted-image' : 'other-image'
               }`}
-              style={{ flex: `0 0 33.33%` }}
             />
           ))}
         </div>
