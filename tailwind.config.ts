@@ -12,6 +12,11 @@ module.exports = {
       xl: '1440px',
     },
     // colors: {
+    //   blue: '#35B5E8',
+    //   orange: '#FE9600',
+    //   onyx: '#353839',
+    // },
+    // colors: {
     //   blue: '#1fb6ff',
     //   purple: '#7e5bef',
     //   pink: '#ff49db',
@@ -23,10 +28,15 @@ module.exports = {
     //   'gray-light': '#d3dce6',
     // },
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
+      sans: ['Montserrat', 'Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
     },
     extend: {
+      colors: {
+        blue: '#35B5E8',
+        orange: '#FE9600',
+        onyx: '#353839',
+      },
       spacing: {
         '128': '32rem',
         '144': '36rem',

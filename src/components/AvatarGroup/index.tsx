@@ -10,7 +10,7 @@ interface AvatarGroupProps {
   size?: AvatarSize;
 }
 
-const BASE_AVATAR_GRP_CLASSES = 'mt-3 flex -space-x-2 overflow-hidden';
+const BASE_AVATAR_GRP_CLASSES = 'mt-3 flex -space-x-2 overflow-hidden p-1';
 
 /**
  * This component is used to display a group of avatars

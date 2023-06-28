@@ -7,4 +7,23 @@
   .dark-img {
     @apply dark:filter dark:brightness-75;
   }
+
+  .highlighted-image {
+    flex: 0 0 41.67%;
+    animation: grow 0.5s ease-in forwards;
+  }
+
+  @keyframes grow {
+    0% {
+      transform: scale(1);
+      margin: 0;
+    }
+    /* 80% {
+      transform: scale(1.15);
+    } */
+    100% {
+      transform: scale(1.15);
+      margin: 1.5rem;
+    }
+  }
 }
