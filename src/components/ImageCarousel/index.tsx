@@ -30,7 +30,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
       <div className="relative">
         <div
           className="flex transition-transform duration-300"
-          style={{ transform: `translateX(-${currentIndex * 250}px)` }}
+          style={{ transform: `translateX(-${currentIndex * 248}px)` }}
         >
           {images.map((image, index) => (
             <ImageCardComponent
