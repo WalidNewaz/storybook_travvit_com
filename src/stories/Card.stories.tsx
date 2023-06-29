@@ -19,33 +19,15 @@ export const Cards: Story = {
   render: () => (
     <div>
       <Card
-        // title="Card 1"
-        // content1="Lorem ipsum dolor sit amet."
-        // content2="Lorem ipsum dolor sit amet."
-        ContentComponent1={() => (
+        Content1={() => (
           <ImageCard
             src={mountainsLake}
             alt="Mountains and lake"
             containerClasses="rounded-none"
           />
         )}
-        ContentComponent2={() => <p>This is a lot of work</p>}
+        Content2={() => <p>This is a lot of work</p>}
       />
-      {/* <Card
-        title="Card 2"
-        content1="Lorem ipsum dolor sit amet."
-        content2="Lorem ipsum dolor sit amet."
-      />
-      <Card
-        title="Card 3"
-        content1="Lorem ipsum dolor sit amet."
-        content2="Lorem ipsum dolor sit amet."
-      />
-      <Card
-        title="Card 4"
-        content1="Lorem ipsum dolor sit amet."
-        content2="Lorem ipsum dolor sit amet." 
-      />*/}
     </div>
   ),
 };
