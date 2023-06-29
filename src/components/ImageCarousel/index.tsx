@@ -26,22 +26,13 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
   };
 
   return (
-    <div className="max-w-lg mx-auto rounded overflow-hidden">
+    <div className="max-w-none mx-auto rounded overflow-hidden">
       <div className="relative">
         <div
           className="flex transition-transform duration-300"
-          style={{ transform: `translateX(-${currentIndex * 33.33}%)` }}
+          style={{ transform: `translateX(-${currentIndex * 250}px)` }}
         >
           {images.map((image, index) => (
-            // <img
-            //   key={index}
-            //   src={image}
-            //   alt="Carousel"
-            //   className={`rounded-lg mx-1 ${
-            //     index === currentIndex ? 'highlighted-image' : 'other-image'
-            //   }`}
-            //   style={{ flex: `0 0 33.33%` }}
-            // />
             <ImageCardComponent
               src={image.src}
               alt={image.alt}

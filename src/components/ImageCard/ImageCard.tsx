@@ -70,13 +70,13 @@ export const ImageCard: React.FC<ImageCardProps> = ({
 
   return (
     <div
-      className={`${br} overflow-hidden w-64 h-64 m-3 drop-shadow-xl shrink-0 ${styleClasses}`}
+      className={`${br} overflow-hidden w-60 h-60 m-5 shrink-0 ${styleClasses}`}
     >
       <img
         src={src}
         alt={alt}
         style={{ borderRadius }}
-        className="object-cover w-full h-full dark-img"
+        className="object-cover h-full dark-img"
       />
     </div>
   );

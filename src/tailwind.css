@@ -9,7 +9,7 @@
   }
 
   .highlighted-image {
-    flex: 0 0 41.67%;
+    /* flex: 1 0 41.67%; */
     animation: grow 0.5s ease-in forwards;
   }
 
