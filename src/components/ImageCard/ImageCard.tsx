@@ -20,63 +20,61 @@ interface ImageCardProps {
    */
   alt?: string;
   /**
-   * Image border radius
-   * @default small
-   */
-  borderRadius?: RadiusType;
-  /**
-   * Custom style classes
+   * Custom style classes for the container
    * @default ''
    */
-  styleClasses?: string;
+  containerClasses?: string;
+  /**
+   * Custom style for the container
+   * @default {}
+   * */
+  containerStyle?: React.CSSProperties;
+  /**
+   * Custom style classes for the image
+   * @default ''
+   * */
+  imageClasses?: string;
+  /**
+   * Custom style for the image
+   * @default {}
+   * */
+  imageStyle?: React.CSSProperties;
 }
 
-const getBorderRadius = (radius: RadiusType) => {
-  switch (radius) {
-    case 'small': {
-      return 'rounded-sm';
-    }
-    case 'medium': {
-      return 'rounded-md';
-    }
-    case 'large': {
-      return 'rounded-lg';
-    }
-    case 'full': {
-      return 'rounded-full';
-    }
-    case 'xl': {
-      return 'rounded-xl';
-    }
-    case '2xl': {
-      return 'rounded-2xl';
-    }
-    case '3xl': {
-      return 'rounded-3xl';
-    }
-    default: {
-      return 'rounded-sm';
-    }
-  }
-};
+const CONTAINER_CLASSES = `
+  overflow-hidden
+  w-60
+  h-60
+  m-7
+  xs:w-72
+  xs:h-72
+  shrink-0
+`;
+
+const IMAGE_CLASSES = `
+  object-cover
+  h-full
+  dark-img
+`;
 
 export const ImageCard: React.FC<ImageCardProps> = ({
   src,
   alt,
-  borderRadius = 'small',
-  styleClasses = '',
+  containerClasses = '',
+  containerStyle = {},
+  imageClasses = '',
+  imageStyle = {},
 }) => {
-  const br = getBorderRadius(borderRadius);
-
   return (
     <div
-      className={`${br} overflow-hidden w-60 h-60 m-7 xs:w-72 xs:h-72 shrink-0 ${styleClasses}`}
+      style={containerStyle}
+      className={`${CONTAINER_CLASSES} ${containerClasses}`}
     >
       <img
         src={src}
         alt={alt}
-        style={{ borderRadius, width: 'inherit' }}
-        className="object-cover h-full dark-img"
+        style={{ width: 'inherit', ...imageStyle }}
+        className={`${IMAGE_CLASSES} ${imageClasses}`}
       />
     </div>
   );

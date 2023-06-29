@@ -1,28 +1,13 @@
 import React from 'react';
 
 interface CardProps {
-  title: string;
-  content1: string;
-  content2: string;
+  title?: string;
+  content1?: any;
+  ContentComponent1?: React.FC<any>;
+  content2?: any;
+  ContentComponent2?: React.FC<any>;
 }
 
-// const CARD_CLASSES = `
-//   bg-white
-//   border
-//   border-solid
-//   border-current
-//   rounded-lg
-//   p-4
-//   mb-4
-//   w-full
-//   box-border
-//   block
-//   mr-0
-//   md:inline-block
-//   md:w-[calc(50%-16px)]
-//   md:mr-4
-//   md:align-top
-//   md:even:mr-0`;
 const CARD_CLASSES = `
   flex
   flex-wrap
@@ -35,6 +20,7 @@ const CARD_CLASSES = `
 `;
 
 const CARD_CONTENT_CLASSES = `
+  inline-flex
   basis-full
   text-center
   mb-2
@@ -42,17 +28,20 @@ const CARD_CONTENT_CLASSES = `
   md:text-left
 `;
 
-export const Card: React.FC<CardProps> = ({ title, content1, content2 }) => {
+export const Card: React.FC<CardProps> = ({
+  title,
+  content1,
+  content2,
+  ContentComponent1,
+  ContentComponent2,
+}) => {
   return (
-    <div className={`card ${CARD_CLASSES}`}>
-      {/* <h2 className="card-title">{title}</h2>
-      <p className="card-content">{content}</p> */}
+    <div className={`${CARD_CLASSES}`}>
       <div className={CARD_CONTENT_CLASSES}>
-        <h2>{title}</h2>
-        <p>{content1}</p>
+        {ContentComponent1 && <ContentComponent1 />}
       </div>
       <div className={CARD_CONTENT_CLASSES}>
-        <p>{content2}</p>
+        {ContentComponent2 && <ContentComponent2 />}
       </div>
     </div>
   );
