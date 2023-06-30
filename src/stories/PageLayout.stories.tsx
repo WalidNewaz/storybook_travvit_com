@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 /** Component */
-import { PageLayout } from '../components/PageLayout';
+import { PageLayout } from '../components/PageLayout/PageLayout';
 import { ImageCard, RadiusType } from '../components/ImageCard/ImageCard';
 
 /** Assets */

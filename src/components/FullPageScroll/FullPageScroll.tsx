@@ -5,7 +5,7 @@ interface FullPageScrollProps {
   children: React.ReactNode;
 }
 
-const FullPageScroll: React.FC<FullPageScrollProps> = ({ children }) => {
+export const FullPageScroll: React.FC<FullPageScrollProps> = ({ children }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -49,5 +49,3 @@ const FullPageScroll: React.FC<FullPageScrollProps> = ({ children }) => {
     </div>
   );
 };
-
-export default FullPageScroll;
