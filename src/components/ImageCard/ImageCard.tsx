@@ -45,7 +45,6 @@ const CONTAINER_CLASSES = `
   overflow-hidden
   w-60
   h-60
-  m-7
   xs:w-72
   xs:h-72
   shrink-0
