@@ -3,6 +3,8 @@ import React from 'react';
 interface CardProps {
   Content1?: React.FC<any>;
   Content2?: React.FC<any>;
+  cardClasses?: string;
+  cardStyle?: React.CSSProperties;
   contentClasses1?: string;
   contentClasses2?: string;
 }
@@ -30,11 +32,13 @@ const CARD_CONTENT_CLASSES = `
 export const Card: React.FC<CardProps> = ({
   Content1,
   Content2,
-  contentClasses1,
-  contentClasses2,
+  cardClasses = '',
+  cardStyle = {},
+  contentClasses1 = '',
+  contentClasses2 = '',
 }) => {
   return (
-    <div className={`${CARD_CLASSES}`}>
+    <div className={`${CARD_CLASSES} ${cardClasses}`} style={cardStyle}>
       <div className={`${CARD_CONTENT_CLASSES} ${contentClasses1}`}>
         {Content1 && <Content1 />}
       </div>

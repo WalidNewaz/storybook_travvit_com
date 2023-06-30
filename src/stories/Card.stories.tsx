@@ -8,6 +8,8 @@ import { Button } from '../components/Button/Button';
 
 /** Assets */
 import mountainsLake from './images/mountains_lake.jpeg';
+import zion from './images/ZNP-1.jpeg';
+import ynp from './images/yellowstone-2225083_960_720.jpeg';
 
 export default {
   title: 'Components/Card',
@@ -23,11 +25,23 @@ export const Cards: Story = {
     <div>
       <Card
         Content1={() => (
-          <ImageCard
-            src={mountainsLake}
-            alt="Mountains and lake"
-            containerClasses="rounded-none"
-          />
+          <div className="relative">
+            <ImageCard
+              src={mountainsLake}
+              alt="Mountains and lake"
+              containerClasses="rounded-none absolute top-0 left-0 z-0"
+            />
+            <ImageCard
+              src={zion}
+              alt="Zion National Park"
+              containerClasses="rounded-none absolute top-28 left-16 z-1"
+            />
+            <ImageCard
+              src={ynp}
+              alt="Yellowstone National Park"
+              containerClasses="rounded-none absolute top-14 left-32 z-2"
+            />
+          </div>
         )}
         Content2={() => (
           <article className="flex flex-col justify-center">
@@ -37,15 +51,17 @@ export const Cards: Story = {
               adventures
             </p>
             <Button
-              label="Button"
+              label="Explore"
               size="small"
               onClick={() => {
                 console.log('You clicked me!');
               }}
+              buttonClasses="w-fit self-center"
               primary
             />
           </article>
         )}
+        cardClasses="h-5/6"
         contentClasses2="md:text-center"
       />
     </div>

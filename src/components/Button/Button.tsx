@@ -19,6 +19,10 @@ export interface ButtonProps {
    */
   label: string;
   /**
+   * Custom style classes for the button
+   */
+  buttonClasses?: string;
+  /**
    * Optional click handler
    */
   onClick?: () => void;
@@ -53,6 +57,7 @@ export const Button = ({
   primary = false,
   size = 'medium',
   label,
+  buttonClasses = '',
   ...props
 }: ButtonProps) => {
   const computedClasses = useMemo(() => {
@@ -65,7 +70,7 @@ export const Button = ({
   return (
     <button
       type="button"
-      className={`${BASE_BUTTON_CLASSES} ${computedClasses}`}
+      className={`${BASE_BUTTON_CLASSES} ${computedClasses} ${buttonClasses}`}
       {...props}
     >
       {label}
