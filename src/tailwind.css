@@ -45,4 +45,12 @@
     overflow-y: scroll;
     height: 100vh;
   }
+
+  .footer-social {
+    @apply opacity-40 hover:opacity-60 ml-6 first:ml-0 text-slate-500 dark:text-slate-300 hover:dark:text-slate-200;
+  }
+
+  .footer-menu-item {
+    @apply text-slate-600 hover:text-slate-900 dark:text-slate-300 hover:dark:text-slate-200;
+  }
 }

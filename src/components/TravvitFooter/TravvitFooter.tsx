@@ -73,28 +73,16 @@ export const TravvitFooter: React.FC = () => {
               Explore Together!
             </p>
             <div id="social-links" className="flex mt-8">
-              <a
-                href="#"
-                className="opacity-40 hover:opacity-60 ml-6 first:ml-0 text-slate-500 dark:text-slate-300 hover:dark:text-slate-200"
-              >
+              <a href="#" className="footer-social">
                 <FacebookIcon />
               </a>
-              <a
-                href="#"
-                className="opacity-40 hover:opacity-60 ml-6 first:ml-0 text-slate-500 dark:text-slate-300 hover:dark:text-slate-200"
-              >
+              <a href="#" className="footer-social">
                 <InstagramIcon />
               </a>
-              <a
-                href="#"
-                className="opacity-40 hover:opacity-60 ml-6 first:ml-0 text-slate-500 dark:text-slate-300 hover:dark:text-slate-200"
-              >
+              <a href="#" className="footer-social">
                 <YoutubeIcon />
               </a>
-              <a
-                href="#"
-                className="opacity-40 hover:opacity-60 ml-6 first:ml-0 text-slate-500 dark:text-slate-300 hover:dark:text-slate-200"
-              >
+              <a href="#" className="footer-social">
                 <GithubIcon />
               </a>
             </div>
@@ -108,34 +96,22 @@ export const TravvitFooter: React.FC = () => {
                 <h3 className="font-bold text-orange-500">Discover</h3>
                 <ul className="mt-6">
                   <li className="mt-4 first:mt-0">
-                    <a
-                      href="#"
-                      className="text-slate-600 hover:text-slate-900 dark:text-slate-300 hover:dark:text-slate-200"
-                    >
+                    <a href="#" className="footer-menu-item">
                       Places
                     </a>
                   </li>
                   <li className="mt-4 first:mt-0">
-                    <a
-                      href="#"
-                      className="text-slate-600 hover:text-slate-900 dark:text-slate-300 hover:dark:text-slate-200"
-                    >
+                    <a href="#" className="footer-menu-item">
                       Activities
                     </a>
                   </li>
                   <li className="mt-4 first:mt-0">
-                    <a
-                      href="#"
-                      className="text-slate-600 hover:text-slate-900 dark:text-slate-300 hover:dark:text-slate-200"
-                    >
+                    <a href="#" className="footer-menu-item">
                       Trips
                     </a>
                   </li>
                   <li className="mt-4 first:mt-0">
-                    <a
-                      href="#"
-                      className="text-slate-600 hover:text-slate-900 dark:text-slate-300 hover:dark:text-slate-200"
-                    >
+                    <a href="#" className="footer-menu-item">
                       Explorers
                     </a>
                   </li>
@@ -145,42 +121,27 @@ export const TravvitFooter: React.FC = () => {
                 <h3 className="font-bold text-orange-500">Company</h3>
                 <ul className="mt-6">
                   <li className="mt-4 first:mt-0">
-                    <a
-                      href="#"
-                      className="text-slate-600 hover:text-slate-900 dark:text-slate-300 hover:dark:text-slate-200"
-                    >
+                    <a href="#" className="footer-menu-item">
                       About
                     </a>
                   </li>
                   <li className="mt-4 first:mt-0">
-                    <a
-                      href="#"
-                      className="text-slate-600 hover:text-slate-900 dark:text-slate-300 hover:dark:text-slate-200"
-                    >
+                    <a href="#" className="footer-menu-item">
                       Blog
                     </a>
                   </li>
                   <li className="mt-4 first:mt-0">
-                    <a
-                      href="#"
-                      className="text-slate-600 hover:text-slate-900 dark:text-slate-300 hover:dark:text-slate-200"
-                    >
+                    <a href="#" className="footer-menu-item">
                       Jobs
                     </a>
                   </li>
                   <li className="mt-4 first:mt-0">
-                    <a
-                      href="#"
-                      className="text-slate-600 hover:text-slate-900 dark:text-slate-300 hover:dark:text-slate-200"
-                    >
+                    <a href="#" className="footer-menu-item">
                       Press
                     </a>
                   </li>
                   <li className="mt-4 first:mt-0">
-                    <a
-                      href="#"
-                      className="text-slate-600 hover:text-slate-900 dark:text-slate-300 hover:dark:text-slate-200"
-                    >
+                    <a href="#" className="footer-menu-item">
                       Partners
                     </a>
                   </li>
@@ -195,18 +156,12 @@ export const TravvitFooter: React.FC = () => {
                 <h3 className="font-bold text-orange-500">Legal</h3>
                 <ul className="mt-6">
                   <li className="mt-4 first:mt-0">
-                    <a
-                      href="#"
-                      className="text-slate-600 hover:text-slate-900 dark:text-slate-300 hover:dark:text-slate-200"
-                    >
+                    <a href="#" className="footer-menu-item">
                       Privacy
                     </a>
                   </li>
                   <li className="mt-4 first:mt-0">
-                    <a
-                      href="#"
-                      className="text-slate-600 hover:text-slate-900 dark:text-slate-300 hover:dark:text-slate-200"
-                    >
+                    <a href="#" className="footer-menu-item">
                       Terms
                     </a>
                   </li>
