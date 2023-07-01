@@ -1,9 +1,12 @@
 import React from 'react';
 
+import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
+
 export const TravvitFooter: React.FC = () => {
   return (
     <footer className="flex flex-row items-center justify-center w-full h-24 border-t">
       <section className="flex flex-col basis-1/2">
+        <TravvitLogo size="small" />
         <p className="text-sm">
           &copy; {new Date().getFullYear()}{' '}
           <a

@@ -8,6 +8,26 @@ interface LogoProps {
    * @default ''
    * */
   size?: LogoSizeType;
+  /**
+   * Custom style classes for the container
+   * @default ''
+   */
+  containerClasses?: string;
+  /**
+   * Custom style for the container
+   * @default {}
+   * */
+  containerStyle?: React.CSSProperties;
+  /**
+   * Custom style classes for the image
+   * @default ''
+   * */
+  imageClasses?: string;
+  /**
+   * Custom style for the image
+   * @default {}
+   * */
+  imageStyle?: React.CSSProperties;
 }
 
 interface HeightWidth {
@@ -40,27 +60,40 @@ const dimensions: Record<string, HeightWidth> = {
 
 const getDimensions = (size: string) => dimensions[size];
 
-export const TravvitLogo: React.FC<LogoProps> = ({ size = 'small' }) => {
+const CONTAINER_CLASSES = `
+  overflow-hidden
+  `;
+
+export const TravvitLogo: React.FC<LogoProps> = ({
+  size = 'small',
+  containerClasses = '',
+  containerStyle = {},
+  imageClasses = '',
+  imageStyle = {},
+}) => {
   const computedDimensions = useMemo(() => {
     const dimensions = getDimensions(size);
     return dimensions;
   }, [size]);
 
   return (
-    <div>
+    <div
+      className={`${CONTAINER_CLASSES} ${containerClasses}`}
+      style={containerStyle}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
-        // width="300"
-        // height="300"
         viewBox="200 0 500 880"
         {...computedDimensions}
+        className={imageClasses}
         style={{
           shapeRendering: 'geometricPrecision',
           textRendering: 'geometricPrecision',
           imageRendering: 'optimizeQuality',
           fillRule: 'evenodd',
           clipRule: 'evenodd',
+          ...imageStyle,
         }}
       >
         <g>
