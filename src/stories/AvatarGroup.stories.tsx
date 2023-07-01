@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 /** Component */
 import { AvatarGroup } from '../components/AvatarGroup';
-import { Avatar } from '../components/Avatar';
+import { Avatar } from '../components/Avatar/Avatar';
 
 /** Assets */
 import face1 from './images/img_7.jpeg';
