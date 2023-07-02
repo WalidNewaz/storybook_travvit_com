@@ -45,8 +45,9 @@ export const TravvitHeader: React.FC = () => {
   return (
     <header>
       <nav className="flex justify-between pl-8 pr-8">
-        <a href="#">
+        <a href="#" className="inline-flex">
           <TravvitLogo size="xs" />
+          <h1 className="pl-1 text-[#35B5E8]">Travvit</h1>
         </a>
         <div id="ham-menu" className="flex visible md:hidden">
           <button className="p-2" onClick={handleMenuToggle}>
