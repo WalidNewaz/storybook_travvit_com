@@ -172,7 +172,7 @@ export const TravvitFooter: React.FC = () => {
         </section>
         <section
           id="copyright"
-          className="flex flex-col basis-1/2 mt-20 pt-8 border-t text-slate-600 dark:text-slate-400"
+          className="flex flex-col basis-1/2 mt-20 pt-8 pb-8 border-t text-slate-600 dark:text-slate-400"
         >
           <p className="text-sm">
             &copy; {new Date().getFullYear()} Travvit. All rights reserved.

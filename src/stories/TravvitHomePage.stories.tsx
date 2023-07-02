@@ -7,6 +7,7 @@ import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
 import { Card } from '../components/Card/Card';
 import { ImageCard } from '../components/ImageCard/ImageCard';
 import { Button } from '../components/Button/Button';
+import { TravvitHeader } from '../components/TravvitHeader/TravvitHeader';
 
 /** Assets */
 import mountainsLake from './images/mountains_lake.jpeg';
@@ -26,6 +27,9 @@ export const TwoCards: Story = {
   name: 'Two cards',
   render: () => (
     <FullPageScroll>
+      <div className="mt-8">
+        <TravvitHeader />
+      </div>
       <Card
         Content1={() => (
           <div className="relative h-80 w-80">
