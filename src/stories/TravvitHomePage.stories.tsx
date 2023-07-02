@@ -15,9 +15,11 @@ import zion from './images/ZNP-1.jpeg';
 import ynp from './images/yellowstone-2225083_960_720.jpeg';
 
 export default {
-  title: 'Components/TravvitHomePage',
+  title: 'Pages/Travvit Home Page',
   component: FullPageScroll,
-  decorators: [(story) => <div className="bg-[#FE9600]/10">{story()}</div>],
+  decorators: [
+    (story) => <div className="bg-travvit-orange/10">{story()}</div>,
+  ],
   tags: ['autodocs'],
 } as Meta;
 

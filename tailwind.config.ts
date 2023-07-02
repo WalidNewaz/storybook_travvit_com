@@ -33,11 +33,11 @@ module.exports = {
       serif: ['Merriweather', 'serif'],
     },
     extend: {
-      // colors: {
-      //   blue: '#35B5E8',
-      //   orange: '#FE9600',
-      //   onyx: '#353839',
-      // },
+      colors: {
+        'travvit-blue': '#35B5E8',
+        'travvit-orange': '#FE9600',
+        'travvit-onyx': '#353839',
+      },
       spacing: {
         '128': '32rem',
         '144': '36rem',

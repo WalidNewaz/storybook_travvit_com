@@ -93,7 +93,7 @@ export const TravvitFooter: React.FC = () => {
               className="md:grid md:grid-cols-2 md:gap-4"
             >
               <div id="discover">
-                <h3 className="font-bold text-orange-500">Discover</h3>
+                <h3 className="font-bold text-travvit-orange">Discover</h3>
                 <ul className="mt-6">
                   <li className="mt-4 first:mt-0">
                     <a href="#" className="footer-menu-item">
@@ -118,7 +118,7 @@ export const TravvitFooter: React.FC = () => {
                 </ul>
               </div>
               <div id="company" className="mt-10 md:mt-0">
-                <h3 className="font-bold text-orange-500">Company</h3>
+                <h3 className="font-bold text-travvit-orange">Company</h3>
                 <ul className="mt-6">
                   <li className="mt-4 first:mt-0">
                     <a href="#" className="footer-menu-item">
@@ -153,7 +153,7 @@ export const TravvitFooter: React.FC = () => {
               className="md:grid md:grid-cols-2 md:gap-4"
             >
               <div id="legal">
-                <h3 className="font-bold text-orange-500">Legal</h3>
+                <h3 className="font-bold text-travvit-orange">Legal</h3>
                 <ul className="mt-6">
                   <li className="mt-4 first:mt-0">
                     <a href="#" className="footer-menu-item">
