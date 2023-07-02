@@ -1,15 +1,6 @@
 import React from 'react';
 import '../../../src/tailwind.css';
 
-export type RadiusType =
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'full'
-  | 'xl'
-  | '2xl'
-  | '3xl';
-
 interface ImageCardProps {
   /**
    * Image url

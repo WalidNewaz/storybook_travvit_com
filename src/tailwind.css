@@ -53,4 +53,8 @@
   .footer-menu-item {
     @apply text-slate-600 hover:text-slate-900 dark:text-slate-300 hover:dark:text-slate-200;
   }
+
+  .hidden-text {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+  }
 }
