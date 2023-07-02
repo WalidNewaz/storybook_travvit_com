@@ -23,6 +23,8 @@ export default {
 
 type Story = StoryObj<typeof FullPageScroll>;
 
+const HOME_PAGE_CARD_IMG_CLASSES = `rounded-xl absolute xs:w-[200px] xs:h-[200px] lg:w-80 lg:h-80`;
+
 export const TwoCards: Story = {
   name: 'Two cards',
   render: () => (
@@ -36,22 +38,22 @@ export const TwoCards: Story = {
             <ImageCard
               src={mountainsLake}
               alt="Mountains and lake"
-              containerClasses="rounded-xl absolute top-0 left-0 z-0 m-2 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:-top-40 md:-top-8 md:left-4 xs:-top-8 xs:left-4"
+              containerClasses={`${HOME_PAGE_CARD_IMG_CLASSES} top-0 left-0 z-0 m-2 lg:h-80 lg:-top-40 md:-top-8 md:left-4 xs:-top-8 xs:left-4`}
             />
             <ImageCard
               src={zion}
               alt="Zion National Park"
-              containerClasses="rounded-xl absolute top-28 left-16 z-1 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:top-0 lg:left-20 md:top-20 md:left-20 xs:top-20 xs:left-20"
+              containerClasses={`${HOME_PAGE_CARD_IMG_CLASSES} top-28 left-16 z-1 lg:top-0 lg:left-20 md:top-20 md:left-20 xs:top-20 xs:left-20`}
             />
             <ImageCard
               src={ynp}
               alt="Yellowstone National Park"
-              containerClasses="rounded-xl absolute top-16 left-32 z-2 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:-top-20 lg:left-40 md:top-6 md:left-36 xs:top-8 xs:left-32"
+              containerClasses={`${HOME_PAGE_CARD_IMG_CLASSES} top-16 left-32 z-2 lg:-top-20 lg:left-40 md:top-6 md:left-36 xs:top-8 xs:left-32`}
             />
           </div>
         )}
         Content2={() => (
-          <article className="flex flex-col justify-center">
+          <article className="flex flex-col justify-center p-4">
             <h2 className="text-3xl capitalize mb-6">Discover new places</h2>
             <p className="mb-6">
               Explore breathtaking destinations and embark on unforgettable
@@ -75,7 +77,7 @@ export const TwoCards: Story = {
       />
       <Card
         Content1={() => (
-          <article className="flex flex-col justify-center">
+          <article className="flex flex-col justify-center p-4">
             <h2 className="text-3xl capitalize mb-6">Discover new places</h2>
             <p className="mb-6">
               Explore breathtaking destinations and embark on unforgettable
@@ -96,17 +98,17 @@ export const TwoCards: Story = {
             <ImageCard
               src={mountainsLake}
               alt="Mountains and lake"
-              containerClasses="rounded-xl absolute top-0 left-0 z-0 m-2 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:-top-40 md:-top-8 md:left-4 xs:-top-8 xs:left-4"
+              containerClasses={`${HOME_PAGE_CARD_IMG_CLASSES} top-0 left-0 z-0 m-2 lg:h-80 lg:-top-40 md:-top-8 md:left-4 xs:-top-8 xs:left-4`}
             />
             <ImageCard
               src={zion}
               alt="Zion National Park"
-              containerClasses="rounded-xl absolute top-28 left-16 z-1 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:top-0 lg:left-20 md:top-20 md:left-20 xs:top-20 xs:left-20"
+              containerClasses={`${HOME_PAGE_CARD_IMG_CLASSES} top-28 left-16 z-1 lg:top-0 lg:left-20 md:top-20 md:left-20 xs:top-20 xs:left-20`}
             />
             <ImageCard
               src={ynp}
               alt="Yellowstone National Park"
-              containerClasses="rounded-xl absolute top-16 left-32 z-2 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:-top-20 lg:left-40 md:top-6 md:left-36 xs:top-8 xs:left-32"
+              containerClasses={`${HOME_PAGE_CARD_IMG_CLASSES} top-16 left-32 z-2 lg:-top-20 lg:left-40 md:top-6 md:left-36 xs:top-8 xs:left-32`}
             />
           </div>
         )}

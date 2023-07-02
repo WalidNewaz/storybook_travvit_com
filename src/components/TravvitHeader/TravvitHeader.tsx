@@ -77,12 +77,12 @@ export const TravvitHeader: React.FC = () => {
           </a>
         </div>
         {menuOpen && (
-          <div className="fixed top-0 left-0 w-full h-full bg-gray-800 opacity-95 flex flex-col pl-12 pr-12 pt-5">
-            <div className="relative">
-              <div id="logo-close" className="mb-16">
+          <div className="fixed top-0 left-0 w-full h-full bg-gray-800 opacity-95 flex flex-col pl-8 pr-8 pt-5 z-20">
+            <div className="relative pt-4">
+              <div id="logo-close" className="mb-16 flex justify-between">
                 <TravvitLogo size="xs" />
                 <button
-                  className="absolute top-2 right-2 text-slate-300"
+                  className="top-2 right-2 text-slate-300"
                   onClick={handleMenuToggle}
                 >
                   <CloseIcon />
