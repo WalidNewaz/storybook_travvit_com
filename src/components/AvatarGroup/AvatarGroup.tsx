@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../../src/tailwind.css';
 
 export type AvatarSize = 'xs' | 'small' | 'medium' | 'large' | 'xl';
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Text from '../components/ReactCore/Text/Text';
+import Text from '../components/ReactNative/Text/Text';
 
 const meta = {
   title: 'ReactNative/Text',

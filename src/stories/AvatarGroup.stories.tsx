@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 /** Component */
-import { AvatarGroup } from '../components/AvatarGroup';
+import { AvatarGroup } from '../components/AvatarGroup/AvatarGroup';
 import { Avatar } from '../components/Avatar/Avatar';
 
 /** Assets */

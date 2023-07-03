@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import View from '../components/ReactCore/View/View';
+import View from '../components/ReactNative/View/View';
 
 const meta = {
   title: 'ReactNative/View',

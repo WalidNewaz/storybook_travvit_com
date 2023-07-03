@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import './button.css';
 
 export interface ButtonProps {
   /**

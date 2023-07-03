@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../../src/tailwind.css';
 
 interface PageLayoutProps {
   children: React.ReactNode;

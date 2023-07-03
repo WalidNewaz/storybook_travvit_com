@@ -1,7 +1,5 @@
 import React from 'react';
-import {Text, StyleSheet} from 'react-native';
-
-import '../../../tailwind.css'
+import { Text, StyleSheet } from 'react-native';
 
 interface BoldAndBeautifulProps {
   baseText: string;
