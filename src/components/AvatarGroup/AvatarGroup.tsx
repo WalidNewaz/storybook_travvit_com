@@ -1,10 +1,11 @@
 import React from 'react';
 
-export type AvatarSize = 'xs' | 'small' | 'medium' | 'large' | 'xl';
+import { AvatarProps } from '../Avatar/Avatar';
+import type { AvatarSize } from '../Avatar/Avatar';
 
 export interface AvatarGroupProps {
   AvatarComponent: React.FC<any>;
-  groupMembers: any;
+  groupMembers: AvatarProps[];
   limit?: number;
   size?: AvatarSize;
 }
@@ -12,9 +13,13 @@ export interface AvatarGroupProps {
 const BASE_AVATAR_GRP_CLASSES = 'mt-3 flex -space-x-2 overflow-hidden p-1';
 
 /**
- * This component is used to display a group of avatars
- * @param props
- * @returns
+ * This component is used to display a group of avatars.
+ *
+ * @param AvatarComponent - The avatar component to render for each member.
+ * @param groupMembers - The array of group members.
+ * @param limit - The maximum number of avatars to display.
+ * @param size - The size of the avatars.
+ * @returns JSX element
  */
 export const AvatarGroup: React.FC<AvatarGroupProps> = ({
   AvatarComponent,

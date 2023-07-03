@@ -25,7 +25,7 @@ describe('Avatar', () => {
 
     renderAvatar({ src });
 
-    const defaultSizeClass = 'h12 w-12'; // Assuming 'small' is the default size
+    const defaultSizeClass = 'h-12 w-12'; // Assuming 'small' is the default size
     const avatarImage = screen.getByRole('img');
     expect(avatarImage).toHaveClass(defaultSizeClass);
   });

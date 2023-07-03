@@ -1,17 +1,18 @@
-import React, { useMemo } from 'react';
+import React from 'react';
+import classNames from 'classnames';
 
 export type AvatarSize = 'xs' | 'small' | 'medium' | 'large' | 'xl';
-export type AvaratGener = 'male' | 'female' | 'other';
+export type AvatarGender = 'male' | 'female' | 'other';
 
 export interface AvatarProps {
   src: string;
   size?: AvatarSize;
   alt?: string;
-  gender?: AvaratGener;
+  gender?: AvatarGender;
 }
 const sizeClasses: Record<string, string> = {
   xs: 'h-8 w-8',
-  small: 'h12 w-12',
+  small: 'h-12 w-12',
   medium: 'h-24 w-24',
   large: 'h-36 w-36',
   xl: 'h-48 w-48',
@@ -20,28 +21,20 @@ const sizeClasses: Record<string, string> = {
 const BASE_AVATAR_CLASSES =
   'inline-block rounded-full object-cover ring-2 ring-white dark-img';
 
-const getSizeClasses = (size: string) => sizeClasses[size];
-
 /**
- * This component is used to display a single avatar image
- * @param props
- * @returns
+ * This component is used to display a single avatar image.
+ *
+ * @param src - The source URL of the avatar image.
+ * @param size - The size of the avatar.
+ * @param alt - The alt text for the avatar image.
+ * @returns JSX element
  */
 export const Avatar: React.FC<AvatarProps> = ({
   src,
   size = 'small',
   alt = '',
 }) => {
-  const computedClasses = useMemo(() => {
-    const sizeClass = getSizeClasses(size);
-    return [sizeClass];
-  }, [size]);
+  const computedClasses = classNames(BASE_AVATAR_CLASSES, sizeClasses[size]);
 
-  return (
-    <img
-      className={`${BASE_AVATAR_CLASSES} ${computedClasses}`}
-      src={src}
-      alt={alt}
-    />
-  );
+  return <img className={computedClasses} src={src} alt={alt} />;
 };
