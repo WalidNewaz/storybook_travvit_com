@@ -57,7 +57,7 @@ export const TravvitHeader: React.FC = () => {
             {menuOpen ? <CloseIcon /> : <HambugerIcon />}
           </button>
         </div>
-        <div id="main-menu" className="hidden md:visible md:block">
+        <div id="main-menu" className="hidden md:visible md:block pt-3">
           <a
             href="#"
             className="ml-8 first:ml-0 text-slate-600 hover:text-slate-900"

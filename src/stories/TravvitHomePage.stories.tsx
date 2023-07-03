@@ -8,6 +8,9 @@ import { Card } from '../components/Card/Card';
 import { ImageCard } from '../components/ImageCard/ImageCard';
 import { Button } from '../components/Button/Button';
 import { TravvitHeader } from '../components/TravvitHeader/TravvitHeader';
+import { HeroSlider } from '../components/HeroSlider/HeroSlider';
+import { MediaCard } from '../components/MediaCard/MediaCard';
+import type { MediaTypes } from '../components/HeroSlider/HeroSlider';
 
 /** Assets */
 import mountainsLake from './images/mountains_lake.jpeg';
@@ -18,7 +21,9 @@ export default {
   title: 'Pages/Travvit Home Page',
   component: FullPageScroll,
   decorators: [
-    (story) => <div className="bg-travvit-orange/10">{story()}</div>,
+    (story) => (
+      <div className="bg-travvit-orange/10 max-w-[80rem]">{story()}</div>
+    ),
   ],
   tags: ['autodocs'],
 } as Meta;
@@ -26,6 +31,35 @@ export default {
 type Story = StoryObj<typeof FullPageScroll>;
 
 const HOME_PAGE_CARD_IMG_CLASSES = `rounded-xl absolute xs:w-[200px] xs:h-[200px] lg:w-80 lg:h-80`;
+const DESC_CLASSES =
+  'xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:px-16 capitalize mb-6';
+
+const storySlides = [
+  {
+    media: mountainsLake as string,
+    mediaType: 'image' as MediaTypes,
+    alt: 'Mountains and lake',
+    description: 'USA Trip Planner: Design Your Perfect Vacation',
+    buttonText: 'Explore',
+    buttonOnClick: () => undefined,
+  },
+  {
+    media: zion as string,
+    mediaType: 'image' as MediaTypes,
+    alt: 'Zion National Park',
+    description: 'USA Trip Planner: Design Your Perfect Vacation',
+    buttonText: 'Explore',
+    buttonOnClick: () => undefined,
+  },
+  {
+    media: ynp as string,
+    mediaType: 'image' as MediaTypes,
+    alt: 'Yellowstone National Park',
+    description: 'USA Trip Planner: Design Your Perfect Vacation',
+    buttonText: 'Explore',
+    buttonOnClick: () => undefined,
+  },
+];
 
 export const TwoCards: Story = {
   name: 'Two cards',
@@ -34,6 +68,15 @@ export const TwoCards: Story = {
       <div className="mt-8">
         <TravvitHeader />
       </div>
+      <HeroSlider
+        slides={storySlides}
+        SlideComponent={MediaCard}
+        containerClasses="max-w-full mt-6 mb-16"
+        containerStyle={{ height: '87vh' }}
+        descriptionClasses={DESC_CLASSES}
+        slideContainerClasses="max-w-[80rem]"
+        mediaStyle={{ height: '90vh' }}
+      />
       <Card
         Content1={() => (
           <div className="relative h-80 w-80">
