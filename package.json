@@ -15,7 +15,7 @@
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
-    "test": "jest",
+    "test": "jest --coverage",
     "build-storybook": "storybook build"
   },
   "dependencies": {
