@@ -48,6 +48,7 @@ interface MediaCardProps {
   descriptionClasses?: string;
   buttonText?: string;
   buttonOnClick?: () => void;
+  link?: string;
   containerClasses?: string;
   containerStyle?: React.CSSProperties;
   mediaClasses?: string;

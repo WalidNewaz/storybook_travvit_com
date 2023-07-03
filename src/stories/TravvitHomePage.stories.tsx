@@ -16,6 +16,7 @@ import type { MediaTypes } from '../components/HeroSlider/HeroSlider';
 import mountainsLake from './images/mountains_lake.jpeg';
 import zion from './images/ZNP-1.jpeg';
 import ynp from './images/yellowstone-2225083_960_720.jpeg';
+import sevenHikes from './images/seven-amazing-hikes.webp';
 
 export default {
   title: 'Pages/Travvit Home Page',
@@ -126,11 +127,10 @@ export const TwoCards: Story = {
         Content1={() => (
           <article className="flex flex-col justify-center p-4">
             <h2 className="text-3xl capitalize mb-6 regular-text">
-              Discover new places
+              Discover new activities
             </h2>
             <p className="mb-6 regular-text">
-              Explore breathtaking destinations and embark on unforgettable
-              adventures
+              Unleash your adventurous spirit with thrilling outdoor activities
             </p>
             <Button
               label="Explore"
@@ -143,8 +143,13 @@ export const TwoCards: Story = {
           </article>
         )}
         Content2={() => (
-          <div className="relative h-80 w-80">
+          <div className="relative h-80 w-full px-4">
             <ImageCard
+              src={sevenHikes}
+              alt="Seven amazing hikes"
+              containerClasses={`w-full rounded-2xl`}
+            />
+            {/* <ImageCard
               src={mountainsLake}
               alt="Mountains and lake"
               containerClasses={`${HOME_PAGE_CARD_IMG_CLASSES} top-0 left-0 z-0 m-2 lg:h-80 lg:-top-40 md:-top-8 md:left-4 xs:-top-8 xs:left-4`}
@@ -158,7 +163,7 @@ export const TwoCards: Story = {
               src={ynp}
               alt="Yellowstone National Park"
               containerClasses={`${HOME_PAGE_CARD_IMG_CLASSES} top-16 left-32 z-2 lg:-top-20 lg:left-40 md:top-6 md:left-36 xs:top-8 xs:left-32`}
-            />
+            /> */}
           </div>
         )}
         cardClasses="xs:p-1 xs:mt-8 md:mt-1.5 lg:mt-8"

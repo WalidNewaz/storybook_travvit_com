@@ -1,10 +1,7 @@
 import React from 'react';
+import { IconProps } from './IconProps.interface';
 
-interface ChevronLeftProps {
-  classes?: string;
-}
-
-export const ChevronLeft: React.FC<ChevronLeftProps> = ({ classes }) => (
+export const ChevronLeft: React.FC<IconProps> = ({ classes }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -20,5 +17,3 @@ export const ChevronLeft: React.FC<ChevronLeftProps> = ({ classes }) => (
     />
   </svg>
 );
-
-// export default ChevronLeft;
