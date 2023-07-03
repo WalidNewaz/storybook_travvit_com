@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import React from 'react';
+import classNames from 'classnames';
 
 export interface ButtonProps {
   /**
@@ -8,7 +9,7 @@ export interface ButtonProps {
   /**
    * What background color to use
    */
-  backgroundColor?: string;
+  backgroundColor?: string | React.CSSProperties['backgroundColor'];
   /**
    * How large should the button be?
    */
@@ -25,6 +26,11 @@ export interface ButtonProps {
    * Optional click handler
    */
   onClick?: () => void;
+  /**
+   * Optional type for the button
+   * @default 'button'
+   * */
+  type?: 'button' | 'submit' | 'reset';
 }
 
 const getSizeClasses = (size: string) => {
@@ -57,22 +63,26 @@ export const Button = ({
   size = 'medium',
   label,
   buttonClasses = '',
+  type = 'button',
   ...props
 }: ButtonProps) => {
-  const computedClasses = useMemo(() => {
-    const modeClass = getModeClasses(primary);
-    const sizeClass = getSizeClasses(size);
-
-    return [modeClass, sizeClass].join(' ');
-  }, [primary, size]);
+  const computedClasses = classNames(
+    BASE_BUTTON_CLASSES,
+    getModeClasses(primary),
+    getSizeClasses(size),
+    buttonClasses,
+  );
 
   return (
-    <button
-      type="button"
-      className={`${BASE_BUTTON_CLASSES} ${computedClasses} ${buttonClasses}`}
-      {...props}
-    >
+    <button type={type} className={computedClasses} {...props}>
       {label}
     </button>
   );
+};
+
+Button.defaultProps = {
+  primary: false,
+  size: 'medium',
+  buttonClasses: '',
+  type: 'button',
 };

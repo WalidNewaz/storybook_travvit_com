@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import { Avatar, AvatarProps } from '../Avatar';
+import { Avatar, AvatarProps } from './Avatar';
 
 describe('Avatar', () => {
   const renderAvatar = (props: AvatarProps) => {
