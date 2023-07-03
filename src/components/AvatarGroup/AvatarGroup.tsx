@@ -2,7 +2,7 @@ import React from 'react';
 
 export type AvatarSize = 'xs' | 'small' | 'medium' | 'large' | 'xl';
 
-interface AvatarGroupProps {
+export interface AvatarGroupProps {
   AvatarComponent: React.FC<any>;
   groupMembers: any;
   limit?: number;
@@ -23,8 +23,9 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
   size = 'small',
 }) => {
   const group = groupMembers.slice(0, limit);
-  const groupAvatars = group.map((member: any) => (
+  const groupAvatars = group.map((member: any, index: number) => (
     <AvatarComponent
+      key={index}
       {...{
         ...member,
         size,
