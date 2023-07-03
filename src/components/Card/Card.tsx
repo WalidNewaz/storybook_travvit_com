@@ -1,12 +1,13 @@
 import React from 'react';
+import classNames from 'classnames';
 
 interface CardProps {
-  Content1?: React.FC<any>;
-  Content2?: React.FC<any>;
+  header?: React.FC<any>;
+  body?: React.FC<any>;
   cardClasses?: string;
   cardStyle?: React.CSSProperties;
-  contentClasses1?: string;
-  contentClasses2?: string;
+  headerClasses?: string;
+  bodyClasses?: string;
 }
 
 const CARD_CLASSES = `
@@ -30,20 +31,24 @@ const CARD_CONTENT_CLASSES = `
 `;
 
 export const Card: React.FC<CardProps> = ({
-  Content1,
-  Content2,
+  header: Header,
+  body: Body,
   cardClasses = '',
   cardStyle = {},
-  contentClasses1 = '',
-  contentClasses2 = '',
+  headerClasses = '',
+  bodyClasses = '',
 }) => {
+  const cardClassName = classNames(CARD_CLASSES, cardClasses);
+  const headerClassName = classNames(CARD_CONTENT_CLASSES, headerClasses);
+  const bodyClassName = classNames(CARD_CONTENT_CLASSES, bodyClasses);
+
   return (
-    <div className={`${CARD_CLASSES} ${cardClasses}`} style={cardStyle}>
-      <div className={`${CARD_CONTENT_CLASSES} ${contentClasses1}`}>
-        {Content1 && <Content1 />}
+    <div className={cardClassName} style={cardStyle} data-testid="card">
+      <div className={headerClassName} data-testid="header">
+        {Header && <Header />}
       </div>
-      <div className={`${CARD_CONTENT_CLASSES} ${contentClasses2}`}>
-        {Content2 && <Content2 />}
+      <div className={bodyClassName} data-testid="body">
+        {Body && <Body />}
       </div>
     </div>
   );
