@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 export type AvatarSize = 'xs' | 'small' | 'medium' | 'large' | 'xl';
 export type AvaratGener = 'male' | 'female' | 'other';
 
-interface AvatarProps {
+export interface AvatarProps {
   src: string;
   size?: AvatarSize;
   alt?: string;
