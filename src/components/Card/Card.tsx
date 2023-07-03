@@ -14,10 +14,10 @@ const CARD_CLASSES = `
   flex-wrap
   justify-between
   mb-4
-  bg-slate-50
   rounded-lg
   p-4
   md:flex-row
+  bg-transparent
 `;
 
 const CARD_CONTENT_CLASSES = `

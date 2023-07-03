@@ -99,8 +99,10 @@ export const TwoCards: Story = {
         )}
         Content2={() => (
           <article className="flex flex-col justify-center p-4">
-            <h2 className="text-3xl capitalize mb-6">Discover new places</h2>
-            <p className="mb-6">
+            <h2 className="text-3xl capitalize mb-6 regular-text">
+              Discover new places
+            </h2>
+            <p className="mb-6 regular-text">
               Explore breathtaking destinations and embark on unforgettable
               adventures
             </p>
@@ -115,7 +117,7 @@ export const TwoCards: Story = {
             />
           </article>
         )}
-        cardClasses="xs:p-1 xs:mt-8 md:mt-1.5 lg:mt-8 bg-transparent"
+        cardClasses="xs:p-1 xs:mt-8 md:mt-1.5 lg:mt-8"
         cardStyle={{ height: '87vh', marginBottom: '10vh' }}
         contentClasses1="flex-col justify-center xs:h-1/2 md:h-screen"
         contentClasses2="xs:h-1/2 md:text-center md:h-screen"
@@ -123,8 +125,10 @@ export const TwoCards: Story = {
       <Card
         Content1={() => (
           <article className="flex flex-col justify-center p-4">
-            <h2 className="text-3xl capitalize mb-6">Discover new places</h2>
-            <p className="mb-6">
+            <h2 className="text-3xl capitalize mb-6 regular-text">
+              Discover new places
+            </h2>
+            <p className="mb-6 regular-text">
               Explore breathtaking destinations and embark on unforgettable
               adventures
             </p>
@@ -157,7 +161,7 @@ export const TwoCards: Story = {
             />
           </div>
         )}
-        cardClasses="xs:p-1 xs:mt-8 md:mt-1.5 lg:mt-8 bg-transparent"
+        cardClasses="xs:p-1 xs:mt-8 md:mt-1.5 lg:mt-8"
         cardStyle={{ height: '87vh', marginBottom: '10vh' }}
         contentClasses1="xs:h-1/2 md:text-center md:h-screen"
         contentClasses2="flex-col justify-center xs:h-1/2 md:h-screen"
