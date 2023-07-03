@@ -17,6 +17,10 @@ import mountainsLake from './images/mountains_lake.jpeg';
 import zion from './images/ZNP-1.jpeg';
 import ynp from './images/yellowstone-2225083_960_720.jpeg';
 import sevenHikes from './images/seven-amazing-hikes.webp';
+import backpack from './images/first-backpacking-trip.webp';
+import trailRunner from './images/Ready-set-trail-How-to-prepare-for-trail-running-small.jpeg';
+import rockClimbing from './images/rock-climbing.jpeg';
+import camping from './images/Camping.jpeg';
 
 export default {
   title: 'Pages/Travvit Home Page',
@@ -37,18 +41,18 @@ const DESC_CLASSES =
 
 const storySlides = [
   {
-    media: mountainsLake as string,
+    media: camping as string,
     mediaType: 'image' as MediaTypes,
-    alt: 'Mountains and lake',
-    description: 'USA Trip Planner: Design Your Perfect Vacation',
+    alt: 'Camping by a lake',
+    description: 'Plan your next getaway in the great outdoors',
     buttonText: 'Explore',
     buttonOnClick: () => undefined,
   },
   {
-    media: zion as string,
+    media: rockClimbing as string,
     mediaType: 'image' as MediaTypes,
-    alt: 'Zion National Park',
-    description: 'USA Trip Planner: Design Your Perfect Vacation',
+    alt: 'Rock climbing',
+    description: 'Reach new hights with rock climbing',
     buttonText: 'Explore',
     buttonOnClick: () => undefined,
   },
@@ -56,7 +60,7 @@ const storySlides = [
     media: ynp as string,
     mediaType: 'image' as MediaTypes,
     alt: 'Yellowstone National Park',
-    description: 'USA Trip Planner: Design Your Perfect Vacation',
+    description: 'Explore the great American National Parks',
     buttonText: 'Explore',
     buttonOnClick: () => undefined,
   },
@@ -149,21 +153,74 @@ export const TwoCards: Story = {
               alt="Seven amazing hikes"
               containerClasses={`w-full rounded-2xl`}
             />
-            {/* <ImageCard
-              src={mountainsLake}
-              alt="Mountains and lake"
-              containerClasses={`${HOME_PAGE_CARD_IMG_CLASSES} top-0 left-0 z-0 m-2 lg:h-80 lg:-top-40 md:-top-8 md:left-4 xs:-top-8 xs:left-4`}
-            />
+          </div>
+        )}
+        cardClasses="xs:p-1 xs:mt-8 md:mt-1.5 lg:mt-8"
+        cardStyle={{ height: '87vh', marginBottom: '10vh' }}
+        contentClasses1="xs:h-1/2 md:text-center md:h-screen"
+        contentClasses2="flex-col justify-center xs:h-1/2 md:h-screen"
+      />
+      <Card
+        Content1={() => (
+          <div className="relative h-80 w-full px-4">
             <ImageCard
-              src={zion}
-              alt="Zion National Park"
-              containerClasses={`${HOME_PAGE_CARD_IMG_CLASSES} top-28 left-16 z-1 lg:top-0 lg:left-20 md:top-20 md:left-20 xs:top-20 xs:left-20`}
+              src={backpack}
+              alt="Seven amazing hikes"
+              containerClasses={`w-full rounded-2xl`}
             />
+          </div>
+        )}
+        Content2={() => (
+          <article className="flex flex-col justify-center p-4">
+            <h2 className="text-3xl capitalize mb-6 regular-text">
+              Discover trips that inspire
+            </h2>
+            <p className="mb-6 regular-text">
+              Embark on unforgettable journeys that ignite your wonderlust
+            </p>
+            <Button
+              label="Explore"
+              size="small"
+              onClick={() => {
+                console.log('You clicked me!');
+              }}
+              buttonClasses="w-fit self-center"
+              primary
+            />
+          </article>
+        )}
+        cardClasses="xs:p-1 xs:mt-8 md:mt-1.5 lg:mt-8"
+        cardStyle={{ height: '87vh', marginBottom: '10vh' }}
+        contentClasses1="flex-col justify-center xs:h-1/2 md:h-screen"
+        contentClasses2="xs:h-1/2 md:text-center md:h-screen"
+      />
+      <Card
+        Content1={() => (
+          <article className="flex flex-col justify-center p-4">
+            <h2 className="text-3xl capitalize mb-6 regular-text">
+              Discover inspiring explorers
+            </h2>
+            <p className="mb-6 regular-text">
+              Get inspired by passioanate adventurers pushing the boudaries of
+              exploration.
+            </p>
+            <Button
+              label="Explore"
+              size="small"
+              onClick={() => {
+                console.log('You clicked me!');
+              }}
+              buttonClasses="w-fit self-center"
+            />
+          </article>
+        )}
+        Content2={() => (
+          <div className="relative h-80 w-full px-4">
             <ImageCard
-              src={ynp}
-              alt="Yellowstone National Park"
-              containerClasses={`${HOME_PAGE_CARD_IMG_CLASSES} top-16 left-32 z-2 lg:-top-20 lg:left-40 md:top-6 md:left-36 xs:top-8 xs:left-32`}
-            /> */}
+              src={trailRunner}
+              alt="Seven amazing hikes"
+              containerClasses={`w-full rounded-2xl`}
+            />
           </div>
         )}
         cardClasses="xs:p-1 xs:mt-8 md:mt-1.5 lg:mt-8"
