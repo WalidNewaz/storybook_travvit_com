@@ -83,7 +83,7 @@ export const TwoCards: Story = {
         mediaStyle={{ height: '90vh' }}
       />
       <Card
-        Content1={() => (
+        header={() => (
           <div className="relative h-80 w-80">
             <ImageCard
               src={mountainsLake}
@@ -102,7 +102,7 @@ export const TwoCards: Story = {
             />
           </div>
         )}
-        Content2={() => (
+        body={() => (
           <article className="flex flex-col justify-center p-4">
             <h2 className="text-3xl capitalize mb-6 regular-text">
               Discover new places
@@ -124,11 +124,11 @@ export const TwoCards: Story = {
         )}
         cardClasses="xs:p-1 xs:mt-8 md:mt-1.5 lg:mt-8"
         cardStyle={{ height: '87vh', marginBottom: '10vh' }}
-        contentClasses1="flex-col justify-center xs:h-1/2 md:h-screen"
-        contentClasses2="xs:h-1/2 md:text-center md:h-screen"
+        headerClasses="flex-col justify-center xs:h-1/2 md:h-screen"
+        bodyClasses="xs:h-1/2 md:text-center md:h-screen"
       />
       <Card
-        Content1={() => (
+        header={() => (
           <article className="flex flex-col justify-center p-4">
             <h2 className="text-3xl capitalize mb-6 regular-text">
               Discover new activities
@@ -146,7 +146,7 @@ export const TwoCards: Story = {
             />
           </article>
         )}
-        Content2={() => (
+        body={() => (
           <div className="relative h-80 w-full px-4">
             <ImageCard
               src={sevenHikes}
@@ -157,11 +157,11 @@ export const TwoCards: Story = {
         )}
         cardClasses="xs:p-1 xs:mt-8 md:mt-1.5 lg:mt-8"
         cardStyle={{ height: '87vh', marginBottom: '10vh' }}
-        contentClasses1="xs:h-1/2 md:text-center md:h-screen"
-        contentClasses2="flex-col justify-center xs:h-1/2 md:h-screen"
+        headerClasses="xs:h-1/2 md:text-center md:h-screen"
+        bodyClasses="flex-col justify-center xs:h-1/2 md:h-screen"
       />
       <Card
-        Content1={() => (
+        header={() => (
           <div className="relative h-80 w-full px-4">
             <ImageCard
               src={backpack}
@@ -170,7 +170,7 @@ export const TwoCards: Story = {
             />
           </div>
         )}
-        Content2={() => (
+        body={() => (
           <article className="flex flex-col justify-center p-4">
             <h2 className="text-3xl capitalize mb-6 regular-text">
               Discover trips that inspire
@@ -191,11 +191,11 @@ export const TwoCards: Story = {
         )}
         cardClasses="xs:p-1 xs:mt-8 md:mt-1.5 lg:mt-8"
         cardStyle={{ height: '87vh', marginBottom: '10vh' }}
-        contentClasses1="flex-col justify-center xs:h-1/2 md:h-screen"
-        contentClasses2="xs:h-1/2 md:text-center md:h-screen"
+        headerClasses="flex-col justify-center xs:h-1/2 md:h-screen"
+        bodyClasses="xs:h-1/2 md:text-center md:h-screen"
       />
       <Card
-        Content1={() => (
+        header={() => (
           <article className="flex flex-col justify-center p-4">
             <h2 className="text-3xl capitalize mb-6 regular-text">
               Discover inspiring explorers
@@ -214,7 +214,7 @@ export const TwoCards: Story = {
             />
           </article>
         )}
-        Content2={() => (
+        body={() => (
           <div className="relative h-80 w-full px-4">
             <ImageCard
               src={trailRunner}
@@ -225,8 +225,8 @@ export const TwoCards: Story = {
         )}
         cardClasses="xs:p-1 xs:mt-8 md:mt-1.5 lg:mt-8"
         cardStyle={{ height: '87vh', marginBottom: '10vh' }}
-        contentClasses1="xs:h-1/2 md:text-center md:h-screen"
-        contentClasses2="flex-col justify-center xs:h-1/2 md:h-screen"
+        headerClasses="xs:h-1/2 md:text-center md:h-screen"
+        bodyClasses="flex-col justify-center xs:h-1/2 md:h-screen"
       />
       <TravvitFooter />
     </FullPageScroll>
