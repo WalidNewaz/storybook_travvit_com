@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import { Button } from '../Button/Button';
 
@@ -60,7 +61,7 @@ interface MediaCardProps {
    * Custom style classes for the media
    * @default ''
    * */
-  mediaClasses?: string;
+  mediaClassName?: string;
   /**
    * Custom style for the media
    * @default {}
@@ -69,7 +70,9 @@ interface MediaCardProps {
 }
 
 const CONTAINER_CLASSES = `
-relative overflow-hidden max-w-[100rem]
+  relative
+  max-w-[100rem]
+  overflow-hidden
 `;
 
 const MEDIA_CLASSES = `
@@ -116,44 +119,64 @@ export const MediaCard: React.FC<MediaCardProps> = ({
   buttonOnClick = () => undefined,
   containerClasses = '',
   containerStyle = {},
-  mediaClasses = '',
+  mediaClassName = '',
   mediaStyle = {},
 }) => {
+  const containerClassNames = classNames(
+    'card',
+    CONTAINER_CLASSES,
+    containerClasses,
+    rounded ? 'rounded-3xl' : '',
+  );
+
+  const descriptionClassName = classNames(
+    DEFAULT_DESCRIPTION_CLASSES,
+    descriptionClasses,
+  );
+
+  const renderMedia = () => {
+    if (mediaType === 'image') {
+      return (
+        <img
+          src={media}
+          alt={alt}
+          style={{ width: 'inherit' }}
+          className={`${MEDIA_CLASSES} ${mediaClassName}`}
+          aria-label="media-image" // Add aria-label attribute
+          data-testid="media-image" // Add data-testid attribute
+        />
+      );
+    }
+
+    if (mediaType === 'video') {
+      return (
+        <video
+          src={media}
+          controls
+          aria-label="media-video" // Add aria-label attribute
+          data-testid="media-video" // Add data-testid attribute
+        />
+      );
+    }
+
+    return null;
+  };
+
   return (
     <div
       style={containerStyle}
-      className={`card ${CONTAINER_CLASSES} ${containerClasses} ${
-        rounded ? 'rounded' : null
-      }`}
+      className={containerClassNames}
+      aria-label="media-card" // Add aria-label attribute
+      data-testid="media-card" // Add data-testid attribute
     >
       <div
         style={mediaStyle}
-        className={`media-card__media relative
-        overflow-hidden
-        shrink-0
-        w-full pb-8 ${mediaClasses}`}
+        className={`media-card__media relative overflow-hidden shrink-0 w-full pb-8 ${mediaClassName}`}
       >
-        {mediaType === 'image' ? (
-          <img
-            src={media}
-            alt={alt}
-            style={{ width: 'inherit' }}
-            className={`absolute
-            top-0
-            left-0
-            object-cover
-            w-full
-            h-full
-            dark-img ${mediaClasses}`}
-          />
-        ) : mediaType === 'video' ? (
-          <video src={media} controls />
-        ) : null}
+        {renderMedia()}
       </div>
-      <div className={`${DEFAULT_OVERLAY_CLASSES}`}>
-        <h1 className={`${DEFAULT_DESCRIPTION_CLASSES} ${descriptionClasses}`}>
-          {description}
-        </h1>
+      <div className={DEFAULT_OVERLAY_CLASSES}>
+        <h1 className={descriptionClassName}>{description}</h1>
         <div className="buttons pt-8">
           <Button
             onClick={buttonOnClick}

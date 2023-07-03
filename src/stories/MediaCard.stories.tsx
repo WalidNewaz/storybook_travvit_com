@@ -30,6 +30,8 @@ export const Default: Story = {
       description="USA Trip Planner: Design Your Perfect Vacation"
       buttonText="Explore"
       buttonOnClick={() => undefined}
+      mediaStyle={{ height: '90vh' }}
+      rounded
     />
   ),
 };

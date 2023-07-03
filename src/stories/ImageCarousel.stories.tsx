@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 /** Component */
-import { ImageCarousel } from '../components/ImageCarousel';
+import { ImageCarousel } from '../components/ImageCarousel/ImageCarousel';
 import { ImageCard } from '../components/ImageCard/ImageCard';
 
 /** Assets */
