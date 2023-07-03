@@ -31,17 +31,17 @@ export const TwoCards: Story = {
             <ImageCard
               src={mountainsLake}
               alt="Mountains and lake"
-              containerClasses="rounded-xl absolute top-0 left-0 z-0 m-2 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:-top-40 md:-top-8 md:left-4 xs:-top-8 xs:left-4"
+              containerClassName="rounded-xl absolute top-0 left-0 z-0 m-2 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:-top-40 md:-top-8 md:left-4 xs:-top-8 xs:left-4"
             />
             <ImageCard
               src={zion}
               alt="Zion National Park"
-              containerClasses="rounded-xl absolute top-28 left-16 z-1 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:top-0 lg:left-20 md:top-20 md:left-20 xs:top-20 xs:left-20"
+              containerClassName="rounded-xl absolute top-28 left-16 z-1 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:top-0 lg:left-20 md:top-20 md:left-20 xs:top-20 xs:left-20"
             />
             <ImageCard
               src={ynp}
               alt="Yellowstone National Park"
-              containerClasses="rounded-xl absolute top-16 left-32 z-2 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:-top-20 lg:left-40 md:top-6 md:left-36 xs:top-8 xs:left-32"
+              containerClassName="rounded-xl absolute top-16 left-32 z-2 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:-top-20 lg:left-40 md:top-6 md:left-36 xs:top-8 xs:left-32"
             />
           </div>
         )}
@@ -91,17 +91,17 @@ export const TwoCards: Story = {
             <ImageCard
               src={mountainsLake}
               alt="Mountains and lake"
-              containerClasses="rounded-xl absolute top-0 left-0 z-0 m-2 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:-top-40 md:-top-8 md:left-4 xs:-top-8 xs:left-4"
+              containerClassName="rounded-xl absolute top-0 left-0 z-0 m-2 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:-top-40 md:-top-8 md:left-4 xs:-top-8 xs:left-4"
             />
             <ImageCard
               src={zion}
               alt="Zion National Park"
-              containerClasses="rounded-xl absolute top-28 left-16 z-1 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:top-0 lg:left-20 md:top-20 md:left-20 xs:top-20 xs:left-20"
+              containerClassName="rounded-xl absolute top-28 left-16 z-1 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:top-0 lg:left-20 md:top-20 md:left-20 xs:top-20 xs:left-20"
             />
             <ImageCard
               src={ynp}
               alt="Yellowstone National Park"
-              containerClasses="rounded-xl absolute top-16 left-32 z-2 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:-top-20 lg:left-40 md:top-6 md:left-36 xs:top-8 xs:left-32"
+              containerClassName="rounded-xl absolute top-16 left-32 z-2 xs:w-52 xs:h-52 lg:w-80 lg:h-80 lg:-top-20 lg:left-40 md:top-6 md:left-36 xs:top-8 xs:left-32"
             />
           </div>
         )}

@@ -3,7 +3,6 @@ import React from 'react';
 
 /** Component */
 import { HeroSlider } from '../components/HeroSlider/HeroSlider';
-import { ImageCard } from '../components/ImageCard/ImageCard';
 import { MediaCard } from '../components/MediaCard/MediaCard';
 
 import type { MediaTypes } from '../components/HeroSlider/HeroSlider';

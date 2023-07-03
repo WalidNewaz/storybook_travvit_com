@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 interface ImageCardProps {
   /**
@@ -13,7 +14,7 @@ interface ImageCardProps {
    * Custom style classes for the container
    * @default ''
    */
-  containerClasses?: string;
+  containerClassName?: string;
   /**
    * Custom style for the container
    * @default {}
@@ -23,7 +24,7 @@ interface ImageCardProps {
    * Custom style classes for the image
    * @default ''
    * */
-  imageClasses?: string;
+  imageClassName?: string;
   /**
    * Custom style for the image
    * @default {}
@@ -45,21 +46,20 @@ const IMAGE_CLASSES = `
 export const ImageCard: React.FC<ImageCardProps> = ({
   src,
   alt,
-  containerClasses = '',
+  containerClassName = '',
   containerStyle = {},
-  imageClasses = '',
+  imageClassName = '',
   imageStyle = {},
 }) => {
+  const containerClassNames = classNames(CONTAINER_CLASSES, containerClassName);
+  const imageClassNames = classNames(IMAGE_CLASSES, imageClassName);
   return (
-    <div
-      style={containerStyle}
-      className={`${CONTAINER_CLASSES} ${containerClasses}`}
-    >
+    <div style={containerStyle} className={containerClassNames}>
       <img
         src={src}
         alt={alt}
         style={{ width: 'inherit', ...imageStyle }}
-        className={`${IMAGE_CLASSES} ${imageClasses}`}
+        className={imageClassNames}
       />
     </div>
   );

@@ -19,7 +19,7 @@ export const RoundedLarge: Story = {
   args: {
     src: mountainsLake,
     alt: 'Mountains and lake',
-    containerClasses: 'rounded-lg',
+    containerClassName: 'rounded-lg',
   },
 };
 
@@ -28,15 +28,6 @@ export const NoRouding: Story = {
   args: {
     src: mountainsLake,
     alt: 'Mountains and lake',
-    containerClasses: 'rounded-none',
+    containerClassName: 'rounded-none',
   },
 };
-
-// export const Rectangle: Story = {
-//   name: 'Rectangle representation',
-//   args: {
-//     src: mountainsLake,
-//     alt: 'Mountains and lake',
-//     styleClasses: 'rounded-none',
-//   },
-// };

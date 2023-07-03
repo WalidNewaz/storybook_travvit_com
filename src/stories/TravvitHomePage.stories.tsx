@@ -88,17 +88,17 @@ export const TwoCards: Story = {
             <ImageCard
               src={mountainsLake}
               alt="Mountains and lake"
-              containerClasses={`${HOME_PAGE_CARD_IMG_CLASSES} top-0 left-0 z-0 m-2 lg:h-80 lg:-top-40 md:-top-8 md:left-4 xs:-top-8 xs:left-4`}
+              containerClassName={`${HOME_PAGE_CARD_IMG_CLASSES} top-0 left-0 z-0 m-2 lg:h-80 lg:-top-40 md:-top-8 md:left-4 xs:-top-8 xs:left-4`}
             />
             <ImageCard
               src={zion}
               alt="Zion National Park"
-              containerClasses={`${HOME_PAGE_CARD_IMG_CLASSES} top-28 left-16 z-1 lg:top-0 lg:left-20 md:top-20 md:left-20 xs:top-20 xs:left-20`}
+              containerClassName={`${HOME_PAGE_CARD_IMG_CLASSES} top-28 left-16 z-1 lg:top-0 lg:left-20 md:top-20 md:left-20 xs:top-20 xs:left-20`}
             />
             <ImageCard
               src={ynp}
               alt="Yellowstone National Park"
-              containerClasses={`${HOME_PAGE_CARD_IMG_CLASSES} top-16 left-32 z-2 lg:-top-20 lg:left-40 md:top-6 md:left-36 xs:top-8 xs:left-32`}
+              containerClassName={`${HOME_PAGE_CARD_IMG_CLASSES} top-16 left-32 z-2 lg:-top-20 lg:left-40 md:top-6 md:left-36 xs:top-8 xs:left-32`}
             />
           </div>
         )}
@@ -151,7 +151,7 @@ export const TwoCards: Story = {
             <ImageCard
               src={sevenHikes}
               alt="Seven amazing hikes"
-              containerClasses={`w-full rounded-2xl`}
+              containerClassName={`w-full rounded-2xl`}
             />
           </div>
         )}
@@ -166,7 +166,7 @@ export const TwoCards: Story = {
             <ImageCard
               src={backpack}
               alt="Seven amazing hikes"
-              containerClasses={`w-full rounded-2xl`}
+              containerClassName={`w-full rounded-2xl`}
             />
           </div>
         )}
@@ -219,7 +219,7 @@ export const TwoCards: Story = {
             <ImageCard
               src={trailRunner}
               alt="Seven amazing hikes"
-              containerClasses={`w-full rounded-2xl`}
+              containerClassName={`w-full rounded-2xl`}
             />
           </div>
         )}
