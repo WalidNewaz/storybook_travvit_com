@@ -1,4 +1,5 @@
 export { ChevronLeft } from './ChevronLeft';
+export { ChevronRight } from './ChevronRight';
 export { FacebookIcon } from './FacebookIcon';
 export { GithubIcon } from './GithubIcon';
 export { InstagramIcon } from './InstagramIcon';

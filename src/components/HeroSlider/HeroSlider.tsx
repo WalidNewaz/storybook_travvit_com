@@ -1,42 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
-interface IconProps {
-  classes?: string;
-}
-
-const ChevronLeft: React.FC<IconProps> = ({ classes }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth={1.5}
-    stroke="currentColor"
-    className={classes}
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M15.75 19.5L8.25 12l7.5-7.5"
-    />
-  </svg>
-);
-
-const ChevronRight: React.FC<IconProps> = ({ classes }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth={1.5}
-    stroke="currentColor"
-    className={classes}
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M8.25 4.5l7.5 7.5-7.5 7.5"
-    />
-  </svg>
-);
+import { ChevronLeft, ChevronRight } from '../Icons';
 
 export type MediaTypes = 'image' | 'video';
 
@@ -65,10 +28,13 @@ interface HeroSliderProps {
   mediaStyle?: React.CSSProperties;
 }
 
+const SLIDE_DURATION = 5000;
+const INTERVAL_DELAY = 150;
+
 const SLIDE_CONTAINER_CLASSES = `relative w-full`;
 const SLIDE_CLASSES = `absolute top-0 left-0 w-full h-full transition-opacity duration-500`;
 const NAV_BUTTON_CLASSES = `absolute top-1/2 transform -translate-y-1/2 text-white`;
-const NAV_BUTTON_ICON_CLASSES = `w-24 h-24 text-slate-300 opacity-50 hover:opacity-80 hover:ease-in transition transition-opacity ease-in delay-150`;
+const NAV_BUTTON_ICON_CLASSES = `w-24 h-24 text-slate-300 opacity-50 hover:opacity-80 hover:ease-in transition transition-opacity ease-in delay-${INTERVAL_DELAY}`;
 
 export const HeroSlider: React.FC<HeroSliderProps> = ({
   slides,
@@ -87,14 +53,14 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
     );
   };
 
-  const handleNextSlide = () => {
+  const handleNextSlide = (): void => {
     setCurrentSlide((prevSlide) =>
       prevSlide === slides.length - 1 ? 0 : prevSlide + 1,
     );
   };
 
   useEffect(() => {
-    const interval = setInterval(handleNextSlide, 5000); // Rotate slides every 5 seconds
+    const interval = setInterval(handleNextSlide, SLIDE_DURATION); // Rotate slides every 5 seconds
 
     return () => {
       clearInterval(interval);
@@ -105,35 +71,52 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
     <div
       className={`${SLIDE_CONTAINER_CLASSES} ${containerClasses}`}
       style={containerStyle}
+      data-testid="slider-container" // Add data-testid attribute here
     >
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`${SLIDE_CLASSES} ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          {SlideComponent && (
-            <SlideComponent
-              media={slide.media}
-              mediaType="image"
-              alt={slide.alt}
-              description={slide.description}
-              descriptionClasses={descriptionClasses}
-              buttonText={slide.buttonText}
-              buttonOnClick={slide.buttonOnClick}
-              containerClasses={slideContainerClasses}
-              mediaClasses={slide.mediaClasses}
-              mediaStyle={slide.mediaStyle ? slide.mediaStyle : mediaStyle}
-            />
-          )}
-        </div>
-      ))}
+      {slides.map(
+        (
+          {
+            media,
+            alt = '',
+            description = '',
+            buttonText = '',
+            buttonOnClick = () => undefined,
+            mediaClasses = '',
+            mediaStyle: slideMediaStyle = null,
+          },
+          index,
+        ) => (
+          <div
+            key={index}
+            className={`${SLIDE_CLASSES} ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+            data-testid={`slide-media-${index}`} // Add data-testid attribute
+          >
+            {SlideComponent && (
+              <SlideComponent
+                media={media}
+                mediaType="image"
+                alt={alt}
+                description={description}
+                descriptionClasses={descriptionClasses}
+                buttonText={buttonText}
+                buttonOnClick={buttonOnClick}
+                containerClasses={slideContainerClasses}
+                mediaClasses={mediaClasses}
+                mediaStyle={slideMediaStyle ? slideMediaStyle : mediaStyle}
+              />
+            )}
+          </div>
+        ),
+      )}
 
       <div id="slider-nav" className="static pt-[22rem]">
         <button
           className={`${NAV_BUTTON_CLASSES} left-2`}
           onClick={handlePrevSlide}
+          aria-label="Previous" // Add aria-label attribute
+          data-testid="Previous" // Add data-testid attribute
         >
           <span className="hidden-text">Previous</span>
           <ChevronLeft classes={NAV_BUTTON_ICON_CLASSES} />
@@ -141,6 +124,8 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
         <button
           className="absolute top-1/2 right-2 transform -translate-y-1/2 text-white"
           onClick={handleNextSlide}
+          aria-label="Next" // Add aria-label attribute
+          data-testid="Next" // Add data-testid attribute
         >
           <span className="hidden-text">Next</span>
           <ChevronRight classes={NAV_BUTTON_ICON_CLASSES} />
@@ -158,6 +143,8 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
               index === currentSlide ? 'bg-white' : 'bg-gray-400'
             }`}
             onClick={() => setCurrentSlide(index)}
+            aria-label={`Slide Dot ${index + 1}`} // Add aria-label attribute
+            data-testid={`slide-dot-${index}`} // Add data-testid attribute
           />
         ))}
       </div>

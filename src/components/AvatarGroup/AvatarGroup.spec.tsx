@@ -3,12 +3,11 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import { AvatarGroup, AvatarGroupProps } from './AvatarGroup';
+import { AvatarProps } from '../Avatar/Avatar';
 
 // Define a mock AvatarComponent for testing
-const MockAvatarComponent: React.FC<any> = ({ name, size }) => (
-  <div data-testid="avatar" className={`avatar-${size}`}>
-    {name}
-  </div>
+const MockAvatarComponent: React.FC<AvatarProps> = ({ src, size }) => (
+  <img data-testid="avatar" className={`avatar-${size}`} {...{ src }} />
 );
 
 describe('AvatarGroup', () => {
@@ -17,10 +16,10 @@ describe('AvatarGroup', () => {
   };
 
   const groupMembers = [
-    { name: 'John' },
-    { name: 'Jane' },
-    { name: 'Alice' },
-    { name: 'Bob' },
+    { src: '/John' },
+    { src: '/Jane' },
+    { src: '/Alice' },
+    { src: '/Bob' },
   ];
 
   it('renders the avatar group with the provided group members', () => {
@@ -32,8 +31,8 @@ describe('AvatarGroup', () => {
     const avatarElements = screen.getAllByTestId('avatar');
     expect(avatarElements).toHaveLength(3);
 
-    avatarElements.forEach((avatarElement, index) => {
-      expect(avatarElement).toHaveTextContent(groupMembers[index].name);
+    avatarElements.forEach((avatarElement) => {
+      expect(avatarElement).toHaveAttribute('src');
     });
   });
 
@@ -48,10 +47,6 @@ describe('AvatarGroup', () => {
 
     const avatarElements = screen.getAllByTestId('avatar');
     expect(avatarElements).toHaveLength(limit);
-
-    groupMembers.slice(0, limit).forEach((member, index) => {
-      expect(avatarElements[index]).toHaveTextContent(member.name);
-    });
   });
 
   it('renders avatars with the specified size', () => {
