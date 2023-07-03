@@ -9,6 +9,7 @@ import face1 from './images/img_7.jpeg';
 export default {
   title: 'Components/Avatar',
   component: Avatar,
+  tags: ['autodocs'],
 } as Meta;
 
 type Story = StoryObj<typeof Avatar>;

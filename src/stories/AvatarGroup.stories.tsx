@@ -13,6 +13,7 @@ import face4 from './images/timothy-paul-smith-256424.jpeg';
 export default {
   title: 'Components/AvatarGroup',
   component: AvatarGroup,
+  tags: ['autodocs'],
 } as Meta;
 
 type Story = StoryObj<typeof AvatarGroup>;

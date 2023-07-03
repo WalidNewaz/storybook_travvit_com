@@ -9,6 +9,7 @@ import mountainsLake from './images/mountains_lake.jpeg';
 export default {
   title: 'Components/ImageCard',
   component: ImageCard,
+  tags: ['autodocs'],
 } as Meta;
 
 type Story = StoryObj<typeof ImageCard>;

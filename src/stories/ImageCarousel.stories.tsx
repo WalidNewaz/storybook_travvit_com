@@ -19,6 +19,7 @@ import ynp from './images/yellowstone-2225083_960_720.jpeg';
 export default {
   title: 'Components/ImageCarousel',
   component: ImageCarousel,
+  tags: ['autodocs'],
 } as Meta;
 
 type Story = StoryObj<typeof ImageCarousel>;

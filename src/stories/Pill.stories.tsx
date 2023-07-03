@@ -6,6 +6,7 @@ import { Pill } from '../components/Pill/Pill';
 export default {
   title: 'Components/Pill',
   component: Pill,
+  tags: ['autodocs'],
 } as Meta;
 
 type Story = StoryObj<typeof Pill>;
