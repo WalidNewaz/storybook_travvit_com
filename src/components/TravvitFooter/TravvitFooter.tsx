@@ -3,118 +3,116 @@ import React from 'react';
 import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
 import { FacebookIcon, InstagramIcon, YoutubeIcon, GithubIcon } from '../Icons';
 
+const FOOTER_WRAPPER_CLASSES = 'pt-32 pl-8 pr-8 pb-2 max-w-full';
+const BRAND_MENU_CLASSES = 'flex flex-col basis-1/2';
+const FOOTER_TEXT_CLASSES = 'text-sm mt-8 text-slate-900 dark:text-white';
+const MENU_CLASSES = 'grid grid-cols-2 gap-8 mt-16';
+const MENU_GROUP_CLASSES = 'md:grid md:grid-cols-2 md:gap-4';
+const MENU_HEADER_CLASSES = 'font-bold text-travvit-orange';
+const COPYRIGHT_CLASSES =
+  'flex flex-col basis-1/2 mt-20 pt-8 pb-8 border-t text-slate-600 dark:text-slate-400';
+
 export const TravvitFooter: React.FC = () => {
   return (
     <footer>
-      <div id="footer-wrapper" className="pt-32 pl-8 pr-8 pb-2 max-w-full">
-        <section id="branding-menu" className="flex flex-col basis-1/2">
-          <section id="branding">
+      <div className={FOOTER_WRAPPER_CLASSES}>
+        <nav className={BRAND_MENU_CLASSES}>
+          <section className="branding">
             <TravvitLogo size="small" />
-            <p className="text-sm mt-8 text-slate-900 dark:text-white">
-              Explore Together!
-            </p>
+            <p className={FOOTER_TEXT_CLASSES}>Explore Together!</p>
             <div id="social-links" className="flex mt-8">
-              <a href="#" className="footer-social">
+              <a href="#" className="footer-social-link">
                 <FacebookIcon />
               </a>
-              <a href="#" className="footer-social">
+              <a href="#" className="footer-social-link">
                 <InstagramIcon />
               </a>
-              <a href="#" className="footer-social">
+              <a href="#" className="footer-social-link">
                 <YoutubeIcon />
               </a>
-              <a href="#" className="footer-social">
+              <a href="#" className="footer-social-link">
                 <GithubIcon />
               </a>
             </div>
           </section>
-          <section id="menu" className="grid grid-cols-2 gap-8 mt-16">
-            <section
-              id="menu-group-1"
-              className="md:grid md:grid-cols-2 md:gap-4"
-            >
-              <div id="discover">
-                <h3 className="font-bold text-travvit-orange">Discover</h3>
-                <ul className="mt-6">
-                  <li className="mt-4 first:mt-0">
-                    <a href="#" className="footer-menu-item">
+          <section className={MENU_CLASSES}>
+            <div className={MENU_GROUP_CLASSES}>
+              <div className="discover">
+                <h3 className={MENU_HEADER_CLASSES}>Discover</h3>
+                <ul className="footer-menu">
+                  <li>
+                    <a href="#" className="footer-menu-item-link">
                       Places
                     </a>
                   </li>
-                  <li className="mt-4 first:mt-0">
-                    <a href="#" className="footer-menu-item">
+                  <li>
+                    <a href="#" className="footer-menu-item-link">
                       Activities
                     </a>
                   </li>
-                  <li className="mt-4 first:mt-0">
-                    <a href="#" className="footer-menu-item">
+                  <li>
+                    <a href="#" className="footer-menu-item-link">
                       Trips
                     </a>
                   </li>
-                  <li className="mt-4 first:mt-0">
-                    <a href="#" className="footer-menu-item">
+                  <li>
+                    <a href="#" className="footer-menu-item-link">
                       Explorers
                     </a>
                   </li>
                 </ul>
               </div>
               <div id="company" className="mt-10 md:mt-0">
-                <h3 className="font-bold text-travvit-orange">Company</h3>
-                <ul className="mt-6">
-                  <li className="mt-4 first:mt-0">
-                    <a href="#" className="footer-menu-item">
+                <h3 className={MENU_HEADER_CLASSES}>Company</h3>
+                <ul className="footer-menu">
+                  <li>
+                    <a href="#" className="footer-menu-item-link">
                       About
                     </a>
                   </li>
-                  <li className="mt-4 first:mt-0">
-                    <a href="#" className="footer-menu-item">
+                  <li>
+                    <a href="#" className="footer-menu-item-link">
                       Blog
                     </a>
                   </li>
-                  <li className="mt-4 first:mt-0">
-                    <a href="#" className="footer-menu-item">
+                  <li>
+                    <a href="#" className="footer-menu-item-link">
                       Jobs
                     </a>
                   </li>
-                  <li className="mt-4 first:mt-0">
-                    <a href="#" className="footer-menu-item">
+                  <li>
+                    <a href="#" className="footer-menu-item-link">
                       Press
                     </a>
                   </li>
-                  <li className="mt-4 first:mt-0">
-                    <a href="#" className="footer-menu-item">
+                  <li>
+                    <a href="#" className="footer-menu-item-link">
                       Partners
                     </a>
                   </li>
                 </ul>
               </div>
-            </section>
-            <section
-              id="menu-group-2"
-              className="md:grid md:grid-cols-2 md:gap-4"
-            >
+            </div>
+            <div className={MENU_GROUP_CLASSES}>
               <div id="legal">
-                <h3 className="font-bold text-travvit-orange">Legal</h3>
-                <ul className="mt-6">
-                  <li className="mt-4 first:mt-0">
-                    <a href="#" className="footer-menu-item">
+                <h3 className={MENU_HEADER_CLASSES}>Legal</h3>
+                <ul className="footer-menu">
+                  <li>
+                    <a href="#" className="footer-menu-item-link">
                       Privacy
                     </a>
                   </li>
-                  <li className="mt-4 first:mt-0">
-                    <a href="#" className="footer-menu-item">
+                  <li>
+                    <a href="#" className="footer-menu-item-link">
                       Terms
                     </a>
                   </li>
                 </ul>
               </div>
-            </section>
+            </div>
           </section>
-        </section>
-        <section
-          id="copyright"
-          className="flex flex-col basis-1/2 mt-20 pt-8 pb-8 border-t text-slate-600 dark:text-slate-400"
-        >
+        </nav>
+        <section className={COPYRIGHT_CLASSES}>
           <p className="text-sm">
             &copy; {new Date().getFullYear()} Travvit. All rights reserved.
           </p>

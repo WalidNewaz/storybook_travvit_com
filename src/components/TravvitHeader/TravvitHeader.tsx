@@ -30,13 +30,13 @@ export const TravvitHeader: React.FC = () => {
           </button>
         </div>
         <div id="main-menu" className="hidden md:visible md:block pt-3">
-          <a href="#" className="ml-8 first:ml-0 main-menu-item">
+          <a href="#" className="ml-8 first:ml-0 main-menu-item-link">
             Discover Places
           </a>
-          <a href="#" className="ml-8 first:ml-0 main-menu-item">
+          <a href="#" className="ml-8 first:ml-0 main-menu-item-link">
             Start a Trip
           </a>
-          <a href="#" className="ml-8 first:ml-0 main-menu-item">
+          <a href="#" className="ml-8 first:ml-0 main-menu-item-link">
             Log in <span aria-hidden="true">→</span>
           </a>
         </div>
@@ -53,14 +53,14 @@ export const TravvitHeader: React.FC = () => {
                 </button>
               </div>
               <nav className="flex flex-col space-y-4">
-                <a href="#" className="main-menu-item">
+                <a href="#" className="main-menu-item-link">
                   Discover Places
                 </a>
-                <a href="#" className="main-menu-item">
+                <a href="#" className="main-menu-item-link">
                   Start a Trip
                 </a>
                 <div className="border-t pt-8" style={{ marginTop: '2rem' }}>
-                  <a href="#" className="main-menu-item">
+                  <a href="#" className="main-menu-item-link">
                     Log in <span aria-hidden="true">→</span>
                   </a>
                 </div>
