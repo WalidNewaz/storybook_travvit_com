@@ -7,7 +7,6 @@ interface IconButtonProps {
   onClick?: () => void;
   primary?: boolean;
   size?: 'small' | 'medium' | 'large';
-  buttonClasses?: string;
   type?: 'button' | 'submit' | 'reset';
   className?: string;
 }
@@ -28,7 +27,7 @@ const getSizeClasses = (size: string) => {
 
 const getModeClasses = (isPrimary: boolean) =>
   isPrimary
-    ? 'text-white bg-travvit-blue-800 border-travvit-blue-800 dark:bg-travvit-blue-700 dark:border-travvit-blue-700'
+    ? 'primary text-white bg-travvit-blue-800 border-travvit-blue-800 dark:bg-travvit-blue-700 dark:border-travvit-blue-700'
     : 'text-travvit-blue-700 bg-transparent border-travvit-blue-700 dark:text-slate-300 dark:travvit-blue-300';
 
 const BASE_BUTTON_CLASSES =
@@ -42,7 +41,6 @@ export const IconButton: React.FC<IconButtonProps> = ({
   onClick,
   primary = false,
   size = 'medium',
-  buttonClasses = '',
   type = 'button',
   className = '',
   ...props
@@ -51,7 +49,6 @@ export const IconButton: React.FC<IconButtonProps> = ({
     BASE_BUTTON_CLASSES,
     getModeClasses(primary),
     getSizeClasses(size),
-    buttonClasses,
     className,
   );
 

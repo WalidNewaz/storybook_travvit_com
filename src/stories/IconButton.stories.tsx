@@ -15,17 +15,10 @@ type Story = StoryObj<typeof IconButton>;
 
 export const ChevDown: Story = {
   name: 'Call Button',
-  render: () => (
-    <IconButton
-      primary
-      className="flex"
-      label="Call me"
-      icon={
-        <PhoneIcon
-          className="h-6 w-6 text-slate-300 group-hover:text-indigo-600"
-          aria-hidden="true"
-        />
-      }
-    />
-  ),
+  args: {
+    primary: true,
+    className: 'flex',
+    label: 'Call me',
+    icon: <PhoneIcon className="icon" aria-hidden="true" />,
+  },
 };

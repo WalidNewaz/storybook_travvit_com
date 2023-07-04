@@ -1,7 +1,85 @@
-import React, { useState } from 'react';
-
+import React, { useState, Fragment } from 'react';
+import { Popover, Transition } from '@headlessui/react';
 import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
-import { HambugerIcon, CloseIcon } from '../Icons';
+import {
+  Bars3Icon,
+  XMarkIcon,
+  ArrowRightOnRectangleIcon,
+  GlobeAltIcon,
+  ChevronDownIcon,
+} from '@heroicons/react/24/outline';
+
+const DiscoverMenu: React.FC = () => (
+  <div className="w-screen max-w-md flex-auto overflow-hidden rounded-2xl bg-white leading-6 shadow-lg ring-1 ring-gray-900/5">
+    <div className="p-4 font-semibold">
+      <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+        <a
+          href="#"
+          className="font-semibold text-gray-900 hover:text-travvit-blue"
+        >
+          Places
+          <span className="absolute inset-0" />
+        </a>
+      </div>
+      <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+        <a
+          href="#"
+          className="font-semibold text-gray-900 hover:text-travvit-blue"
+        >
+          Activities
+          <span className="absolute inset-0" />
+        </a>
+      </div>
+      <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+        <a
+          href="#"
+          className="font-semibold text-gray-900 hover:text-travvit-blue"
+        >
+          Trips
+          <span className="absolute inset-0" />
+        </a>
+      </div>
+      <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+        <a
+          href="#"
+          className="font-semibold text-gray-900 hover:text-travvit-blue"
+        >
+          Explorers
+          <span className="absolute inset-0" />
+        </a>
+      </div>
+    </div>
+  </div>
+);
+
+const PopoverMenu: React.FC = () => {
+  const [isShowing, setIsShowing] = useState(false);
+
+  return (
+    <Popover className="relative float-left">
+      <Popover.Button
+        className="inline-flex items-center gap-x-1 font-semibold leading-6 text-gray-900"
+        onClick={() => setIsShowing((isShowing) => !isShowing)}
+      >
+        <span>Discover</span>
+        <ChevronDownIcon className="h-5 w-5 ml-2" aria-hidden="true" />
+      </Popover.Button>
+
+      <Transition
+        show={isShowing}
+        enter="transition ease-out duration-200"
+        enterFrom="opacity-0 translate-y-1"
+        enterTo="opacity-100 translate-y-0"
+        leave="transition ease-in duration-150"
+        leaveFrom="opacity-100 translate-y-0"
+        leaveTo="opacity-0 translate-y-1"
+      ></Transition>
+      <Popover.Panel className="absolute left-1/2 z-10 mt-5 flex w-64 max-w-max -translate-x-1/2 px-4">
+        <DiscoverMenu />
+      </Popover.Panel>
+    </Popover>
+  );
+};
 
 export const TravvitHeader: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,21 +101,22 @@ export const TravvitHeader: React.FC = () => {
               Open main menu
             </span>
             {menuOpen ? (
-              <CloseIcon classes="icon mr-1" />
+              <XMarkIcon className="icon mr-1" />
             ) : (
-              <HambugerIcon classes="icon" />
+              <Bars3Icon className="icon !text-slate-900" />
             )}
           </button>
         </div>
-        <div id="main-menu" className="hidden md:visible md:block pt-3">
+        <div
+          id="main-menu"
+          className="hidden inline-flex md:visible md:block pt-3"
+        >
+          <PopoverMenu />
           <a href="#" className="ml-8 first:ml-0 main-menu-item-link">
-            Discover Places
-          </a>
-          <a href="#" className="ml-8 first:ml-0 main-menu-item-link">
-            Start a Trip
-          </a>
-          <a href="#" className="ml-8 first:ml-0 main-menu-item-link">
-            Log in <span aria-hidden="true">→</span>
+            Log in{' '}
+            <span aria-hidden="true">
+              <ArrowRightOnRectangleIcon className="icon inline ml-2" />
+            </span>
           </a>
         </div>
         {menuOpen && (
@@ -49,19 +128,48 @@ export const TravvitHeader: React.FC = () => {
                   className="top-2 right-2 text-slate-200"
                   onClick={handleMenuToggle}
                 >
-                  <CloseIcon classes="icon text-slate-300" />
+                  <XMarkIcon className="icon !text-slate-300" />
                 </button>
               </div>
               <nav className="flex flex-col space-y-4">
-                <a href="#" className="main-menu-item-link">
-                  Discover Places
+                <div className="flex">
+                  <span aria-hidden="true">
+                    <GlobeAltIcon className="icon inline !text-slate-300 mr-6" />
+                  </span>
+                  <h3 className="font-bold text-travvit-orange inline">
+                    Discover
+                  </h3>
+                </div>
+                <a
+                  href="#"
+                  className="main-menu-item-link !text-slate-300 py-4 pl-12"
+                >
+                  Places
                 </a>
-                <a href="#" className="main-menu-item-link">
-                  Start a Trip
+                <a
+                  href="#"
+                  className="main-menu-item-link !text-slate-300 py-4 pl-12"
+                >
+                  Activities
+                </a>
+                <a
+                  href="#"
+                  className="main-menu-item-link !text-slate-300 py-4 pl-12"
+                >
+                  Trips
+                </a>
+                <a
+                  href="#"
+                  className="main-menu-item-link !text-slate-300 py-4 pl-12"
+                >
+                  Explorers
                 </a>
                 <div className="border-t pt-8" style={{ marginTop: '2rem' }}>
-                  <a href="#" className="main-menu-item-link">
-                    Log in <span aria-hidden="true">→</span>
+                  <a href="#" className="main-menu-item-link !text-slate-300">
+                    <span aria-hidden="true">
+                      <ArrowRightOnRectangleIcon className="icon inline !text-slate-300 mr-6" />
+                    </span>
+                    Log in
                   </a>
                 </div>
               </nav>
