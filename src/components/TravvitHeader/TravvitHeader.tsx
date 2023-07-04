@@ -23,9 +23,9 @@ export const TravvitHeader: React.FC = () => {
               Open main menu
             </span>
             {menuOpen ? (
-              <CloseIcon classes="text-slate-900 dark:text-white text-slate-300 mr-1" />
+              <CloseIcon classes="icon mr-1" />
             ) : (
-              <HambugerIcon classes="text-slate-900 dark:text-white" />
+              <HambugerIcon classes="icon" />
             )}
           </button>
         </div>
@@ -46,10 +46,10 @@ export const TravvitHeader: React.FC = () => {
               <div id="logo-close" className="mb-16 flex justify-between">
                 <TravvitLogo size="xs" />
                 <button
-                  className="top-2 right-2 text-slate-300"
+                  className="top-2 right-2 text-slate-200"
                   onClick={handleMenuToggle}
                 >
-                  <CloseIcon />
+                  <CloseIcon classes="icon text-slate-300" />
                 </button>
               </div>
               <nav className="flex flex-col space-y-4">

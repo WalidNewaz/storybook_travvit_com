@@ -22,16 +22,16 @@ export const TravvitFooter: React.FC = () => {
             <p className={FOOTER_TEXT_CLASSES}>Explore Together!</p>
             <div id="social-links" className="flex mt-8">
               <a href="#" className="footer-social-link">
-                <FacebookIcon />
+                <FacebookIcon classes="icon" />
               </a>
               <a href="#" className="footer-social-link">
-                <InstagramIcon />
+                <InstagramIcon classes="icon" />
               </a>
               <a href="#" className="footer-social-link">
-                <YoutubeIcon />
+                <YoutubeIcon classes="icon" />
               </a>
               <a href="#" className="footer-social-link">
-                <GithubIcon />
+                <GithubIcon classes="icon" />
               </a>
             </div>
           </section>

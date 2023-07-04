@@ -1,3 +1,4 @@
+export { ChevronDown } from './ChevronDown';
 export { ChevronLeft } from './ChevronLeft';
 export { ChevronRight } from './ChevronRight';
 export { FacebookIcon } from './FacebookIcon';
@@ -6,3 +7,5 @@ export { InstagramIcon } from './InstagramIcon';
 export { YoutubeIcon } from './YoutubeIcon';
 export { HambugerIcon } from './HambugerIcon';
 export { CloseIcon } from './CloseIcon';
+export { SignInIcon } from './SignInIcon';
+export { SignOutIcon } from './SignOutIcon';

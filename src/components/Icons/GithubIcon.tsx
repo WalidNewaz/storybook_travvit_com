@@ -5,7 +5,7 @@ export const GithubIcon: React.FC<IconProps> = ({ classes }) => (
   <svg
     fill="currentColor"
     viewBox="0 0 24 24"
-    className={`w-6 h-6 ${classes}`}
+    className={classes}
     aria-hidden="true"
   >
     <path
