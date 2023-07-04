@@ -13,7 +13,12 @@ export default {
 
 type Story = StoryObj<typeof TravvitHeader>;
 
-export const Header1: Story = {
-  name: 'Header',
-  render: () => <TravvitHeader />,
+export const LoggedIn: Story = {
+  args: {
+    user: {
+      name: 'Jane Doe',
+    },
+  },
 };
+
+export const LoggedOut: Story = {};
