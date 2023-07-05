@@ -12,7 +12,9 @@ interface MenuItemProps {
   label: string;
   href?: string;
   mobile?: boolean;
-  onClick?: () => void;
+  onClick?: (
+    event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+  ) => void | undefined;
   iconLabel?: string;
 }
 
@@ -29,7 +31,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (onClick) {
       event.preventDefault();
-      onClick();
+      onClick(event);
     }
   };
 

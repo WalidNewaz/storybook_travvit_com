@@ -5,6 +5,8 @@ import { Avatar } from '../Avatar/Avatar';
 import { IconButton } from '../IconButton/IconButton';
 import { MenuItem } from '../MenuItem/MenuItem';
 
+import { handleLogin, handleLogout } from './mocks/menuFunctions';
+
 import {
   FaPersonHiking,
   FaBars,
@@ -38,49 +40,50 @@ const menuItems = {
     {
       icon: PiMountainsDuotone,
       label: 'Places',
-      link: '#',
+      href: '#',
     },
     {
       icon: FaPersonHiking,
       label: 'Activities',
-      link: '#',
+      href: '#',
     },
     {
       icon: BiTrip,
       label: 'Trips',
-      link: '#',
+      href: '#',
     },
     {
       icon: MdPersonPin,
       label: 'Explorers',
-      link: '#',
+      href: '#',
     },
   ],
   loggeIn: [
     {
       icon: HiUserCircle,
       label: 'My Profile',
-      link: '#',
+      href: '#',
     },
     {
       icon: HiOutlineMap,
       label: 'My Trips',
-      link: '#',
+      href: '#',
     },
     {
       icon: HiMiniCalendarDays,
       label: 'My Calendar',
-      link: '#',
+      href: '#',
     },
     {
       icon: HiAdjustmentsVertical,
       label: 'Settings',
-      link: '#',
+      href: '#',
     },
     {
       icon: HiArrowRightOnRectangle,
       label: 'Log Out',
-      link: '#',
+      href: '#',
+      onclick: handleLogout,
     },
   ],
 };
@@ -93,7 +96,7 @@ const DiscoverMenu: React.FC = () => (
           key={item.label}
           icon={item.icon}
           label={item.label}
-          href={item.link}
+          href={item.href}
         />
       ))}
     </div>
@@ -140,7 +143,8 @@ const UserMenu: React.FC<{
           key={index}
           icon={item.icon}
           label={item.label}
-          href={item.link}
+          href={item.href}
+          onClick={item.onclick}
         />
       ))}
     </div>
@@ -205,7 +209,8 @@ const SmallScreenUserMenu: React.FC<{
         key={index}
         icon={item.icon}
         label={item.label}
-        href={item.link}
+        href={item.href}
+        onClick={item.onclick}
         mobile
       />
     ))}
@@ -256,7 +261,7 @@ const SmallScreenMenu: React.FC<{
             key={item.label}
             icon={item.icon}
             label={item.label}
-            href={item.link}
+            href={item.href}
             mobile
           />
         ))}
