@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import classNames from 'classnames';
 import { Popover, Transition } from '@headlessui/react';
 import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
 import { Avatar } from '../Avatar/Avatar';
 import { IconButton } from '../IconButton/IconButton';
-import type { IconType } from 'react-icons';
+import { MenuItem } from '../MenuItem/MenuItem';
+
 import { FaPersonHiking } from 'react-icons/fa6';
 import { PiMountainsDuotone } from 'react-icons/pi';
 import { BiTrip } from 'react-icons/bi';
@@ -19,14 +19,9 @@ import {
 import {
   Bars3Icon,
   XMarkIcon,
-  ArrowRightOnRectangleIcon,
   GlobeAltIcon,
   ChevronDownIcon,
-  UserCircleIcon,
-  AdjustmentsVerticalIcon,
   ArrowLeftOnRectangleIcon,
-  MapIcon,
-  CalendarDaysIcon,
 } from '@heroicons/react/24/outline';
 
 interface User<T extends string> {
@@ -89,39 +84,6 @@ const menuItems = {
       link: '#',
     },
   ],
-};
-
-interface IconProps {
-  className?: string;
-  'aria-hidden'?: string;
-}
-
-const MenuItem: React.FC<{
-  icon: IconType;
-  lable: string;
-  link: string;
-  mobile?: boolean;
-}> = ({ icon, lable, link, mobile = false }) => {
-  const IconComponent = icon as unknown as React.ComponentType<IconProps>;
-  const labelStyle = classNames(
-    `font-semibold hover:text-travvit-blue self-center`,
-    mobile ? 'text-slate-300' : 'text-gray-900',
-  );
-
-  return (
-    <div className="group relative flex gap-x-6 rounded-lg p-2 hover:bg-gray-50">
-      <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-        <IconComponent
-          className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-          aria-hidden="true"
-        />
-      </div>
-      <a href={link} className={labelStyle}>
-        {lable}
-        <span className="absolute inset-0" />
-      </a>
-    </div>
-  );
 };
 
 const DiscoverMenu: React.FC = () => (
