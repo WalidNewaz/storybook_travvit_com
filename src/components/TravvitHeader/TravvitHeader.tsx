@@ -3,10 +3,18 @@ import { Popover, Transition } from '@headlessui/react';
 import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
 import { Avatar } from '../Avatar/Avatar';
 import { IconButton } from '../IconButton/IconButton';
+import type { IconType } from 'react-icons';
 import { FaPersonHiking } from 'react-icons/fa6';
 import { PiMountainsDuotone } from 'react-icons/pi';
 import { BiTrip } from 'react-icons/bi';
 import { MdPersonPin } from 'react-icons/md';
+import {
+  HiUserCircle,
+  HiOutlineMap,
+  HiMiniCalendarDays,
+  HiAdjustmentsVertical,
+  HiArrowRightOnRectangle,
+} from 'react-icons/hi2';
 import {
   Bars3Icon,
   XMarkIcon,
@@ -27,69 +35,99 @@ type User = {
   name?: string;
 };
 
+const menuItems = {
+  discover: [
+    {
+      icon: PiMountainsDuotone,
+      lable: 'Places',
+      link: '#',
+    },
+    {
+      icon: FaPersonHiking,
+      lable: 'Activities',
+      link: '#',
+    },
+    {
+      icon: BiTrip,
+      lable: 'Trips',
+      link: '#',
+    },
+    {
+      icon: MdPersonPin,
+      lable: 'Explorers',
+      link: '#',
+    },
+  ],
+  loggeIn: [
+    {
+      icon: HiUserCircle,
+      label: 'My Profile',
+      link: '#',
+    },
+    {
+      icon: HiOutlineMap,
+      label: 'My Trips',
+      link: '#',
+    },
+    {
+      icon: HiMiniCalendarDays,
+      label: 'My Calendar',
+      link: '#',
+    },
+    {
+      icon: HiAdjustmentsVertical,
+      label: 'Settings',
+      link: '#',
+    },
+    {
+      icon: HiArrowRightOnRectangle,
+      label: 'Log Out',
+      link: '#',
+    },
+  ],
+};
+
+interface IconProps {
+  className?: string;
+  'aria-hidden'?: string;
+}
+
+const MenuItem: React.FC<{
+  icon: IconType;
+  lable: string;
+  link: string;
+}> = ({ icon, lable, link }) => {
+  const IconComponent = icon as unknown as React.ComponentType<IconProps>;
+  return (
+    <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+      <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+        <IconComponent
+          className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+          aria-hidden="true"
+        />
+      </div>
+      <a
+        href={link}
+        className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
+      >
+        {lable}
+        <span className="absolute inset-0" />
+      </a>
+    </div>
+  );
+};
+
 const DiscoverMenu: React.FC = () => (
   <div className="w-screen max-w-md flex-auto overflow-hidden rounded-2xl bg-white leading-6 shadow-lg ring-1 ring-gray-900/5">
     <div className="p-4 font-semibold">
-      <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-          <PiMountainsDuotone
-            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-            aria-hidden="true"
-          />
-        </div>
-        <a
-          href="#"
-          className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
-        >
-          Places
-          <span className="absolute inset-0" />
-        </a>
-      </div>
-      <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-          <FaPersonHiking
-            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-            aria-hidden="true"
-          />
-        </div>
-        <a
-          href="#"
-          className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
-        >
-          Activities
-          <span className="absolute inset-0" />
-        </a>
-      </div>
-      <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-          <BiTrip
-            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-            aria-hidden="true"
-          />
-        </div>
-        <a
-          href="#"
-          className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
-        >
-          Trips
-          <span className="absolute inset-0" />
-        </a>
-      </div>
-      <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-          <MdPersonPin
-            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-            aria-hidden="true"
-          />
-        </div>
-        <a
-          href="#"
-          className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
-        >
-          Explorers
-          <span className="absolute inset-0" />
-        </a>
-      </div>
+      {menuItems.discover.map((item) => (
+        <MenuItem
+          key={item.lable}
+          icon={item.icon}
+          lable={item.lable}
+          link={item.link}
+        />
+      ))}
     </div>
   </div>
 );
@@ -129,85 +167,14 @@ const UserMenu: React.FC<{ user?: User; onLogout?: () => void }> = ({
 }) => (
   <div className="w-screen max-w-md flex-auto overflow-hidden rounded-2xl bg-white leading-6 shadow-lg ring-1 ring-gray-900/5">
     <div className="p-4 font-semibold">
-      <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-          <UserCircleIcon
-            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-            aria-hidden="true"
-          />
-        </div>
-        <a
-          href="#"
-          className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
-        >
-          My Profile
-          <span className="absolute inset-0" />
-        </a>
-      </div>
-
-      <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-          <MapIcon
-            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-            aria-hidden="true"
-          />
-        </div>
-        <a
-          href="#"
-          className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
-        >
-          My Trips
-          <span className="absolute inset-0" />
-        </a>
-      </div>
-
-      <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-          <CalendarDaysIcon
-            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-            aria-hidden="true"
-          />
-        </div>
-        <a
-          href="#"
-          className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
-        >
-          My Calendar
-          <span className="absolute inset-0" />
-        </a>
-      </div>
-
-      <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-          <AdjustmentsVerticalIcon
-            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-            aria-hidden="true"
-          />
-        </div>
-        <a
-          href="#"
-          className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
-        >
-          Settings
-          <span className="absolute inset-0" />
-        </a>
-      </div>
-
-      <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-          <ArrowRightOnRectangleIcon
-            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-            aria-hidden="true"
-          />
-        </div>
-        <a
-          href="#"
-          className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
-        >
-          Sign Out
-          <span className="absolute inset-0" />
-        </a>
-      </div>
+      {menuItems.loggeIn.map((item, index) => (
+        <MenuItem
+          key={index}
+          icon={item.icon}
+          lable={item.label}
+          link={item.link}
+        />
+      ))}
     </div>
   </div>
 );
