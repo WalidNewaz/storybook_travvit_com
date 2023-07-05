@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
 import { Avatar } from '../Avatar/Avatar';
+import { IconButton } from '../IconButton/IconButton';
+import { FaPersonHiking } from 'react-icons/fa6';
+import { PiMountainsDuotone } from 'react-icons/pi';
+import { BiTrip } from 'react-icons/bi';
+import { MdPersonPin } from 'react-icons/md';
 import {
   Bars3Icon,
   XMarkIcon,
@@ -11,6 +16,8 @@ import {
   UserCircleIcon,
   AdjustmentsVerticalIcon,
   ArrowLeftOnRectangleIcon,
+  MapIcon,
+  CalendarDaysIcon,
 } from '@heroicons/react/24/outline';
 
 /** Assets */
@@ -24,36 +31,60 @@ const DiscoverMenu: React.FC = () => (
   <div className="w-screen max-w-md flex-auto overflow-hidden rounded-2xl bg-white leading-6 shadow-lg ring-1 ring-gray-900/5">
     <div className="p-4 font-semibold">
       <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+          <PiMountainsDuotone
+            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+            aria-hidden="true"
+          />
+        </div>
         <a
           href="#"
-          className="font-semibold text-gray-900 hover:text-travvit-blue"
+          className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
         >
           Places
           <span className="absolute inset-0" />
         </a>
       </div>
       <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+          <FaPersonHiking
+            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+            aria-hidden="true"
+          />
+        </div>
         <a
           href="#"
-          className="font-semibold text-gray-900 hover:text-travvit-blue"
+          className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
         >
           Activities
           <span className="absolute inset-0" />
         </a>
       </div>
       <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+          <BiTrip
+            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+            aria-hidden="true"
+          />
+        </div>
         <a
           href="#"
-          className="font-semibold text-gray-900 hover:text-travvit-blue"
+          className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
         >
           Trips
           <span className="absolute inset-0" />
         </a>
       </div>
       <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+          <MdPersonPin
+            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+            aria-hidden="true"
+          />
+        </div>
         <a
           href="#"
-          className="font-semibold text-gray-900 hover:text-travvit-blue"
+          className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
         >
           Explorers
           <span className="absolute inset-0" />
@@ -116,6 +147,38 @@ const UserMenu: React.FC<{ user?: User; onLogout?: () => void }> = ({
 
       <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
         <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+          <MapIcon
+            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+            aria-hidden="true"
+          />
+        </div>
+        <a
+          href="#"
+          className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
+        >
+          My Trips
+          <span className="absolute inset-0" />
+        </a>
+      </div>
+
+      <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+          <CalendarDaysIcon
+            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+            aria-hidden="true"
+          />
+        </div>
+        <a
+          href="#"
+          className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
+        >
+          My Calendar
+          <span className="absolute inset-0" />
+        </a>
+      </div>
+
+      <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+        <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
           <AdjustmentsVerticalIcon
             className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
             aria-hidden="true"
@@ -172,7 +235,7 @@ const UserPopoverMenu: React.FC<{ user: User }> = ({ user }) => {
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       ></Transition>
-      <Popover.Panel className="absolute -left-16 z-10 mt-2 flex w-64 max-w-max -translate-x-1/2 px-4">
+      <Popover.Panel className="absolute -left-16 z-10 mt-2 flex w-72 max-w-max -translate-x-1/2 px-4">
         <UserMenu />
       </Popover.Panel>
     </Popover>
@@ -194,12 +257,88 @@ const LoginUser: React.FC<{ user: User; onLogin: () => void }> = ({ user }) => {
   }
 };
 
-const SmallScreenMenu: React.FC<{ handleMenuToggle: () => void }> = ({
-  handleMenuToggle,
-}) => (
+const SmallScreenUserMenu: React.FC<{
+  user?: User;
+  onLogout?: () => void;
+}> = ({}) => (
+  <div className="border-b pb-8 flex mt-4 flex-col">
+    <a
+      href="#"
+      className="main-menu-item-link !text-slate-300 py-6 inline-block w-full"
+    >
+      <span aria-hidden="true">
+        <UserCircleIcon className="inline !text-slate-300 mr-6 w-6 h-6" />
+      </span>
+      My Profile
+    </a>
+    <a
+      href="#"
+      className="main-menu-item-link !text-slate-300 py-6 inline-block w-full"
+    >
+      <span aria-hidden="true">
+        <MapIcon className="inline !text-slate-300 mr-6 w-6 h-6" />
+      </span>
+      My Trips
+    </a>
+    <a
+      href="#"
+      className="main-menu-item-link !text-slate-300 py-6 inline-block w-full"
+    >
+      <span aria-hidden="true">
+        <CalendarDaysIcon className="inline !text-slate-300 mr-6 w-6 h-6" />
+      </span>
+      My Calendar
+    </a>
+    <a
+      href="#"
+      className="main-menu-item-link !text-slate-300 py-6 inline-block w-full"
+    >
+      <span aria-hidden="true">
+        <AdjustmentsVerticalIcon className="inline !text-slate-300 mr-6 w-6 h-6" />
+      </span>
+      Settings
+    </a>
+    <a
+      href="#"
+      className="main-menu-item-link !text-slate-300 py-6 inline-block w-full"
+    >
+      <span aria-hidden="true">
+        <ArrowRightOnRectangleIcon className="inline !text-slate-300 mr-6 w-6 h-6" />
+      </span>
+      Log Out
+    </a>
+  </div>
+);
+
+const SmallScreenLoginUser: React.FC<{ user: User; onLogin?: () => void }> = ({
+  user,
+  onLogin,
+}) => {
+  if (user) {
+    return <SmallScreenUserMenu user={user} />;
+  } else {
+    return (
+      <div className="border-b pb-8 flex mt-4 flex-col">
+        <IconButton
+          primary
+          className="flex w-fit self-center mb-9"
+          label="Log In"
+          icon={
+            <ArrowLeftOnRectangleIcon className="inline !text-slate-300 mr-6 w-6 h-6" />
+          }
+        />
+      </div>
+    );
+  }
+};
+
+const SmallScreenMenu: React.FC<{
+  user: User;
+  handleMenuToggle: () => void;
+}> = ({ user, handleMenuToggle }) => (
   <div className="fixed top-0 left-0 w-full h-full bg-gray-800 opacity-95 flex flex-col pl-8 pr-8 pt-5 z-20">
     <div className="relative pt-4">
-      <div id="logo-close" className="mb-16 flex justify-between">
+      <div id="logo-close" className="mb-8 flex justify-between">
         <TravvitLogo size="xs" />
         <button
           className="top-2 right-2 text-slate-200"
@@ -209,7 +348,8 @@ const SmallScreenMenu: React.FC<{ handleMenuToggle: () => void }> = ({
         </button>
       </div>
       <nav className="flex flex-col space-y-4">
-        <div className="flex">
+        <SmallScreenLoginUser user={user} />
+        <div className="flex !mt-12">
           <span aria-hidden="true">
             <GlobeAltIcon className="w-6 h-6 inline !text-slate-300 mr-6" />
           </span>
@@ -227,17 +367,6 @@ const SmallScreenMenu: React.FC<{ handleMenuToggle: () => void }> = ({
         <a href="#" className="main-menu-item-link !text-slate-300 py-4 pl-12">
           Explorers
         </a>
-        <div className="border-t pt-8" style={{ marginTop: '2rem' }}>
-          <a
-            href="#"
-            className="main-menu-item-link !text-slate-300 py-4 inline-block w-full"
-          >
-            <span aria-hidden="true">
-              <ArrowLeftOnRectangleIcon className="inline !text-slate-300 mr-6 w-6 h-6" />
-            </span>
-            Log in
-          </a>
-        </div>
       </nav>
     </div>
   </div>
@@ -288,7 +417,9 @@ export const TravvitHeader: React.FC<HeaderProps> = ({
           <DiscoverPopoverMenu />
           <LoginUser user={user} onLogin={onLogin} />
         </div>
-        {menuOpen && <SmallScreenMenu handleMenuToggle={handleMenuToggle} />}
+        {menuOpen && (
+          <SmallScreenMenu user={user} handleMenuToggle={handleMenuToggle} />
+        )}
       </nav>
     </header>
   );
