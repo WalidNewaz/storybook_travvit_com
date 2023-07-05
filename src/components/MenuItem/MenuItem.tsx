@@ -7,23 +7,43 @@ interface IconProps {
   'aria-hidden'?: string;
 }
 
-export const MenuItem: React.FC<{
+interface MenuItemProps {
   icon: IconType;
-  lable: string;
-  link: string;
+  label: string;
+  href?: string;
   mobile?: boolean;
-}> = ({ icon, lable, link, mobile = false }) => {
+  onClick?: () => void;
+  iconLabel?: string;
+}
+
+export const MenuItem: React.FC<MenuItemProps> = ({
+  icon,
+  label,
+  href,
+  mobile = false,
+  onClick,
+  iconLabel = '',
+}) => {
   const IconComponent = icon as unknown as React.ComponentType<IconProps>;
 
-  const menuItemWrapperClassName =
-    'group relative flex gap-x-6 rounded-lg p-2 hover:bg-gray-50';
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (onClick) {
+      event.preventDefault();
+      onClick();
+    }
+  };
+
+  const menuItemWrapperClassName = classNames(
+    'group relative flex gap-x-6 rounded-lg p-2 hover:bg-gray-50',
+  );
   const labelClassName = classNames(
     `font-semibold hover:text-travvit-blue self-center`,
     mobile ? 'text-slate-300' : 'text-gray-900',
   );
-  const iconWrapperClassName = mobile
-    ? 'flex h-11 w-11 flex-none items-center justify-center'
-    : 'flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white';
+  const iconWrapperClassName = classNames(
+    'flex h-11 w-11 flex-none items-center justify-center',
+    mobile ? '' : 'rounded-lg bg-gray-50 group-hover:bg-white',
+  );
   const iconClassName = classNames(
     'w-6 h-6',
     mobile
@@ -34,11 +54,22 @@ export const MenuItem: React.FC<{
   return (
     <div className={menuItemWrapperClassName}>
       <div className={iconWrapperClassName}>
-        <IconComponent className={iconClassName} aria-hidden="true" />
+        <IconComponent
+          className={iconClassName}
+          aria-label={iconLabel}
+          aria-hidden="true"
+        />
       </div>
-      <a href={link} className={labelClassName}>
-        {lable}
-      </a>
+      {href && (
+        <a href={href} className={labelClassName} onClick={handleClick}>
+          {label}
+        </a>
+      )}
+      {!href && onClick && (
+        <button onClick={onClick} className={labelClassName}>
+          {label}
+        </button>
+      )}
     </div>
   );
 };

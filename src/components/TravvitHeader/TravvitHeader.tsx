@@ -37,22 +37,22 @@ const menuItems = {
   discover: [
     {
       icon: PiMountainsDuotone,
-      lable: 'Places',
+      label: 'Places',
       link: '#',
     },
     {
       icon: FaPersonHiking,
-      lable: 'Activities',
+      label: 'Activities',
       link: '#',
     },
     {
       icon: BiTrip,
-      lable: 'Trips',
+      label: 'Trips',
       link: '#',
     },
     {
       icon: MdPersonPin,
-      lable: 'Explorers',
+      label: 'Explorers',
       link: '#',
     },
   ],
@@ -90,10 +90,10 @@ const DiscoverMenu: React.FC = () => (
     <div className="p-4 font-semibold">
       {menuItems.discover.map((item) => (
         <MenuItem
-          key={item.lable}
+          key={item.label}
           icon={item.icon}
-          lable={item.lable}
-          link={item.link}
+          label={item.label}
+          href={item.link}
         />
       ))}
     </div>
@@ -139,8 +139,8 @@ const UserMenu: React.FC<{
         <MenuItem
           key={index}
           icon={item.icon}
-          lable={item.label}
-          link={item.link}
+          label={item.label}
+          href={item.link}
         />
       ))}
     </div>
@@ -204,8 +204,8 @@ const SmallScreenUserMenu: React.FC<{
       <MenuItem
         key={index}
         icon={item.icon}
-        lable={item.label}
-        link={item.link}
+        label={item.label}
+        href={item.link}
         mobile
       />
     ))}
@@ -253,10 +253,10 @@ const SmallScreenMenu: React.FC<{
         <SmallScreenLoginUser user={user} />
         {menuItems.discover.map((item) => (
           <MenuItem
-            key={item.lable}
+            key={item.label}
             icon={item.icon}
-            lable={item.lable}
-            link={item.link}
+            label={item.label}
+            href={item.link}
             mobile
           />
         ))}
