@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import classNames from 'classnames';
 import { Popover, Transition } from '@headlessui/react';
 import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
 import { Avatar } from '../Avatar/Avatar';
@@ -28,12 +29,15 @@ import {
   CalendarDaysIcon,
 } from '@heroicons/react/24/outline';
 
-/** Assets */
-import face1 from '../../stories/images/img_7.jpeg';
-
-type User = {
-  name?: string;
-};
+interface User<T extends string> {
+  id: number;
+  username: string;
+  email: string;
+  role: T;
+  firstName: string;
+  lastName: string;
+  avatar: string;
+}
 
 const menuItems = {
   discover: [
@@ -96,20 +100,23 @@ const MenuItem: React.FC<{
   icon: IconType;
   lable: string;
   link: string;
-}> = ({ icon, lable, link }) => {
+  mobile?: boolean;
+}> = ({ icon, lable, link, mobile = false }) => {
   const IconComponent = icon as unknown as React.ComponentType<IconProps>;
+  const labelStyle = classNames(
+    `font-semibold hover:text-travvit-blue self-center`,
+    mobile ? 'text-slate-300' : 'text-gray-900',
+  );
+
   return (
-    <div className="p-4 group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
+    <div className="group relative flex gap-x-6 rounded-lg p-2 hover:bg-gray-50">
       <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
         <IconComponent
           className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
           aria-hidden="true"
         />
       </div>
-      <a
-        href={link}
-        className="font-semibold text-gray-900 hover:text-travvit-blue self-center"
-      >
+      <a href={link} className={labelStyle}>
         {lable}
         <span className="absolute inset-0" />
       </a>
@@ -161,10 +168,10 @@ const DiscoverPopoverMenu: React.FC = () => {
   );
 };
 
-const UserMenu: React.FC<{ user?: User; onLogout?: () => void }> = ({
-  user,
-  onLogout,
-}) => (
+const UserMenu: React.FC<{
+  user?: User<'admin' | 'user'>;
+  onLogout?: () => void;
+}> = ({ user, onLogout }) => (
   <div className="w-screen max-w-md flex-auto overflow-hidden rounded-2xl bg-white leading-6 shadow-lg ring-1 ring-gray-900/5">
     <div className="p-4 font-semibold">
       {menuItems.loggeIn.map((item, index) => (
@@ -179,7 +186,9 @@ const UserMenu: React.FC<{ user?: User; onLogout?: () => void }> = ({
   </div>
 );
 
-const UserPopoverMenu: React.FC<{ user: User }> = ({ user }) => {
+const UserPopoverMenu: React.FC<{ user: User<'admin' | 'user'> }> = ({
+  user,
+}) => {
   const [isShowing, setIsShowing] = useState(false);
 
   return (
@@ -188,9 +197,7 @@ const UserPopoverMenu: React.FC<{ user: User }> = ({ user }) => {
         className="inline-flex items-center gap-x-1 font-semibold leading-6 text-gray-900"
         onClick={() => setIsShowing((isShowing) => !isShowing)}
       >
-        <Avatar size="xs" src={face1} />
-        {/* <span>Discover</span>
-        <ChevronDownIcon className="h-5 w-5 ml-2" aria-hidden="true" /> */}
+        <Avatar size="xs" src={user.avatar} />
       </Popover.Button>
 
       <Transition
@@ -209,7 +216,10 @@ const UserPopoverMenu: React.FC<{ user: User }> = ({ user }) => {
   );
 };
 
-const LoginUser: React.FC<{ user: User; onLogin: () => void }> = ({ user }) => {
+const LoginUser: React.FC<{
+  user?: User<'admin' | 'user'> | null;
+  onLogin: () => void;
+}> = ({ user }) => {
   if (user) {
     return <UserPopoverMenu user={user} />;
   } else {
@@ -225,62 +235,26 @@ const LoginUser: React.FC<{ user: User; onLogin: () => void }> = ({ user }) => {
 };
 
 const SmallScreenUserMenu: React.FC<{
-  user?: User;
+  user?: User<'admin' | 'user'>;
   onLogout?: () => void;
 }> = ({}) => (
   <div className="border-b pb-8 flex mt-4 flex-col">
-    <a
-      href="#"
-      className="main-menu-item-link !text-slate-300 py-6 inline-block w-full"
-    >
-      <span aria-hidden="true">
-        <UserCircleIcon className="inline !text-slate-300 mr-6 w-6 h-6" />
-      </span>
-      My Profile
-    </a>
-    <a
-      href="#"
-      className="main-menu-item-link !text-slate-300 py-6 inline-block w-full"
-    >
-      <span aria-hidden="true">
-        <MapIcon className="inline !text-slate-300 mr-6 w-6 h-6" />
-      </span>
-      My Trips
-    </a>
-    <a
-      href="#"
-      className="main-menu-item-link !text-slate-300 py-6 inline-block w-full"
-    >
-      <span aria-hidden="true">
-        <CalendarDaysIcon className="inline !text-slate-300 mr-6 w-6 h-6" />
-      </span>
-      My Calendar
-    </a>
-    <a
-      href="#"
-      className="main-menu-item-link !text-slate-300 py-6 inline-block w-full"
-    >
-      <span aria-hidden="true">
-        <AdjustmentsVerticalIcon className="inline !text-slate-300 mr-6 w-6 h-6" />
-      </span>
-      Settings
-    </a>
-    <a
-      href="#"
-      className="main-menu-item-link !text-slate-300 py-6 inline-block w-full"
-    >
-      <span aria-hidden="true">
-        <ArrowRightOnRectangleIcon className="inline !text-slate-300 mr-6 w-6 h-6" />
-      </span>
-      Log Out
-    </a>
+    {menuItems.loggeIn.map((item, index) => (
+      <MenuItem
+        key={index}
+        icon={item.icon}
+        lable={item.label}
+        link={item.link}
+        mobile
+      />
+    ))}
   </div>
 );
 
-const SmallScreenLoginUser: React.FC<{ user: User; onLogin?: () => void }> = ({
-  user,
-  onLogin,
-}) => {
+const SmallScreenLoginUser: React.FC<{
+  user: User<'admin' | 'user'> | null;
+  onLogin?: () => void;
+}> = ({ user, onLogin }) => {
   if (user) {
     return <SmallScreenUserMenu user={user} />;
   } else {
@@ -300,7 +274,7 @@ const SmallScreenLoginUser: React.FC<{ user: User; onLogin?: () => void }> = ({
 };
 
 const SmallScreenMenu: React.FC<{
-  user: User;
+  user: User<'admin' | 'user'> | null;
   handleMenuToggle: () => void;
 }> = ({ user, handleMenuToggle }) => (
   <div className="fixed top-0 left-0 w-full h-full bg-gray-800 opacity-95 flex flex-col pl-8 pr-8 pt-5 z-20">
@@ -340,14 +314,14 @@ const SmallScreenMenu: React.FC<{
 );
 
 interface HeaderProps {
-  user?: User;
+  user?: User<'admin' | 'user'>;
   onLogin: () => void;
   onLogout: () => void;
   onCreateAccount: () => void;
 }
 
 export const TravvitHeader: React.FC<HeaderProps> = ({
-  user = {},
+  user = null,
   onLogin,
   onLogout,
   onCreateAccount,
