@@ -5,7 +5,12 @@ import { Avatar } from '../Avatar/Avatar';
 import { IconButton } from '../IconButton/IconButton';
 import { MenuItem } from '../MenuItem/MenuItem';
 
-import { FaPersonHiking } from 'react-icons/fa6';
+import {
+  FaPersonHiking,
+  FaBars,
+  FaXmark,
+  FaChevronDown,
+} from 'react-icons/fa6';
 import { PiMountainsDuotone } from 'react-icons/pi';
 import { BiTrip } from 'react-icons/bi';
 import { MdPersonPin } from 'react-icons/md';
@@ -15,14 +20,8 @@ import {
   HiMiniCalendarDays,
   HiAdjustmentsVertical,
   HiArrowRightOnRectangle,
+  HiArrowLeftOnRectangle,
 } from 'react-icons/hi2';
-import {
-  Bars3Icon,
-  XMarkIcon,
-  GlobeAltIcon,
-  ChevronDownIcon,
-  ArrowLeftOnRectangleIcon,
-} from '@heroicons/react/24/outline';
 
 interface User<T extends string> {
   id: number;
@@ -111,7 +110,7 @@ const DiscoverPopoverMenu: React.FC = () => {
         onClick={() => setIsShowing((isShowing) => !isShowing)}
       >
         <span>Discover</span>
-        <ChevronDownIcon className="h-5 w-5 ml-2" aria-hidden="true" />
+        <FaChevronDown className="h-5 w-5 ml-2" aria-hidden="true" />
       </Popover.Button>
 
       <Transition
@@ -189,7 +188,7 @@ const LoginUser: React.FC<{
       <a href="#" className="ml-8 first:ml-0 main-menu-item-link">
         Log in{' '}
         <span aria-hidden="true">
-          <ArrowLeftOnRectangleIcon className="icon inline ml-2" />
+          <HiArrowLeftOnRectangle className="inline w-6 h-6 text-gray-600 ml-2" />
         </span>
       </a>
     );
@@ -227,7 +226,7 @@ const SmallScreenLoginUser: React.FC<{
           className="flex w-fit self-center mb-9"
           label="Log In"
           icon={
-            <ArrowLeftOnRectangleIcon className="inline !text-slate-300 mr-6 w-6 h-6" />
+            <HiArrowLeftOnRectangle className="inline w-6 h-6 text-gray-300 group-hover:text-indigo-600" />
           }
         />
       </div>
@@ -247,29 +246,20 @@ const SmallScreenMenu: React.FC<{
           className="top-2 right-2 text-slate-200"
           onClick={handleMenuToggle}
         >
-          <XMarkIcon className="icon !text-slate-300" />
+          <FaXmark className="icon !text-slate-300" />
         </button>
       </div>
       <nav className="flex flex-col space-y-4">
         <SmallScreenLoginUser user={user} />
-        <div className="flex !mt-12">
-          <span aria-hidden="true">
-            <GlobeAltIcon className="w-6 h-6 inline !text-slate-300 mr-6" />
-          </span>
-          <h3 className="font-bold text-travvit-orange inline">Discover</h3>
-        </div>
-        <a href="#" className="main-menu-item-link !text-slate-300 py-4 pl-12">
-          Places
-        </a>
-        <a href="#" className="main-menu-item-link !text-slate-300 py-4 pl-12">
-          Activities
-        </a>
-        <a href="#" className="main-menu-item-link !text-slate-300 py-4 pl-12">
-          Trips
-        </a>
-        <a href="#" className="main-menu-item-link !text-slate-300 py-4 pl-12">
-          Explorers
-        </a>
+        {menuItems.discover.map((item) => (
+          <MenuItem
+            key={item.lable}
+            icon={item.icon}
+            lable={item.lable}
+            link={item.link}
+            mobile
+          />
+        ))}
       </nav>
     </div>
   </div>
@@ -307,9 +297,9 @@ export const TravvitHeader: React.FC<HeaderProps> = ({
               Open main menu
             </span>
             {menuOpen ? (
-              <XMarkIcon className="icon mr-1" />
+              <FaXmark className="icon mr-1" />
             ) : (
-              <Bars3Icon className="icon !text-slate-900" />
+              <FaBars className="icon !text-slate-900" />
             )}
           </button>
         </div>
