@@ -7,7 +7,7 @@ import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
 import { Card } from '../components/Card/Card';
 import { ImageCard } from '../components/ImageCard/ImageCard';
 import { Button } from '../components/Button/Button';
-import { TravvitHeader } from '../components/TravvitHeader/TravvitHeader';
+import { Header as TravvitHeader } from '../components/TravvitHeader/Header';
 import { HeroSlider } from '../components/HeroSlider/HeroSlider';
 import { MediaCard } from '../components/MediaCard/MediaCard';
 import type { MediaTypes } from '../components/HeroSlider/HeroSlider';
@@ -21,6 +21,8 @@ import backpack from './images/first-backpacking-trip.webp';
 import trailRunner from './images/Ready-set-trail-How-to-prepare-for-trail-running-small.jpeg';
 import rockClimbing from './images/rock-climbing.jpeg';
 import camping from './images/Camping.jpeg';
+
+import { menuItems } from './TravvitHeader.stories';
 
 export default {
   title: 'Pages/Travvit Home Page',
@@ -71,7 +73,7 @@ export const TwoCards: Story = {
   render: () => (
     <FullPageScroll>
       <div className="mt-8">
-        <TravvitHeader />
+        <TravvitHeader menuItems={menuItems} />
       </div>
       <HeroSlider
         slides={storySlides}

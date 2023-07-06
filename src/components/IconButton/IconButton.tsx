@@ -4,7 +4,15 @@ import classNames from 'classnames';
 interface IconButtonProps {
   label: string;
   icon: ReactNode;
-  onClick?: () => void;
+  onClick?:
+    | (() => void)
+    | ((
+        event: React.MouseEvent<
+          HTMLAnchorElement | HTMLButtonElement,
+          MouseEvent
+        >,
+      ) => void | undefined)
+    | undefined;
   primary?: boolean;
   size?: 'small' | 'medium' | 'large';
   type?: 'button' | 'submit' | 'reset';

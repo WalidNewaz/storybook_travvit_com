@@ -2,12 +2,12 @@ import React from 'react';
 import classNames from 'classnames';
 import type { IconType } from 'react-icons';
 
-interface IconProps {
+export interface IconProps {
   className?: string;
   'aria-hidden'?: string;
 }
 
-interface MenuItemProps {
+export interface MenuItemProps {
   icon: IconType;
   label: string;
   href?: string;
@@ -26,7 +26,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   onClick,
   iconLabel = '',
 }) => {
-  const IconComponent = icon as unknown as React.ComponentType<IconProps>;
+  const Icon = icon as unknown as React.ComponentType<IconProps>;
 
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (onClick) {
@@ -56,7 +56,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   return (
     <div className={menuItemWrapperClassName}>
       <div className={iconWrapperClassName}>
-        <IconComponent
+        <Icon
           className={iconClassName}
           aria-label={iconLabel}
           aria-hidden="true"
