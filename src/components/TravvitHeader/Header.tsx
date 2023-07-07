@@ -19,7 +19,7 @@ export interface MenuItemsType {
 }
 
 interface HeaderProps {
-  user?: User<'admin' | 'user'>;
+  user?: User<'admin' | 'user'> | null;
   menuItems: MenuItemsType;
 }
 
@@ -39,7 +39,7 @@ export const Header: React.FC<HeaderProps> = ({ user = null, menuItems }) => {
 
   return (
     <header>
-      <nav className="flex justify-between pl-8 pr-8">
+      <nav className="flex justify-between pl-4 pr-0">
         <SiteHeaderLogo />
         <HamburgerMenu
           isOpen={mobileMenuIsOpen}
