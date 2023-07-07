@@ -88,9 +88,13 @@
 
   .mobile-menu {
     overflow-y: scroll;
-    max-height: calc(70%);
+    max-height: calc(90%);
     scrollbar-width: thin; /* Set the width of the scrollbar */
     scrollbar-color: transparent transparent; /* Set the color of the scrollbar track and thumb */
+  }
+
+  .mobile-menu.logged-in {
+    max-height: calc(80%);
   }
 
   .mobile-menu::-webkit-scrollbar {

@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { User, MenuItemType } from '../../interfaces';
 import { MenuItemsType } from './Header';
 import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
@@ -61,18 +62,24 @@ export const MobileMenu: React.FC<{
   user: User<'admin' | 'user'> | null;
   menuItems: MenuItemsType;
   handleMenuToggle: () => void;
-}> = ({ user, menuItems, handleMenuToggle }) => (
-  <div className="fixed top-0 left-0 w-full h-full bg-gray-800 opacity-95 flex flex-col pl-8 pr-8 pt-5 z-20">
-    <div className="relative pt-4">
-      <MobileMenuSiteLogo onClick={handleMenuToggle} />
-      <nav className="mobile-menu flex flex-col space-y-4">
-        <MobileMenuUser
-          user={user}
-          loggedInMenuItems={menuItems.loggeIn}
-          notLoggedInMenuItems={menuItems.notLoggedIn}
-        />
-        <MobileMenuItems items={menuItems.discover} />
-      </nav>
+}> = ({ user, menuItems, handleMenuToggle }) => {
+  const menuClass = classNames(
+    `mobile-menu flex flex-col space-y-4`,
+    user && `logged-in`,
+  );
+  return (
+    <div className="fixed top-0 left-0 w-full h-full bg-gray-800 opacity-95 flex flex-col pl-8 pr-8 pt-5 z-20">
+      <div className="relative pt-4">
+        <MobileMenuSiteLogo onClick={handleMenuToggle} />
+        <nav className={menuClass}>
+          <MobileMenuUser
+            user={user}
+            loggedInMenuItems={menuItems.loggeIn}
+            notLoggedInMenuItems={menuItems.notLoggedIn}
+          />
+          <MobileMenuItems items={menuItems.discover} />
+        </nav>
+      </div>
     </div>
-  </div>
-);
+  );
+};
