@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback, useState } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 
 interface FullPageScrollProps {
   children: React.ReactNode;
@@ -6,7 +6,6 @@ interface FullPageScrollProps {
 
 export const FullPageScroll: React.FC<FullPageScrollProps> = ({ children }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [startY, setStartY] = useState<number | null>(null);
 
   const handleWheel = useCallback((event: WheelEvent) => {
     event.preventDefault();
@@ -32,35 +31,14 @@ export const FullPageScroll: React.FC<FullPageScrollProps> = ({ children }) => {
     }
   }, []);
 
-  const handleTouchStart = (event: TouchEvent) => {
-    setStartY(event.touches[0].clientY || null);
-  };
-
-  const handleTouchMove = (event: TouchEvent) => {
-    event.preventDefault();
-    const container = containerRef.current;
-    if (!container) return;
-    const touchY = event.touches[0].clientY;
-    const deltaY = touchY - (startY ?? 0);
-    setStartY(touchY);
-    container.scrollTo({
-      top: container.scrollTop - deltaY,
-      behavior: 'smooth',
-    });
-  };
-
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
     container.addEventListener('wheel', handleWheel);
-    container.addEventListener('touchstart', handleTouchStart);
-    container.addEventListener('touchmove', handleTouchMove);
 
     return () => {
       container.removeEventListener('wheel', handleWheel);
-      container.removeEventListener('touchstart', handleTouchStart);
-      container.removeEventListener('touchmove', handleTouchMove);
     };
   }, [handleWheel]);
 
