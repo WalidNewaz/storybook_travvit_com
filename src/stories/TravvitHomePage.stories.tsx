@@ -22,7 +22,7 @@ import trailRunner from './images/Ready-set-trail-How-to-prepare-for-trail-runni
 import rockClimbing from './images/rock-climbing.jpeg';
 import camping from './images/Camping.jpeg';
 
-import { menuItems } from './TravvitHeader.stories';
+import { menuItems } from './mocks/menuItems';
 
 export default {
   title: 'Pages/Travvit Home Page',
