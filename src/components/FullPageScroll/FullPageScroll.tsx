@@ -41,7 +41,7 @@ export const FullPageScroll: React.FC<FullPageScrollProps> = ({ children }) => {
     const container = containerRef.current;
     if (!container) return;
     const touchY = event.touches[0].clientY;
-    const deltaY = touchY - (startY ?? 0);
+    const deltaY = (startY ?? 0) - touchY;
     setStartY(touchY);
     container.scrollTo({
       top: container.scrollTop + deltaY,
