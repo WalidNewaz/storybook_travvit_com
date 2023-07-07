@@ -47,12 +47,9 @@ describe('Button', () => {
     expect(button).toHaveClass('px-6 py-3');
   });
 
-  it('applies additional custom classes passed through buttonClasses prop', () => {
+  it('applies additional custom classes passed through className prop', () => {
     const { container } = render(
-      <Button
-        label="Custom Button"
-        buttonClasses="custom-class1 custom-class2"
-      />,
+      <Button label="Custom Button" className="custom-class1 custom-class2" />,
     );
 
     const button = container.firstChild;
