@@ -53,4 +53,3 @@ export const Small: Story = {
     label: 'Button',
   },
 };
-

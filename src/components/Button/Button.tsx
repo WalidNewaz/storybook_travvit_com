@@ -21,7 +21,7 @@ export interface ButtonProps {
   /**
    * Custom style classes for the button
    */
-  buttonClasses?: string;
+  className?: string;
   /**
    * Optional click handler
    */
@@ -62,7 +62,7 @@ export const Button = ({
   primary = false,
   size = 'medium',
   label,
-  buttonClasses = '',
+  className = '',
   type = 'button',
   ...props
 }: ButtonProps) => {
@@ -70,7 +70,7 @@ export const Button = ({
     BASE_BUTTON_CLASSES,
     getModeClasses(primary),
     getSizeClasses(size),
-    buttonClasses,
+    className,
   );
 
   return (
@@ -83,6 +83,6 @@ export const Button = ({
 Button.defaultProps = {
   primary: false,
   size: 'medium',
-  buttonClasses: '',
+  className: '',
   type: 'button',
 };

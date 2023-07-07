@@ -90,7 +90,6 @@ export const TravvitLogo: React.FC<LogoProps> = ({
         style={{
           shapeRendering: 'geometricPrecision',
           textRendering: 'geometricPrecision',
-          imageRendering: 'optimizeQuality',
           fillRule: 'evenodd',
           clipRule: 'evenodd',
           ...imageStyle,
