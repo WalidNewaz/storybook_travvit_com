@@ -65,6 +65,7 @@ const Register: React.FC = () => (
 
 interface LoginProps {
   onLogin: (email: string, password: string) => void;
+  path?: string;
 }
 
 export const Login: React.FC<LoginProps> = ({ onLogin }) => {

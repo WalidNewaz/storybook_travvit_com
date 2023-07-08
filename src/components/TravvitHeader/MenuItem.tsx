@@ -12,9 +12,10 @@ export interface MenuItemProps {
   label: string;
   href?: string;
   mobile?: boolean;
-  onClick?: (
-    event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
-  ) => void | undefined;
+  onClick?:
+    | ((event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void)
+    | (() => Promise<void>)
+    | undefined;
   iconLabel?: string;
 }
 
