@@ -1,4 +1,5 @@
 declare module '*.jpeg';
+declare module '*.avif';
 declare module '*.ico';
 declare module '*.png';
 declare module '*.jpg';
