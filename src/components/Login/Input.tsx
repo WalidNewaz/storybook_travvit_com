@@ -7,6 +7,7 @@ interface InputProps {
   label: string;
   placeholder?: string;
   extraElement?: React.ReactNode;
+  autoComplete?: string; // Add the `autoComplete` prop
 }
 
 const LABEL_CLASSES = `
@@ -30,10 +31,11 @@ export const Input: React.FC<InputProps> = ({
   label,
   placeholder,
   extraElement,
+  autoComplete,
 }) => (
   <div>
     <div className="flex items-center justify-between">
-      <label htmlFor="password" className={LABEL_CLASSES}>
+      <label htmlFor={name} className={LABEL_CLASSES}>
         {label}
       </label>
       {extraElement}
@@ -44,10 +46,13 @@ export const Input: React.FC<InputProps> = ({
         type={type}
         placeholder={placeholder}
         className={INPUT_CLASSES}
+        autoComplete={autoComplete}
       />
     </div>
-    <ErrorMessage name="password" className="mt-2 text-sm text-red-500">
-      {(msg: string) => <p className="mt-2 text-sm text-red-500">{msg}</p>}
+    <ErrorMessage name={name}>
+      {(msg: string) => (
+        <p className="mt-2 text-sm text-red-500 text-left">{msg}</p>
+      )}
     </ErrorMessage>
   </div>
 );
