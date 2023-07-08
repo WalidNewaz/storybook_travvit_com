@@ -1,4 +1,5 @@
 import React from 'react';
+import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
 
 interface NotFoundPageProps {
   backgroundImg: string;
@@ -9,9 +10,13 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({
   backgroundImg,
   className,
 }) => {
-  const baseClassName = className || 'text-slate-100 drop-shadow-lg';
+  const baseClassName = className || 'text-slate-100 drop-shadow-md';
   return (
-    <main className={`isolate isolation-[100%] min-h-full relative`}>
+    <main className={`isolate isolation-[100%] min-h-full h-screen relative`}>
+      <TravvitLogo
+        size="xs"
+        containerClasses="absolute object-top object-cover flex w-full justify-center mt-24 drop-shadow-lg"
+      />
       <img
         src={backgroundImg}
         alt=""
@@ -29,7 +34,8 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({
           Page not found
         </h1>
         <p className={`${baseClassName} mt-6 text-base leading-6`}>
-          Sorry, we couldn’t find the page you’re looking for.
+          Sorry, but the area of the site you've currently ventured into does
+          not exist or is unavailable at the moment.
         </p>
         <div className={`flex justify-center mt-12`}>
           <a
