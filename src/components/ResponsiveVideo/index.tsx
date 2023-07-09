@@ -5,10 +5,9 @@ interface VideoSource {
   type: string;
 }
 
-export interface ResponsiveVideoProps {
+export interface ResponsiveVideoProps extends Record<string, any> {
   sources: VideoSource[];
   requiredMediaType: string;
-  attributes?: React.VideoHTMLAttributes<HTMLVideoElement>;
   children?: ReactNode;
 }
 
@@ -18,9 +17,8 @@ const MissingVideo: React.FC<{ requiredMediaType: string }> = ({
 
 const Video: React.FC<{
   sources: VideoSource[];
-  attributes?: React.VideoHTMLAttributes<HTMLVideoElement>;
   children?: ReactNode;
-}> = ({ sources, attributes, children }) => {
+}> = ({ sources, children, ...attributes }) => {
   const sourceElements = sources.map((source, index) => (
     <source key={index} src={source.src} type={source.type} />
   ));
@@ -35,8 +33,8 @@ const Video: React.FC<{
 export const ResponsiveVideo: React.FC<ResponsiveVideoProps> = ({
   sources,
   requiredMediaType,
-  attributes,
   children,
+  ...attributes
 }) => {
   let hasRequiredMediaType = false;
 
@@ -50,7 +48,7 @@ export const ResponsiveVideo: React.FC<ResponsiveVideoProps> = ({
   return !hasRequiredMediaType ? (
     <MissingVideo requiredMediaType={requiredMediaType} />
   ) : (
-    <Video sources={sources} attributes={attributes}>
+    <Video sources={sources} {...attributes}>
       {children}
     </Video>
   );
