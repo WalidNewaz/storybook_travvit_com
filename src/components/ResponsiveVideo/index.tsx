@@ -12,29 +12,46 @@ export interface ResponsiveVideoProps {
   children?: ReactNode;
 }
 
+const MissingVideo: React.FC<{ requiredMediaType: string }> = ({
+  requiredMediaType,
+}) => <p>Error: Required media type '{requiredMediaType}' is missing.</p>;
+
+const Video: React.FC<{
+  sources: VideoSource[];
+  attributes?: React.VideoHTMLAttributes<HTMLVideoElement>;
+  children?: ReactNode;
+}> = ({ sources, attributes, children }) => {
+  const sourceElements = sources.map((source, index) => (
+    <source key={index} src={source.src} type={source.type} />
+  ));
+  return (
+    <video {...attributes}>
+      {sourceElements}
+      {children}
+    </video>
+  );
+};
+
 export const ResponsiveVideo: React.FC<ResponsiveVideoProps> = ({
   sources,
   requiredMediaType,
   attributes,
   children,
 }) => {
-  const sourceElements = sources.map((source, index) => (
-    <source key={index} src={source.src} type={source.type} />
-  ));
+  let hasRequiredMediaType = false;
 
-  // Check if the required media type exists in the sources array
-  const hasRequiredMediaType = sources.some(
-    (source) => source.type === requiredMediaType,
-  );
-
-  if (!hasRequiredMediaType) {
-    return <p>Error: Required media type '{requiredMediaType}' is missing.</p>;
+  if (sources && sources.length) {
+    // Check if the required media type exists in the sources array
+    hasRequiredMediaType = sources.some(
+      (source) => source.type === requiredMediaType,
+    );
   }
 
-  return (
-    <video {...attributes}>
-      {sourceElements}
+  return !hasRequiredMediaType ? (
+    <MissingVideo requiredMediaType={requiredMediaType} />
+  ) : (
+    <Video sources={sources} attributes={attributes}>
       {children}
-    </video>
+    </Video>
   );
 };
