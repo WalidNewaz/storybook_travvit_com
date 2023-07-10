@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from '../Icons';
-import { MediaCard, MediaCardProps } from '../MediaCard';
+import { MediaCard } from '../MediaCard';
 import HeadingButtonActionLayer from '../MediaCard/HeadingButtonActionLayer';
 
 export type MediaTypes = 'image' | 'video';
@@ -42,7 +42,6 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
   SlideComponent,
   containerClasses,
   containerStyle,
-  slideContainerClasses,
   mediaStyle = {},
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -82,7 +81,6 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
             buttonText = '',
             descriptionClasses,
             buttonOnClick = () => undefined,
-            mediaClasses = '',
             mediaStyle: slideMediaStyle = null,
           },
           index,
