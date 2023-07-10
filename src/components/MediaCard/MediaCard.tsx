@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 
 import { Button } from '../Button/Button';
+import { ResponsiveImage, ImageSource } from '../ResponsiveImage';
+import { ResponsiveVideo, VideoSource } from '../ResponsiveVideo';
+
+type MediaSource = ImageSource & VideoSource;
 
 interface MediaCardProps {
+  sources?: MediaSource[];
+  imageSources?: ImageSource[];
+  videoSources?: VideoSource[];
+  height?: number;
+  width?: number;
+  loading?: 'eager' | 'lazy';
+  sizes?: string;
+  src?: string;
+  srcset?: string;
+  className?: string;
+  requiredMediaType?: string;
+  children?: ReactNode;
+  // type: 'image' | 'video';
   /**
    * Is the card rounded?
    * @default false
    * */
   rounded?: boolean;
-  /**
-   * Media url
-   */
-  media: string;
   /**
    * Media type
    * @default 'image'
@@ -108,8 +121,11 @@ const DEFAULT_DESCRIPTION_CLASSES = `text-center`;
  * @returns
  */
 export const MediaCard: React.FC<MediaCardProps> = ({
+  imageSources,
+  videoSources,
+  src = '',
+  requiredMediaType = 'video/mp4',
   rounded = false,
-  media,
   mediaType = 'image',
   alt = '',
   description,
@@ -137,24 +153,24 @@ export const MediaCard: React.FC<MediaCardProps> = ({
   const renderMedia = () => {
     if (mediaType === 'image') {
       return (
-        <img
-          src={media}
+        <ResponsiveImage
+          sources={imageSources}
           alt={alt}
-          style={{ width: 'inherit' }}
+          src={src}
           className={`${MEDIA_CLASSES} ${mediaClassName}`}
-          aria-label="media-image" // Add aria-label attribute
-          data-testid="media-image" // Add data-testid attribute
+          aria-label="media-image"
+          data-testid="media-image"
         />
       );
     }
 
     if (mediaType === 'video') {
       return (
-        <video
-          src={media}
-          controls
-          aria-label="media-video" // Add aria-label attribute
-          data-testid="media-video" // Add data-testid attribute
+        <ResponsiveVideo
+          sources={videoSources}
+          requiredMediaType={requiredMediaType}
+          muted
+          autoPlay
         />
       );
     }
@@ -171,7 +187,7 @@ export const MediaCard: React.FC<MediaCardProps> = ({
     >
       <div
         style={mediaStyle}
-        className={`media-card__media relative overflow-hidden shrink-0 w-full pb-8 ${mediaClassName}`}
+        className={`media-card__media relative overflow-hidden shrink-0 w-full ${mediaClassName}`}
       >
         {renderMedia()}
       </div>

@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
 
-interface VideoSource {
+export interface VideoSource {
   src: string;
   type: string;
 }
 
 export interface ResponsiveVideoProps extends Record<string, any> {
-  sources: VideoSource[];
+  sources: VideoSource[] | undefined;
   requiredMediaType: string;
   children?: ReactNode;
 }
@@ -37,6 +37,7 @@ export const ResponsiveVideo: React.FC<ResponsiveVideoProps> = ({
   ...attributes
 }) => {
   let hasRequiredMediaType = false;
+  
 
   if (sources && sources.length) {
     // Check if the required media type exists in the sources array
