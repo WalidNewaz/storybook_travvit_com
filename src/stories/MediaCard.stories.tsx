@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 /** Component */
-import { MediaCard } from '../components/MediaCard/MediaCard';
-import { ImageSource } from '../components/ResponsiveImage';
+import { MediaCard } from '../components/MediaCard';
+import HeadingButtonActionLayer from '../components/MediaCard/HeadingButtonActionLayer';
 
 /** Assets */
 import mountainsLake from './images/mountains_lake.jpeg';
@@ -21,30 +21,40 @@ export default {
 
 type Story = StoryObj<typeof MediaCard>;
 
-const imgSources: ImageSource[] = [
+const imgSources = [
   {
     type: 'image/webp',
-    srcset: mountainsLakeWebp,
+    srcSet: mountainsLakeWebp,
   },
   {
     type: 'image/png',
-    srcset: mountainsLakePng,
+    srcSet: mountainsLakePng,
   },
 ];
+
+const imageProps = {
+  sources: imgSources,
+  src: mountainsLake,
+  alt: 'Moutains and lakes',
+  className: 'rounded-3xl',
+};
 
 export const Image: Story = {
   name: 'Image Card',
   render: () => (
     <MediaCard
-      imageSources={imgSources}
-      src={mountainsLake}
+      imageProps={imageProps}
       mediaType="image"
-      alt="Mountains and lake"
-      description="USA Trip Planner: Design Your Perfect Vacation"
-      buttonText="Explore"
-      buttonOnClick={() => undefined}
+      actionLayer={
+        <HeadingButtonActionLayer
+          heading="USA Trip Planner: Design Your Perfect Vacation"
+          label="Explore"
+          onClick={() => {
+            console.log('You clicked me!');
+          }}
+        />
+      }
       mediaStyle={{ height: '90vh' }}
-      rounded
     />
   ),
 };
@@ -54,18 +64,29 @@ const videoSources = [
   { src: womanMp4, type: 'video/mp4' },
 ];
 
+const videoProps = {
+  sources: videoSources,
+  requiredMediaType: 'video/webm',
+  controls: true,
+  autoPlay: true,
+  className: 'rounded-3xl',
+};
+
 export const Vidoe: Story = {
   name: 'Video Card',
   render: () => (
     <MediaCard
-      videoSources={videoSources}
-      src={mountainsLake}
+      videoProps={videoProps}
       mediaType="video"
-      alt="Mountains and lake"
-      description="USA Trip Planner: Design Your Perfect Vacation"
-      buttonText="Explore"
-      buttonOnClick={() => undefined}
-      rounded
+      actionLayer={
+        <HeadingButtonActionLayer
+          heading="USA Trip Planner: Design Your Perfect Vacation"
+          label="Explore"
+          onClick={() => {
+            console.log('You clicked me!');
+          }}
+        />
+      }
     />
   ),
 };

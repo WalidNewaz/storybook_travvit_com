@@ -25,7 +25,11 @@ export interface ButtonProps {
   /**
    * Optional click handler
    */
-  onClick?: () => void;
+  onClick?:
+    | ((event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void)
+    | (() => Promise<void>)
+    | (() => void)
+    | undefined;
   /**
    * Optional type for the button
    * @default 'button'

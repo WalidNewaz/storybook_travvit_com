@@ -6,7 +6,7 @@ export interface VideoSource {
 }
 
 export interface ResponsiveVideoProps extends Record<string, any> {
-  sources: VideoSource[] | undefined;
+  sources: VideoSource[];
   requiredMediaType: string;
   children?: ReactNode;
 }

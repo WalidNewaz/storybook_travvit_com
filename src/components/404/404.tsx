@@ -1,18 +1,14 @@
 import React from 'react';
 import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
-import { ResponsiveImage } from '../ResponsiveImage';
+import { ResponsiveImage, ResponsiveImageProps } from '../ResponsiveImage';
 
 interface NotFoundPageProps {
-  jpegBackgroundImg: string;
-  webpBackgroundImg: string;
-  avifBackgroundImg: string;
+  imageProps?: ResponsiveImageProps;
   className?: string;
 }
 
 export const NotFoundPage: React.FC<NotFoundPageProps> = ({
-  jpegBackgroundImg,
-  webpBackgroundImg,
-  avifBackgroundImg,
+  imageProps,
   className,
 }) => {
   const baseClassName = className || 'text-slate-100 drop-shadow-md';
@@ -22,18 +18,14 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({
         size="xs"
         containerClasses="absolute object-top object-cover flex w-full justify-center mt-24 drop-shadow-lg"
       />
-      {/* <img
-        src={backgroundImg}
-        alt=""
-        className={`absolute object-top object-cover w-full h-full z-[-10] max-w-full`}
-      ></img> */}
-      <ResponsiveImage
-        srcJpeg={jpegBackgroundImg}
-        srcWebp={webpBackgroundImg}
-        srcAvif={avifBackgroundImg}
-        alt=""
-        className={`absolute object-top object-cover w-full h-full z-[-10] max-w-full`}
-      />
+      {imageProps && (
+        <ResponsiveImage
+          {...imageProps}
+          aria-label="media-image"
+          data-testid="media-image"
+          className={`absolute object-top object-cover w-full h-full z-[-10] max-w-full ${imageProps.className}`}
+        />
+      )}
       <div
         className={`lg:px-8 sm:py-40 px-6 py-32 text-center max-w-7xl mx-auto`}
       >

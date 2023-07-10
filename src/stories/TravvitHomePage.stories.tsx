@@ -9,7 +9,7 @@ import { ImageCard } from '../components/ImageCard/ImageCard';
 import { Button } from '../components/Button/Button';
 import { Header as TravvitHeader } from '../components/TravvitHeader/Header';
 import { HeroSlider } from '../components/HeroSlider/HeroSlider';
-import { MediaCard } from '../components/MediaCard/MediaCard';
+import { MediaCard } from '../components/MediaCard/';
 import type { MediaTypes } from '../components/HeroSlider/HeroSlider';
 
 /** Assets */
@@ -78,7 +78,7 @@ export const TwoCards: Story = {
       <HeroSlider
         slides={storySlides}
         SlideComponent={MediaCard}
-        containerClasses="max-w-full mt-6 mb-16"
+        containerClasses="max-w-full mt-6 mb-16 relative"
         containerStyle={{ height: '87vh' }}
         descriptionClasses={DESC_CLASSES}
         slideContainerClasses="max-w-[80rem]"

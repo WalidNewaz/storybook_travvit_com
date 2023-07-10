@@ -29,11 +29,11 @@ export const Default: Story = {
 const imgSources: ImageSource[] = [
   {
     type: 'image/webp',
-    srcset: mountainsLakeWebp,
+    srcSet: mountainsLakeWebp,
   },
   {
     type: 'image/png',
-    srcset: mountainsLakePng,
+    srcSet: mountainsLakePng,
   },
 ];
 

@@ -3,7 +3,7 @@ import React from 'react';
 
 /** Component */
 import { HeroSlider } from '../components/HeroSlider/HeroSlider';
-import { MediaCard } from '../components/MediaCard/MediaCard';
+import { MediaCard } from '../components/MediaCard/';
 
 import type { MediaTypes } from '../components/HeroSlider/HeroSlider';
 
@@ -25,8 +25,7 @@ type Story = StoryObj<typeof HeroSlider>;
 
 const storySlides = [
   {
-    media: mountainsLake as string,
-    mediaType: 'image' as MediaTypes,
+    media: mountainsLake,
     alt: 'Mountains and lake',
     description: 'USA Trip Planner: Design Your Perfect Vacation',
     descriptionClasses: 'xs:text-3xl sm:text-4xl md:text-5xl capitalize mb-6',
@@ -35,20 +34,20 @@ const storySlides = [
     containerClasses: 'max-w-[80rem]',
   },
   {
-    media: zion as string,
-    mediaType: 'image' as MediaTypes,
+    media: zion,
+    mediaType: 'image',
     alt: 'Zion National Park',
-    description: 'USA Trip Planner: Design Your Perfect Vacation',
+    description: 'Come visit Zion National Park in Utah',
     descriptionClasses: 'xs:text-3xl sm:text-4xl md:text-5xl capitalize mb-6',
     buttonText: 'Explore',
     buttonOnClick: () => undefined,
     containerClasses: 'max-w-[80rem]',
   },
   {
-    media: ynp as string,
-    mediaType: 'image' as MediaTypes,
+    media: ynp,
+    mediaType: 'image',
     alt: 'Yellowstone National Park',
-    description: 'USA Trip Planner: Design Your Perfect Vacation',
+    description: 'Explore Yellowstone National Park',
     descriptionClasses: 'xs:text-3xl sm:text-4xl md:text-5xl capitalize mb-6',
     buttonText: 'Explore',
     buttonOnClick: () => undefined,

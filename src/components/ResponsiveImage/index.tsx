@@ -1,27 +1,21 @@
 import React from 'react';
 
-export type ImageTypes =
-  | 'image/avif'
-  | 'image/jpeg'
-  | 'image/png'
-  | 'image/webp';
-
 export interface ImageSource extends Record<string, any> {
-  type: ImageTypes;
-  srcset: string;
+  type: string;
+  srcSet: string;
   sizes?: string;
   media?: string;
   height?: string;
   width?: string;
 }
 
-interface ResponsiveImageProps extends Record<string, any> {
-  sources: ImageSource[] | undefined;
+export interface ResponsiveImageProps extends Record<string, any> {
+  sources: ImageSource[];
   alt: string;
   src: string;
 }
 
-const getSourceTag = (type: string) => (sources) =>
+const getSourceTag = (type: string) => (sources: ImageSource[]) =>
   sources
     ? sources.map(
         (source, index) =>
@@ -29,26 +23,30 @@ const getSourceTag = (type: string) => (sources) =>
       )
     : null;
 
-const Avif: React.FC<{ sources: ImageSource[] | undefined }> = ({
-  sources,
-}) => {
-  return getSourceTag('image/avif')(sources);
-};
+// const Avif: React.FC<{ sources: ImageSource[] }> = ({ sources }) => {
+//   return getSourceTag('image/avif')(sources);
+// };
 
-const Webp: React.FC<{ sources: ImageSource[] | undefined }> = ({
-  sources,
-}) => {
+const Webp: React.FC<{ sources: ImageSource[] }> = ({ sources }) => {
   return getSourceTag('image/webp')(sources);
 };
 
-const Png: React.FC<{ sources: ImageSource[] | undefined }> = ({ sources }) => {
+const Png: React.FC<{ sources: ImageSource[] }> = ({ sources }) => {
   return getSourceTag('image/png')(sources);
 };
 
-const Jpeg: React.FC<{ sources: ImageSource[] | undefined }> = ({
-  sources,
-}) => {
+const Jpeg: React.FC<{ sources: ImageSource[] }> = ({ sources }) => {
   return getSourceTag('image/jpeg')(sources);
+};
+
+const supportsWebp = () => {
+  if (window && window.document) {
+    return window.document
+      .createElement('canvas')
+      .toDataURL('image/webp')
+      .startsWith('data:image/webp');
+  }
+  return false;
 };
 
 export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
@@ -57,23 +55,23 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   src,
   ...attributes
 }) => {
-  const supportsWebp =
-    typeof window !== 'undefined' &&
-    window?.document
-      ?.createElement('canvas')
-      .toDataURL('image/webp')
-      .startsWith('data:image/webp');
-  const supportsAvif =
-    typeof window !== 'undefined' &&
-    window?.document
-      ?.createElement('canvas')
-      .toDataURL('image/avif')
-      .startsWith('data:image/avif');
+  // const supportsWebp =
+  //   typeof window !== 'undefined' &&
+  //   window?.document
+  //     ?.createElement('canvas')
+  //     .toDataURL('image/webp')
+  //     .startsWith('data:image/webp');
+  // const supportsAvif =
+  //   typeof window !== 'undefined' &&
+  //   window?.document
+  //     ?.createElement('canvas')
+  //     .toDataURL('image/avif')
+  //     .startsWith('data:image/avif');
 
   return (
     <picture>
-      {supportsAvif && <Avif sources={sources} />}
-      {supportsWebp && <Webp sources={sources} />}
+      {/* {supportsAvif && <Avif sources={sources} />} */}
+      <Webp sources={sources} />
       <Png sources={sources} />
       <Jpeg sources={sources} />
       <img src={src} alt={alt} {...attributes} />

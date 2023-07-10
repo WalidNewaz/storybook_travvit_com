@@ -2,7 +2,8 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import { MediaCard } from './MediaCard';
+import { MediaCard } from './index';
+import HeadingButtonActionLayer from './HeadingButtonActionLayer';
 
 type MediaTypes = 'image' | 'video';
 
@@ -14,13 +15,35 @@ describe('MediaCard', () => {
   });
 
   test('renders image media correctly', () => {
-    const props = {
-      media: 'https://example.com/image.jpg',
-      mediaType: 'image' as MediaTypes,
+    const imgSources = [
+      {
+        type: 'image/jpeg',
+        srcSet: 'https://example.com/image.jpeg',
+      },
+      {
+        type: 'image/webp',
+        srcSet: 'https://example.com/image.webp',
+      },
+    ];
+
+    const imageProps = {
+      sources: imgSources,
+      src: 'https://example.com/image.jpeg',
       alt: 'Example Image',
-      description: 'Example Description',
-      buttonText: 'Click Me',
-      buttonOnClick: mockOnClick,
+      className: 'rounded-3xl',
+    };
+
+    const props = {
+      imageProps,
+      mediaType: 'image' as MediaTypes,
+      actionLayer: (
+        <HeadingButtonActionLayer
+          heading="Example Description"
+          label="Click Me"
+          onClick={mockOnClick}
+        />
+      ),
+      mediaStyle: { height: '90vh' },
     };
 
     render(<MediaCard {...props} />);
@@ -40,13 +63,30 @@ describe('MediaCard', () => {
   });
 
   test('renders video media correctly', () => {
+    const videoSources = [
+      { src: 'https://example.com/video.webm', type: 'video/webm' },
+      { src: 'https://example.com/video.mp4', type: 'video/mp4' },
+    ];
+
+    const videoProps = {
+      sources: videoSources,
+      requiredMediaType: 'video/webm',
+      controls: true,
+      autoPlay: true,
+      className: 'rounded-3xl',
+    };
+
     const props = {
-      media: 'https://example.com/video.mp4',
+      videoProps,
       mediaType: 'video' as MediaTypes,
-      alt: 'Example Video',
-      description: 'Example Description',
-      buttonText: 'Click Me',
-      buttonOnClick: mockOnClick,
+      actionLayer: (
+        <HeadingButtonActionLayer
+          heading="Example Description"
+          label="Click Me"
+          onClick={mockOnClick}
+        />
+      ),
+      mediaStyle: { height: '90vh' },
     };
 
     render(<MediaCard {...props} />);
@@ -63,22 +103,5 @@ describe('MediaCard', () => {
 
     fireEvent.click(buttonElement);
     expect(mockOnClick).toHaveBeenCalled();
-  });
-
-  test('renders rounded card correctly', () => {
-    const props = {
-      rounded: true,
-      media: 'https://example.com/image.jpg',
-      mediaType: 'image' as MediaTypes,
-      alt: 'Example Image',
-      description: 'Example Description',
-      buttonText: 'Click Me',
-      buttonOnClick: mockOnClick,
-    };
-
-    render(<MediaCard {...props} />);
-
-    const cardElement = screen.getByTestId('media-card');
-    expect(cardElement).toHaveClass('rounded-3xl');
   });
 });

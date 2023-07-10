@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from '../Icons';
+import { MediaCard, MediaCardProps } from '../MediaCard';
+import HeadingButtonActionLayer from '../MediaCard/HeadingButtonActionLayer';
 
 export type MediaTypes = 'image' | 'video';
 
-interface MediaCardProps {
+interface CardProps {
+  mediaType: string;
   media: string;
-  mediaType: MediaTypes;
   alt?: string;
   description?: string;
   descriptionClasses?: string;
@@ -19,11 +21,10 @@ interface MediaCardProps {
 }
 
 interface HeroSliderProps {
-  slides: Array<MediaCardProps>;
+  slides: Array<CardProps>;
   SlideComponent?: React.FC<any>;
   containerClasses?: string;
   containerStyle?: React.CSSProperties;
-  descriptionClasses?: string;
   slideContainerClasses?: string;
   mediaStyle?: React.CSSProperties;
 }
@@ -31,7 +32,7 @@ interface HeroSliderProps {
 const SLIDE_DURATION = 5000;
 const INTERVAL_DELAY = 150;
 
-const SLIDE_CONTAINER_CLASSES = `relative w-full`;
+const SLIDE_CONTAINER_CLASSES = `w-full`;
 const SLIDE_CLASSES = `absolute top-0 left-0 w-full h-full transition-opacity duration-500`;
 const NAV_BUTTON_CLASSES = `absolute top-1/2 transform -translate-y-1/2 text-white`;
 const NAV_BUTTON_ICON_CLASSES = `w-24 h-24 text-slate-300 opacity-50 hover:opacity-80 hover:ease-in transition transition-opacity ease-in delay-${INTERVAL_DELAY}`;
@@ -41,7 +42,6 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
   SlideComponent,
   containerClasses,
   containerStyle,
-  descriptionClasses,
   slideContainerClasses,
   mediaStyle = {},
 }) => {
@@ -80,6 +80,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
             alt = '',
             description = '',
             buttonText = '',
+            descriptionClasses,
             buttonOnClick = () => undefined,
             mediaClasses = '',
             mediaStyle: slideMediaStyle = null,
@@ -94,17 +95,29 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
             data-testid={`slide-media-${index}`} // Add data-testid attribute
           >
             {SlideComponent && (
-              <SlideComponent
-                media={media}
-                mediaType="image"
-                alt={alt}
-                description={description}
-                descriptionClasses={descriptionClasses}
-                buttonText={buttonText}
-                buttonOnClick={buttonOnClick}
-                containerClasses={slideContainerClasses}
-                mediaClasses={mediaClasses}
-                mediaStyle={slideMediaStyle ? slideMediaStyle : mediaStyle}
+              <MediaCard
+                {...{
+                  mediaType: 'image',
+                  imageProps: {
+                    sources: [],
+                    alt: alt || '',
+                    src: media,
+                  },
+                  videoProps: {
+                    sources: [],
+                    requiredMediaType: '',
+                  },
+                  actionLayer: (
+                    <HeadingButtonActionLayer
+                      heading={description || ''}
+                      label={buttonText || ''}
+                      onClick={buttonOnClick}
+                      className={descriptionClasses}
+                    />
+                  ),
+                  containerStyle: {},
+                  mediaStyle: slideMediaStyle ? slideMediaStyle : mediaStyle,
+                }}
               />
             )}
           </div>

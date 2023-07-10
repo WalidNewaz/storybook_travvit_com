@@ -10,7 +10,6 @@ import backgroundImg2 from './images/austin-crow-desert-large.jpeg';
 import backgroundImg3 from './images/jaanus-jagomagi-1200.jpeg';
 import backgroundImg4 from './images/laura-chouette-lake-large.jpeg';
 import backgroundImg5 from './images/laura-chouette-lake-large.webp';
-import backgroundImg6 from './images/laura-chouette-lake-large.avif';
 
 export default {
   title: 'Components/Page not found',
@@ -25,33 +24,83 @@ type Story = StoryObj<typeof NotFoundPage>;
 
 export const Backgournd1: Story = {
   args: {
-    jpegBackgroundImg: backgroundImg1,
+    imageProps: {
+      sources: [
+        {
+          type: 'image/jpeg',
+          srcSet: backgroundImg1,
+        },
+      ],
+      src: backgroundImg1,
+      alt: 'Dessert at night',
+    },
   },
 };
 
 export const Backgournd2: Story = {
   args: {
-    jpegBackgroundImg: backgroundImg2,
+    imageProps: {
+      sources: [
+        {
+          type: 'image/jpeg',
+          srcSet: backgroundImg2,
+        },
+      ],
+      src: backgroundImg2,
+      alt: 'Dessert at daytime',
+    },
   },
 };
 
 export const Backgournd3: Story = {
   args: {
-    jpegBackgroundImg: backgroundImg3,
+    imageProps: {
+      sources: [
+        {
+          type: 'image/jpeg',
+          srcSet: backgroundImg3,
+        },
+      ],
+      src: backgroundImg3,
+      alt: 'Driving through the mountains',
+    },
     className: 'text-slate-900 drop-shadow-lg',
   },
 };
 
 export const Backgournd4: Story = {
   args: {
-    jpegBackgroundImg: backgroundImg4,
+    imageProps: {
+      sources: [
+        {
+          type: 'image/jpeg',
+          srcSet: backgroundImg4,
+        },
+      ],
+      src: backgroundImg3,
+      alt: 'Mountain lake',
+    },
   },
 };
 
+const imageProps5 = {
+  sources: [
+    {
+      type: 'image/jpeg',
+      srcSet: backgroundImg4,
+    },
+    {
+      type: 'image/webp',
+      srcSet: backgroundImg5,
+    },
+  ],
+  src: backgroundImg4,
+  alt: 'Moutains and lakes',
+};
+
 export const Backgournd5: Story = {
+  name: 'Multiple media types',
   args: {
-    jpegBackgroundImg: backgroundImg4,
-    webpBackgroundImg: backgroundImg5,
-    // avifBackgroundImg: backgroundImg6,
+    imageProps: imageProps5,
   },
 };
