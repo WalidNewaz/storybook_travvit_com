@@ -13,9 +13,6 @@ import mountainsLakeWebp from './images/mountains_lake.webp';
 export default {
   title: 'Components/ResponsiveImage',
   component: ResponsiveImage,
-  decorators: [
-    (story) => <div className="bg-travvit-orange/10">{story()}</div>,
-  ],
   tags: ['autodocs'],
 } as Meta;
 
@@ -25,6 +22,7 @@ export const Default: Story = {
   args: {
     src: mountainsLakeJpeg,
     alt: 'Moutains and lakes',
+    className: 'rounded-3xl',
   },
 };
 
@@ -44,5 +42,6 @@ export const MultipleImages: Story = {
     sources: imgSources,
     src: mountainsLakeJpeg,
     alt: 'Moutains and lakes',
+    className: 'rounded-3xl',
   },
 };

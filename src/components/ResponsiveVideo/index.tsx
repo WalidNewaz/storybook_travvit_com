@@ -37,20 +37,21 @@ export const ResponsiveVideo: React.FC<ResponsiveVideoProps> = ({
   ...attributes
 }) => {
   let hasRequiredMediaType = false;
-  
 
   if (sources && sources.length) {
     // Check if the required media type exists in the sources array
     hasRequiredMediaType = sources.some(
       (source) => source.type === requiredMediaType,
     );
+
+    if (hasRequiredMediaType) {
+      return (
+        <Video sources={sources} {...attributes}>
+          {children}
+        </Video>
+      );
+    }
   }
 
-  return !hasRequiredMediaType ? (
-    <MissingVideo requiredMediaType={requiredMediaType} />
-  ) : (
-    <Video sources={sources} {...attributes}>
-      {children}
-    </Video>
-  );
+  return <MissingVideo requiredMediaType={requiredMediaType} />;
 };

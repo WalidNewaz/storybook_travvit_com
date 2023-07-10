@@ -88,16 +88,6 @@ const CONTAINER_CLASSES = `
   overflow-hidden
 `;
 
-const MEDIA_CLASSES = `
-  absolute
-  top-0
-  left-0
-  object-cover
-  w-full
-  h-full
-  dark-img
-`;
-
 const DEFAULT_OVERLAY_CLASSES = `
   absolute
   top-0
@@ -114,6 +104,61 @@ const DEFAULT_OVERLAY_CLASSES = `
 `;
 
 const DEFAULT_DESCRIPTION_CLASSES = `text-center`;
+
+const Media: React.FC<{
+  mediaType: 'image' | 'video';
+  imageSources?: ImageSource[];
+  videoSources?: VideoSource[];
+  alt?: string;
+  src?: string;
+  mediaClassName?: string;
+  requiredMediaType?: string;
+}> = ({
+  mediaType,
+  imageSources,
+  videoSources,
+  alt = '',
+  src = '',
+  mediaClassName,
+  requiredMediaType = 'video/mp4',
+}) => {
+  const MEDIA_CLASSES = `
+    absolute
+    top-0
+    left-0
+    object-cover
+    w-full
+    h-full
+    dark-img
+  `;
+
+  if (mediaType === 'image') {
+    return (
+      <ResponsiveImage
+        sources={imageSources}
+        alt={alt}
+        src={src}
+        className={`${MEDIA_CLASSES} ${mediaClassName}`}
+        aria-label="media-image"
+        data-testid="media-image"
+      />
+    );
+  }
+
+  if (mediaType === 'video') {
+    return (
+      <ResponsiveVideo
+        sources={videoSources}
+        requiredMediaType={requiredMediaType}
+        muted
+        autoPlay
+        className={`${MEDIA_CLASSES} ${mediaClassName}`}
+      />
+    );
+  }
+
+  return null;
+};
 
 /**
  * This component is a card with a media element (image or video) and a description with a CTA button.
@@ -150,34 +195,6 @@ export const MediaCard: React.FC<MediaCardProps> = ({
     descriptionClasses,
   );
 
-  const renderMedia = () => {
-    if (mediaType === 'image') {
-      return (
-        <ResponsiveImage
-          sources={imageSources}
-          alt={alt}
-          src={src}
-          className={`${MEDIA_CLASSES} ${mediaClassName}`}
-          aria-label="media-image"
-          data-testid="media-image"
-        />
-      );
-    }
-
-    if (mediaType === 'video') {
-      return (
-        <ResponsiveVideo
-          sources={videoSources}
-          requiredMediaType={requiredMediaType}
-          muted
-          autoPlay
-        />
-      );
-    }
-
-    return null;
-  };
-
   return (
     <div
       style={containerStyle}
@@ -189,7 +206,15 @@ export const MediaCard: React.FC<MediaCardProps> = ({
         style={mediaStyle}
         className={`media-card__media relative overflow-hidden shrink-0 w-full ${mediaClassName}`}
       >
-        {renderMedia()}
+        <Media
+          mediaType={mediaType}
+          imageSources={imageSources}
+          videoSources={videoSources}
+          src={src}
+          alt={alt}
+          mediaClassName={mediaClassName}
+          requiredMediaType={requiredMediaType}
+        />
       </div>
       <div className={DEFAULT_OVERLAY_CLASSES}>
         <h1 className={descriptionClassName}>{description}</h1>

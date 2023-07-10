@@ -14,9 +14,6 @@ const sources = [{ src: flower, type: 'video/webm' }];
 export default {
   title: 'Components/ResponsiveVideo',
   component: ResponsiveVideo,
-  // decorators: [
-  //   (story) => <div className="bg-travvit-orange/10 h-screen">{story()}</div>,
-  // ],
   tags: ['autodocs'],
 } as Meta;
 
@@ -29,8 +26,8 @@ export const WithWebmVideo: Story = {
     <ResponsiveVideo
       sources={sources}
       requiredMediaType="video/webm"
-      autoplay
       controls
+      className="rounded-3xl"
     />
   ),
 };
@@ -43,7 +40,7 @@ export const WithMp4Video: Story = {
         { src: womanMp4, type: 'video/mp4' },
       ]}
       requiredMediaType="video/mp4"
-      autoplay
+      autoPlay
       controls
     />
   ),

@@ -18,13 +18,7 @@ export interface ImageSource extends Record<string, any> {
 interface ResponsiveImageProps extends Record<string, any> {
   sources: ImageSource[] | undefined;
   alt: string;
-  height?: number;
-  width?: number;
-  loading?: 'eager' | 'lazy';
-  sizes?: string;
   src: string;
-  srcset?: string;
-  className?: string;
 }
 
 const getSourceTag = (type: string) => (sources) =>
@@ -61,7 +55,7 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   sources,
   alt,
   src,
-  className,
+  ...attributes
 }) => {
   const supportsWebp =
     typeof window !== 'undefined' &&
@@ -82,7 +76,7 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
       {supportsWebp && <Webp sources={sources} />}
       <Png sources={sources} />
       <Jpeg sources={sources} />
-      <img src={src} alt={alt} className={className} />
+      <img src={src} alt={alt} {...attributes} />
     </picture>
   );
 };
