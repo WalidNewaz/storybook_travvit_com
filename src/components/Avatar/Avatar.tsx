@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export type AvatarSize = 'xs' | 'small' | 'medium' | 'large' | 'xl';
+export type AvatarSize = 'xs' | 'small' | 'medium' | 'large' | 'xl' | '2xl';
 export type AvatarGender = 'male' | 'female' | 'other';
 
 export interface AvatarProps {
@@ -17,6 +17,7 @@ const sizeClasses: Record<string, string> = {
   medium: 'h-24 w-24',
   large: 'h-36 w-36',
   xl: 'h-48 w-48',
+  '2xl': 'h-64 w-64',
 };
 
 const BASE_AVATAR_CLASSES =

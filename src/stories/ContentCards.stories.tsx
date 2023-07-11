@@ -6,6 +6,7 @@ import ContentCard from '../components/ContentCard';
 import { PlaceCard } from '../components/ContentCard/PlaceCard';
 import { ActivityCard } from '../components/ContentCard/ActivityCard';
 import { TripCard } from '../components/ContentCard/TripCard';
+import { ExplorerCard } from '../components/ContentCard/ExplorerCard';
 
 /** Assets */
 import mountainsLake from './images/mountains_lake.jpeg';
@@ -20,6 +21,13 @@ import face3 from './images/img_30.jpeg';
 export default {
   title: 'Components/Content Cards',
   component: ContentCard,
+  decorators: [
+    (story) => (
+      <div className="bg-travvit-orange/10 max-w-[80rem] w-[30rem] h-[35rem] flex justify-center pt-8">
+        {story()}
+      </div>
+    ),
+  ],
   tags: ['autodocs'],
 } as Meta;
 
@@ -52,7 +60,7 @@ export const Place: Story = {
       likeHandler={() => alert('You clicked like!')}
       addHandler={() => alert('You clicked add!')}
       shareHandler={() => alert('You clicked share!')}
-      badges={['Hike', 'National Park']}
+      badges={['Hiking', 'Fishing', 'National Park']}
       heading="Rocky Mountain National Park"
       headingLink="#"
       subHeading="Colorado, USA"
@@ -130,7 +138,7 @@ export const Trip: Story = {
       likeHandler={() => alert('You clicked like!')}
       addHandler={() => alert('You clicked add!')}
       shareHandler={() => alert('You clicked share!')}
-      badges={['Hiking', 'Moderate']}
+      badges={['Trail Running', 'Difficult']}
       startTime="Tue Jul 11, 2023, 6:30 PM MDT"
       heading="Trail running at RMNP"
       headingLink="#"
@@ -138,6 +146,28 @@ export const Trip: Story = {
       subHeadingLink="#"
       groupMembers={avatarProps}
       joinHandler={() => alert('You clicked join!')}
+      followHandler={() => alert('You clicked follow!')}
+    />
+  ),
+};
+
+const imagePropsExplorer = {
+  sources: [],
+  src: lakeHaiyaha,
+  alt: 'Moutains and lakes',
+  className: '',
+};
+
+export const Explorer: Story = {
+  name: 'Explorer Card',
+  render: () => (
+    <ExplorerCard
+      src={face3}
+      name="Jane Doe"
+      profileLink="/explorer/@jane-doe"
+      explorerLocation="Colorado, USA"
+      locationLink="/places/colorado"
+      numTrips={5}
       followHandler={() => alert('You clicked follow!')}
     />
   ),
