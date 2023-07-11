@@ -21,16 +21,10 @@ export const MediaLayer: React.FC<MediaLayerProps> = ({
   mediaType,
   ...attributes
 }) => {
-  const MEDIA_CLASSES = `
-    absolute
-    top-0
-    left-0
-    object-cover
-    dark-img
-  `;
-// w-full
-// h-full
+  const MEDIA_CLASSES = `absolute top-0 left-0 object-cover dark-img`;
 
+  // w-full
+  // h-full
 
   let media: ReactNode = null;
 
@@ -38,7 +32,7 @@ export const MediaLayer: React.FC<MediaLayerProps> = ({
     media = (
       <ResponsiveImage
         {...imageProps}
-        className={`${MEDIA_CLASSES} ${imageProps.className}`}
+        className={`responsive-img ${MEDIA_CLASSES} ${imageProps.className}`}
         aria-label="media-image"
         data-testid="media-image"
       />

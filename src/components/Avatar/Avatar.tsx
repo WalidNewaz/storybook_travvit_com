@@ -9,6 +9,7 @@ export interface AvatarProps {
   size?: AvatarSize;
   alt?: string;
   gender?: AvatarGender;
+  className?: string;
 }
 const sizeClasses: Record<string, string> = {
   xs: 'h-8 w-8',
@@ -33,8 +34,13 @@ export const Avatar: React.FC<AvatarProps> = ({
   src,
   size = 'small',
   alt = '',
+  className = '',
 }) => {
-  const computedClasses = classNames(BASE_AVATAR_CLASSES, sizeClasses[size]);
+  const computedClasses = classNames(
+    BASE_AVATAR_CLASSES,
+    sizeClasses[size],
+    className,
+  );
 
   return <img className={computedClasses} src={src} alt={alt} />;
 };
