@@ -1,15 +1,12 @@
 import React from 'react';
 import { Button } from '../Button/Button';
 import withOverlay from './withOverlay';
+import type { clickHandler } from '../../types/eventHandler.types';
 
 const HeadingButtonAction: React.FC<{
   heading: string;
   label: string;
-  onClick:
-    | ((event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void)
-    | (() => Promise<void>)
-    | (() => void)
-    | undefined;
+  onClick: clickHandler;
   className?: string;
 }> = ({ heading, label, onClick, className = '' }) => (
   <>
