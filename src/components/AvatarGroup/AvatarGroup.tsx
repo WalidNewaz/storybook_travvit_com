@@ -8,9 +8,11 @@ export interface AvatarGroupProps {
   groupMembers: AvatarProps[];
   limit?: number;
   size?: AvatarSize;
+  className?: string;
 }
 
-const BASE_AVATAR_GRP_CLASSES = 'mt-3 flex -space-x-2 overflow-hidden p-1';
+const BASE_AVATAR_GRP_CLASSES =
+  'avatar-group flex -space-x-2 overflow-hidden p-1';
 
 /**
  * This component is used to display a group of avatars.
@@ -26,6 +28,7 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
   groupMembers,
   limit = 3,
   size = 'small',
+  className = '',
 }) => {
   const group = groupMembers.slice(0, limit);
   const groupAvatars = group.map((member: any, index: number) => (
@@ -37,5 +40,9 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
       }}
     />
   ));
-  return <div className={BASE_AVATAR_GRP_CLASSES}>{groupAvatars}</div>;
+  return (
+    <div className={`${BASE_AVATAR_GRP_CLASSES} ${className}`}>
+      {groupAvatars}
+    </div>
+  );
 };

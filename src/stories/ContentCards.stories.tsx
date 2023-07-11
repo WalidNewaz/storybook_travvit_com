@@ -5,13 +5,17 @@ import React from 'react';
 import ContentCard from '../components/ContentCard';
 import { PlaceCard } from '../components/ContentCard/PlaceCard';
 import { ActivityCard } from '../components/ContentCard/ActivityCard';
+import { TripCard } from '../components/ContentCard/TripCard';
 
 /** Assets */
 import mountainsLake from './images/mountains_lake.jpeg';
 import mountainsLakePng from './images/mountains_lake.png';
 import mountainsLakeWebp from './images/mountains_lake.webp';
 import lakeHaiyaha from './images/lake_haiyaha.jpeg';
-import face1 from './images/img_10.jpeg';
+import trailRun from './images/Ready-set-trail-How-to-prepare-for-trail-running-small.jpeg';
+import face1 from './images/img_7.jpeg';
+import face2 from './images/img_10.jpeg';
+import face3 from './images/img_30.jpeg';
 
 export default {
   title: 'Components/Content Cards',
@@ -83,6 +87,58 @@ export const Activity: Story = {
       createdBySrc={face1}
       createdByLink="/explorer/@jane-doe"
       rating="4.5"
+    />
+  ),
+};
+
+const imagePropsTrip = {
+  sources: [],
+  src: trailRun,
+  alt: 'Trail running at RMNP',
+  className: '',
+};
+
+const avatarProps = [
+  {
+    src: face1 as string,
+    alt: 'face1',
+  },
+  {
+    src: face2 as string,
+    alt: 'face2',
+  },
+  {
+    src: face3 as string,
+    alt: 'face3',
+  },
+  {
+    src: face2 as string,
+    alt: 'face2',
+  },
+  {
+    src: face3 as string,
+    alt: 'face3',
+  },
+];
+
+export const Trip: Story = {
+  name: 'Trip Card',
+  render: () => (
+    <TripCard
+      mediaType="image"
+      imageProps={imagePropsTrip}
+      likeHandler={() => alert('You clicked like!')}
+      addHandler={() => alert('You clicked add!')}
+      shareHandler={() => alert('You clicked share!')}
+      badges={['Hiking', 'Moderate']}
+      startTime="Tue Jul 11, 2023, 6:30 PM MDT"
+      heading="Trail running at RMNP"
+      headingLink="#"
+      subHeading="Rocky Mountain National Park"
+      subHeadingLink="#"
+      groupMembers={avatarProps}
+      joinHandler={() => alert('You clicked join!')}
+      followHandler={() => alert('You clicked follow!')}
     />
   ),
 };
