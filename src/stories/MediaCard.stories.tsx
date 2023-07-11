@@ -4,6 +4,7 @@ import React from 'react';
 /** Component */
 import { MediaCard } from '../components/MediaCard';
 import HeadingButtonActionLayer from '../components/MediaCard/HeadingButtonActionLayer';
+import LinkTransparentActionLayer from '../components/MediaCard/LinkTransparentActionLayer';
 
 /** Assets */
 import mountainsLake from './images/mountains_lake.jpeg';
@@ -72,7 +73,7 @@ const videoProps = {
   className: 'rounded-3xl',
 };
 
-export const Vidoe: Story = {
+export const Video: Story = {
   name: 'Video Card',
   render: () => (
     <MediaCard
@@ -88,5 +89,33 @@ export const Vidoe: Story = {
         />
       }
     />
+  ),
+};
+
+export const HeadingButtonAction: Story = {
+  name: 'Action Layer/Heading Button',
+  render: () => (
+    <div className="w-60 h-60 bg-slate-600 relative rounded-2xl">
+      <HeadingButtonActionLayer
+        heading="USA Trip Planner: Design Your Perfect Vacation"
+        label="Explore"
+        onClick={() => {
+          console.log('You clicked me!');
+        }}
+      />
+    </div>
+  ),
+};
+
+export const LinkTransparentAction: Story = {
+  name: 'Action Layer/Link Transparent',
+  render: () => (
+    <div className="w-60 h-60 bg-slate-600 relative rounded-2xl">
+      <LinkTransparentActionLayer
+        heading="USA Trip Planner"
+        href="/"
+        className=""
+      />
+    </div>
   ),
 };
