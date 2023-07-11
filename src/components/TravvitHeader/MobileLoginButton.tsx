@@ -1,5 +1,5 @@
 import React from 'react';
-import { MenuItemType, IconProps } from './Header';
+import { MenuItemType, IconProps } from '../../interfaces';
 import { IconButton } from '../IconButton/IconButton';
 
 export const MobileLoginButton: React.FC<MenuItemType> = ({

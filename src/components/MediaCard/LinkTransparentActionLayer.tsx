@@ -2,14 +2,10 @@ import React from 'react';
 import withOverlay from './withOverlay';
 
 const LinkTransparent: React.FC<{
-  heading: string;
   href: string;
-  className?: string;
-}> = ({ heading, href, className }) => (
+}> = ({ href }) => (
   <>
-    <a href={href} className="flex flex-col justify-end h-full">
-      <h1 className={`text-center ${className}`}>{heading}</h1>
-    </a>
+    <a href={href} className="flex flex-col justify-end h-full w-full"></a>
   </>
 );
 

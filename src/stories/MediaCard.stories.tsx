@@ -4,7 +4,9 @@ import React from 'react';
 /** Component */
 import { MediaCard } from '../components/MediaCard';
 import HeadingButtonActionLayer from '../components/MediaCard/HeadingButtonActionLayer';
+import LinkHeadingActionLayer from '../components/MediaCard/LinkHeadingActionLayer';
 import LinkTransparentActionLayer from '../components/MediaCard/LinkTransparentActionLayer';
+import SocialCategoryActionLayer from '../components/MediaCard/SocialCategoryActionLayer';
 
 /** Assets */
 import mountainsLake from './images/mountains_lake.jpeg';
@@ -107,14 +109,37 @@ export const HeadingButtonAction: Story = {
   ),
 };
 
+export const LinkHeadingAction: Story = {
+  name: 'Action Layer/Link Heading',
+  render: () => (
+    <div className="w-60 h-60 bg-slate-600 relative rounded-2xl">
+      <LinkHeadingActionLayer
+        heading="USA Trip Planner"
+        href="/"
+        className=""
+      />
+    </div>
+  ),
+};
+
 export const LinkTransparentAction: Story = {
   name: 'Action Layer/Link Transparent',
   render: () => (
     <div className="w-60 h-60 bg-slate-600 relative rounded-2xl">
-      <LinkTransparentActionLayer
-        heading="USA Trip Planner"
-        href="/"
-        className=""
+      <LinkTransparentActionLayer href="/" />
+    </div>
+  ),
+};
+
+export const SocialCategoryAction: Story = {
+  name: 'Action Layer/Social Category',
+  render: () => (
+    <div className="w-60 h-60 bg-slate-50 relative rounded-2xl">
+      <SocialCategoryActionLayer
+        badges={['Hike', 'National Park']}
+        likeHandler={() => alert('You clicked like!')}
+        addHandler={() => alert('You clicked add!')}
+        shareHandler={() => alert('You clicked share!')}
       />
     </div>
   ),

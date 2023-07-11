@@ -1,4 +1,5 @@
 import type { IconType } from 'react-icons';
+import type { clickHandler } from '../types/eventHandler.types';
 
 export interface User<T extends string> {
   id: number;
@@ -20,9 +21,6 @@ export interface MenuItemType {
   label: string;
   href?: string;
   mobile?: boolean;
-  onClick?:
-    | ((event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void)
-    | (() => Promise<void>)
-    | undefined;
+  onClick?: clickHandler;
   iconLabel?: string;
 }
