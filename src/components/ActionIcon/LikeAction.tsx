@@ -4,6 +4,8 @@ import type { clickHandler } from '../../types/eventHandler.types';
 
 const ICON_CLASSNAMES = `
   icon
+  stroke-white
+  stroke-2
   text-indigo-600
   animated-svg
   transition-all
@@ -18,7 +20,11 @@ const LikeActionIcon: React.FC<{
   onClick: clickHandler;
   className?: string;
 }> = ({ label, onClick, className }) => (
-  <button onClick={onClick} aria-label={label}>
+  <button
+    onClick={onClick}
+    aria-label={label}
+    className="bg-slate-50 rounded-full m-2"
+  >
     <FaHeart className={`${ICON_CLASSNAMES} ${className}`} />
   </button>
 );

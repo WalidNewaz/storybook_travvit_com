@@ -26,10 +26,11 @@ export const MediaLayer: React.FC<MediaLayerProps> = ({
     top-0
     left-0
     object-cover
-    w-full
-    h-full
     dark-img
   `;
+// w-full
+// h-full
+
 
   let media: ReactNode = null;
 

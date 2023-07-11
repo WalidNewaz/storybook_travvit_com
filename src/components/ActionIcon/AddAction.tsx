@@ -18,7 +18,11 @@ const AddActionIcon: React.FC<{
   onClick: clickHandler;
   className?: string;
 }> = ({ label, onClick, className }) => (
-  <button onClick={onClick} aria-label={label}>
+  <button
+    onClick={onClick}
+    aria-label={label}
+    className="bg-slate-50 rounded-full m-2"
+  >
     <FaPlus className={`${ICON_CLASSNAMES} ${className}`} />
   </button>
 );

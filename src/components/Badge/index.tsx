@@ -11,10 +11,11 @@ type Color =
   | 'pink';
 
 interface BadgeProps {
-  label: string;
+  label?: string;
   color?: Color;
   rounded?: boolean;
   className?: string;
+  children?: React.ReactNode;
 }
 
 const BASE_CLASS_NAME = `inline-flex items-center px-2 py-1 text-xs font-medium ring-1 ring-inset`;
@@ -35,10 +36,11 @@ export const Badge: React.FC<BadgeProps> = ({
   color = 'gray',
   rounded = false,
   className = '',
+  children,
 }) => {
   const badgeClassName = `${BASE_CLASS_NAME} ${colorClassNames[color]} ${
     rounded ? 'rounded-full' : 'rounded-md'
   } ${className}`;
 
-  return <span className={badgeClassName}>{label}</span>;
+  return <span className={badgeClassName}>{children ? children : label}</span>;
 };

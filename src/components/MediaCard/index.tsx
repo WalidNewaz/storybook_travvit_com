@@ -31,10 +31,7 @@ export interface MediaCardProps {
   mediaStyle?: React.CSSProperties;
 }
 
-const CONTAINER_CLASSES = `
-  max-w-[100rem]
-  overflow-hidden
-`;
+const CONTAINER_CLASSES = `media-card max-w-[100rem] overflow-hidden`;
 
 /**
  * This component is a card with a media layer (image or video) and
