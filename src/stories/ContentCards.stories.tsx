@@ -23,7 +23,7 @@ export default {
   component: ContentCard,
   decorators: [
     (story) => (
-      <div className="bg-travvit-orange/10 max-w-[80rem] w-[30rem] h-[35rem] flex justify-center pt-8">
+      <div className="bg-travvit-orange/10 max-w-[80rem] w-[30rem] h-[35rem] flex justify-center pt-12">
         {story()}
       </div>
     ),
@@ -149,13 +149,6 @@ export const Trip: Story = {
       followHandler={() => alert('You clicked follow!')}
     />
   ),
-};
-
-const imagePropsExplorer = {
-  sources: [],
-  src: lakeHaiyaha,
-  alt: 'Moutains and lakes',
-  className: '',
 };
 
 export const Explorer: Story = {

@@ -14,6 +14,14 @@ export default {
 
 type Story = StoryObj<typeof Avatar>;
 
+export const XS: Story = {
+  name: 'Extra Small',
+  args: {
+    size: 'xs',
+    src: face1,
+  },
+};
+
 export const Small: Story = {
   name: 'Small',
   args: {
@@ -46,10 +54,10 @@ export const XL: Story = {
   },
 };
 
-export const XS: Story = {
-  name: 'Extra Small',
+export const TwoXL: Story = {
+  name: '2x Large',
   args: {
-    size: 'xs',
+    size: '2xl',
     src: face1,
   },
 };
