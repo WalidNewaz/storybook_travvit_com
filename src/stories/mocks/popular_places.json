@@ -29,23 +29,23 @@
     "imageProps": {
       "sources": [
         {
-          "srcSet": "mountains_lake.webp",
+          "srcSet": "GCNP.webp",
           "type": "image/webp"
         },
         {
-          "srcSet": "mountains_lake.png",
+          "srcSet": "GCNP.png",
           "type": "image/png"
         }
       ],
-      "src": "mountains_lake.jpeg",
-      "alt": "Moutains and lakes",
+      "src": "GCNP.jpeg",
+      "alt": "The Grand Canyon",
       "className": ""
     },
-    "badges": ["Hiking", "Camping", "Fishing", "National Park"],
-    "name": "Rocky Mountain National Park",
-    "slug": "rocky-mountain-national-park",
-    "location": "Colorado, USA",
-    "locationSlug": "colorado-usa",
+    "badges": ["Hiking", "Camping", "National Park"],
+    "name": "The Grand Canyon",
+    "slug": "the-grand-canyon",
+    "location": "Arizona, USA",
+    "locationSlug": "arizona-usa",
     "rating": 4.5
   }, {
     "id": "3",
@@ -53,71 +53,71 @@
     "imageProps": {
       "sources": [
         {
-          "srcSet": "mountains_lake.webp",
+          "srcSet": "niagra-falls.webp",
           "type": "image/webp"
         },
         {
-          "srcSet": "mountains_lake.png",
+          "srcSet": "niagra-falls.png",
           "type": "image/png"
         }
       ],
-      "src": "mountains_lake.jpeg",
-      "alt": "Moutains and lakes",
+      "src": "niagra-falls.jpeg",
+      "alt": "Niagra Falls",
       "className": ""
     },
-    "badges": ["Hiking", "Camping", "Fishing", "National Park"],
-    "name": "Rocky Mountain National Park",
-    "slug": "rocky-mountain-national-park",
-    "location": "Colorado, USA",
-    "locationSlug": "colorado-usa",
-    "rating": 4.5
+    "badges": [],
+    "name": "Niagra Falls",
+    "slug": "niagra-falls",
+    "location": "New York, USA",
+    "locationSlug": "new-york-usa",
+    "rating": 4.7
   }, {
     "id": "4",
     "mediaType": "image",
     "imageProps": {
       "sources": [
         {
-          "srcSet": "mountains_lake.webp",
+          "srcSet": "kilauea-volcano.webp",
           "type": "image/webp"
         },
         {
-          "srcSet": "mountains_lake.png",
+          "srcSet": "kilauea-volcano.png",
           "type": "image/png"
         }
       ],
-      "src": "mountains_lake.jpeg",
-      "alt": "Moutains and lakes",
+      "src": "kilauea-volcano.jpeg",
+      "alt": "Kīlauea Volcano",
       "className": ""
     },
-    "badges": ["Hiking", "Camping", "Fishing", "National Park"],
-    "name": "Rocky Mountain National Park",
-    "slug": "rocky-mountain-national-park",
-    "location": "Colorado, USA",
-    "locationSlug": "colorado-usa",
-    "rating": 4.5
+    "badges": ["Sight seeing", "National Park"],
+    "name": "Kīlauea Volcano",
+    "slug": "kilauea-volcano",
+    "location": "Hawaii, USA",
+    "locationSlug": "hawaii-usa",
+    "rating": 4.8
   }, {
     "id": "5",
     "mediaType": "image",
     "imageProps": {
       "sources": [
         {
-          "srcSet": "mountains_lake.webp",
+          "srcSet": "mammoth-cave.webp",
           "type": "image/webp"
         },
         {
-          "srcSet": "mountains_lake.png",
+          "srcSet": "mammoth-cave.png",
           "type": "image/png"
         }
       ],
-      "src": "mountains_lake.jpeg",
-      "alt": "Moutains and lakes",
+      "src": "mammoth-cave.jpeg",
+      "alt": "Mammoth Cave",
       "className": ""
     },
-    "badges": ["Hiking", "Camping", "Fishing", "National Park"],
-    "name": "Rocky Mountain National Park",
-    "slug": "rocky-mountain-national-park",
-    "location": "Colorado, USA",
-    "locationSlug": "colorado-usa",
+    "badges": ["Hiking", "National Park"],
+    "name": "Mammoth Cave",
+    "slug": "mammoth-cave-national-park",
+    "location": "Kentuky, USA",
+    "locationSlug": "kentuky-usa",
     "rating": 4.5
   }
 ]

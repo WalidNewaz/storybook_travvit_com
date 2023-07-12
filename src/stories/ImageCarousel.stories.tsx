@@ -11,7 +11,7 @@ import face3 from './images/img_30.jpeg';
 import face4 from './images/timothy-paul-smith-256424.jpeg';
 
 import bcnp from './images/BryceCanyon-Amphiteatre1.jpeg';
-import gcnp from './images/GCNP-3.jpeg';
+import gcnp from './images/GCNP.jpeg';
 import rmnp from './images/RMNP.jpeg';
 import znp from './images/ZNP-1.jpeg';
 import ynp from './images/yellowstone-2225083_960_720.jpeg';

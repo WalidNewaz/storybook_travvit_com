@@ -98,9 +98,9 @@ const PopularPlaces: React.FC<{ places: PlaceCardType[] }> = ({ places }) =>
       }
       badges={place.badges}
       heading={place.name}
-      headingLink={place.slug}
+      headingLink={`/places/${place.slug}/${place.id}`}
       subHeading={place.location}
-      subHeadingLink={place.locationSlug}
+      subHeadingLink={`/locations/${place.locationSlug}`}
       rating={place.rating as string}
       className="m-1"
     />
