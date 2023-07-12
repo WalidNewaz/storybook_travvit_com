@@ -15,7 +15,7 @@ const DESC_DIMS_CLASSNAME = `
   lg:mt-[20rem] mx-4
 `;
 
-export const PlaceCard: React.FC<{
+export interface PlaceCardProps {
   mediaType: 'image' | 'video';
   imageProps: ResponsiveImageProps;
   likeHandler: clickHandler;
@@ -28,7 +28,9 @@ export const PlaceCard: React.FC<{
   subHeadingLink: string;
   rating: string;
   className?: string;
-}> = ({
+}
+
+export const PlaceCard: React.FC<PlaceCardProps> = ({
   mediaType = 'image',
   imageProps,
   likeHandler,

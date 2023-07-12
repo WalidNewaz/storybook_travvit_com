@@ -43,5 +43,10 @@ const config: StorybookConfig = {
     }
     return config;
   },
+  env: (config) => ({
+    ...config,
+    EXAMPLE_VAR: 'An environment variable configured in Storybook',
+    IMG_BASE: 'http://localhost:6006/static/media/src/stories/images/',
+  }),
 };
 export default config;
