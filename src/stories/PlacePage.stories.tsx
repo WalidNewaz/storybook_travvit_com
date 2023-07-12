@@ -13,9 +13,6 @@ import PlacesService from './mocks/places.service';
 
 /** Assets */
 import { menuItems } from './mocks/menuItems';
-import mountainsLake from './images/mountains_lake.jpeg';
-import mountainsLakePng from './images/mountains_lake.png';
-import mountainsLakeWebp from './images/mountains_lake.webp';
 
 export default {
   title: 'Pages/Places',
@@ -40,24 +37,6 @@ type Story = StoryObj<typeof FullPageScroll>;
 
 /** Setup */
 const placesService = new PlacesService();
-
-const imgSourcesPlace = [
-  {
-    type: 'image/webp',
-    srcSet: mountainsLakeWebp,
-  },
-  {
-    type: 'image/png',
-    srcSet: mountainsLakePng,
-  },
-];
-
-const imagePropsPlace = {
-  sources: imgSourcesPlace,
-  src: mountainsLake,
-  alt: 'Moutains and lakes',
-  className: '',
-};
 
 const PLACES_CLASSNAME = `
   grid justify-items-center grid-cols-1 gap-x-4 gap-y-36
