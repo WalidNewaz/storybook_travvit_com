@@ -4,7 +4,14 @@
     "mediaType": "image",
     "imageProps": {
       "sources": [
-        
+        {
+          "srcSet": "RMNP.webp",
+          "type": "image/webp"
+        },
+        {
+          "srcSet": "RMNP.png",
+          "type": "image/png"
+        }
       ],
       "src": "RMNP.jpeg",
       "alt": "Moutains and lakes",
@@ -41,7 +48,7 @@
     "locationSlug": "colorado-usa",
     "rating": 4.5
   }, {
-    "id": "1",
+    "id": "3",
     "mediaType": "image",
     "imageProps": {
       "sources": [
@@ -65,7 +72,7 @@
     "locationSlug": "colorado-usa",
     "rating": 4.5
   }, {
-    "id": "1",
+    "id": "4",
     "mediaType": "image",
     "imageProps": {
       "sources": [
@@ -89,7 +96,7 @@
     "locationSlug": "colorado-usa",
     "rating": 4.5
   }, {
-    "id": "1",
+    "id": "5",
     "mediaType": "image",
     "imageProps": {
       "sources": [
