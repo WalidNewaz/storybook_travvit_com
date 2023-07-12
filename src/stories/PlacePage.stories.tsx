@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { FullPageScroll } from '../components/FullPageScroll/FullPageScroll';
 import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
 import { Header as TravvitHeader } from '../components/TravvitHeader/Header';
-import { PlaceCard, PlaceCardProps } from '../components/ContentCard/PlaceCard';
+import { PlaceCard } from '../components/ContentCard/PlaceCard';
 import { ResponsiveImageProps } from '../components/ResponsiveImage';
 
 /** Services */
@@ -16,11 +16,6 @@ import { menuItems } from './mocks/menuItems';
 import mountainsLake from './images/mountains_lake.jpeg';
 import mountainsLakePng from './images/mountains_lake.png';
 import mountainsLakeWebp from './images/mountains_lake.webp';
-import lakeHaiyaha from './images/lake_haiyaha.jpeg';
-import trailRun from './images/Ready-set-trail-How-to-prepare-for-trail-running-small.jpeg';
-import face1 from './images/img_7.jpeg';
-import face2 from './images/img_10.jpeg';
-import face3 from './images/img_30.jpeg';
 
 export default {
   title: 'Pages/Places',
@@ -85,7 +80,7 @@ interface PlaceCardType {
   rating: string | number;
 }
 
-const PopularPlaces: React.FC<{ places: PlaceCardType[] }> = ({ places }) =>
+const Places: React.FC<{ places: PlaceCardType[] }> = ({ places }) =>
   places.map((place) => (
     <PlaceCard
       key={place.id}
@@ -107,15 +102,25 @@ const PopularPlaces: React.FC<{ places: PlaceCardType[] }> = ({ places }) =>
   ));
 
 const PlacesPage: React.FC = () => {
-  const [popularPlaces, setPopularPlaces] = useState(null);
+  const [popularPlaces, setPopularPlaces] = useState<PlaceCardType[] | null>(
+    null,
+  );
+  const [nearbyPlaces, setNearbyPlaces] = useState<PlaceCardType[] | null>(
+    null,
+  );
 
   useEffect(() => {
-    // fetch("https://dog.ceo/api/breeds/image/random")
-    // .then(response => response.json())
-    //     // 4. Setting *dogImage* to the image url that we received from the response above
-    // .then(data => setDogImage(data.message))
-    const result = placesService.getPopularPlaces();
-    setPopularPlaces(result);
+    const fetchPopularPlaces = async () => {
+      const result = await placesService.getPopularPlaces();
+      setPopularPlaces(result);
+    };
+    fetchPopularPlaces();
+
+    const fetchNearbyPlaces = async () => {
+      const result = await placesService.getPlacesNearMe();
+      setNearbyPlaces(result);
+    };
+    fetchNearbyPlaces();
   }, []);
 
   return (
@@ -124,83 +129,14 @@ const PlacesPage: React.FC = () => {
         Popular Places
       </h1>
       <section className={`popular-places ${PLACES_CLASSNAME}`}>
-        {popularPlaces && <PopularPlaces places={popularPlaces} />}
-        {/* <PlaceCard
-          mediaType="image"
-          imageProps={imagePropsPlace}
-          likeHandler={() => alert('You clicked like!')}
-          addHandler={() => alert('You clicked add!')}
-          shareHandler={() => alert('You clicked share!')}
-          badges={['Hiking', 'Fishing', 'National Park']}
-          heading="Rocky Mountain National Park"
-          headingLink="#"
-          subHeading="Colorado, USA"
-          subHeadingLink="#"
-          rating="4.9"
-          className="m-1"
-        />
-        <PlaceCard
-          mediaType="image"
-          imageProps={imagePropsPlace}
-          likeHandler={() => alert('You clicked like!')}
-          addHandler={() => alert('You clicked add!')}
-          shareHandler={() => alert('You clicked share!')}
-          badges={['Hiking', 'Fishing', 'National Park']}
-          heading="Rocky Mountain National Park"
-          headingLink="#"
-          subHeading="Colorado, USA"
-          subHeadingLink="#"
-          rating="4.9"
-          className="m-1"
-        />
-        <PlaceCard
-          mediaType="image"
-          imageProps={imagePropsPlace}
-          likeHandler={() => alert('You clicked like!')}
-          addHandler={() => alert('You clicked add!')}
-          shareHandler={() => alert('You clicked share!')}
-          badges={['Hiking', 'Fishing', 'National Park']}
-          heading="Rocky Mountain National Park"
-          headingLink="#"
-          subHeading="Colorado, USA"
-          subHeadingLink="#"
-          rating="4.9"
-          className="m-1"
-        />
-        <PlaceCard
-          mediaType="image"
-          imageProps={imagePropsPlace}
-          likeHandler={() => alert('You clicked like!')}
-          addHandler={() => alert('You clicked add!')}
-          shareHandler={() => alert('You clicked share!')}
-          badges={['Hiking', 'Fishing', 'National Park']}
-          heading="Rocky Mountain National Park"
-          headingLink="#"
-          subHeading="Colorado, USA"
-          subHeadingLink="#"
-          rating="4.9"
-          className="m-1"
-        /> */}
+        {popularPlaces && <Places places={popularPlaces} />}
       </section>
       <hr />
       <h1 className="xs:text-2xl sm:text-4xl md:text-5xl capitalize my-8 ml-1 mt-8 text-slate-600">
-        Popular Places Around You
+        Places Near Me
       </h1>
       <section className={`places-around-you ${PLACES_CLASSNAME}`}>
-        <PlaceCard
-          mediaType="image"
-          imageProps={imagePropsPlace}
-          likeHandler={() => alert('You clicked like!')}
-          addHandler={() => alert('You clicked add!')}
-          shareHandler={() => alert('You clicked share!')}
-          badges={['Hiking', 'Fishing', 'National Park']}
-          heading="Rocky Mountain National Park"
-          headingLink="#"
-          subHeading="Colorado, USA"
-          subHeadingLink="#"
-          rating="4.9"
-          className="m-1"
-        />
+        {nearbyPlaces && <Places places={nearbyPlaces} />}
       </section>
     </main>
   );

@@ -1,7 +1,12 @@
 import popularPlaces from './popular_places.json';
+import { PlaceCardType } from '../../interfaces';
 
 export default class PlacesService {
-  getPopularPlaces() {
+  async getPopularPlaces(): Promise<PlaceCardType[]> {
+    return popularPlaces;
+  }
+
+  async getPlacesNearMe(): Promise<PlaceCardType[]> {
     return popularPlaces;
   }
 }

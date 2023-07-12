@@ -24,3 +24,30 @@ export interface MenuItemType {
   onClick?: clickHandler;
   iconLabel?: string;
 }
+
+export interface ImageSource extends Record<string, any> {
+  type: string;
+  srcSet: string;
+  sizes?: string;
+  media?: string;
+  height?: string;
+  width?: string;
+}
+
+export interface ResponsiveImageProps extends Record<string, any> {
+  sources: ImageSource[];
+  alt: string;
+  src: string;
+}
+
+export interface PlaceCardType {
+  id: string;
+  mediaType: 'image' | 'video';
+  imageProps: ResponsiveImageProps;
+  badges: Array<string>;
+  name: string;
+  slug: string;
+  location: string;
+  locationSlug: string;
+  rating: string | number;
+}
