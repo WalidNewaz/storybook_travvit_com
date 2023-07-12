@@ -4,27 +4,20 @@
     "mediaType": "image",
     "imageProps": {
       "sources": [
-        {
-          "srcSet": "mountains_lake.webp",
-          "type": "image/webp"
-        },
-        {
-          "srcSet": "mountains_lake.png",
-          "type": "image/png"
-        }
+        
       ],
-      "src": "mountains_lake.jpeg",
+      "src": "RMNP.jpeg",
       "alt": "Moutains and lakes",
       "className": ""
     },
-    "badges": ["Hiking", "Camping", "Fishing", "National Park"],
+    "badges": ["Hiking", "Camping", "National Park"],
     "name": "Rocky Mountain National Park",
     "slug": "rocky-mountain-national-park",
     "location": "Colorado, USA",
     "locationSlug": "colorado-usa",
     "rating": 4.5
   }, {
-    "id": "1",
+    "id": "2",
     "mediaType": "image",
     "imageProps": {
       "sources": [
