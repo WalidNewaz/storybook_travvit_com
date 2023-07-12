@@ -14,6 +14,9 @@
     font-weight: 900 !important;
     text-transform: uppercase;
   }
+  body {
+    @apply bg-travvit-orange/10 !p-0;
+  }
 }
 
 

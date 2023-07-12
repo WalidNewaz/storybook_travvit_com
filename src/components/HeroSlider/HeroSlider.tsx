@@ -6,7 +6,7 @@ import { SliderDots } from './SliderDots';
 
 const SLIDE_DURATION = 5000;
 
-const SLIDE_CONTAINER_CLASSES = `w-full`;
+const SLIDE_CONTAINER_CLASSES = `w-full relative`;
 
 export type MediaTypes = 'image' | 'video';
 

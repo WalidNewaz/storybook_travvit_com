@@ -9,7 +9,6 @@ import { ImageCard } from '../components/ImageCard/ImageCard';
 import { Button } from '../components/Button/Button';
 import { Header as TravvitHeader } from '../components/TravvitHeader/Header';
 import { HeroSlider } from '../components/HeroSlider/HeroSlider';
-import { MediaCard } from '../components/MediaCard/';
 import type { MediaTypes } from '../components/HeroSlider/HeroSlider';
 
 /** Assets */
@@ -29,7 +28,15 @@ export default {
   component: FullPageScroll,
   decorators: [
     (story) => (
-      <div className="bg-travvit-orange/10 max-w-[80rem]">{story()}</div>
+      <div className="bg-travvit-orange/10">
+        <FullPageScroll>
+          <div className="mt-8">
+            <TravvitHeader menuItems={menuItems} />
+          </div>
+          {story()}
+          <TravvitFooter />
+        </FullPageScroll>
+      </div>
     ),
   ],
   tags: ['autodocs'],
@@ -86,17 +93,10 @@ const storySlides = [
 export const TwoCards: Story = {
   name: 'Two cards',
   render: () => (
-    <FullPageScroll>
-      <div className="mt-8">
-        <TravvitHeader menuItems={menuItems} />
-      </div>
+    <>
       <HeroSlider
         slides={storySlides}
-        SlideComponent={MediaCard}
-        containerClasses="max-w-full mt-6 mb-16 relative"
         containerStyle={{ height: '87vh' }}
-        descriptionClasses={DESC_CLASSES}
-        slideContainerClasses="max-w-[80rem]"
         mediaStyle={{ height: '90vh' }}
       />
       <Card
@@ -245,7 +245,6 @@ export const TwoCards: Story = {
         headerClasses="xs:h-1/2 md:text-center md:h-screen"
         bodyClasses="flex-col justify-center xs:h-1/2 md:h-screen"
       />
-      <TravvitFooter />
-    </FullPageScroll>
+    </>
   ),
 };
