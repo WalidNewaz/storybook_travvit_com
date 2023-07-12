@@ -47,24 +47,39 @@ const storySlides = [
     mediaType: 'image' as MediaTypes,
     alt: 'Camping by a lake',
     description: 'Plan your next getaway in the great outdoors',
+    descriptionClasses:
+      'xs:text-3xl sm:text-4xl md:text-5xl capitalize mb-6 text-center',
     buttonText: 'Explore',
     buttonOnClick: () => undefined,
+    containerClasses: 'max-w-[80rem]',
+    className: 'w-[90vh]',
+    mediaClassName: 'w-full h-full',
   },
   {
     media: rockClimbing as string,
     mediaType: 'image' as MediaTypes,
     alt: 'Rock climbing',
     description: 'Reach new hights with rock climbing',
+    descriptionClasses:
+      'xs:text-3xl sm:text-4xl md:text-5xl capitalize mb-6 text-center',
     buttonText: 'Explore',
     buttonOnClick: () => undefined,
+    containerClasses: 'max-w-[80rem]',
+    className: 'w-[90vh]',
+    mediaClassName: 'w-full h-full',
   },
   {
     media: ynp as string,
     mediaType: 'image' as MediaTypes,
     alt: 'Yellowstone National Park',
     description: 'Explore the great American National Parks',
+    descriptionClasses:
+      'xs:text-3xl sm:text-4xl md:text-5xl capitalize mb-6 text-center',
     buttonText: 'Explore',
     buttonOnClick: () => undefined,
+    containerClasses: 'max-w-[80rem]',
+    className: 'w-[90vh]',
+    mediaClassName: 'w-full h-full',
   },
 ];
 
