@@ -21,6 +21,7 @@ export const Slides: React.FC<{
         buttonOnClick = () => undefined,
         mediaStyle: slideMediaStyle = null,
         className = '',
+        mediaClassName = '',
       },
       index,
     ) => (
@@ -38,6 +39,7 @@ export const Slides: React.FC<{
               sources: [],
               alt: alt || '',
               src: media,
+              className: mediaClassName,
             },
             videoProps: {
               sources: [],
@@ -47,8 +49,8 @@ export const Slides: React.FC<{
               <HeadingButtonActionLayer
                 heading={description || ''}
                 label={buttonText || ''}
+                headingClassName={descriptionClasses}
                 onClick={buttonOnClick}
-                className={descriptionClasses}
               />
             ),
             containerStyle: {},
