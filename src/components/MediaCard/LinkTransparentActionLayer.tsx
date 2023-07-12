@@ -5,7 +5,10 @@ const LinkTransparent: React.FC<{
   href: string;
 }> = ({ href }) => (
   <>
-    <a href={href} className="flex flex-col justify-end h-full w-full"></a>
+    <a
+      href={href}
+      className="link-transparent-action-layer flex flex-col justify-end h-full w-full"
+    ></a>
   </>
 );
 

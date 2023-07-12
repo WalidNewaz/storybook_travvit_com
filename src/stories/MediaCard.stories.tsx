@@ -19,6 +19,13 @@ import womanWebm from './video/woman-lake-1080p.webm';
 export default {
   title: 'Components/Media Card',
   component: MediaCard,
+  decorators: [
+    (story) => (
+      <div className="bg-travvit-orange/10 max-w-[80rem] h-[50vh] flex">
+        {story()}
+      </div>
+    ),
+  ],
   tags: ['autodocs'],
 } as Meta;
 
@@ -39,26 +46,29 @@ const imageProps = {
   sources: imgSources,
   src: mountainsLake,
   alt: 'Moutains and lakes',
-  className: 'rounded-3xl',
+  className: 'rounded-3xl w-[80rem] h-[50vh]',
 };
 
 export const Image: Story = {
   name: 'Image Card',
   render: () => (
-    <MediaCard
-      imageProps={imageProps}
-      mediaType="image"
-      actionLayer={
-        <HeadingButtonActionLayer
-          heading="USA Trip Planner: Design Your Perfect Vacation"
-          label="Explore"
-          onClick={() => {
-            console.log('You clicked me!');
-          }}
-        />
-      }
-      mediaStyle={{ height: '90vh' }}
-    />
+    <div className="w-[80rem] h-[50vh] flex flex-col relative">
+      <MediaCard
+        imageProps={imageProps}
+        mediaType="image"
+        actionLayer={
+          <HeadingButtonActionLayer
+            heading="USA Trip Planner: Design Your Perfect Vacation"
+            label="Explore"
+            className="h-1/2"
+            headingClassName="text-4xl drop-shadow-xl font-semibold text-center"
+            onClick={() => {
+              console.log('You clicked me!');
+            }}
+          />
+        }
+      />
+    </div>
   ),
 };
 
@@ -72,25 +82,29 @@ const videoProps = {
   requiredMediaType: 'video/webm',
   controls: true,
   autoPlay: true,
-  className: 'rounded-3xl',
+  className: 'rounded-3xl w-[80rem] h-full',
 };
 
 export const Video: Story = {
   name: 'Video Card',
   render: () => (
-    <MediaCard
-      videoProps={videoProps}
-      mediaType="video"
-      actionLayer={
-        <HeadingButtonActionLayer
-          heading="USA Trip Planner: Design Your Perfect Vacation"
-          label="Explore"
-          onClick={() => {
-            console.log('You clicked me!');
-          }}
-        />
-      }
-    />
+    <div className="w-[80rem] h-full flex flex-col relative">
+      <MediaCard
+        videoProps={videoProps}
+        mediaType="video"
+        actionLayer={
+          <HeadingButtonActionLayer
+            heading="USA Trip Planner: Design Your Perfect Vacation"
+            label="Explore"
+            className="h-1/2"
+            headingClassName="text-4xl drop-shadow-xl font-semibold text-center"
+            onClick={() => {
+              console.log('You clicked me!');
+            }}
+          />
+        }
+      />
+    </div>
   ),
 };
 
@@ -101,6 +115,7 @@ export const HeadingButtonAction: Story = {
       <HeadingButtonActionLayer
         heading="USA Trip Planner: Design Your Perfect Vacation"
         label="Explore"
+        headingClassName="text-2xl drop-shadow-xl font-semibold text-center"
         onClick={() => {
           console.log('You clicked me!');
         }}
@@ -140,6 +155,7 @@ export const SocialCategoryAction: Story = {
         likeHandler={() => alert('You clicked like!')}
         addHandler={() => alert('You clicked add!')}
         shareHandler={() => alert('You clicked share!')}
+        className="w-56 h-60"
       />
     </div>
   ),

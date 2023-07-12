@@ -41,7 +41,27 @@ const avatarProps = [
   },
 ];
 
-export const GroupOfPeople: Story = {
+export const xs: Story = {
+  name: 'Extra Small',
+  args: {
+    AvatarComponent: Avatar,
+    groupMembers: avatarProps,
+    limit: 4,
+    size: 'xs',
+  },
+};
+
+export const Small: Story = {
+  name: 'Small',
+  args: {
+    AvatarComponent: Avatar,
+    groupMembers: avatarProps,
+    limit: 4,
+    size: 'small',
+  },
+};
+
+export const Medium: Story = {
   name: 'Medium',
   args: {
     AvatarComponent: Avatar,

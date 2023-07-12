@@ -8,11 +8,16 @@ const HeadingButtonAction: React.FC<{
   label: string;
   onClick: clickHandler;
   className?: string;
-}> = ({ heading, label, onClick, className = '' }) => (
+  headingClassName?: string;
+}> = ({ heading, label, onClick, className = '', headingClassName = '' }) => (
   <>
-    <h1 className={`text-center ${className}`}>{heading}</h1>
-    <div className="buttons pt-8">
-      <Button onClick={onClick} label={label} primary />
+    <div className={`heading-button-action-layer flex flex-col ${className}`}>
+      <div className="grow flex flex-col justify-center">
+        <h1 className={headingClassName}>{heading}</h1>
+      </div>
+      <div className="grow flex items-center justify-center">
+        <Button onClick={onClick} label={label} primary />
+      </div>
     </div>
   </>
 );

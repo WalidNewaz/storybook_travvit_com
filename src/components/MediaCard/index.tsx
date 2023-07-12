@@ -29,6 +29,7 @@ export interface MediaCardProps {
    * @default {}
    * */
   mediaStyle?: React.CSSProperties;
+  className?: string;
 }
 
 const CONTAINER_CLASSES = `media-card max-w-[100rem] overflow-hidden`;
@@ -55,11 +56,12 @@ export const MediaCard: React.FC<MediaCardProps> = ({
   actionLayer,
   containerStyle = {},
   mediaStyle = {},
+  className = '',
 }) => {
   return (
     <div
       style={containerStyle}
-      className={CONTAINER_CLASSES}
+      className={`${CONTAINER_CLASSES} ${className}`}
       aria-label="media-card" // Add aria-label attribute
       data-testid="media-card" // Add data-testid attribute
     >

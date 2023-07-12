@@ -1,45 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from '../Icons';
-import { MediaCard } from '../MediaCard';
-import HeadingButtonActionLayer from '../MediaCard/HeadingButtonActionLayer';
+import { Slides } from './Slides';
+import type { clickHandler } from '../../types/eventHandler.types';
+
+const SLIDE_DURATION = 5000;
+const INTERVAL_DELAY = 150;
+
+const SLIDE_CONTAINER_CLASSES = `hero-slider-container w-full`;
+const NAV_BUTTON_CLASSES = `absolute top-1/2 transform -translate-y-1/2 text-white`;
+const NAV_BUTTON_ICON_CLASSES = `w-24 h-24 text-slate-300 opacity-50 hover:opacity-80 hover:ease-in transition transition-opacity ease-in delay-${INTERVAL_DELAY}`;
 
 export type MediaTypes = 'image' | 'video';
 
-interface CardProps {
-  mediaType: string;
+export interface CardProps {
   media: string;
+  mediaType?: string;
   alt?: string;
   description?: string;
   descriptionClasses?: string;
   buttonText?: string;
-  buttonOnClick?: () => void;
-  link?: string;
-  containerClasses?: string;
-  containerStyle?: React.CSSProperties;
-  mediaClasses?: string;
+  buttonOnClick?: clickHandler;
+  // link?: string;
+  // containerClasses?: string;
+  // containerStyle?: React.CSSProperties;
+  // mediaClasses?: string;
   mediaStyle?: React.CSSProperties;
+  className?: string;
 }
 
 interface HeroSliderProps {
   slides: Array<CardProps>;
-  SlideComponent?: React.FC<any>;
   containerClasses?: string;
   containerStyle?: React.CSSProperties;
   slideContainerClasses?: string;
   mediaStyle?: React.CSSProperties;
 }
 
-const SLIDE_DURATION = 5000;
-const INTERVAL_DELAY = 150;
-
-const SLIDE_CONTAINER_CLASSES = `w-full`;
-const SLIDE_CLASSES = `absolute top-0 left-0 w-full h-full transition-opacity duration-500`;
-const NAV_BUTTON_CLASSES = `absolute top-1/2 transform -translate-y-1/2 text-white`;
-const NAV_BUTTON_ICON_CLASSES = `w-24 h-24 text-slate-300 opacity-50 hover:opacity-80 hover:ease-in transition transition-opacity ease-in delay-${INTERVAL_DELAY}`;
-
+/**
+ * A Hero Slider is generally used as a media slider at the top of a
+ * page's content section.
+ *
+ * @returns A JSX media slider component.
+ */
 export const HeroSlider: React.FC<HeroSliderProps> = ({
   slides,
-  SlideComponent,
   containerClasses,
   containerStyle,
   mediaStyle = {},
@@ -72,56 +76,11 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
       style={containerStyle}
       data-testid="slider-container" // Add data-testid attribute here
     >
-      {slides.map(
-        (
-          {
-            media,
-            alt = '',
-            description = '',
-            buttonText = '',
-            descriptionClasses,
-            buttonOnClick = () => undefined,
-            mediaStyle: slideMediaStyle = null,
-          },
-          index,
-        ) => (
-          <div
-            key={index}
-            className={`${SLIDE_CLASSES} ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-            data-testid={`slide-media-${index}`} // Add data-testid attribute
-          >
-            {SlideComponent && (
-              <MediaCard
-                {...{
-                  mediaType: 'image',
-                  imageProps: {
-                    sources: [],
-                    alt: alt || '',
-                    src: media,
-                  },
-                  videoProps: {
-                    sources: [],
-                    requiredMediaType: '',
-                  },
-                  actionLayer: (
-                    <HeadingButtonActionLayer
-                      heading={description || ''}
-                      label={buttonText || ''}
-                      onClick={buttonOnClick}
-                      className={descriptionClasses}
-                    />
-                  ),
-                  containerStyle: {},
-                  mediaStyle: slideMediaStyle ? slideMediaStyle : mediaStyle,
-                }}
-              />
-            )}
-          </div>
-        ),
-      )}
-
+      <Slides
+        slides={slides}
+        currentSlide={currentSlide}
+        mediaStyle={mediaStyle}
+      />
       <div id="slider-nav" className="static pt-[22rem]">
         <button
           className={`${NAV_BUTTON_CLASSES} left-2`}

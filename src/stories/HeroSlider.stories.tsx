@@ -32,6 +32,7 @@ const storySlides = [
     buttonText: 'Explore',
     buttonOnClick: () => undefined,
     containerClasses: 'max-w-[80rem]',
+    className: 'w-[90vh]',
   },
   {
     media: zion,
@@ -42,6 +43,7 @@ const storySlides = [
     buttonText: 'Explore',
     buttonOnClick: () => undefined,
     containerClasses: 'max-w-[80rem]',
+    className: 'w-[90vh]',
   },
   {
     media: ynp,
@@ -52,6 +54,7 @@ const storySlides = [
     buttonText: 'Explore',
     buttonOnClick: () => undefined,
     containerClasses: 'max-w-[80rem]',
+    className: 'w-[90vh]',
   },
 ];
 
@@ -60,8 +63,8 @@ export const Default: Story = {
   render: () => (
     <HeroSlider
       slides={storySlides}
-      SlideComponent={MediaCard}
       containerClasses="max-w-[80rem]"
+      // mediaStyle={{ height: '90vh' }}
     />
   ),
 };

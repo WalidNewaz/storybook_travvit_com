@@ -43,6 +43,7 @@ export const MediaLayer: React.FC<MediaLayerProps> = ({
     media = (
       <ResponsiveVideo
         {...videoProps}
+        className={`responsive-vid ${videoProps.className}`}
         aria-label="media-video"
         data-testid="media-video"
       />

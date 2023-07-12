@@ -25,7 +25,7 @@ const SocialCategoryAction: React.FC<{
   return (
     <>
       <div
-        className={`social-category-action flex flex-col items-end justify-end ${className}`}
+        className={`social-category-action-layer flex flex-col items-end justify-end ${className}`}
       >
         <div className="grow">
           <LikeActionIcon
