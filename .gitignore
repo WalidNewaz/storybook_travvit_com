@@ -4,3 +4,4 @@ public
 src/gatsby-types.d.ts
 .vscode/
 /coverage
+.DS_Store

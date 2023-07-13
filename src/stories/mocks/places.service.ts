@@ -9,4 +9,12 @@ export default class PlacesService {
   async getPlacesNearMe(): Promise<PlaceCardType[]> {
     return popularPlaces;
   }
+
+  async getPlacesNearPlace(): Promise<PlaceCardType[]> {
+    return popularPlaces;
+  }
+
+  async getPlaceInfo() {
+    return null;
+  }
 }

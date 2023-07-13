@@ -3,3 +3,20 @@ export type clickHandler =
   | (() => Promise<void>)
   | (() => void)
   | undefined;
+
+/**
+ * Type of method that receives a data as an argument,
+ * returns a void or a promise.
+ */
+type genericDataHandler =
+  | ((data: any) => void)
+  | ((data: any) => Promise<void>)
+  | (() => Promise<void>)
+  | (() => void)
+  | undefined;
+
+export type likeHandler = genericDataHandler;
+
+export type addHandler = genericDataHandler;
+
+export type shareHandler = genericDataHandler;
