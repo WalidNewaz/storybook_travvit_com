@@ -6,10 +6,12 @@ import { FullPageScroll } from '../components/FullPageScroll/FullPageScroll';
 import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
 import { Header as TravvitHeader } from '../components/TravvitHeader/Header';
 import { PlaceCardGroup } from '../components/ContentCardGroup/PlaceCardGroup';
-import { PlaceCardType } from '../interfaces';
+import { ActivityCardGroup } from '../components/ContentCardGroup/ActivityCardGroup';
+import { PlaceCardType, ActivitySummaryType } from '../interfaces';
 
 /** Services */
 import PlacesService from './mocks/places.service';
+import ActivitiesService from './mocks/activities.service';
 
 /** Assets */
 import { menuItems } from './mocks/menuItems';
@@ -37,6 +39,7 @@ type Story = StoryObj<typeof FullPageScroll>;
 
 /** Setup */
 const placesService = new PlacesService();
+const activitiesService = new ActivitiesService();
 
 const PlacesPage: React.FC = () => {
   const [popularPlaces, setPopularPlaces] = useState<PlaceCardType[] | null>(
@@ -108,6 +111,9 @@ const PlacePage: React.FC = () => {
   const [nearbyPlaces, setNearbyPlaces] = useState<PlaceCardType[] | null>(
     null,
   );
+  const [nearbyActivities, setNearbyActivities] = useState<
+    ActivitySummaryType[] | null
+  >(null);
 
   useEffect(() => {
     const fetchNearbyPlaces = async () => {
@@ -115,6 +121,12 @@ const PlacePage: React.FC = () => {
       setNearbyPlaces(result);
     };
     fetchNearbyPlaces();
+
+    const fetchNearbyActivities = async () => {
+      const result = await activitiesService.getActivitiesNearMe();
+      setNearbyActivities(result);
+    };
+    fetchNearbyActivities();
   }, []);
 
   return (
@@ -139,6 +151,20 @@ const PlacePage: React.FC = () => {
       <h1 className="xs:text-2xl sm:text-3xl md:text-4xl capitalize my-8 ml-1 mt-8 text-slate-600">
         Exciting activities @ Rocky Mountain National Park
       </h1>
+      <section className={`activities-nearby places-group`}>
+        {nearbyActivities && (
+          <ActivityCardGroup
+            activities={nearbyActivities}
+            likeHandler={(data) => alert(`Your are about to like: ${data}!`)}
+            addHandler={(data) =>
+              alert(`You are adding ${data} to your wishlist.`)
+            }
+            shareHandler={(data) =>
+              alert(`You are about to share ${data} with others.`)
+            }
+          />
+        )}
+      </section>
     </main>
   );
 };

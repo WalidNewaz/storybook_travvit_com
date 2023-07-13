@@ -28,7 +28,7 @@ export const ActivityCardGroup: React.FC<{
       placeSlug={`/places/${activity.place.slug}/${activity.place.id}`}
       createdBy={activity.createdBy.name}
       createdBySrc={activity.createdBy.avatar}
-      createdByLink={activity.createdBy.slug}
+      createdByLink={`/explorers/${activity.createdBy.slug}/${activity.createdBy.id}`}
       rating={activity.rating}
     />
   ));
