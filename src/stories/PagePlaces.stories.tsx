@@ -131,7 +131,7 @@ const PlacePage: React.FC = () => {
 
   return (
     <main className="page-places">
-      <h1 className="xs:text-2xl sm:text-3xl md:text-4xl capitalize my-8 ml-1 mt-8 text-slate-600">
+      <h1 className="section-header">
         Places around Rocky Mountain National Park
       </h1>
       <section className={`popular-places places-group`}>
@@ -148,7 +148,7 @@ const PlacePage: React.FC = () => {
           />
         )}
       </section>
-      <h1 className="xs:text-2xl sm:text-3xl md:text-4xl capitalize my-8 ml-1 mt-8 text-slate-600">
+      <h1 className="section-header">
         Exciting activities @ Rocky Mountain National Park
       </h1>
       <section className={`activities-nearby places-group`}>

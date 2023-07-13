@@ -131,6 +131,6 @@
   }
 
   .section-header {
-    @apply xs:text-2xl sm:text-4xl md:text-5xl capitalize my-8 ml-1 mt-8 text-slate-600;
+    @apply xs:text-2xl sm:text-3xl md:text-4xl capitalize my-8 ml-1 mt-8 text-slate-600;
   }
 }
