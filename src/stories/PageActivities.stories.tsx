@@ -5,6 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { FullPageScroll } from '../components/FullPageScroll/FullPageScroll';
 import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
 import { Header as TravvitHeader } from '../components/TravvitHeader/Header';
+import { ActivityCard } from '../components/ContentCard/ActivityCard';
 import { IconButton } from '../components/IconButton/IconButton';
 import { FaPersonHiking, FaCampground, FaPersonSkiing } from 'react-icons/fa6';
 import { GiMountainClimbing } from 'react-icons/gi';
@@ -15,6 +16,8 @@ import PlacesService from './mocks/places.service';
 
 /** Assets */
 import { menuItems } from './mocks/menuItems';
+import hikingImgJpeg from './images/hennadii-hryshyn-hiking-lg.jpeg';
+import face1 from './images/img_7.jpeg';
 
 export default {
   title: 'Pages/Activities',
@@ -75,14 +78,64 @@ const ActivitiesButtons: React.FC = () => (
   </>
 );
 
+// const PopularActivities: React.FC = () => {};
+
+const imagePropsHiking = {
+  sources: [],
+  src: 'hennadii-hryshyn-hiking-lg.jpeg',
+  alt: 'Hiking',
+  className: '',
+};
+
+const imagePropsClimbing = {
+  sources: [],
+  src: 'fionn-claydon-climbing-lg.jpeg',
+  alt: 'Climbing',
+  className: '',
+};
+
 const ActivitiesPage: React.FC = () => {
   return (
     <main className="page-activities">
       <h1 className="section-header">All Activities</h1>
-      <section className={`popular-activities flex`}>
+      <section className={`all-activities flex`}>
         <ActivitiesButtons />
       </section>
       <h1 className="section-header">Popular Activities</h1>
+      <section className={`popular-activities places-group`}>
+        <ActivityCard
+          mediaType="image"
+          imageProps={imagePropsHiking}
+          likeHandler={() => alert('You clicked like!')}
+          addHandler={() => alert('You clicked add!')}
+          shareHandler={() => alert('You clicked share!')}
+          badges={[]}
+          heading="Lake Haiyaha Hike"
+          headingLink="#"
+          subHeading="Rocky Mountain National Park"
+          subHeadingLink="#"
+          createdBy="Jane Doe"
+          createdBySrc="img_7.jpeg"
+          createdByLink="/explorer/@jane-doe"
+          rating="4.5"
+        />
+        <ActivityCard
+          mediaType="image"
+          imageProps={imagePropsClimbing}
+          likeHandler={() => alert('You clicked like!')}
+          addHandler={() => alert('You clicked add!')}
+          shareHandler={() => alert('You clicked share!')}
+          badges={[]}
+          heading="Lake Haiyaha Hike"
+          headingLink="#"
+          subHeading="Rocky Mountain National Park"
+          subHeadingLink="#"
+          createdBy="Jane Doe"
+          createdBySrc="img_7.jpeg"
+          createdByLink="/explorer/@jane-doe"
+          rating="4.5"
+        />
+      </section>
     </main>
   );
 };

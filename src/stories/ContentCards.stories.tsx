@@ -8,16 +8,6 @@ import { ActivityCard } from '../components/ContentCard/ActivityCard';
 import { TripCard } from '../components/ContentCard/TripCard';
 import { ExplorerCard } from '../components/ContentCard/ExplorerCard';
 
-/** Assets */
-import mountainsLake from './images/mountains_lake.jpeg';
-import mountainsLakePng from './images/mountains_lake.png';
-import mountainsLakeWebp from './images/mountains_lake.webp';
-import lakeHaiyaha from './images/lake_haiyaha.jpeg';
-import trailRun from './images/Ready-set-trail-How-to-prepare-for-trail-running-small.jpeg';
-import face1 from './images/img_7.jpeg';
-import face2 from './images/img_10.jpeg';
-import face3 from './images/img_30.jpeg';
-
 export default {
   title: 'Components/Content Cards',
   component: ContentCard,
@@ -36,17 +26,17 @@ type Story = StoryObj<typeof ContentCard>;
 const imgSourcesPlace = [
   {
     type: 'image/webp',
-    srcSet: mountainsLakeWebp,
+    srcSet: 'mountains_lake.webp',
   },
   {
     type: 'image/png',
-    srcSet: mountainsLakePng,
+    srcSet: 'mountains_lake.png',
   },
 ];
 
 const imagePropsPlace = {
   sources: imgSourcesPlace,
-  src: mountainsLake,
+  src: 'mountains_lake.jpeg',
   alt: 'Moutains and lakes',
   className: '',
 };
@@ -72,7 +62,7 @@ export const Place: Story = {
 
 const imagePropsActivity = {
   sources: [],
-  src: lakeHaiyaha,
+  src: 'lake_haiyaha.jpeg',
   alt: 'Moutains and lakes',
   className: '',
 };
@@ -92,7 +82,7 @@ export const Activity: Story = {
       subHeading="Rocky Mountain National Park"
       subHeadingLink="#"
       createdBy="Jane Doe"
-      createdBySrc={face1}
+      createdBySrc={'img_7.jpeg'}
       createdByLink="/explorer/@jane-doe"
       rating="4.5"
     />
@@ -101,30 +91,30 @@ export const Activity: Story = {
 
 const imagePropsTrip = {
   sources: [],
-  src: trailRun,
+  src: 'Ready-set-trail-How-to-prepare-for-trail-running-small.jpeg',
   alt: 'Trail running at RMNP',
   className: '',
 };
 
 const avatarProps = [
   {
-    src: face1 as string,
-    alt: 'face1',
+    src: 'img_7.jpeg' as string,
+    alt: 'Jane Doe',
   },
   {
-    src: face2 as string,
+    src: 'img_10.jpeg' as string,
     alt: 'face2',
   },
   {
-    src: face3 as string,
+    src: 'img_30.jpeg' as string,
     alt: 'face3',
   },
   {
-    src: face2 as string,
+    src: 'img_10.jpeg' as string,
     alt: 'face2',
   },
   {
-    src: face3 as string,
+    src: 'img_30.jpeg' as string,
     alt: 'face3',
   },
 ];
@@ -155,7 +145,7 @@ export const Explorer: Story = {
   name: 'Explorer Card',
   render: () => (
     <ExplorerCard
-      src={face3}
+      src={'img_30.jpeg'}
       name="Jane Doe"
       profileLink="/explorer/@jane-doe"
       explorerLocation="Colorado, USA"

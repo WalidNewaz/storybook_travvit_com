@@ -7,6 +7,15 @@ import { PiStarFill } from 'react-icons/pi';
 import type { clickHandler } from '../../types/eventHandler.types';
 import { Avatar } from '../Avatar/Avatar';
 
+const MEDIA_DIMS_CLASSNAME = `
+  w-[22rem] h-80
+  lg:w-[19rem] h-[19rem]
+`;
+const DESC_DIMS_CLASSNAME = `
+  mt-[20rem] mx-4
+  lg:mt-[20rem] mx-4
+`;
+
 export const ActivityCard: React.FC<{
   mediaType: 'image' | 'video';
   imageProps: ResponsiveImageProps;
@@ -22,6 +31,7 @@ export const ActivityCard: React.FC<{
   createdBySrc: string;
   createdByLink: string;
   rating: string;
+  className?: string;
 }> = ({
   mediaType = 'image',
   imageProps,
@@ -37,13 +47,16 @@ export const ActivityCard: React.FC<{
   createdBySrc,
   createdByLink,
   rating,
+  className,
 }) => {
   return (
-    <div className="place-card flex flex-col relative w-96 h-80">
+    <div
+      className={`activity-card flex flex-col relative ${MEDIA_DIMS_CLASSNAME} ${className}`}
+    >
       <MediaCard
         imageProps={{
           ...imageProps,
-          className: `rounded-2xl w-96 h-80 ${imageProps.className}`,
+          className: `rounded-2xl ${MEDIA_DIMS_CLASSNAME} ${imageProps.className}`,
         }}
         mediaType={mediaType}
         actionLayer={
@@ -52,11 +65,11 @@ export const ActivityCard: React.FC<{
             likeHandler={likeHandler}
             addHandler={addHandler}
             shareHandler={shareHandler}
-            className="w-[22rem] h-80"
+            className={`${MEDIA_DIMS_CLASSNAME} pr-4`}
           />
         }
       />
-      <div className="card-description mt-[21rem] mx-4">
+      <div className={`card-description ${DESC_DIMS_CLASSNAME}`}>
         <a
           href={headingLink}
           className="text-travvit-blue-800 hover:text-travvit-blue"
