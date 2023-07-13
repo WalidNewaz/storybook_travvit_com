@@ -6,8 +6,14 @@ import { FullPageScroll } from '../components/FullPageScroll/FullPageScroll';
 import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
 import { Header as TravvitHeader } from '../components/TravvitHeader/Header';
 import { ActivityCard } from '../components/ContentCard/ActivityCard';
+import { CategoryCard } from '../components/ContentCard/CategoryCard';
 import { IconButton } from '../components/IconButton/IconButton';
-import { FaPersonHiking, FaCampground, FaPersonSkiing } from 'react-icons/fa6';
+import {
+  FaPersonHiking,
+  FaCampground,
+  FaPersonSkiing,
+  FaPersonRunning,
+} from 'react-icons/fa6';
 import { GiMountainClimbing } from 'react-icons/gi';
 import { MdDirectionsBike, MdOutlineSailing } from 'react-icons/md';
 
@@ -17,7 +23,7 @@ import PlacesService from './mocks/places.service';
 /** Assets */
 import { menuItems } from './mocks/menuItems';
 import hikingImgJpeg from './images/hennadii-hryshyn-hiking-lg.jpeg';
-import face1 from './images/img_7.jpeg';
+import face1 from './images/avatar-jane-1.jpeg';
 
 export default {
   title: 'Pages/Activities',
@@ -46,34 +52,34 @@ const placesService = new PlacesService();
 const ActivitiesButtons: React.FC = () => (
   <>
     <IconButton
-      className="flex mx-2"
+      className="flex m-2"
       label="Hiking"
       icon={<FaPersonHiking className="w-6 h-6" aria-hidden="true" />}
     />
     <IconButton
-      className="flex mx-2"
+      className="flex m-2"
       label="Climbing"
       icon={<GiMountainClimbing className="w-6 h-6" aria-hidden="true" />}
     />
     <IconButton
-      className="flex mx-2"
+      className="flex m-2"
       label="Camping"
       icon={<FaCampground className="w-6 h-6" aria-hidden="true" />}
     />
     <IconButton
-      className="flex mx-2"
+      className="flex m-2"
       label="Skiing"
       icon={<FaPersonSkiing className="w-6 h-6" aria-hidden="true" />}
     />
     <IconButton
-      className="flex mx-2"
+      className="flex m-2"
       label="Mtn Biking"
       icon={<MdDirectionsBike className="w-6 h-6" aria-hidden="true" />}
     />
     <IconButton
-      className="flex mx-2"
-      label="Sailing"
-      icon={<MdOutlineSailing className="w-6 h-6" aria-hidden="true" />}
+      className="flex m-2"
+      label="Running"
+      icon={<FaPersonRunning className="w-6 h-6" aria-hidden="true" />}
     />
   </>
 );
@@ -94,44 +100,76 @@ const imagePropsClimbing = {
   className: '',
 };
 
+const imagePropsCamping = {
+  sources: [],
+  src: 'patrick-hendry-camping-lg.jpeg',
+  alt: 'Camping',
+  className: '',
+};
+
+const imagePropsMtb = {
+  sources: [],
+  src: 'axel-brunst-mtn-biking.jpeg',
+  alt: 'MTB',
+  className: '',
+};
+
+const imagePropsActivity = {
+  sources: [],
+  src: 'lake_haiyaha.jpeg',
+  alt: 'Moutains and lakes',
+  className: '',
+};
+
 const ActivitiesPage: React.FC = () => {
   return (
     <main className="page-activities">
       <h1 className="section-header">All Activities</h1>
-      <section className={`all-activities flex`}>
+      <section className={`all-activities flex flex-wrap`}>
         <ActivitiesButtons />
       </section>
       <h1 className="section-header">Popular Activities</h1>
-      <section className={`popular-activities places-group`}>
-        <ActivityCard
-          mediaType="image"
+      <section className={`popular-activities category-group`}>
+        <CategoryCard
           imageProps={imagePropsHiking}
-          likeHandler={() => alert('You clicked like!')}
-          addHandler={() => alert('You clicked add!')}
-          shareHandler={() => alert('You clicked share!')}
-          badges={[]}
-          heading="Lake Haiyaha Hike"
-          headingLink="#"
-          subHeading="Rocky Mountain National Park"
-          subHeadingLink="#"
-          createdBy="Jane Doe"
-          createdBySrc="img_7.jpeg"
-          createdByLink="/explorer/@jane-doe"
-          rating="4.5"
+          heading="Hiking"
+          href="/activities/hiking"
+          mediaType="image"
         />
+        <CategoryCard
+          imageProps={imagePropsClimbing}
+          heading="Climbing"
+          href="/activities/climbing"
+          mediaType="image"
+        />
+        <CategoryCard
+          imageProps={imagePropsCamping}
+          heading="Camping"
+          href="/activities/camping"
+          mediaType="image"
+        />
+        <CategoryCard
+          imageProps={imagePropsMtb}
+          heading="MTB"
+          href="/activities/mtb"
+          mediaType="image"
+        />
+      </section>
+      <h1 className="section-header">Activities Near Me (25)</h1>
+      <section className={`activities-nearby places-group`}>
         <ActivityCard
           mediaType="image"
-          imageProps={imagePropsClimbing}
+          imageProps={imagePropsActivity}
           likeHandler={() => alert('You clicked like!')}
           addHandler={() => alert('You clicked add!')}
           shareHandler={() => alert('You clicked share!')}
-          badges={[]}
+          badges={['Hiking', 'Moderate']}
           heading="Lake Haiyaha Hike"
           headingLink="#"
           subHeading="Rocky Mountain National Park"
           subHeadingLink="#"
           createdBy="Jane Doe"
-          createdBySrc="img_7.jpeg"
+          createdBySrc={'avatar-jane-1.jpeg'}
           createdByLink="/explorer/@jane-doe"
           rating="4.5"
         />

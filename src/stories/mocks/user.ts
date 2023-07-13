@@ -1,4 +1,4 @@
-import face1 from '../images/img_7.jpeg';
+import face1 from '../images/avatar-jane-1.jpeg';
 import { User } from '../../interfaces/';
 
 export const user: User<'admin' | 'user'> = {

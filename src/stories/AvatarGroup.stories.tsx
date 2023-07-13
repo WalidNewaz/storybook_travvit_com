@@ -5,10 +5,10 @@ import { AvatarGroup } from '../components/AvatarGroup/AvatarGroup';
 import { Avatar } from '../components/Avatar/Avatar';
 
 /** Assets */
-import face1 from './images/img_7.jpeg';
-import face2 from './images/img_10.jpeg';
-import face3 from './images/img_30.jpeg';
-import face4 from './images/timothy-paul-smith-256424.jpeg';
+import face1 from './images/avatar-jane-1.jpeg';
+import face2 from './images/avatar-jane-2.jpeg';
+import face3 from './images/avatar-jane-3.jpeg';
+import face4 from './images/avatar-timothy-paul-smith.jpeg';
 
 export default {
   title: 'Components/AvatarGroup',

@@ -7,6 +7,7 @@ import { PlaceCard } from '../components/ContentCard/PlaceCard';
 import { ActivityCard } from '../components/ContentCard/ActivityCard';
 import { TripCard } from '../components/ContentCard/TripCard';
 import { ExplorerCard } from '../components/ContentCard/ExplorerCard';
+import { CategoryCard } from '../components/ContentCard/CategoryCard';
 
 export default {
   title: 'Components/Content Cards',
@@ -82,7 +83,7 @@ export const Activity: Story = {
       subHeading="Rocky Mountain National Park"
       subHeadingLink="#"
       createdBy="Jane Doe"
-      createdBySrc={'img_7.jpeg'}
+      createdBySrc={'avatar-jane-1.jpeg'}
       createdByLink="/explorer/@jane-doe"
       rating="4.5"
     />
@@ -98,23 +99,23 @@ const imagePropsTrip = {
 
 const avatarProps = [
   {
-    src: 'img_7.jpeg' as string,
+    src: 'avatar-jane-1.jpeg' as string,
     alt: 'Jane Doe',
   },
   {
-    src: 'img_10.jpeg' as string,
+    src: 'avatar-jane-2.jpeg' as string,
     alt: 'face2',
   },
   {
-    src: 'img_30.jpeg' as string,
+    src: 'avatar-jane-3.jpeg' as string,
     alt: 'face3',
   },
   {
-    src: 'img_10.jpeg' as string,
+    src: 'avatar-jane-2.jpeg' as string,
     alt: 'face2',
   },
   {
-    src: 'img_30.jpeg' as string,
+    src: 'avatar-jane-3.jpeg' as string,
     alt: 'face3',
   },
 ];
@@ -145,13 +146,32 @@ export const Explorer: Story = {
   name: 'Explorer Card',
   render: () => (
     <ExplorerCard
-      src={'img_30.jpeg'}
+      src={'avatar-jane-3.jpeg'}
       name="Jane Doe"
       profileLink="/explorer/@jane-doe"
       explorerLocation="Colorado, USA"
       locationLink="/places/colorado"
       numTrips={5}
       followHandler={() => alert('You clicked follow!')}
+    />
+  ),
+};
+
+const imagePropsCategory = {
+  sources: [],
+  src: 'Ready-set-trail-How-to-prepare-for-trail-running-small.jpeg',
+  alt: 'Trail running at RMNP',
+  className: '',
+};
+
+export const Category: Story = {
+  name: 'Category Card',
+  render: () => (
+    <CategoryCard
+      imageProps={imagePropsCategory}
+      heading="Trail running"
+      href="/activities/trail-running"
+      mediaType={'image'}
     />
   ),
 };

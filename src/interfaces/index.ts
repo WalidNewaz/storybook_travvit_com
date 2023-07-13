@@ -51,3 +51,21 @@ export interface PlaceCardType {
   locationSlug: string;
   rating: string | number;
 }
+
+export interface ActivityCardType {
+  mediaType: 'image' | 'video';
+  imageProps: ResponsiveImageProps;
+  likeHandler: clickHandler;
+  addHandler: clickHandler;
+  shareHandler: clickHandler;
+  badges: Array<string>;
+  heading: string;
+  headingLink: string;
+  subHeading: string;
+  subHeadingLink: string;
+  createdBy: string;
+  createdBySrc: string;
+  createdByLink: string;
+  rating: string;
+  className?: string;
+}

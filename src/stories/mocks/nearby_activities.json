@@ -1,0 +1,208 @@
+[
+  {
+    "id": "1",
+    "mediaType": "image",
+    "imageProps": {
+      "sources": [
+        {
+          "srcSet": "RMNP.webp",
+          "type": "image/webp"
+        }
+      ],
+      "src": "RMNP.jpeg",
+      "alt": "Moutains and lakes",
+      "className": ""
+    },
+    "badges": ["Hiking", "Camping", "National Park"],
+    "name": "Rocky Mountain National Park",
+    "slug": "rocky-mountain-national-park",
+    "place": "Colorado, USA",
+    "placeSlug": "colorado-usa",
+    "createdBy": {
+      "name": "John Doe",
+      "avatar": "",
+      "slug": "john-doe"
+    },
+    "rating": 4.5
+  },
+  {
+    "id": "1",
+    "mediaType": "image",
+    "imageProps": {
+      "sources": [
+        {
+          "srcSet": "RMNP.webp",
+          "type": "image/webp"
+        },
+        {
+          "srcSet": "RMNP.png",
+          "type": "image/png"
+        }
+      ],
+      "src": "RMNP.jpeg",
+      "alt": "Moutains and lakes",
+      "className": ""
+    },
+    "badges": ["Hiking", "Camping", "National Park"],
+    "name": "Rocky Mountain National Park",
+    "slug": "rocky-mountain-national-park",
+    "place": "Colorado, USA",
+    "placeSlug": "colorado-usa",
+    "createdBy": {
+      "name": "John Doe",
+      "avatar": "",
+      "slug": "john-doe"
+    },
+    "rating": 4.5
+  },
+  {
+    "id": "1",
+    "mediaType": "image",
+    "imageProps": {
+      "sources": [
+        {
+          "srcSet": "RMNP.webp",
+          "type": "image/webp"
+        },
+        {
+          "srcSet": "RMNP.png",
+          "type": "image/png"
+        }
+      ],
+      "src": "RMNP.jpeg",
+      "alt": "Moutains and lakes",
+      "className": ""
+    },
+    "badges": ["Hiking", "Camping", "National Park"],
+    "name": "Rocky Mountain National Park",
+    "slug": "rocky-mountain-national-park",
+    "place": "Colorado, USA",
+    "placeSlug": "colorado-usa",
+    "createdBy": {
+      "name": "John Doe",
+      "avatar": "",
+      "slug": "john-doe"
+    },
+    "rating": 4.5
+  },
+  {
+    "id": "1",
+    "mediaType": "image",
+    "imageProps": {
+      "sources": [
+        {
+          "srcSet": "RMNP.webp",
+          "type": "image/webp"
+        },
+        {
+          "srcSet": "RMNP.png",
+          "type": "image/png"
+        }
+      ],
+      "src": "RMNP.jpeg",
+      "alt": "Moutains and lakes",
+      "className": ""
+    },
+    "badges": ["Hiking", "Camping", "National Park"],
+    "name": "Rocky Mountain National Park",
+    "slug": "rocky-mountain-national-park",
+    "place": "Colorado, USA",
+    "placeSlug": "colorado-usa",
+    "createdBy": {
+      "name": "John Doe",
+      "avatar": "",
+      "slug": "john-doe"
+    },
+    "rating": 4.5
+  },
+  {
+    "id": "1",
+    "mediaType": "image",
+    "imageProps": {
+      "sources": [
+        {
+          "srcSet": "RMNP.webp",
+          "type": "image/webp"
+        },
+        {
+          "srcSet": "RMNP.png",
+          "type": "image/png"
+        }
+      ],
+      "src": "RMNP.jpeg",
+      "alt": "Moutains and lakes",
+      "className": ""
+    },
+    "badges": ["Hiking", "Camping", "National Park"],
+    "name": "Rocky Mountain National Park",
+    "slug": "rocky-mountain-national-park",
+    "place": "Colorado, USA",
+    "placeSlug": "colorado-usa",
+    "createdBy": {
+      "name": "John Doe",
+      "avatar": "",
+      "slug": "john-doe"
+    },
+    "rating": 4.5
+  },
+  {
+    "id": "1",
+    "mediaType": "image",
+    "imageProps": {
+      "sources": [
+        {
+          "srcSet": "RMNP.webp",
+          "type": "image/webp"
+        },
+        {
+          "srcSet": "RMNP.png",
+          "type": "image/png"
+        }
+      ],
+      "src": "RMNP.jpeg",
+      "alt": "Moutains and lakes",
+      "className": ""
+    },
+    "badges": ["Hiking", "Camping", "National Park"],
+    "name": "Rocky Mountain National Park",
+    "slug": "rocky-mountain-national-park",
+    "place": "Colorado, USA",
+    "placeSlug": "colorado-usa",
+    "createdBy": {
+      "name": "John Doe",
+      "avatar": "",
+      "slug": "john-doe"
+    },
+    "rating": 4.5
+  },
+  {
+    "id": "1",
+    "mediaType": "image",
+    "imageProps": {
+      "sources": [
+        {
+          "srcSet": "RMNP.webp",
+          "type": "image/webp"
+        },
+        {
+          "srcSet": "RMNP.png",
+          "type": "image/png"
+        }
+      ],
+      "src": "RMNP.jpeg",
+      "alt": "Moutains and lakes",
+      "className": ""
+    },
+    "badges": ["Hiking", "Camping", "National Park"],
+    "name": "Rocky Mountain National Park",
+    "slug": "rocky-mountain-national-park",
+    "place": "Colorado, USA",
+    "placeSlug": "colorado-usa",
+    "createdBy": {
+      "name": "John Doe",
+      "avatar": "",
+      "slug": "john-doe"
+    },
+    "rating": 4.5
+  }
+]

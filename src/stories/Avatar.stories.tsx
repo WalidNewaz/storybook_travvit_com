@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Avatar } from '../components/Avatar/Avatar';
 
 /** Assets */
-import face1 from './images/img_7.jpeg';
+import face1 from './images/avatar-jane-1.jpeg';
 
 export default {
   title: 'Components/Avatar',
