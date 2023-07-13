@@ -53,19 +53,42 @@ export interface PlaceCardType {
 }
 
 export interface ActivityCardType {
+  id: string;
   mediaType: 'image' | 'video';
   imageProps: ResponsiveImageProps;
   likeHandler: clickHandler;
   addHandler: clickHandler;
   shareHandler: clickHandler;
   badges: Array<string>;
-  heading: string;
-  headingLink: string;
-  subHeading: string;
-  subHeadingLink: string;
+  name: string;
+  slug: string;
+  place: string;
+  placeSlug: string;
   createdBy: string;
   createdBySrc: string;
   createdByLink: string;
+  rating: string;
+  className?: string;
+}
+
+export interface ActivitySummaryType {
+  id: string;
+  mediaType: 'image' | 'video';
+  imageProps: ResponsiveImageProps;
+  badges: Array<string>;
+  name: string;
+  slug: string;
+  place: {
+    id: string;
+    name: string;
+    slug: string;
+  };
+  createdBy: {
+    id: string;
+    name: string;
+    avatar: string;
+    slug: string;
+  };
   rating: string;
   className?: string;
 }

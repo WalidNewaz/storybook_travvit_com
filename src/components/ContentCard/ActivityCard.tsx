@@ -23,10 +23,10 @@ export const ActivityCard: React.FC<{
   addHandler: clickHandler;
   shareHandler: clickHandler;
   badges: Array<string>;
-  heading: string;
-  headingLink: string;
-  subHeading: string;
-  subHeadingLink: string;
+  name: string;
+  slug: string;
+  place: string;
+  placeSlug: string;
   createdBy: string;
   createdBySrc: string;
   createdByLink: string;
@@ -39,10 +39,10 @@ export const ActivityCard: React.FC<{
   addHandler,
   shareHandler,
   badges,
-  heading,
-  headingLink,
-  subHeading,
-  subHeadingLink,
+  name,
+  slug,
+  place,
+  placeSlug,
   createdBy,
   createdBySrc,
   createdByLink,
@@ -71,16 +71,16 @@ export const ActivityCard: React.FC<{
       />
       <div className={`card-description ${DESC_DIMS_CLASSNAME}`}>
         <a
-          href={headingLink}
+          href={slug}
           className="text-travvit-blue-800 hover:text-travvit-blue"
         >
-          <h2>{heading}</h2>
+          <h2>{name}</h2>
         </a>
         <a
-          href={subHeadingLink}
+          href={placeSlug}
           className="text-slate-500 hover:text-slate-700 uppercase"
         >
-          <p className="my-2">{subHeading}</p>
+          <p className="my-2">{place}</p>
         </a>
         <div>
           <Avatar size="xs" src={createdBySrc} className="mr-2 mb-2" />

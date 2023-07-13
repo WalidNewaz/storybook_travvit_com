@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 /** Component */
@@ -16,9 +16,12 @@ import {
 } from 'react-icons/fa6';
 import { GiMountainClimbing } from 'react-icons/gi';
 import { MdDirectionsBike, MdOutlineSailing } from 'react-icons/md';
+import { ActivityCardGroup } from '../components/ContentCardGroup/ActivityCardGroup';
+import { ActivitySummaryType } from '../interfaces';
 
 /** Services */
 import PlacesService from './mocks/places.service';
+import ActivitiesService from './mocks/activities.service';
 
 /** Assets */
 import { menuItems } from './mocks/menuItems';
@@ -48,6 +51,7 @@ type Story = StoryObj<typeof FullPageScroll>;
 
 /** Setup */
 const placesService = new PlacesService();
+const activitiesService = new ActivitiesService();
 
 const ActivitiesButtons: React.FC = () => (
   <>
@@ -84,7 +88,7 @@ const ActivitiesButtons: React.FC = () => (
   </>
 );
 
-// const PopularActivities: React.FC = () => {};
+// const NearbyActivities: React.FC = () => {};
 
 const imagePropsHiking = {
   sources: [],
@@ -122,6 +126,18 @@ const imagePropsActivity = {
 };
 
 const ActivitiesPage: React.FC = () => {
+  const [nearbyActivities, setNearbyActivities] = useState<
+    ActivitySummaryType[] | null
+  >(null);
+
+  useEffect(() => {
+    const fetchNearbyActivities = async () => {
+      const result = await activitiesService.getActivitiesNearMe();
+      setNearbyActivities(result);
+    };
+    fetchNearbyActivities();
+  }, []);
+
   return (
     <main className="page-activities">
       <h1 className="section-header">All Activities</h1>
@@ -155,24 +171,22 @@ const ActivitiesPage: React.FC = () => {
           mediaType="image"
         />
       </section>
-      <h1 className="section-header">Activities Near Me (25)</h1>
+      <h1 className="section-header">
+        Activities Near Me ({nearbyActivities?.length})
+      </h1>
       <section className={`activities-nearby places-group`}>
-        <ActivityCard
-          mediaType="image"
-          imageProps={imagePropsActivity}
-          likeHandler={() => alert('You clicked like!')}
-          addHandler={() => alert('You clicked add!')}
-          shareHandler={() => alert('You clicked share!')}
-          badges={['Hiking', 'Moderate']}
-          heading="Lake Haiyaha Hike"
-          headingLink="#"
-          subHeading="Rocky Mountain National Park"
-          subHeadingLink="#"
-          createdBy="Jane Doe"
-          createdBySrc={'avatar-jane-1.jpeg'}
-          createdByLink="/explorer/@jane-doe"
-          rating="4.5"
-        />
+        {nearbyActivities && (
+          <ActivityCardGroup
+            activities={nearbyActivities}
+            likeHandler={(data) => alert(`Your are about to like: ${data}!`)}
+            addHandler={(data) =>
+              alert(`You are adding ${data} to your wishlist.`)
+            }
+            shareHandler={(data) =>
+              alert(`You are about to share ${data} with others.`)
+            }
+          />
+        )}
       </section>
     </main>
   );
