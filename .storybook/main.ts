@@ -42,19 +42,19 @@ const config: StorybookConfig = {
         ],
       });
 
-      config.module.rules.push({
-        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2|csv)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'static/media/', // Output directory for processed images
-              publicPath: '/', // Public URL path to access the images
-            },
-          },
-        ],
-      });     
+      // config.module.rules.push({
+      //   test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2|csv)$/,
+      //   use: [
+      //     {
+      //       loader: "file-loader",
+      //       options: {
+      //         name: '[name].[ext]',
+      //         outputPath: 'static/media/', // Output directory for processed images
+      //         publicPath: '/', // Public URL path to access the images
+      //       },
+      //     },
+      //   ],
+      // });     
     }
 
     if (config.plugins) {

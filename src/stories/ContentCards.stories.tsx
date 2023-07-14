@@ -9,6 +9,16 @@ import { TripCard } from '../components/ContentCard/TripCard';
 import { ExplorerCard } from '../components/ContentCard/ExplorerCard';
 import { CategoryCard } from '../components/ContentCard/CategoryCard';
 
+/** Assets */
+import mtnLakesWebp from './images/mountains_lake.webp';
+import mtnLakesPng from './images/mountains_lake.png';
+import mtnLakesJpeg from './images/mountains_lake.jpeg';
+import trailRunningJpeg from './images/Ready-set-trail-How-to-prepare-for-trail-running-small.jpeg';
+import lakeHaiyahaJpeg from './images/lake_haiyaha.jpeg';
+import jane1Jpeg from './images/avatar-jane-1.jpeg';
+import jane2Jpeg from './images/avatar-jane-2.jpeg';
+import jane3Jpeg from './images/avatar-jane-3.jpeg';
+
 export default {
   title: 'Components/Content Cards',
   component: ContentCard,
@@ -27,17 +37,17 @@ type Story = StoryObj<typeof ContentCard>;
 const imgSourcesPlace = [
   {
     type: 'image/webp',
-    srcSet: 'mountains_lake.webp',
+    srcSet: mtnLakesWebp,
   },
   {
     type: 'image/png',
-    srcSet: 'mountains_lake.png',
+    srcSet: mtnLakesPng,
   },
 ];
 
 const imagePropsPlace = {
   sources: imgSourcesPlace,
-  src: 'mountains_lake.jpeg',
+  src: mtnLakesJpeg,
   alt: 'Moutains and lakes',
   className: '',
 };
@@ -63,7 +73,7 @@ export const Place: Story = {
 
 const imagePropsActivity = {
   sources: [],
-  src: 'lake_haiyaha.jpeg',
+  src: lakeHaiyahaJpeg,
   alt: 'Moutains and lakes',
   className: '',
 };
@@ -83,7 +93,7 @@ export const Activity: Story = {
       subHeading="Rocky Mountain National Park"
       subHeadingLink="#"
       createdBy="Jane Doe"
-      createdBySrc={'avatar-jane-1.jpeg'}
+      createdBySrc={jane1Jpeg}
       createdByLink="/explorer/@jane-doe"
       rating="4.5"
     />
@@ -92,30 +102,30 @@ export const Activity: Story = {
 
 const imagePropsTrip = {
   sources: [],
-  src: 'Ready-set-trail-How-to-prepare-for-trail-running-small.jpeg',
+  src: trailRunningJpeg,
   alt: 'Trail running at RMNP',
   className: '',
 };
 
 const avatarProps = [
   {
-    src: 'avatar-jane-1.jpeg' as string,
+    src: jane1Jpeg as string,
     alt: 'Jane Doe',
   },
   {
-    src: 'avatar-jane-2.jpeg' as string,
+    src: jane2Jpeg as string,
     alt: 'face2',
   },
   {
-    src: 'avatar-jane-3.jpeg' as string,
+    src: jane3Jpeg as string,
     alt: 'face3',
   },
   {
-    src: 'avatar-jane-2.jpeg' as string,
+    src: jane2Jpeg as string,
     alt: 'face2',
   },
   {
-    src: 'avatar-jane-3.jpeg' as string,
+    src: jane3Jpeg as string,
     alt: 'face3',
   },
 ];
@@ -146,7 +156,7 @@ export const Explorer: Story = {
   name: 'Explorer Card',
   render: () => (
     <ExplorerCard
-      src={'avatar-jane-3.jpeg'}
+      src={jane3Jpeg}
       name="Jane Doe"
       profileLink="/explorer/@jane-doe"
       explorerLocation="Colorado, USA"
@@ -159,7 +169,7 @@ export const Explorer: Story = {
 
 const imagePropsCategory = {
   sources: [],
-  src: 'Ready-set-trail-How-to-prepare-for-trail-running-small.jpeg',
+  src: trailRunningJpeg,
   alt: 'Trail running at RMNP',
   className: '',
 };

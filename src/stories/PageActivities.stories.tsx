@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Provider } from 'react-redux';
+
+import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { Mockstore, mockedState } from './mocks/store';
+
 /** Component */
 import { FullPageScroll } from '../components/FullPageScroll/FullPageScroll';
 import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
@@ -26,6 +31,9 @@ import ActivitiesService from './mocks/activities.service';
 /** Assets */
 import { menuItems } from './mocks/menuItems';
 import hikingImgJpeg from './images/hennadii-hryshyn-hiking-lg.jpeg';
+import climbingImgJpeg from './images/fionn-claydon-climbing-lg.jpeg';
+import campingImgJpeg from './images/patrick-hendry-camping-lg.jpeg';
+import bikingImgJpeg from './images/axel-brunst-mtn-biking.jpeg';
 import face1 from './images/avatar-jane-1.jpeg';
 
 export default {
@@ -88,32 +96,30 @@ const ActivitiesButtons: React.FC = () => (
   </>
 );
 
-// const NearbyActivities: React.FC = () => {};
-
 const imagePropsHiking = {
   sources: [],
-  src: 'hennadii-hryshyn-hiking-lg.jpeg',
+  src: hikingImgJpeg,
   alt: 'Hiking',
   className: '',
 };
 
 const imagePropsClimbing = {
   sources: [],
-  src: 'fionn-claydon-climbing-lg.jpeg',
+  src: climbingImgJpeg,
   alt: 'Climbing',
   className: '',
 };
 
 const imagePropsCamping = {
   sources: [],
-  src: 'patrick-hendry-camping-lg.jpeg',
+  src: campingImgJpeg,
   alt: 'Camping',
   className: '',
 };
 
 const imagePropsMtb = {
   sources: [],
-  src: 'axel-brunst-mtn-biking.jpeg',
+  src: bikingImgJpeg,
   alt: 'MTB',
   className: '',
 };
@@ -177,7 +183,7 @@ const ActivitiesPage: React.FC = () => {
       <section className={`activities-nearby places-group`}>
         {nearbyActivities && (
           <ActivityCardGroup
-            activities={nearbyActivities}
+            // activities={nearbyActivities}
             likeHandler={(data) => alert(`Your are about to like: ${data}!`)}
             addHandler={(data) =>
               alert(`You are adding ${data} to your wishlist.`)
@@ -195,4 +201,9 @@ const ActivitiesPage: React.FC = () => {
 export const Activities: Story = {
   name: 'Activities',
   render: () => <ActivitiesPage />,
+  decorators: [
+    (story) => (
+      <Mockstore ActivitiesPageData={mockedState}>{story()}</Mockstore>
+    ),
+  ],
 };

@@ -1,8 +1,4 @@
 import React from 'react';
-import { getAbsolutePath } from '../../utils';
-
-const IMG_BASE: string = process.env.IMG_BASE as string;
-
 export interface ImageSource extends Record<string, any> {
   type: string;
   srcSet: string;
@@ -23,11 +19,7 @@ const getSourceTag = (type: string) => (sources: ImageSource[]) =>
     ? sources.map(
         (source, index) =>
           source.type === type && (
-            <source
-              key={index}
-              srcSet={getAbsolutePath(IMG_BASE, source.srcSet)}
-              type={source.type}
-            />
+            <source key={index} srcSet={source.srcSet} type={source.type} />
           ),
       )
     : null;
@@ -54,6 +46,6 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
     <Webp sources={sources} />
     <Png sources={sources} />
     <Jpeg sources={sources} />
-    <img src={getAbsolutePath(IMG_BASE, src)} alt={alt} {...attributes} />
+    <img src={src} alt={alt} {...attributes} />
   </picture>
 );

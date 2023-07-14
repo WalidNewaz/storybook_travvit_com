@@ -1,8 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import { getAbsolutePath } from '../../utils';
-
-const IMG_BASE: string = process.env.IMG_BASE as string;
 
 export type AvatarSize = 'xs' | 'small' | 'medium' | 'large' | 'xl' | '2xl';
 export type AvatarGender = 'male' | 'female' | 'other';
@@ -46,11 +43,5 @@ export const Avatar: React.FC<AvatarProps> = ({
     className,
   );
 
-  return (
-    <img
-      className={computedClasses}
-      src={getAbsolutePath(IMG_BASE, src)}
-      alt={alt}
-    />
-  );
+  return <img className={computedClasses} src={src} alt={alt} />;
 };
