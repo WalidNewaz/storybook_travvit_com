@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Provider } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { Mockstore, mockedState } from './mocks/store';
 
 /** Component */
 import { FullPageScroll } from '../components/FullPageScroll/FullPageScroll';
 import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
 import { Header as TravvitHeader } from '../components/TravvitHeader/Header';
-import { ActivityCard } from '../components/ContentCard/ActivityCard';
 import { CategoryCard } from '../components/ContentCard/CategoryCard';
 import { IconButton } from '../components/IconButton/IconButton';
 import {
@@ -20,12 +18,10 @@ import {
   FaPersonRunning,
 } from 'react-icons/fa6';
 import { GiMountainClimbing } from 'react-icons/gi';
-import { MdDirectionsBike, MdOutlineSailing } from 'react-icons/md';
+import { MdDirectionsBike } from 'react-icons/md';
 import { ActivityCardGroup } from '../components/ContentCardGroup/ActivityCardGroup';
 import { ActivitySummaryType } from '../interfaces';
 
-/** Services */
-import PlacesService from './mocks/places.service';
 import ActivitiesService from './mocks/activities.service';
 
 /** Assets */
@@ -34,7 +30,6 @@ import hikingImgJpeg from './images/hennadii-hryshyn-hiking-lg.jpeg';
 import climbingImgJpeg from './images/fionn-claydon-climbing-lg.jpeg';
 import campingImgJpeg from './images/patrick-hendry-camping-lg.jpeg';
 import bikingImgJpeg from './images/axel-brunst-mtn-biking.jpeg';
-import face1 from './images/avatar-jane-1.jpeg';
 
 export default {
   title: 'Pages/Activities',
@@ -57,8 +52,6 @@ export default {
 
 type Story = StoryObj<typeof FullPageScroll>;
 
-/** Setup */
-const placesService = new PlacesService();
 const activitiesService = new ActivitiesService();
 
 const ActivitiesButtons: React.FC = () => (
@@ -124,24 +117,28 @@ const imagePropsMtb = {
   className: '',
 };
 
-const imagePropsActivity = {
-  sources: [],
-  src: 'lake_haiyaha.jpeg',
-  alt: 'Moutains and lakes',
-  className: '',
-};
-
 const ActivitiesPage: React.FC = () => {
   const [nearbyActivities, setNearbyActivities] = useState<
     ActivitySummaryType[] | null
   >(null);
+  const [loading, setLoading] = useState(false);
+
+  const {
+    activities,
+  }: {
+    activities: ActivitySummaryType[];
+  } = useSelector((state: any) => state.activities);
 
   useEffect(() => {
+    console.log(activities);
     const fetchNearbyActivities = async () => {
+      // const activities = loadNearbyActivitiesFromRedux();
       const result = await activitiesService.getActivitiesNearMe();
       setNearbyActivities(result);
     };
-    fetchNearbyActivities();
+    if (activities.length === 0) {
+      fetchNearbyActivities();
+    }
   }, []);
 
   return (
@@ -178,12 +175,12 @@ const ActivitiesPage: React.FC = () => {
         />
       </section>
       <h1 className="section-header">
-        Activities Near Me ({nearbyActivities?.length})
+        Activities Near Me ({activities?.length})
       </h1>
       <section className={`activities-nearby places-group`}>
-        {nearbyActivities && (
+        {activities && (
           <ActivityCardGroup
-            // activities={nearbyActivities}
+            activities={activities}
             likeHandler={(data) => alert(`Your are about to like: ${data}!`)}
             addHandler={(data) =>
               alert(`You are adding ${data} to your wishlist.`)

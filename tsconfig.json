@@ -105,6 +105,7 @@
     "./plugins/**/*",
     "./src/stories/index.d.ts",
     "src/stories/index.d.ts",
-    "./tailwind.config.ts"
+    "./tailwind.config.ts",
+    "./static/**/*",
   ],
 }

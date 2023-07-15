@@ -89,6 +89,6 @@ export interface ActivitySummaryType {
     avatar: string;
     slug: string;
   };
-  rating: string;
+  rating: string | number;
   className?: string;
 }
