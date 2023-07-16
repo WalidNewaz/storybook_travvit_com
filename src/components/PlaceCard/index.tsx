@@ -6,7 +6,7 @@ import { PiStarFill } from 'react-icons/pi';
 
 /** Assets */
 import mountainsLake from '../../stories/images/mountains_lake.jpeg';
-import mountainsLakePng from '../../stories/images/mountains_lake.png';
+// import mountainsLakePng from '../../stories/images/mountains_lake.png';
 import mountainsLakeWebp from '../../stories/images/mountains_lake.webp';
 
 const imgSources = [
@@ -14,10 +14,10 @@ const imgSources = [
     type: 'image/webp',
     srcSet: mountainsLakeWebp,
   },
-  {
-    type: 'image/png',
-    srcSet: mountainsLakePng,
-  },
+  // {
+  //   type: 'image/png',
+  //   srcSet: mountainsLakePng,
+  // },
 ];
 
 const imageProps = {

@@ -7,7 +7,7 @@ import { ResponsiveImage, ImageSource } from '../components/ResponsiveImage';
 /** Assets */
 import mountainsLakeJpeg from './images/mountains_lake.jpeg';
 // import mountainsLakeAvif from './images/mountains_lake.avif';
-import mountainsLakePng from './images/mountains_lake.png';
+// import mountainsLakePng from './images/mountains_lake.png';
 import mountainsLakeWebp from './images/mountains_lake.webp';
 
 export default {
@@ -31,10 +31,10 @@ const imgSources: ImageSource[] = [
     type: 'image/webp',
     srcSet: mountainsLakeWebp,
   },
-  {
-    type: 'image/png',
-    srcSet: mountainsLakePng,
-  },
+  // {
+  //   type: 'image/png',
+  //   srcSet: mountainsLakePng,
+  // },
 ];
 
 export const MultipleImages: Story = {

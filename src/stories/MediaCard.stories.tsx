@@ -10,7 +10,7 @@ import SocialCategoryActionLayer from '../components/MediaCard/SocialCategoryAct
 
 /** Assets */
 import mountainsLake from './images/mountains_lake.jpeg';
-import mountainsLakePng from './images/mountains_lake.png';
+// import mountainsLakePng from './images/mountains_lake.png';
 import mountainsLakeWebp from './images/mountains_lake.webp';
 
 import womanMp4 from './video/woman-lake-1080p.mp4';
@@ -36,10 +36,10 @@ const imgSources = [
     type: 'image/webp',
     srcSet: mountainsLakeWebp,
   },
-  {
-    type: 'image/png',
-    srcSet: mountainsLakePng,
-  },
+  // {
+  //   type: 'image/png',
+  //   srcSet: mountainsLakePng,
+  // },
 ];
 
 const imageProps = {

@@ -8,6 +8,8 @@ import { Avatar } from '../Avatar/Avatar';
 import { AvatarGroup } from '../AvatarGroup/AvatarGroup';
 import { Button } from '../Button/Button';
 import { AvatarProps } from '../Avatar/Avatar';
+import type { TimeUnit } from '../../types/units';
+import { pluralize } from 'inflection';
 
 const MAX_AVATARS = 3;
 
@@ -19,6 +21,10 @@ export const TripCard: React.FC<{
   shareHandler: clickHandler;
   badges: Array<string>;
   startTime: string;
+  duration: {
+    amount: number;
+    unit: TimeUnit;
+  };
   heading: string;
   headingLink: string;
   subHeading: string;
@@ -34,6 +40,7 @@ export const TripCard: React.FC<{
   shareHandler,
   badges,
   startTime,
+  duration,
   heading,
   headingLink,
   subHeading,
@@ -63,7 +70,12 @@ export const TripCard: React.FC<{
         }
       />
       <div className="card-description mt-[21rem] mx-4">
-        <p className="uppercase mb-2">{startTime}</p>
+        <div className="flex flex-row justify-between text-slate-800">
+          <p className="uppercase mb-2">📅 {startTime}</p>
+          <p className="uppercase mb-2">
+            ⏱️ {duration.amount} {pluralize(duration.unit)}
+          </p>
+        </div>
         <a
           href={headingLink}
           className="text-travvit-blue-800 hover:text-travvit-blue"

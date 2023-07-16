@@ -11,7 +11,7 @@ import { CategoryCard } from '../components/ContentCard/CategoryCard';
 
 /** Assets */
 import mtnLakesWebp from './images/mountains_lake.webp';
-import mtnLakesPng from './images/mountains_lake.png';
+// import mtnLakesPng from './images/mountains_lake.png';
 import mtnLakesJpeg from './images/mountains_lake.jpeg';
 import trailRunningJpeg from './images/Ready-set-trail-How-to-prepare-for-trail-running-small.jpeg';
 import lakeHaiyahaJpeg from './images/lake_haiyaha.jpeg';
@@ -39,10 +39,10 @@ const imgSourcesPlace = [
     type: 'image/webp',
     srcSet: mtnLakesWebp,
   },
-  {
-    type: 'image/png',
-    srcSet: mtnLakesPng,
-  },
+  // {
+  //   type: 'image/png',
+  //   srcSet: mtnLakesPng,
+  // },
 ];
 
 const imagePropsPlace = {
@@ -139,8 +139,12 @@ export const Trip: Story = {
       likeHandler={() => alert('You clicked like!')}
       addHandler={() => alert('You clicked add!')}
       shareHandler={() => alert('You clicked share!')}
-      badges={['Trail Running', 'Difficult']}
+      badges={['Trail Running', 'Difficult', 'Guided']}
       startTime="Tue Jul 11, 2023, 6:30 PM MDT"
+      duration={{
+        amount: 3,
+        unit: 'day',
+      }}
       heading="Trail running at RMNP"
       headingLink="#"
       subHeading="Rocky Mountain National Park"
