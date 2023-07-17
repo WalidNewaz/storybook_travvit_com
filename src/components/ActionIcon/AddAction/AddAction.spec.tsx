@@ -19,8 +19,8 @@ describe('AddActionIcon', () => {
       />,
     );
 
-    const buttonElement = getByTestId('button-element');
-    const iconElement = getByTestId('icon-element');
+    const buttonElement = getByTestId('button-element-Add');
+    const iconElement = getByTestId('icon-element-Add');
 
     expect(buttonElement).toBeInTheDocument();
     expect(buttonElement).toHaveClass('bg-slate-50');
@@ -37,7 +37,7 @@ describe('AddActionIcon', () => {
       />,
     );
 
-    const buttonElement = getByTestId('button-element');
+    const buttonElement = getByTestId('button-element-Add');
 
     fireEvent.click(buttonElement);
 

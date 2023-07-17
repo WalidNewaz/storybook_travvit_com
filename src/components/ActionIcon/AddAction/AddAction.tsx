@@ -22,11 +22,11 @@ const AddActionIcon: React.FC<ActionIconProps> = ({
     onClick={onClick}
     aria-label={label}
     className="bg-slate-50 rounded-full m-2"
-    data-testid="button-element"
+    data-testid={`button-element-${label.replace(/\s/g, '')}`}
   >
     <FaPlus
       className={`${ICON_CLASSNAMES} ${className}`}
-      data-testid="icon-element"
+      data-testid={`icon-element-${label.replace(/\s/g, '')}`}
     />
   </button>
 );

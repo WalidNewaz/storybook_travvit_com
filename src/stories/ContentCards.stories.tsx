@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 /** Component */
-import ContentCard from '../components/ContentCard';
+import ContentCard from '../components/ContentCard/ContentCard';
 import { PlaceCard } from '../components/ContentCard/PlaceCard';
-import { ActivityCard } from '../components/ContentCard/ActivityCard';
+import { ActivityCard } from '../components/ContentCard/ActivityCard/ActivityCard';
 import { TripCard } from '../components/ContentCard/TripCard';
 import { ExplorerCard } from '../components/ContentCard/ExplorerCard';
 import { CategoryCard } from '../components/ContentCard/CategoryCard';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityCard } from '../ContentCard/ActivityCard';
+import { ActivityCard } from '../ContentCard/ActivityCard/ActivityCard';
 import { ActivitySummaryType } from '../../interfaces';
 import { getImgagePropsWithAbsPaths, getAbsolutePath } from '../../utils';
 import type {

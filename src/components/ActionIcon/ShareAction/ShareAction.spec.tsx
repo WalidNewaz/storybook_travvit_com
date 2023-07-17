@@ -19,8 +19,8 @@ describe('ShareActionIcon', () => {
       />,
     );
 
-    const buttonElement = getByTestId('button-element');
-    const iconElement = getByTestId('icon-element');
+    const buttonElement = getByTestId('button-element-Share');
+    const iconElement = getByTestId('icon-element-Share');
 
     expect(buttonElement).toBeInTheDocument();
     expect(buttonElement).toHaveClass('bg-slate-50');
@@ -37,7 +37,7 @@ describe('ShareActionIcon', () => {
       />,
     );
 
-    const buttonElement = getByTestId('button-element');
+    const buttonElement = getByTestId('button-element-Share');
 
     fireEvent.click(buttonElement);
 

@@ -7,10 +7,10 @@ export interface ImageSource extends Record<string, any> {
   width?: string;
 }
 
-interface ResponsiveImageProps extends Record<string, any> {
+interface ResponsiveImage extends Record<string, any> {
   sources: ImageSource[];
   alt: string;
   src: string;
 }
 
-export default ResponsiveImageProps;
+export default ResponsiveImage;
