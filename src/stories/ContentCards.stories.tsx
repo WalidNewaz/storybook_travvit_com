@@ -5,7 +5,7 @@ import React from 'react';
 import ContentCard from '../components/ContentCard/ContentCard';
 import { PlaceCard } from '../components/ContentCard/PlaceCard/PlaceCard';
 import { ActivityCard } from '../components/ContentCard/ActivityCard/ActivityCard';
-import { TripCard } from '../components/ContentCard/TripCard';
+import { TripCard } from '../components/ContentCard/TripCard/TripCard';
 import { ExplorerCard } from '../components/ContentCard/ExplorerCard/ExplorerCard';
 import { CategoryCard } from '../components/ContentCard/CategoryCard/CategoryCard';
 
@@ -147,8 +147,8 @@ export const Trip: Story = {
       }}
       heading="Trail running at RMNP"
       headingLink="#"
-      subHeading="Rocky Mountain National Park"
-      subHeadingLink="#"
+      place="Rocky Mountain National Park"
+      placeLink="#"
       groupMembers={avatarProps}
       joinHandler={() => alert('You clicked join!')}
       followHandler={() => alert('You clicked follow!')}
