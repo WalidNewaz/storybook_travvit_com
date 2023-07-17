@@ -18,6 +18,7 @@ module.exports = {
     'src/types/',
     'src/utils/',
     'src/hooks/',
+    'src/components/ReactNative/',
   ],
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
 };
