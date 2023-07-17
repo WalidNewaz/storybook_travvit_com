@@ -3,7 +3,7 @@ import { Button } from '../components/Button/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: 'Example/Button',
+  title: 'Components/Button',
   component: Button,
   tags: ['autodocs'],
   argTypes: {

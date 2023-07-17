@@ -24,8 +24,31 @@ export default {
 
 type Story = StoryObj<typeof ContentRibbon>;
 
-export const ButtonsRibbon: Story = {
-  name: 'Buttons Ribbon',
+export const NoOverflowRibbon: Story = {
+  name: 'No overflow',
+  render: () => (
+    <ContentRibbon>
+      <IconButton
+        className="flex m-2"
+        label="Hiking"
+        icon={<FaPersonHiking className="w-6 h-6" aria-hidden="true" />}
+      />
+      <IconButton
+        className="flex m-2"
+        label="Climbing"
+        icon={<GiMountainClimbing className="w-6 h-6" aria-hidden="true" />}
+      />
+      <IconButton
+        className="flex m-2"
+        label="Camping"
+        icon={<FaCampground className="w-6 h-6" aria-hidden="true" />}
+      />
+    </ContentRibbon>
+  ),
+};
+
+export const OverflowRibbon: Story = {
+  name: 'Overflow',
   render: () => (
     <ContentRibbon>
       <IconButton

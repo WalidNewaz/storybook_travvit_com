@@ -3,6 +3,14 @@ import './ContentRibbon.css';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import ContentRibbonProps from './ContentRibbon.interface';
 
+/**
+ * A scrollable container that creates scroll buttons if the content in
+ * the children nodes happen to overflow the size of the container as
+ * displayed.
+ *
+ * @param children Any number of React nodes
+ * @returns A JSX component that wraps the children with a scrollable container.
+ */
 const ContentRibbon: React.FC<ContentRibbonProps> = ({ children }) => {
   const ribbonRef = useRef<HTMLDivElement>(null);
   const [scrollPosition, setScrollPosition] = useState(0);
