@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaPlus } from 'react-icons/fa6';
-import type { clickHandler } from '../../types/eventHandler.types';
+import ActionIconProps from './ActionIcon.interface';
 
 const ICON_CLASSNAMES = `
   icon
@@ -13,11 +13,11 @@ const ICON_CLASSNAMES = `
   hover:text-red-500
 `;
 
-const AddActionIcon: React.FC<{
-  label: string;
-  onClick: clickHandler;
-  className?: string;
-}> = ({ label, onClick, className }) => (
+const AddActionIcon: React.FC<ActionIconProps> = ({
+  label,
+  onClick,
+  className,
+}) => (
   <button
     onClick={onClick}
     aria-label={label}
