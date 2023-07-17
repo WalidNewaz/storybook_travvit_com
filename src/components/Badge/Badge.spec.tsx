@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { Badge } from './index';
+import { Badge } from './Badge';
 
 describe('Badge', () => {
   it('renders the label correctly', () => {

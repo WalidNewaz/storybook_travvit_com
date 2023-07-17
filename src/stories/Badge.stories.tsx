@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 /** Component */
-import { Badge } from '../components/Badge';
+import { Badge } from '../components/Badge/Badge';
 
 export default {
   title: 'Components/Badge',

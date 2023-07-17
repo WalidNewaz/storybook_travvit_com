@@ -1,7 +1,7 @@
 import React from 'react';
 import { MediaCard } from '../MediaCard';
 import SocialCategoryActionLayer from '../MediaCard/SocialCategoryActionLayer';
-import { Badge } from '../Badge';
+import { Badge } from '../Badge/Badge';
 import { PiStarFill } from 'react-icons/pi';
 
 /** Assets */

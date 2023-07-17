@@ -1,26 +1,10 @@
 import React from 'react';
-
-type Color =
-  | 'gray'
-  | 'red'
-  | 'yellow'
-  | 'green'
-  | 'blue'
-  | 'indigo'
-  | 'purple'
-  | 'pink';
-
-interface BadgeProps {
-  label?: string;
-  color?: Color;
-  rounded?: boolean;
-  className?: string;
-  children?: React.ReactNode;
-}
+import type { Color } from '../../types';
+import BadgeProps from './Badge.interface';
 
 const BASE_CLASS_NAME = `inline-flex items-center px-2 py-1 text-xs font-medium ring-1 ring-inset`;
 
-const colorClassNames: Record<string, string> = {
+const colorClassNames: Record<Color, string> = {
   gray: `bg-gray-50 text-gray-600 ring-gray-500/10`,
   red: `bg-red-50 text-red-700 ring-red-600/10`,
   yellow: `bg-yellow-50 text-yellow-800 ring-yellow-600/20`,
