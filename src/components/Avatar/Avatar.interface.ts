@@ -1,6 +1,6 @@
 import type { Size, Gender } from '../../types';
 
-interface AvatarProps {
+interface Avatar {
   src: string;
   size?: Size;
   alt?: string;
@@ -8,4 +8,4 @@ interface AvatarProps {
   className?: string;
 }
 
-export default AvatarProps;
+export default Avatar;

@@ -22,8 +22,12 @@ const ShareActionIcon: React.FC<ActionIconProps> = ({
     onClick={onClick}
     aria-label={label}
     className="bg-slate-50 rounded-full m-2"
+    data-testid="button-element"
   >
-    <LuShare2 className={`${ICON_CLASSNAMES} ${className}`} />
+    <LuShare2
+      className={`${ICON_CLASSNAMES} ${className}`}
+      data-testid="icon-element"
+    />
   </button>
 );
 

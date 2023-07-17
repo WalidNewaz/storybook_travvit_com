@@ -19,7 +19,7 @@ describe('HeroSlider', () => {
   ];
 
   test('renders the slider with slides', () => {
-    render(<HeroSlider slides={slides} SlideComponent={MockSlideComponent} />);
+    render(<HeroSlider slides={slides} />);
 
     // Assert that the slider container is rendered
     const sliderContainer = screen.getByTestId('slider-container');
@@ -37,7 +37,7 @@ describe('HeroSlider', () => {
   });
 
   test('changes slide when next/previous buttons are clicked', () => {
-    render(<HeroSlider slides={slides} SlideComponent={MockSlideComponent} />);
+    render(<HeroSlider slides={slides} />);
 
     // Find the slide components
     const slideComponents = screen.getAllByTestId(/^slide-media-/);
@@ -59,7 +59,7 @@ describe('HeroSlider', () => {
   });
 
   test('changes slide when slide dot is clicked', () => {
-    render(<HeroSlider slides={slides} SlideComponent={MockSlideComponent} />);
+    render(<HeroSlider slides={slides} />);
 
     // Find the slide components
     const slideComponents = screen.getAllByTestId(/^slide-dot-/);

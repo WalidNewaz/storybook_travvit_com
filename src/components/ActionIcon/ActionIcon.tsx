@@ -23,7 +23,10 @@ export const ActionIcon: React.FC<ActionIconProps> = ({
 
   return (
     <button onClick={onClick} aria-label={label}>
-      <Icon className={`${ICON_CLASSNAMES} ${className}`} />
+      <Icon
+        className={`${ICON_CLASSNAMES} ${className}`}
+        data-testid="icon-element"
+      />
     </button>
   );
 };

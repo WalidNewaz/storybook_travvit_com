@@ -22,8 +22,12 @@ const AddActionIcon: React.FC<ActionIconProps> = ({
     onClick={onClick}
     aria-label={label}
     className="bg-slate-50 rounded-full m-2"
+    data-testid="button-element"
   >
-    <FaPlus className={`${ICON_CLASSNAMES} ${className}`} />
+    <FaPlus
+      className={`${ICON_CLASSNAMES} ${className}`}
+      data-testid="icon-element"
+    />
   </button>
 );
 
