@@ -1,35 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import type { clickHandler } from '../../types/eventHandler.types';
 import { Slides } from './Slides';
 import { SliderNav } from './SliderNav';
 import { SliderDots } from './SliderDots';
+import { HeroSliderProps } from '../../interfaces';
 
-const SLIDE_DURATION = 5000;
+const DEFAULT_SLIDE_DURATION = 5000;
 
 const SLIDE_CONTAINER_CLASSES = `w-full relative`;
 
 export type MediaTypes = 'image' | 'video';
-
-export interface CardProps {
-  media: string;
-  mediaType?: string;
-  alt?: string;
-  description?: string;
-  descriptionClasses?: string;
-  buttonText?: string;
-  buttonOnClick?: clickHandler;
-  mediaClassName?: string;
-  mediaStyle?: React.CSSProperties;
-  className?: string;
-}
-
-interface HeroSliderProps {
-  slides: Array<CardProps>;
-  containerClasses?: string;
-  containerStyle?: React.CSSProperties;
-  slideContainerClasses?: string;
-  mediaStyle?: React.CSSProperties;
-}
 
 /**
  * A Hero Slider is generally used as a media slider at the top of a
@@ -42,8 +21,10 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
   containerClasses,
   containerStyle,
   mediaStyle = {},
+  slideDuration,
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const duration = slideDuration || DEFAULT_SLIDE_DURATION;
 
   const handlePrevSlide = () => {
     setCurrentSlide((prevSlide) =>
@@ -58,7 +39,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
   };
 
   useEffect(() => {
-    const interval = setInterval(handleNextSlide, SLIDE_DURATION); // Rotate slides every 5 seconds
+    const interval = setInterval(handleNextSlide, duration); // Rotate slides every 5 seconds
 
     return () => {
       clearInterval(interval);

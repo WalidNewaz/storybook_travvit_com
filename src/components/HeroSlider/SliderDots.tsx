@@ -1,8 +1,11 @@
 import React from 'react';
-import { CardProps } from './HeroSlider';
+import { SlideProps } from '../../interfaces';
+
+const ACTIVE = 'bg-white';
+const PASSIVE = 'bg-gray-400';
 
 export const SliderDots: React.FC<{
-  slides: Array<CardProps>;
+  slides: Array<SlideProps>;
   currentSlide: number;
   setCurrentSlide: React.Dispatch<React.SetStateAction<number>>;
 }> = ({ slides, currentSlide, setCurrentSlide }) => (
@@ -11,7 +14,7 @@ export const SliderDots: React.FC<{
       <button
         key={index}
         className={`w-3 h-3 mx-2 rounded-full ${
-          index === currentSlide ? 'bg-white' : 'bg-gray-400'
+          index === currentSlide ? ACTIVE : PASSIVE
         }`}
         onClick={() => setCurrentSlide(index)}
         aria-label={`Slide Dot ${index + 1}`} // Add aria-label attribute

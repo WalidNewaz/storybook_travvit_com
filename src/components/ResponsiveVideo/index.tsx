@@ -1,15 +1,5 @@
 import React, { ReactNode } from 'react';
-
-export interface VideoSource {
-  src: string;
-  type: string;
-}
-
-export interface ResponsiveVideoProps extends Record<string, any> {
-  sources: VideoSource[];
-  requiredMediaType: string;
-  children?: ReactNode;
-}
+import { VideoSource, ResponsiveVideoProps } from '../../interfaces';
 
 const MissingVideo: React.FC<{ requiredMediaType: string }> = ({
   requiredMediaType,

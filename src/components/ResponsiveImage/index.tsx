@@ -1,18 +1,9 @@
 import React from 'react';
-export interface ImageSource extends Record<string, any> {
-  type: string;
-  srcSet: string;
-  sizes?: string;
-  media?: string;
-  height?: string;
-  width?: string;
-}
+import { ImageSource, ResponsiveImageProps } from '../../interfaces';
 
-export interface ResponsiveImageProps extends Record<string, any> {
-  sources: ImageSource[];
-  alt: string;
-  src: string;
-}
+const MIMETYPE_WEBP = 'image/webp';
+const MIMETYPE_PNG = 'image/png';
+const MIMETYPE_JPEG = 'image/jpeg';
 
 const getSourceTag = (type: string) => (sources: ImageSource[]) =>
   sources
@@ -25,15 +16,15 @@ const getSourceTag = (type: string) => (sources: ImageSource[]) =>
     : null;
 
 const Webp: React.FC<{ sources: ImageSource[] }> = ({ sources }) => {
-  return getSourceTag('image/webp')(sources);
+  return getSourceTag(MIMETYPE_WEBP)(sources);
 };
 
 const Png: React.FC<{ sources: ImageSource[] }> = ({ sources }) => {
-  return getSourceTag('image/png')(sources);
+  return getSourceTag(MIMETYPE_PNG)(sources);
 };
 
 const Jpeg: React.FC<{ sources: ImageSource[] }> = ({ sources }) => {
-  return getSourceTag('image/jpeg')(sources);
+  return getSourceTag(MIMETYPE_JPEG)(sources);
 };
 
 export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({

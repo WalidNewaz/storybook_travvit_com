@@ -1,12 +1,9 @@
 import React, { ReactNode } from 'react';
-import { ResponsiveImage, ResponsiveImageProps } from '../ResponsiveImage';
-import { ResponsiveVideo, ResponsiveVideoProps } from '../ResponsiveVideo';
+import { ResponsiveImage } from '../ResponsiveImage';
+import { ResponsiveVideo } from '../ResponsiveVideo';
+import { MediaLayerProps } from '../../interfaces';
 
-interface MediaLayerProps extends Record<string, any> {
-  imageProps?: ResponsiveImageProps;
-  videoProps?: ResponsiveVideoProps;
-  mediaType: 'image' | 'video';
-}
+const MEDIA_CLASSES = `absolute top-0 left-0 object-cover dark-img`;
 
 /**
  * Creates a responsive media component based on the `mediaType`.
@@ -21,11 +18,6 @@ export const MediaLayer: React.FC<MediaLayerProps> = ({
   mediaType,
   ...attributes
 }) => {
-  const MEDIA_CLASSES = `absolute top-0 left-0 object-cover dark-img`;
-
-  // w-full
-  // h-full
-
   let media: ReactNode = null;
 
   if (mediaType === 'image' && imageProps) {

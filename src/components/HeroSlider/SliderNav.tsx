@@ -22,7 +22,7 @@ export const SliderNav: React.FC<{
       <ChevronLeft classes={NAV_BUTTON_ICON_CLASSES} />
     </button>
     <button
-      className="absolute top-1/2 right-2 transform -translate-y-1/2 text-white"
+      className={`${NAV_BUTTON_CLASSES} right-2`}
       onClick={handleNextSlide}
       aria-label="Next" // Add aria-label attribute
       data-testid="Next" // Add data-testid attribute

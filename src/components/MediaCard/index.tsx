@@ -1,36 +1,7 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
-import { ResponsiveImageProps } from '../ResponsiveImage';
-import { ResponsiveVideoProps } from '../ResponsiveVideo';
 import { MediaLayer } from './MediaLayer';
-
-export interface MediaCardProps {
-  /**
-   * Media type
-   * @default 'image'
-   * */
-  mediaType: 'image' | 'video';
-
-  imageProps?: ResponsiveImageProps;
-
-  videoProps?: ResponsiveVideoProps;
-
-  /**
-   * a React component that is rendered above the media layer.
-   */
-  actionLayer?: ReactNode;
-  /**
-   * Custom style for the container
-   * @default {}
-   * */
-  containerStyle?: React.CSSProperties;
-  /**
-   * Custom style for the media
-   * @default {}
-   * */
-  mediaStyle?: React.CSSProperties;
-  className?: string;
-}
+import { MediaCardProps } from '../../interfaces';
 
 const CONTAINER_CLASSES = `media-card max-w-[100rem] overflow-hidden`;
 

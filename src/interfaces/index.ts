@@ -1,5 +1,7 @@
+import { ReactNode } from 'react';
 import type { IconType } from 'react-icons';
 import type { clickHandler } from '../types/eventHandler.types';
+import type { MediaType } from '../types';
 
 export interface User<T extends string> {
   id: number;
@@ -91,4 +93,68 @@ export interface ActivitySummaryType {
   };
   rating: string | number;
   className?: string;
+}
+
+export interface ImageSource extends Record<string, any> {
+  type: string;
+  srcSet: string;
+  sizes?: string;
+  media?: string;
+  height?: string;
+  width?: string;
+}
+
+export interface VideoSource extends Record<string, any> {
+  src: string;
+  type: string;
+}
+
+export interface ResponsiveImageProps extends Record<string, any> {
+  sources: ImageSource[];
+  alt: string;
+  src: string;
+}
+
+export interface ResponsiveVideoProps extends Record<string, any> {
+  sources: VideoSource[];
+  requiredMediaType: string;
+  children?: ReactNode;
+}
+
+export interface MediaCardProps {
+  mediaType: MediaType;
+  imageProps?: ResponsiveImageProps;
+  videoProps?: ResponsiveVideoProps;
+  actionLayer?: ReactNode;
+  containerStyle?: React.CSSProperties;
+  mediaStyle?: React.CSSProperties;
+  className?: string;
+}
+
+export interface MediaLayerProps extends Record<string, any> {
+  imageProps?: ResponsiveImageProps;
+  videoProps?: ResponsiveVideoProps;
+  mediaType: MediaType;
+}
+
+export interface SlideProps {
+  media: string;
+  mediaType?: MediaType;
+  alt?: string;
+  description?: string;
+  descriptionClasses?: string;
+  buttonText?: string;
+  buttonOnClick?: clickHandler;
+  mediaClassName?: string;
+  mediaStyle?: React.CSSProperties;
+  className?: string;
+}
+
+export interface HeroSliderProps {
+  slides: Array<SlideProps>;
+  containerClasses?: string;
+  containerStyle?: React.CSSProperties;
+  slideContainerClasses?: string;
+  mediaStyle?: React.CSSProperties;
+  slideDuration?: number;
 }
