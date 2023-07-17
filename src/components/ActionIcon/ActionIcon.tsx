@@ -1,7 +1,6 @@
 import React from 'react';
 import { IconProps } from '../../interfaces';
-import type { IconType } from 'react-icons';
-import type { clickHandler } from '../../types/eventHandler.types';
+import ActionIconProps from './ActionIcon.interface';
 
 const ICON_CLASSNAMES = `
   icon
@@ -14,12 +13,12 @@ const ICON_CLASSNAMES = `
   hover:text-red-500
 `;
 
-export const ActionIcon: React.FC<{
-  icon: IconType;
-  label: string;
-  onClick: clickHandler;
-  className?: string;
-}> = ({ icon, label, onClick, className }) => {
+export const ActionIcon: React.FC<ActionIconProps> = ({
+  icon,
+  label,
+  onClick,
+  className,
+}) => {
   const Icon = icon as unknown as React.ComponentType<IconProps>;
 
   return (
