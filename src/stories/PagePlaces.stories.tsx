@@ -5,8 +5,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { FullPageScroll } from '../components/FullPageScroll/FullPageScroll';
 import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
 import { Header as TravvitHeader } from '../components/TravvitHeader/Header';
-import { PlaceCardGroup } from '../components/ContentCardGroup/PlaceCardGroup';
-import { ActivityCardGroup } from '../components/ContentCardGroup/ActivityCardGroup';
+import { PlaceCardGroup } from '../components/ContentCardGroup/PlaceCardGroup/PlaceCardGroup';
+import { ActivityCardGroup } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup';
 import { PlaceCardType, ActivitySummaryType } from '../interfaces';
 
 /** Services */

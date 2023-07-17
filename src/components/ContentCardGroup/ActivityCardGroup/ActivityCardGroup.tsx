@@ -1,21 +1,16 @@
 import React from 'react';
-import { ActivityCard } from '../ContentCard/ActivityCard/ActivityCard';
-import { ActivitySummaryType } from '../../interfaces';
-import { getImgagePropsWithAbsPaths, getAbsolutePath } from '../../utils';
-import type {
-  likeHandler,
-  addHandler,
-  shareHandler,
-} from '../../types/eventHandler.types';
+import { ActivityCard } from '../../ContentCard/ActivityCard/ActivityCard';
+import { getImgagePropsWithAbsPaths, getAbsolutePath } from '../../../utils';
+import ActivityCardGroupProps from './ActivityCardGroup.interface';
 
 const IMG_BASE = process.env.IMG_BASE || '';
 
-export const ActivityCardGroup: React.FC<{
-  activities: ActivitySummaryType[];
-  likeHandler: likeHandler;
-  addHandler: addHandler;
-  shareHandler: shareHandler;
-}> = ({ activities, likeHandler, addHandler, shareHandler }) => {
+export const ActivityCardGroup: React.FC<ActivityCardGroupProps> = ({
+  activities,
+  likeHandler,
+  addHandler,
+  shareHandler,
+}) => {
   return activities.map((activity) => {
     // Make image URLs absolute b/c this component will be fed by API responses
     const imageProps = getImgagePropsWithAbsPaths(

@@ -1,12 +1,12 @@
 import React from 'react';
-import { PlaceCard } from '../ContentCard/PlaceCard/PlaceCard';
-import { PlaceCardType } from '../../interfaces';
-import { getImgagePropsWithAbsPaths } from '../../utils';
+import { PlaceCard } from '../../ContentCard/PlaceCard/PlaceCard';
+import { PlaceCardType } from '../../../interfaces';
+import { getImgagePropsWithAbsPaths } from '../../../utils';
 import type {
   likeHandler,
   addHandler,
   shareHandler,
-} from '../../types/eventHandler.types';
+} from '../../../types/eventHandler.types';
 
 const IMG_BASE = process.env.IMG_BASE || '';
 
