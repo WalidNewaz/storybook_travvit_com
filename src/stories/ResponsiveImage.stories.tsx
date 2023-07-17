@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 /** Component */
-import { ResponsiveImage, ImageSource } from '../components/ResponsiveImage';
+import { ResponsiveImage, ImageSource } from '../components/ResponsiveImage/ResponsiveImage';
 
 /** Assets */
 import mountainsLakeJpeg from './images/mountains_lake.jpeg';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageSource, ResponsiveImageProps } from '../../interfaces';
+import ResponsiveImageProps, { ImageSource } from './ResponsiveImage.interface';
 
 const MIMETYPE_WEBP = 'image/webp';
 const MIMETYPE_PNG = 'image/png';

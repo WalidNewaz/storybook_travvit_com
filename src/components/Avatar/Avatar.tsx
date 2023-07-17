@@ -1,17 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
+import AvatarProps from './Avatar.interface';
+import type { Size } from '../../types';
 
-export type AvatarSize = 'xs' | 'small' | 'medium' | 'large' | 'xl' | '2xl';
-export type AvatarGender = 'male' | 'female' | 'other';
-
-export interface AvatarProps {
-  src: string;
-  size?: AvatarSize;
-  alt?: string;
-  gender?: AvatarGender;
-  className?: string;
-}
-const sizeClasses: Record<string, string> = {
+const sizeClasses: Record<Size, string> = {
   xs: 'h-8 w-8',
   small: 'h-12 w-12',
   medium: 'h-24 w-24',

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { ResponsiveImage } from '../ResponsiveImage';
+import { ResponsiveImage } from '../ResponsiveImage/ResponsiveImage';
 import { ResponsiveVideo } from '../ResponsiveVideo';
 import { MediaLayerProps } from '../../interfaces';
 

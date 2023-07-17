@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 /** Component */
-import { NotFoundPage } from '../components/404/404';
+import { PageNotFound } from '../components/PageNotFound/PageNotFound';
 
 /** Assets */
 import backgroundImg1 from './images/jaanus-jagomagi-night-1200.jpeg';
@@ -13,14 +13,14 @@ import backgroundImg5 from './images/laura-chouette-lake-large.webp';
 
 export default {
   title: 'Components/Page not found',
-  component: NotFoundPage,
+  component: PageNotFound,
   // decorators: [
   //   (story) => <div className="bg-travvit-orange/10 h-screen">{story()}</div>,
   // ],
   tags: ['autodocs'],
 } as Meta;
 
-type Story = StoryObj<typeof NotFoundPage>;
+type Story = StoryObj<typeof PageNotFound>;
 
 export const Backgournd1: Story = {
   args: {

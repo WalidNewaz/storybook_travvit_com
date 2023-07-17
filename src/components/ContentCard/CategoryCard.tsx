@@ -1,6 +1,6 @@
 import React from 'react';
 import { MediaCard } from '../MediaCard';
-import { ResponsiveImageProps } from '../ResponsiveImage';
+import { ResponsiveImageProps } from '../ResponsiveImage/ResponsiveImage';
 import LinkHeadingActionLayer from '../MediaCard/LinkHeadingActionLayer';
 
 const MEDIA_DIMS_CLASSNAME = `

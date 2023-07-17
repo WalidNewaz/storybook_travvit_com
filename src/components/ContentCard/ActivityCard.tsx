@@ -1,6 +1,6 @@
 import React from 'react';
 import { MediaCard } from '../MediaCard';
-import { ResponsiveImageProps } from '../ResponsiveImage';
+import { ResponsiveImageProps } from '../ResponsiveImage/ResponsiveImage';
 import SocialCategoryActionLayer from '../MediaCard/SocialCategoryActionLayer';
 import { Badge } from '../Badge';
 import { PiStarFill } from 'react-icons/pi';

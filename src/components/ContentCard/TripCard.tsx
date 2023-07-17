@@ -1,6 +1,6 @@
 import React from 'react';
 import { MediaCard } from '../MediaCard';
-import { ResponsiveImageProps } from '../ResponsiveImage';
+import { ResponsiveImageProps } from '../ResponsiveImage/ResponsiveImage';
 import SocialCategoryActionLayer from '../MediaCard/SocialCategoryActionLayer';
 import { FiMapPin } from 'react-icons/fi';
 import type { clickHandler } from '../../types/eventHandler.types';

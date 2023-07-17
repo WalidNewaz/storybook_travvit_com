@@ -1,13 +1,10 @@
 import React from 'react';
 import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
-import { ResponsiveImage, ResponsiveImageProps } from '../ResponsiveImage';
+import { ResponsiveImage } from '../ResponsiveImage/ResponsiveImage';
+import PageNotFoundProps from './PageNotFound.interface';
+import { FaArrowLeft } from 'react-icons/fa6';
 
-interface NotFoundPageProps {
-  imageProps?: ResponsiveImageProps;
-  className?: string;
-}
-
-export const NotFoundPage: React.FC<NotFoundPageProps> = ({
+export const PageNotFound: React.FC<PageNotFoundProps> = ({
   imageProps,
   className,
 }) => {
@@ -46,7 +43,10 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({
             href="#"
             className={`${baseClassName} leading-7 font-semibold text-sm`}
           >
-            <span aria-hidden="true">←</span> Back to home
+            <span aria-hidden="true" className="pt-1">
+              <FaArrowLeft className="h-5 w-5 ml-2" aria-hidden="true" />
+            </span>
+            Back to home
           </a>
         </div>
       </div>
