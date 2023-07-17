@@ -3,11 +3,11 @@ import React from 'react';
 
 /** Component */
 import ContentCard from '../components/ContentCard/ContentCard';
-import { PlaceCard } from '../components/ContentCard/PlaceCard';
+import { PlaceCard } from '../components/ContentCard/PlaceCard/PlaceCard';
 import { ActivityCard } from '../components/ContentCard/ActivityCard/ActivityCard';
 import { TripCard } from '../components/ContentCard/TripCard';
-import { ExplorerCard } from '../components/ContentCard/ExplorerCard';
-import { CategoryCard } from '../components/ContentCard/CategoryCard';
+import { ExplorerCard } from '../components/ContentCard/ExplorerCard/ExplorerCard';
+import { CategoryCard } from '../components/ContentCard/CategoryCard/CategoryCard';
 
 /** Assets */
 import mtnLakesWebp from './images/mountains_lake.webp';

@@ -1,10 +1,9 @@
 import React from 'react';
-import { MediaCard } from '../MediaCard';
-import { ResponsiveImageProps } from '../ResponsiveImage/ResponsiveImage';
-import SocialCategoryActionLayer from '../MediaCard/SocialCategoryActionLayer';
-import { Badge } from '../Badge/Badge';
+import { MediaCard } from '../../MediaCard';
+import SocialCategoryActionLayer from '../../MediaCard/SocialCategoryActionLayer';
+import { Badge } from '../../Badge/Badge';
 import { PiStarFill } from 'react-icons/pi';
-import type { clickHandler } from '../../types/eventHandler.types';
+import PlaceCardProps from './PlaceCard.interface';
 
 const MEDIA_DIMS_CLASSNAME = `
   w-[22rem] h-80
@@ -15,20 +14,33 @@ const DESC_DIMS_CLASSNAME = `
   lg:mt-[20rem] mx-4
 `;
 
-export interface PlaceCardProps {
-  mediaType: 'image' | 'video';
-  imageProps: ResponsiveImageProps;
-  likeHandler: clickHandler;
-  addHandler: clickHandler;
-  shareHandler: clickHandler;
-  badges: Array<string>;
+const Description: React.FC<{
   heading: string;
   headingLink: string;
   subHeading: string;
   subHeadingLink: string;
   rating: string;
-  className?: string;
-}
+}> = ({ heading, headingLink, subHeading, subHeadingLink, rating }) => (
+  <div className={`card-description ${DESC_DIMS_CLASSNAME}`}>
+    <a
+      href={headingLink}
+      className="text-travvit-blue-800 hover:text-travvit-blue"
+    >
+      <h2>{heading}</h2>
+    </a>
+    <a
+      href={subHeadingLink}
+      className="text-slate-500 hover:text-slate-700 uppercase"
+    >
+      <p className="mt-2">{subHeading}</p>
+    </a>
+    <div>
+      <Badge rounded className="my-2">
+        <PiStarFill className="text-travvit-orange-900 mr-2" /> {rating}
+      </Badge>
+    </div>
+  </div>
+);
 
 export const PlaceCard: React.FC<PlaceCardProps> = ({
   mediaType = 'image',
@@ -64,25 +76,13 @@ export const PlaceCard: React.FC<PlaceCardProps> = ({
           />
         }
       />
-      <div className={`card-description ${DESC_DIMS_CLASSNAME}`}>
-        <a
-          href={headingLink}
-          className="text-travvit-blue-800 hover:text-travvit-blue"
-        >
-          <h2>{heading}</h2>
-        </a>
-        <a
-          href={subHeadingLink}
-          className="text-slate-500 hover:text-slate-700 uppercase"
-        >
-          <p className="mt-2">{subHeading}</p>
-        </a>
-        <div>
-          <Badge rounded className="my-2">
-            <PiStarFill className="text-travvit-orange-900 mr-2" /> {rating}
-          </Badge>
-        </div>
-      </div>
+      <Description
+        heading={heading}
+        headingLink={headingLink}
+        subHeading={subHeading}
+        subHeadingLink={subHeadingLink}
+        rating={rating}
+      />
     </div>
   );
 };

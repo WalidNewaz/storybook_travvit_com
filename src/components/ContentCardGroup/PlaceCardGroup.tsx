@@ -1,5 +1,5 @@
 import React from 'react';
-import { PlaceCard } from '../ContentCard/PlaceCard';
+import { PlaceCard } from '../ContentCard/PlaceCard/PlaceCard';
 import { PlaceCardType } from '../../interfaces';
 import { getImgagePropsWithAbsPaths } from '../../utils';
 import type {

@@ -9,7 +9,7 @@ import { Mockstore, mockedState } from './mocks/store';
 import { FullPageScroll } from '../components/FullPageScroll/FullPageScroll';
 import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
 import { Header as TravvitHeader } from '../components/TravvitHeader/Header';
-import { CategoryCard } from '../components/ContentCard/CategoryCard';
+import { CategoryCard } from '../components/ContentCard/CategoryCard/CategoryCard';
 import { IconButton } from '../components/IconButton/IconButton';
 import {
   FaPersonHiking,
