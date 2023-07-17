@@ -1,14 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-
-interface CardProps {
-  header?: React.FC<any>;
-  body?: React.FC<any>;
-  cardClasses?: string;
-  cardStyle?: React.CSSProperties;
-  headerClasses?: string;
-  bodyClasses?: string;
-}
+import CardProps from './Card.interface';
 
 const CARD_CLASSES = `
   flex
