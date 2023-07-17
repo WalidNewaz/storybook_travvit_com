@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
 import { Button } from '../components/Button/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
@@ -30,7 +29,8 @@ export const Secondary: Story = {
     label: '😄👍😍💯',
   },
   parameters: {
-    backgrounds: { // This is where you can customize light and dark mode
+    backgrounds: {
+      // This is where you can customize light and dark mode
       values: [
         { name: 'red', value: '#f00' },
         { name: 'green', value: '#0f0' },

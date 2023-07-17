@@ -1,55 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
+import ButtonProps from './Button.interface';
 
-export interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string | React.CSSProperties['backgroundColor'];
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   * Button contents
-   */
-  label: string;
-  /**
-   * Custom style classes for the button
-   */
-  className?: string;
-  /**
-   * Optional click handler
-   */
-  onClick?:
-    | ((event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void)
-    | (() => Promise<void>)
-    | (() => void)
-    | undefined;
-  /**
-   * Optional type for the button
-   * @default 'button'
-   * */
-  type?: 'button' | 'submit' | 'reset';
-}
-
-const getSizeClasses = (size: string) => {
-  switch (size) {
-    case 'small': {
-      return 'px-4 py-2.5';
-    }
-    case 'large': {
-      return 'px-6 py-3';
-    }
-    default: {
-      return 'px-5 py-2.5';
-    }
-  }
+const sizeClassNames: Record<string, string> = {
+  small: 'px-4 py-2.5',
+  large: 'px-6 py-3',
 };
+
+const DEFAULT_SIZE = 'px-5 py-2.5';
 
 const getModeClasses = (isPrimary: boolean) =>
   isPrimary
@@ -64,7 +22,7 @@ const BASE_BUTTON_CLASSES =
  */
 export const Button = ({
   primary = false,
-  size = 'medium',
+  size = 'small',
   label,
   className = '',
   type = 'button',
@@ -73,7 +31,7 @@ export const Button = ({
   const computedClasses = classNames(
     BASE_BUTTON_CLASSES,
     getModeClasses(primary),
-    getSizeClasses(size),
+    sizeClassNames[size] || DEFAULT_SIZE,
     className,
   );
 
@@ -82,11 +40,4 @@ export const Button = ({
       {label}
     </button>
   );
-};
-
-Button.defaultProps = {
-  primary: false,
-  size: 'medium',
-  className: '',
-  type: 'button',
 };
