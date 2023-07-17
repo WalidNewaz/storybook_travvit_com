@@ -14,7 +14,7 @@ import type { MediaTypes } from '../components/HeroSlider/HeroSlider';
 /** Assets */
 import mountainsLake from './images/mountains_lake.jpeg';
 import zion from './images/ZNP-1.jpeg';
-import ynp from './images/yellowstone-2225083_960_720.jpeg';
+import ynp from './images/yellowstone-np.jpeg';
 import sevenHikes from './images/seven-amazing-hikes.webp';
 import backpack from './images/first-backpacking-trip.webp';
 import trailRunner from './images/Ready-set-trail-How-to-prepare-for-trail-running-small.jpeg';

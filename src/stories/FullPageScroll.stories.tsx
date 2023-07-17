@@ -10,7 +10,7 @@ import { Button } from '../components/Button/Button';
 /** Assets */
 import mountainsLake from './images/mountains_lake.jpeg';
 import zion from './images/ZNP-1.jpeg';
-import ynp from './images/yellowstone-2225083_960_720.jpeg';
+import ynp from './images/yellowstone-np.jpeg';
 
 export default {
   title: 'Components/FullPageScroll',

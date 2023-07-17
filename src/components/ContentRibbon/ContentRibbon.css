@@ -10,6 +10,12 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   scroll-behavior: smooth;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.ribbon-scroll-container::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
 }
 
 .content-item {
@@ -47,4 +53,15 @@
 
 .scroll-right {
   right: 16px;
+}
+
+/* #right-arrow::before {
+  background: linear-gradient(to left,var(--yt-spec-base-background) 20%,rgba(255,255,255,0) 80%);
+} */
+
+#right-arrow::after {
+  height: 100%;
+  width: 50px;
+  content: "";
+  pointer-events: none;
 }

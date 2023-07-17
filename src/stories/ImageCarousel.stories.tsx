@@ -14,7 +14,7 @@ import bcnp from './images/BryceCanyon-Amphiteatre1.jpeg';
 import gcnp from './images/GCNP.jpeg';
 import rmnp from './images/RMNP.jpeg';
 import znp from './images/ZNP-1.jpeg';
-import ynp from './images/yellowstone-2225083_960_720.jpeg';
+import ynp from './images/yellowstone-np.jpeg';
 
 export default {
   title: 'Components/ImageCarousel',
