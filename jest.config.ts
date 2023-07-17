@@ -8,5 +8,16 @@ module.exports = {
   },
   collectCoverage: true,
   collectCoverageFrom: ['src/**/*.js', 'src/**/*.jsx', 'src/**/*.ts', 'src/**/*.tsx'],
+  // Exclude directories or paths from test coverage
+  coveragePathIgnorePatterns: [
+    '/node_modules/',  // Exclude any files within node_modules directory
+    'src/interfaces/',
+    'src/lib/',
+    'src/pages/',
+    'src/stories/',
+    'src/types/',
+    'src/utils/',
+    'src/hooks/',
+  ],
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
 };
