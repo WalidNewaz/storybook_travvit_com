@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import LikeActionIcon from '../LikeAction';
+import ShareActionIcon from './ShareAction';
 
-describe('LikeActionIcon', () => {
+describe('ShareActionIcon', () => {
   const onClickMock = jest.fn();
 
   afterEach(() => {
@@ -11,16 +11,16 @@ describe('LikeActionIcon', () => {
   });
 
   it('renders the button and icon correctly', () => {
-    const { getByLabelText } = render(
-      <LikeActionIcon
-        label="Like"
+    const { getByTestId } = render(
+      <ShareActionIcon
+        label="Share"
         onClick={onClickMock}
         className="custom-class"
       />,
     );
 
-    const buttonElement = getByLabelText('Like');
-    const iconElement = buttonElement.querySelector('svg');
+    const buttonElement = getByTestId('button-element');
+    const iconElement = getByTestId('icon-element');
 
     expect(buttonElement).toBeInTheDocument();
     expect(buttonElement).toHaveClass('bg-slate-50');
@@ -29,15 +29,15 @@ describe('LikeActionIcon', () => {
   });
 
   it('triggers the onClick callback when the button is clicked', () => {
-    const { getByLabelText } = render(
-      <LikeActionIcon
-        label="Like"
+    const { getByTestId } = render(
+      <ShareActionIcon
+        label="Share"
         onClick={onClickMock}
         className="custom-class"
       />,
     );
 
-    const buttonElement = getByLabelText('Like');
+    const buttonElement = getByTestId('button-element');
 
     fireEvent.click(buttonElement);
 

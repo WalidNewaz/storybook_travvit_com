@@ -1,6 +1,6 @@
 import React from 'react';
 import { LuShare2 } from 'react-icons/lu';
-import ActionIconProps from './ActionIcon.interface';
+import ActionIconProps from '../ActionIcon.interface';
 
 const ICON_CLASSNAMES = `
   icon

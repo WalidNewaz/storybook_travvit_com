@@ -1,11 +1,9 @@
 import React from 'react';
-import { FaHeart } from 'react-icons/fa6';
-import ActionIconProps from './ActionIcon.interface';
+import { FaPlus } from 'react-icons/fa6';
+import ActionIconProps from '../ActionIcon.interface';
 
 const ICON_CLASSNAMES = `
   icon
-  stroke-white
-  stroke-2
   text-indigo-600
   animated-svg
   transition-all
@@ -15,7 +13,7 @@ const ICON_CLASSNAMES = `
   hover:text-red-500
 `;
 
-const LikeActionIcon: React.FC<ActionIconProps> = ({
+const AddActionIcon: React.FC<ActionIconProps> = ({
   label,
   onClick,
   className,
@@ -26,11 +24,11 @@ const LikeActionIcon: React.FC<ActionIconProps> = ({
     className="bg-slate-50 rounded-full m-2"
     data-testid="button-element"
   >
-    <FaHeart
+    <FaPlus
       className={`${ICON_CLASSNAMES} ${className}`}
       data-testid="icon-element"
     />
   </button>
 );
 
-export default LikeActionIcon;
+export default AddActionIcon;

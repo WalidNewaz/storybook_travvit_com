@@ -1,8 +1,8 @@
 import React from 'react';
 import withOverlay from './withOverlay';
-import LikeActionIcon from '../ActionIcon/LikeAction';
-import AddActionIcon from '../ActionIcon/AddAction';
-import ShareActionIcon from '../ActionIcon/ShareAction';
+import LikeActionIcon from '../ActionIcon/LikeAction/LikeAction';
+import AddActionIcon from '../ActionIcon/AddAction/AddAction';
+import ShareActionIcon from '../ActionIcon/ShareAction/ShareAction';
 import { Badge } from '../Badge/Badge';
 import type { clickHandler } from '../../types/eventHandler.types';
 

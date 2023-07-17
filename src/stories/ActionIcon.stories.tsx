@@ -3,9 +3,9 @@ import React from 'react';
 
 /** Component */
 import { ActionIcon } from '../components/ActionIcon/ActionIcon';
-import LikeActionIcon from '../components/ActionIcon/LikeAction';
-import AddActionIcon from '../components/ActionIcon/AddAction';
-import ShareActionIcon from '../components/ActionIcon/ShareAction';
+import LikeActionIcon from '../components/ActionIcon/LikeAction/LikeAction';
+import AddActionIcon from '../components/ActionIcon/AddAction/AddAction';
+import ShareActionIcon from '../components/ActionIcon/ShareAction/ShareAction';
 
 export default {
   title: 'Components/Action Icons',

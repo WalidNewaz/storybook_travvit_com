@@ -1,9 +1,9 @@
-import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import ShareActionIcon from '../ShareAction';
+import '@testing-library/jest-dom/extend-expect';
+import AddActionIcon from './AddAction';
 
-describe('ShareActionIcon', () => {
+describe('AddActionIcon', () => {
   const onClickMock = jest.fn();
 
   afterEach(() => {
@@ -12,8 +12,8 @@ describe('ShareActionIcon', () => {
 
   it('renders the button and icon correctly', () => {
     const { getByTestId } = render(
-      <ShareActionIcon
-        label="Share"
+      <AddActionIcon
+        label="Add"
         onClick={onClickMock}
         className="custom-class"
       />,
@@ -30,8 +30,8 @@ describe('ShareActionIcon', () => {
 
   it('triggers the onClick callback when the button is clicked', () => {
     const { getByTestId } = render(
-      <ShareActionIcon
-        label="Share"
+      <AddActionIcon
+        label="Add"
         onClick={onClickMock}
         className="custom-class"
       />,
