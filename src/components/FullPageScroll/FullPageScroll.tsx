@@ -1,8 +1,5 @@
 import React, { useRef, useEffect, useCallback } from 'react';
-
-interface FullPageScrollProps {
-  children: React.ReactNode;
-}
+import FullPageScrollProps from './FullPageScroll.interface';
 
 export const FullPageScroll: React.FC<FullPageScrollProps> = ({ children }) => {
   const containerRef = useRef<HTMLDivElement>(null);
