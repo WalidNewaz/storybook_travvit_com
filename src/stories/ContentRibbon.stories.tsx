@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 /** Components */
-import ContentRibbon from '../components/ContentRibbon';
+import ContentRibbon from '../components/ContentRibbon/ContentRibbon';
 import {
   FaPersonHiking,
   FaCampground,

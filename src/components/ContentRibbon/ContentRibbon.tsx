@@ -1,10 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './ContentRibbon.css';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
-
-interface ContentRibbonProps {
-  children: React.ReactNode;
-}
+import ContentRibbonProps from './ContentRibbon.interface';
 
 const ContentRibbon: React.FC<ContentRibbonProps> = ({ children }) => {
   const ribbonRef = useRef<HTMLDivElement>(null);
@@ -54,6 +51,7 @@ const ContentRibbon: React.FC<ContentRibbonProps> = ({ children }) => {
         <button
           className="scroll-button scroll-left"
           onClick={handleScrollLeft}
+          data-testid="scroll-left-button"
         >
           <BsChevronLeft className="w-6 h-6" />
         </button>
@@ -62,6 +60,7 @@ const ContentRibbon: React.FC<ContentRibbonProps> = ({ children }) => {
         <button
           className="scroll-button scroll-right"
           onClick={handleScrollRight}
+          data-testid="scroll-right-button"
         >
           <BsChevronRight className="w-6 h-6" />
         </button>
