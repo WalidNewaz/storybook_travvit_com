@@ -2,8 +2,9 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import { AvatarGroup, AvatarGroupProps } from './AvatarGroup';
-import { AvatarProps } from '../Avatar/Avatar';
+import { AvatarGroup } from './AvatarGroup';
+import AvatarGroupProps from './AvatarGroup.interface';
+import AvatarProps from '../Avatar/Avatar.interface';
 
 // Define a mock AvatarComponent for testing
 const MockAvatarComponent: React.FC<AvatarProps> = ({ src, size }) => (

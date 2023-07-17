@@ -1,15 +1,5 @@
 import React from 'react';
-
-import { AvatarProps } from '../Avatar/Avatar';
-import type { AvatarSize } from '../Avatar/Avatar';
-
-export interface AvatarGroupProps {
-  AvatarComponent: React.FC<any>;
-  groupMembers: AvatarProps[];
-  limit?: number;
-  size?: AvatarSize;
-  className?: string;
-}
+import AvatarGroupProps from './AvatarGroup.interface';
 
 const BASE_AVATAR_GRP_CLASSES =
   'avatar-group flex -space-x-2 overflow-hidden p-1';

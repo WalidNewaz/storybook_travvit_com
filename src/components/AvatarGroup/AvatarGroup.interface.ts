@@ -1,11 +1,12 @@
 import Avatar from '../Avatar/Avatar.interface';
+import type { Size } from '../../types';
 
-interface AvatarGroupProps {
+interface AvatarGroup {
   AvatarComponent: React.FC<any>;
   groupMembers: Avatar[];
   limit?: number;
-  size?: AvatarSize;
+  size?: Size;
   className?: string;
 }
 
-export default AvatarGroupProps;
+export default AvatarGroup;
