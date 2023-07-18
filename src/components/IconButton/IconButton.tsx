@@ -1,37 +1,13 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import classNames from 'classnames';
+import IconButtonProps from './IconButton.interface';
 
-interface IconButtonProps {
-  label: string;
-  icon: ReactNode;
-  onClick?:
-    | (() => void)
-    | ((
-        event: React.MouseEvent<
-          HTMLAnchorElement | HTMLButtonElement,
-          MouseEvent
-        >,
-      ) => void | undefined)
-    | undefined;
-  primary?: boolean;
-  size?: 'small' | 'medium' | 'large';
-  type?: 'button' | 'submit' | 'reset';
-  className?: string;
-}
-
-const getSizeClasses = (size: string) => {
-  switch (size) {
-    case 'small': {
-      return 'px-4 py-2.5';
-    }
-    case 'large': {
-      return 'px-6 py-3';
-    }
-    default: {
-      return 'px-5 py-2.5';
-    }
-  }
+const sizeClassNames: Record<string, string> = {
+  small: 'px-4 py-2.5',
+  large: 'px-6 py-3',
 };
+
+const DEFAULT_SIZE = 'px-5 py-2.5';
 
 const getModeClasses = (isPrimary: boolean) =>
   isPrimary
@@ -56,7 +32,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
   const computedClasses = classNames(
     BASE_BUTTON_CLASSES,
     getModeClasses(primary),
-    getSizeClasses(size),
+    sizeClassNames[size] || DEFAULT_SIZE,
     className,
   );
 

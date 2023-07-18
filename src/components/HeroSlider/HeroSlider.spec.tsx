@@ -6,11 +6,6 @@ import { HeroSlider } from './HeroSlider';
 
 import type { MediaTypes } from './HeroSlider';
 
-// Mock slide component for testing
-const MockSlideComponent: React.FC<{ media: string }> = ({ media }) => (
-  <img src={media} alt="Slide" />
-);
-
 describe('HeroSlider', () => {
   const slides = [
     { media: 'slide1.jpg', mediaType: 'image' as MediaTypes },
