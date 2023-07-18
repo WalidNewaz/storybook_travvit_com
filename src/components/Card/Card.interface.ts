@@ -1,8 +1,10 @@
+import type { StyleType } from '../../types';
+
 interface Card {
   header?: React.FC<any>;
   body?: React.FC<any>;
   cardClasses?: string;
-  cardStyle?: React.CSSProperties;
+  cardStyle?: StyleType;
   headerClasses?: string;
   bodyClasses?: string;
 }

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import type { IconType } from 'react-icons';
 import type { clickHandler } from '../types/eventHandler.types';
-import type { MediaType } from '../types';
+import type { MediaType, StyleType } from '../types';
 
 export interface User<T extends string> {
   id: number;
@@ -126,8 +126,8 @@ export interface MediaCardProps {
   imageProps?: ResponsiveImageProps;
   videoProps?: ResponsiveVideoProps;
   actionLayer?: ReactNode;
-  containerStyle?: React.CSSProperties;
-  mediaStyle?: React.CSSProperties;
+  containerStyle?: StyleType | null;
+  mediaStyle?: StyleType | null;
   className?: string;
 }
 
@@ -146,15 +146,15 @@ export interface SlideProps {
   buttonText?: string;
   buttonOnClick?: clickHandler;
   mediaClassName?: string;
-  mediaStyle?: React.CSSProperties;
+  mediaStyle?: StyleType | null;
   className?: string;
 }
 
 export interface HeroSliderProps {
   slides: Array<SlideProps>;
   containerClasses?: string;
-  containerStyle?: React.CSSProperties;
+  containerStyle?: StyleType | null;
   slideContainerClasses?: string;
-  mediaStyle?: React.CSSProperties;
+  mediaStyle?: StyleType | null;
   slideDuration?: number;
 }

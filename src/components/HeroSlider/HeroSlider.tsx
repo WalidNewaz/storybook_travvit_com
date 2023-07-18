@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Slides } from './Slides';
+import { Slides } from './Slides/Slides';
 import { SliderNav } from './SliderNav';
 import { SliderDots } from './SliderDots';
 import { HeroSliderProps } from '../../interfaces';

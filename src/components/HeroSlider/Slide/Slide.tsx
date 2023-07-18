@@ -22,7 +22,7 @@ export const Slide: React.FC<SlideProps> = ({
   className,
 }) => (
   <div
-    key={index}
+    // key={index}
     className={`slide-media-${index} ${SLIDE_CLASSES} ${
       index === currentSlide ? VISIBLE : TRANSPARENT
     }`}

@@ -1,3 +1,5 @@
+import { StandardLonghandProperties } from 'csstype';
+import { CSSProperties } from 'react';
 export * from './eventHandler.types';
 export * from './PageProps';
 export * from './User';
@@ -14,3 +16,4 @@ export type Color =
   | 'indigo'
   | 'purple'
   | 'pink';
+export type StyleType = React.CSSProperties | StandardLonghandProperties;

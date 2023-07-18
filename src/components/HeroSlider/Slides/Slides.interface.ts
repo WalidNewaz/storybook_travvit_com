@@ -1,10 +1,9 @@
 import type { clickHandler } from '../../../types/eventHandler.types';
-import type { StyleType } from '../../../types';
+import type { MediaType, StyleType } from '../../../types';
 
-interface Slide {
-  index: number;
-  currentSlide: number;
+interface SlideProps {
   media: string;
+  mediaType?: MediaType;
   alt?: string;
   description?: string;
   descriptionClasses?: string;
@@ -12,8 +11,13 @@ interface Slide {
   buttonOnClick?: clickHandler;
   mediaClassName?: string;
   mediaStyle?: StyleType | null;
-  slideMediaStyle?: StyleType | null;
   className?: string;
 }
 
-export default Slide;
+interface Slides {
+  slides: Array<SlideProps>;
+  currentSlide: number;
+  mediaStyle?: StyleType | null;
+}
+
+export default Slides;

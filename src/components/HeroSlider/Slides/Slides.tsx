@@ -1,12 +1,12 @@
 import React from 'react';
-import { SlideProps } from '../../interfaces';
-import { Slide } from './Slide/Slide';
+import { Slide } from '../Slide/Slide';
+import SlidesProps from './Slides.interface';
 
-export const Slides: React.FC<{
-  slides: Array<SlideProps>;
-  currentSlide: number;
-  mediaStyle?: React.CSSProperties;
-}> = ({ slides, currentSlide, mediaStyle }) =>
+export const Slides: React.FC<SlidesProps> = ({
+  slides,
+  currentSlide,
+  mediaStyle,
+}) =>
   slides.map(
     (
       {
@@ -23,6 +23,7 @@ export const Slides: React.FC<{
       index,
     ) => (
       <Slide
+        key={index}
         index={index}
         currentSlide={currentSlide}
         media={media}

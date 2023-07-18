@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import type { StyleType } from '../../types';
 
 interface ImageCardProps {
   /**
@@ -19,7 +20,7 @@ interface ImageCardProps {
    * Custom style for the container
    * @default {}
    * */
-  containerStyle?: React.CSSProperties;
+  containerStyle?: StyleType;
   /**
    * Custom style classes for the image
    * @default ''
@@ -29,7 +30,7 @@ interface ImageCardProps {
    * Custom style for the image
    * @default {}
    * */
-  imageStyle?: React.CSSProperties;
+  imageStyle?: StyleType;
 }
 
 const CONTAINER_CLASSES = `

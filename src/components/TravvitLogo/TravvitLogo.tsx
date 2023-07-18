@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import type { StyleType } from '../../types';
 
 export type LogoSizeType = 'xs' | 'small' | 'medium' | 'large' | 'xl' | 'full';
 
@@ -17,7 +18,7 @@ interface LogoProps {
    * Custom style for the container
    * @default {}
    * */
-  containerStyle?: React.CSSProperties;
+  containerStyle?: StyleType;
   /**
    * Custom style classes for the image
    * @default ''
@@ -27,7 +28,7 @@ interface LogoProps {
    * Custom style for the image
    * @default {}
    * */
-  imageStyle?: React.CSSProperties;
+  imageStyle?: StyleType;
 }
 
 interface HeightWidth {
