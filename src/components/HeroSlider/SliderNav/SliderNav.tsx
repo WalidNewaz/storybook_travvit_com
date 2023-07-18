@@ -1,16 +1,16 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight } from '../Icons';
-import type { clickHandler } from '../../types/eventHandler.types';
+import { ChevronLeft, ChevronRight } from '../../Icons';
+import SliderNavProps from './SliderNav.interface';
 
 const INTERVAL_DELAY = 150;
 
 const NAV_BUTTON_CLASSES = `absolute top-1/2 transform -translate-y-1/2 text-white`;
 const NAV_BUTTON_ICON_CLASSES = `w-24 h-24 text-slate-300 opacity-50 hover:opacity-80 hover:ease-in transition transition-opacity ease-in delay-${INTERVAL_DELAY}`;
 
-export const SliderNav: React.FC<{
-  handlePrevSlide: clickHandler;
-  handleNextSlide: clickHandler;
-}> = ({ handlePrevSlide, handleNextSlide }) => (
+export const SliderNav: React.FC<SliderNavProps> = ({
+  handlePrevSlide,
+  handleNextSlide,
+}) => (
   <div className="slider-nav static pt-[22rem]">
     <button
       className={`${NAV_BUTTON_CLASSES} left-2`}
