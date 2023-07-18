@@ -1,37 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import type { StyleType } from '../../types';
-
-interface ImageCardProps {
-  /**
-   * Image url
-   */
-  src: string;
-  /**
-   * Image alt text
-   */
-  alt?: string;
-  /**
-   * Custom style classes for the container
-   * @default ''
-   */
-  containerClassName?: string;
-  /**
-   * Custom style for the container
-   * @default {}
-   * */
-  containerStyle?: StyleType;
-  /**
-   * Custom style classes for the image
-   * @default ''
-   * */
-  imageClassName?: string;
-  /**
-   * Custom style for the image
-   * @default {}
-   * */
-  imageStyle?: StyleType;
-}
+import ImageCardProps from './ImageCard.interface';
 
 const CONTAINER_CLASSES = `
   overflow-hidden
