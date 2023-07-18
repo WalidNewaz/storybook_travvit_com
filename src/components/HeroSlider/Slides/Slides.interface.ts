@@ -1,7 +1,7 @@
 import type { clickHandler } from '../../../types/eventHandler.types';
 import type { MediaType, StyleType } from '../../../types';
 
-interface SlideProps {
+export interface SlideProps {
   media: string;
   mediaType?: MediaType;
   alt?: string;

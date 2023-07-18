@@ -1,14 +1,14 @@
 import React from 'react';
-import { SlideProps } from '../../interfaces';
+import SlideDotsProps from './SliderDots.interface';
 
 const ACTIVE = 'bg-white';
 const PASSIVE = 'bg-gray-400';
 
-export const SliderDots: React.FC<{
-  slides: Array<SlideProps>;
-  currentSlide: number;
-  setCurrentSlide: React.Dispatch<React.SetStateAction<number>>;
-}> = ({ slides, currentSlide, setCurrentSlide }) => (
+export const SliderDots: React.FC<SlideDotsProps> = ({
+  slides,
+  currentSlide,
+  setCurrentSlide,
+}) => (
   <div className="slider-dots absolute bottom-4 left-0 right-0 flex justify-center opacity-60">
     {slides.map((_, index) => (
       <button

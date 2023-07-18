@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Slides } from './Slides/Slides';
 import { SliderNav } from './SliderNav';
-import { SliderDots } from './SliderDots';
+import { SliderDots } from './SliderDots/SliderDots';
 import { HeroSliderProps } from '../../interfaces';
 
 const DEFAULT_SLIDE_DURATION = 5000;
