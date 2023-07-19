@@ -2,7 +2,7 @@ import type { User, UserType, MenuItem } from '../../types';
 
 export interface MenuItemsType {
   discover: MenuItem[];
-  loggeIn: MenuItem[];
+  loggedIn: MenuItem[];
   notLoggedIn: MenuItem[];
 }
 

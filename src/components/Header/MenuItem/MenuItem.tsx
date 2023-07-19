@@ -4,9 +4,8 @@ import MenuItemProps from './MenuItem.interface';
 import type { IconType } from '../../../types';
 
 const MenuItemWrapper: React.FC<{
-  mobile: boolean;
   children: React.ReactNode;
-}> = ({ mobile, children }) => {
+}> = ({ children }) => {
   const className = classNames(
     'group relative flex gap-x-6 rounded-lg p-2 hover:bg-gray-50',
   );
@@ -89,7 +88,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   };
 
   return (
-    <MenuItemWrapper mobile={mobile}>
+    <MenuItemWrapper>
       <MenuItemIcon icon={Icon} iconLabel={iconLabel} mobile={mobile} />
       <MenuItemLabel
         label={label}

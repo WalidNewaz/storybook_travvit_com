@@ -1,11 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
-import { User, MenuItemType } from '../../interfaces';
-import { MenuItemsType } from './Header';
-import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
+import { User, MenuItemType } from '../../../interfaces';
+import { MenuItemsType } from '../Header';
+import { TravvitLogo } from '../../TravvitLogo/TravvitLogo';
 import { FaXmark } from 'react-icons/fa6';
-import { MenuItem } from './MenuItem/MenuItem';
-import { MobileLoginButton } from './MobileLoginButton/MobileLoginButton';
+import { MenuItem } from '../MenuItem/MenuItem';
+import { MobileLoginButton } from '../MobileLoginButton/MobileLoginButton';
 
 const MobileMenuItems: React.FC<{
   items: MenuItemType[];
@@ -74,7 +74,7 @@ export const MobileMenu: React.FC<{
         <nav className={menuClass}>
           <MobileMenuUser
             user={user}
-            loggedInMenuItems={menuItems.loggeIn}
+            loggedInMenuItems={menuItems.loggedIn}
             notLoggedInMenuItems={menuItems.notLoggedIn}
           />
           <MobileMenuItems items={menuItems.discover} />

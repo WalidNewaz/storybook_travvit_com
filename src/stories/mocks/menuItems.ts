@@ -38,7 +38,7 @@ export const menuItems = {
       href: '#',
     },
   ],
-  loggeIn: [
+  loggedIn: [
     {
       icon: HiUserCircle,
       label: 'My Profile',
