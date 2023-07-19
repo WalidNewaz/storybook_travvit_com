@@ -1,26 +1,10 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
-import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
 import { Login } from './Login';
 
 // Mock the onLogin function
 const mockOnLogin = jest.fn();
-
-// Define initial form values
-const initialValues = {
-  email: '',
-  password: '',
-};
-
-// Define validation schema
-const validationSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Invalid email address')
-    .required('Email is required'),
-  password: Yup.string().required('Password is required'),
-});
 
 describe('Login', () => {
   test('should render login form and submit successfully', async () => {

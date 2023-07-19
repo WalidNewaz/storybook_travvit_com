@@ -10,7 +10,9 @@ export const PageNotFound: React.FC<PageNotFoundProps> = ({
 }) => {
   const baseClassName = className || 'text-slate-100 drop-shadow-md';
   return (
-    <main className={`isolate isolation-[100%] min-h-full h-screen relative`}>
+    <main
+      className={`page-not-found isolate isolation-[100%] min-h-full h-screen relative`}
+    >
       <TravvitLogo
         size="xs"
         containerClasses="absolute object-top object-cover flex w-full justify-center mt-24 drop-shadow-lg"
