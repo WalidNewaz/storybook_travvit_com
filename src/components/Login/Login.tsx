@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
 import { Button } from '../Button/Button';
 import { Input } from './Input/Input';
+import LoginProps from './Login.interface';
 
 const LOGIN_BTN_CLASSES = `
   flex w-full justify-center
@@ -11,6 +12,18 @@ const LOGIN_BTN_CLASSES = `
   border-travvit-orange-900
   hover:bg-travvit-orange
   hover:border-travvit-orange`;
+
+const initialValues = {
+  email: '',
+  password: '',
+};
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string()
+    .email('Invalid email address')
+    .required('Email is required'),
+  password: Yup.string().required('Password is required'),
+});
 
 const FormHeader: React.FC = () => (
   <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -63,24 +76,7 @@ const Register: React.FC = () => (
   </p>
 );
 
-interface LoginProps {
-  onLogin: (email: string, password: string) => void;
-  path?: string;
-}
-
 export const Login: React.FC<LoginProps> = ({ onLogin }) => {
-  const initialValues = {
-    email: '',
-    password: '',
-  };
-
-  const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .email('Invalid email address')
-      .required('Email is required'),
-    password: Yup.string().required('Password is required'),
-  });
-
   const handleSubmit = (values: { email: string; password: string }) => {
     onLogin(values.email, values.password);
   };

@@ -16,4 +16,4 @@ export type Color =
   | 'indigo'
   | 'purple'
   | 'pink';
-export type StyleType = React.CSSProperties | StandardLonghandProperties;
+export type StyleType = CSSProperties | StandardLonghandProperties;

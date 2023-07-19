@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 /** Component */
-import { Login } from '../components/Login';
+import { Login } from '../components/Login/Login';
 
 export default {
   title: 'Components/Travvit Login',
