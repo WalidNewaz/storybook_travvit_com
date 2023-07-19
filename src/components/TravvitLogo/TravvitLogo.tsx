@@ -81,6 +81,7 @@ export const TravvitLogo: React.FC<LogoProps> = ({
     <div
       className={`${CONTAINER_CLASSES} ${containerClasses}`}
       style={containerStyle}
+      data-testid="travvit-logo"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

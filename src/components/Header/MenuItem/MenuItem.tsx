@@ -50,7 +50,12 @@ const MenuItemLabel: React.FC<{
   );
   if (href) {
     return (
-      <a href={href} className={className} onClick={onClick}>
+      <a
+        href={href}
+        className={className}
+        onClick={onClick}
+        data-testid="menu-item-href"
+      >
         {label}
       </a>
     );
@@ -60,6 +65,7 @@ const MenuItemLabel: React.FC<{
       <button
         onClick={onClick as React.MouseEventHandler}
         className={className}
+        data-testid="menu-item-button"
       >
         {label}
       </button>

@@ -7,7 +7,7 @@ export interface MenuItemsType {
 }
 
 interface Header {
-  user?: User<UserType> | null;
+  user?: User<UserType> | undefined;
   menuItems: MenuItemsType;
 }
 

@@ -9,7 +9,10 @@ import DesktopMenuUser from './DesktopMenuUser';
  * @param menuItems The items on the menu that are displayed.
  * @returns JSX component
  */
-const DesktopMenu: React.FC<DesktopMenuProps> = ({ user, menuItems }) => (
+export const DesktopMenu: React.FC<DesktopMenuProps> = ({
+  user,
+  menuItems,
+}) => (
   <div className="desktop-menu hidden inline-flex md:visible md:block pt-3">
     <DesktopMenuDiscover items={menuItems.discover} />
     <DesktopMenuUser

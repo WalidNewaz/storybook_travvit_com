@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
 import { HamburgerMenu } from './HamburgerMenu/HamburgerMenu';
-import { User, MenuItemType } from '../../interfaces';
 import { DesktopMenu } from './DesktopMenu/DesktopMenu';
 import { MobileMenu } from './MobileMenu/MobileMenu';
 import HeaderProps from './Header.interface';
@@ -20,7 +19,7 @@ const SiteHeaderLogo: React.FC = () => (
  * @param menuItems List of items in the menu.
  * @returns A JSX component.
  */
-export const Header: React.FC<HeaderProps> = ({ user = null, menuItems }) => {
+export const Header: React.FC<HeaderProps> = ({ user, menuItems }) => {
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
 
   const handleMobileMenuToggle = () => {

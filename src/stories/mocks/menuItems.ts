@@ -1,7 +1,3 @@
-import {
-  handleLogin,
-  handleLogout,
-} from '../../components/Header/mocks/menuFunctions';
 import { FaPersonHiking } from 'react-icons/fa6';
 import { PiMountainsDuotone } from 'react-icons/pi';
 import { BiTrip } from 'react-icons/bi';
@@ -14,6 +10,20 @@ import {
   HiArrowRightOnRectangle,
   HiArrowLeftOnRectangle,
 } from 'react-icons/hi2';
+
+export function handleLogin(
+  event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+) {
+  event.preventDefault();
+  alert('You are about to Log in!');
+}
+
+export function handleLogout(
+  event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+) {
+  event.preventDefault();
+  alert('You are about to Log out!');
+}
 
 export const menuItems = {
   discover: [
