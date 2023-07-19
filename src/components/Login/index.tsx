@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
 import { Button } from '../Button/Button';
-import { Input } from './Input';
+import { Input } from './Input/Input';
 
 const LOGIN_BTN_CLASSES = `
   flex w-full justify-center
