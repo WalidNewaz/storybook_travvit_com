@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 /** Component */
 import { FullPageScroll } from '../components/FullPageScroll/FullPageScroll';
 import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
-import { Header as TravvitHeader } from '../components/TravvitHeader/Header';
+import { Header as TravvitHeader } from '../components/Header/Header';
 import { HeroSlider } from '../components/HeroSlider/HeroSlider';
 
 /** Assets */

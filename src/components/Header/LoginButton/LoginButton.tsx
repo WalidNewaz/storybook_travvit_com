@@ -1,5 +1,6 @@
 import React from 'react';
-import { MenuItemType, IconProps } from './Header';
+import MenuItemType from '../MenuItem/MenuItem.interface';
+import { IconProps } from '../../../interfaces';
 
 export const LoginButton: React.FC<MenuItemType> = ({
   icon,
@@ -16,7 +17,7 @@ export const LoginButton: React.FC<MenuItemType> = ({
       className="ml-8 first:ml-0 main-menu-item-link"
     >
       {label + ' '}
-      <span aria-hidden="true">
+      <span aria-hidden="true" data-testid="login-icon">
         <Icon
           aria-label={iconLabel}
           className="inline w-6 h-6 text-gray-600 ml-2"

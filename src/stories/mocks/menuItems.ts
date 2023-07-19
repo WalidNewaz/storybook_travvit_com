@@ -1,7 +1,7 @@
 import {
   handleLogin,
   handleLogout,
-} from '../../components/TravvitHeader/mocks/menuFunctions';
+} from '../../components/Header/mocks/menuFunctions';
 import { FaPersonHiking } from 'react-icons/fa6';
 import { PiMountainsDuotone } from 'react-icons/pi';
 import { BiTrip } from 'react-icons/bi';

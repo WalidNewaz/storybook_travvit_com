@@ -4,7 +4,7 @@ import { User, MenuItemType } from '../../interfaces';
 import { MenuItemsType } from './Header';
 import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
 import { FaXmark } from 'react-icons/fa6';
-import { MenuItem } from './MenuItem';
+import { MenuItem } from './MenuItem/MenuItem';
 import { MobileLoginButton } from './MobileLoginButton';
 
 const MobileMenuItems: React.FC<{

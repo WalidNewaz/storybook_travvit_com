@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
-import { User, MenuItemType } from '../../interfaces';
-import { LoginButton } from './LoginButton';
-import { MenuItemsType } from './Header';
-import { Avatar } from '../Avatar/Avatar';
+import { User, MenuItemType } from '../../../interfaces';
+import { LoginButton } from '../LoginButton/LoginButton';
+import { Avatar } from '../../Avatar/Avatar';
 import { FaChevronDown } from 'react-icons/fa6';
-import { MenuItem } from './MenuItem';
+import { MenuItem } from '../MenuItem/MenuItem';
+import DesktopMenuProps from './DesktopMenu.interface';
 
 const MenuItems: React.FC<{ items: MenuItemType[] }> = ({ items }) => (
   <div className="w-screen max-w-md flex-auto overflow-hidden rounded-2xl bg-white leading-6 shadow-lg ring-1 ring-gray-900/5">
@@ -106,10 +106,10 @@ const DesktopMenuUser: React.FC<{
  * @param menuItems The items on the menu that are displayed.
  * @returns JSX component
  */
-export const DesktopMenu: React.FC<{
-  user?: User<'admin' | 'user'> | null;
-  menuItems: MenuItemsType;
-}> = ({ user, menuItems }) => (
+export const DesktopMenu: React.FC<DesktopMenuProps> = ({
+  user,
+  menuItems,
+}) => (
   <div className="desktop-menu hidden inline-flex md:visible md:block pt-3">
     <DesktopMenuDiscover items={menuItems.discover} />
     <DesktopMenuUser

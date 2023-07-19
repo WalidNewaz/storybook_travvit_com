@@ -11,8 +11,8 @@ export type clickHandler =
 type genericDataHandler =
   | ((data: any) => void)
   | ((data: any) => Promise<void>)
-  | (() => Promise<void>)
   | (() => void)
+  | (() => Promise<void>)
   | undefined;
 
 export type likeHandler = genericDataHandler;

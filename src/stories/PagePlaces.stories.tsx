@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 /** Component */
 import { FullPageScroll } from '../components/FullPageScroll/FullPageScroll';
 import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
-import { Header as TravvitHeader } from '../components/TravvitHeader/Header';
+import { Header as TravvitHeader } from '../components/Header/Header';
 import { PlaceCardGroup } from '../components/ContentCardGroup/PlaceCardGroup/PlaceCardGroup';
 import { ActivityCardGroup } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup';
 import { PlaceCardType, ActivitySummaryType } from '../interfaces';

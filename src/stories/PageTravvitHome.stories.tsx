@@ -7,7 +7,7 @@ import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
 import { Card } from '../components/Card/Card';
 import { ImageCard } from '../components/ImageCard/ImageCard';
 import { Button } from '../components/Button/Button';
-import { Header as TravvitHeader } from '../components/TravvitHeader/Header';
+import { Header as TravvitHeader } from '../components/Header/Header';
 import { HeroSlider } from '../components/HeroSlider/HeroSlider';
 import type { MediaTypes } from '../components/HeroSlider/HeroSlider';
 

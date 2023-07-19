@@ -8,7 +8,7 @@ import { Mockstore, mockedState } from './mocks/store';
 /** Component */
 import { FullPageScroll } from '../components/FullPageScroll/FullPageScroll';
 import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
-import { Header as TravvitHeader } from '../components/TravvitHeader/Header';
+import { Header as TravvitHeader } from '../components/Header/Header';
 import { CategoryCard } from '../components/ContentCard/CategoryCard/CategoryCard';
 import { IconButton } from '../components/IconButton/IconButton';
 import {

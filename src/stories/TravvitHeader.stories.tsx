@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 /** Component */
-import { Header as TravvitHeader } from '../components/TravvitHeader/Header';
+import { Header as TravvitHeader } from '../components/Header/Header';
 
 import { menuItems } from './mocks/menuItems';
 import { user } from './mocks/user';
