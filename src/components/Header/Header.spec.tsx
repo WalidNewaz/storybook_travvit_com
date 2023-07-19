@@ -59,7 +59,7 @@ describe('Header', () => {
   test('should render site header with logged in user', async () => {
     // Set window.innerWidth to a large desktop screen width
     window.innerWidth = 1440;
-    const { getByText, queryByTestId, getByLabelText } = render(
+    const { getByText, queryByTestId } = render(
       <Header user={user} menuItems={menuItems} />,
     );
 
