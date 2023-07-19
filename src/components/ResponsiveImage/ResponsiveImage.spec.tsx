@@ -27,7 +27,7 @@ describe('ResponsiveImage', () => {
         src="image.jpg"
         data-testid="responsive-image"
         className="custom-class"
-      />
+      />,
     );
 
     // Check if the responsive image sources are rendered correctly
