@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TravvitLogo } from '../TravvitLogo/TravvitLogo';
-import { HamburgerMenu } from './HamburgerMenu';
+import { HamburgerMenu } from './HamburgerMenu/HamburgerMenu';
 import { User, MenuItemType } from '../../interfaces';
 import { DesktopMenu } from './DesktopMenu/DesktopMenu';
 import { MobileMenu } from './MobileMenu';
