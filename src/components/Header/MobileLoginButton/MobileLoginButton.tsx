@@ -1,6 +1,7 @@
 import React from 'react';
-import { MenuItemType, IconProps } from '../../interfaces';
-import { IconButton } from '../IconButton/IconButton';
+import MenuItemType from '../MenuItem/MenuItem.interface';
+import { IconProps } from '../../../interfaces';
+import { IconButton } from '../../IconButton/IconButton';
 
 export const MobileLoginButton: React.FC<MenuItemType> = ({
   icon,
@@ -21,6 +22,7 @@ export const MobileLoginButton: React.FC<MenuItemType> = ({
           <Icon
             aria-label={iconLabel}
             className="inline w-6 h-6 text-gray-300 group-hover:text-indigo-600"
+            data-testid="icon-element"
           />
         }
       />
