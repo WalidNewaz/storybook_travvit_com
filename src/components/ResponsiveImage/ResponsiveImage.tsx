@@ -10,7 +10,12 @@ const getSourceTag = (type: string) => (sources: ImageSource[]) =>
     ? sources.map(
         (source, index) =>
           source.type === type && (
-            <source key={index} srcSet={source.srcSet} type={source.type} />
+            <source
+              key={index}
+              srcSet={source.srcSet}
+              type={source.type}
+              data-testid={`${source.type.slice(6)}-source`}
+            />
           ),
       )
     : null;
