@@ -11,8 +11,8 @@ import { ActivityType } from '../components/ContentCardGroup/ActivityCardGroup/A
 import { PlaceCardType } from '../components/ContentCardGroup/PlaceCardGroup/PlaceCardGroup.interface';
 
 /** Services */
-import PlacesService from './mocks/places.service';
-import ActivitiesService from './mocks/activities.service';
+import PlacesService from './mocks/places/places.service';
+import ActivitiesService from './mocks/activities/activities.service';
 
 /** Assets */
 import { menuItems } from './mocks/menuItems';

@@ -13,8 +13,9 @@
       "alt": "Red Rocks Trading Post Trail",
       "className": ""
     },
-    "badges": ["Hiking"],
-    "name": "Red Rocks Trading Post Trail",
+    "badges": ["Running"],
+    "name": "Blue Rocks Trading Post Trail",
+    "type": "Running",
     "slug": "red-rocks-trading-post-trail",
     "place": {
       "id": "1",
@@ -45,6 +46,7 @@
     },
     "badges": ["Hiking"],
     "name": "Red Rocks Trading Post Trail",
+    "type": "Hiking",
     "slug": "red-rocks-trading-post-trail",
     "place": {
       "id": "1",

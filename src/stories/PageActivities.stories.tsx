@@ -11,6 +11,7 @@ import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
 import { Header as TravvitHeader } from '../components/Header/Header';
 import { CategoryCard } from '../components/ContentCard/CategoryCard/CategoryCard';
 import { IconButton } from '../components/IconButton/IconButton';
+import { Button } from '../components/Button/Button';
 import { HeroSlider } from '../components/HeroSlider/HeroSlider';
 import type { MediaTypes } from '../components/HeroSlider/HeroSlider';
 import ContentRibbon from '../components/ContentRibbon/ContentRibbon';
@@ -25,7 +26,7 @@ import { MdDirectionsBike } from 'react-icons/md';
 import { ActivityCardGroup } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup';
 import { ActivityType } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup.interface';
 
-import ActivitiesService from './mocks/activities.service';
+import ActivitiesService from './mocks/activities/activities.service';
 import type { clickHandler } from '../types';
 
 /** Assets */
@@ -74,75 +75,9 @@ const getActivityHandler =
     setSelectedActivity(selectActivity);
   };
 
-const ActivitiesButtons: React.FC<{
-  activitiesSelectHanlder: clickHandler;
-}> = ({ activitiesSelectHanlder }) => (
-  <ContentRibbon>
-    <IconButton
-      className="flex m-2"
-      label="Hiking"
-      onClick={activitiesSelectHanlder}
-      icon={<FaPersonHiking className="w-6 h-6" aria-hidden="true" />}
-    />
-    <IconButton
-      className="flex m-2"
-      label="Climbing"
-      onClick={activitiesSelectHanlder}
-      icon={<GiMountainClimbing className="w-6 h-6" aria-hidden="true" />}
-    />
-    <IconButton
-      className="flex m-2"
-      label="Camping"
-      onClick={activitiesSelectHanlder}
-      icon={<FaCampground className="w-6 h-6" aria-hidden="true" />}
-    />
-    <IconButton
-      className="flex m-2"
-      label="Skiing"
-      onClick={activitiesSelectHanlder}
-      icon={<FaPersonSkiing className="w-6 h-6" aria-hidden="true" />}
-    />
-    <IconButton
-      className="flex m-2"
-      label="Mtn Biking"
-      onClick={activitiesSelectHanlder}
-      icon={<MdDirectionsBike className="w-6 h-6" aria-hidden="true" />}
-    />
-    <IconButton
-      className="flex m-2"
-      label="Running"
-      onClick={activitiesSelectHanlder}
-      icon={<FaPersonRunning className="w-6 h-6" aria-hidden="true" />}
-    />
-  </ContentRibbon>
-);
-
-const imagePropsHiking = {
-  sources: [],
-  src: hikingImgJpeg,
-  alt: 'Hiking',
-  className: '',
-};
-
-const imagePropsClimbing = {
-  sources: [],
-  src: climbingImgJpeg,
-  alt: 'Climbing',
-  className: '',
-};
-
-const imagePropsCamping = {
-  sources: [],
-  src: campingImgJpeg,
-  alt: 'Camping',
-  className: '',
-};
-
-const imagePropsMtb = {
-  sources: [],
-  src: bikingImgJpeg,
-  alt: 'MTB',
-  className: '',
+const getActivityTypeNames = (activities: ActivityType[]) => {
+  const names = activities.map((activity) => activity.type);
+  return names;
 };
 
 const storySlides = [
@@ -200,10 +135,61 @@ const storySlides = [
   },
 ];
 
+const ActivitiesButtons: React.FC<{
+  activityNames: string[] | null;
+  selectedActivity: string | null;
+  activitiesSelectHanlder: clickHandler;
+}> = ({ activityNames, selectedActivity, activitiesSelectHanlder }) => {
+  const activityButtons = activityNames?.map((activityName, index) =>
+    selectedActivity === activityName ? (
+      <Button
+        key={index}
+        className="flex m-2 whitespace-nowrap"
+        label={activityName}
+        value={activityName}
+        onClick={activitiesSelectHanlder}
+        primary
+      />
+    ) : (
+      <Button
+        key={index}
+        className="flex m-2 whitespace-nowrap"
+        label={activityName}
+        value={activityName}
+        onClick={activitiesSelectHanlder}
+      />
+    ),
+  );
+
+  return (
+    <>
+      <h1 className="section-header">Nearby Activities</h1>
+      <section className={`all-activities flex flex-wrap max-w-[90vw] `}>
+        <ContentRibbon>
+          {activityNames && (
+            <>
+              <Button
+                className="flex m-2 whitespace-nowrap"
+                label="All Activities"
+                value="All Activities"
+                onClick={activitiesSelectHanlder}
+                {...(selectedActivity === 'All Activities' && {
+                  primary: true,
+                })}
+              />
+              {activityButtons}
+            </>
+          )}
+        </ContentRibbon>
+      </section>
+    </>
+  );
+};
+
 const ActivitiesHeader: React.FC<{
-  selectedActivity: string;
-  count: number;
-}> = ({ selectedActivity, count }) =>
+  selectedActivity: string | null;
+  count?: number;
+}> = ({ selectedActivity, count = 0 }) =>
   selectedActivity ? (
     <h1 className="section-header">
       {selectedActivity} Near Me ({count})
@@ -212,56 +198,20 @@ const ActivitiesHeader: React.FC<{
     <h1 className="section-header">Activities Near Me ({count})</h1>
   );
 
-const ActivitiesPage: React.FC = () => {
-  const [loading, setLoading] = useState(false);
-  const [nearbyActivities, setNearbyActivities] = useState<
-    ActivityType[] | null
-  >(null);
-  const [selectedActivity, setSelectedActivity] = useState<string | null>(null);
-  const [selectedActivities, setSelectedActivities] = useState<
-    ActivityType[] | null
-  >(null);
-
-  const {
-    activities,
-  }: {
-    activities: ActivityType[];
-  } = useSelector((state: any) => state.activities);
-
-  useEffect(() => {
-    console.log('nearbyActivities', activities);
-    const fetchNearbyActivities = async () => {
-      const result = await activitiesService.getActivitiesNearMe();
-      setNearbyActivities(result);
-      setSelectedActivities(result);
-    };
-    if (activities.length === 0) {
-      fetchNearbyActivities();
-    }
-  }, []);
-
-  const activitiesSelectHanlder: clickHandler = getActivityHandler(
-    setSelectedActivity,
-  ) as clickHandler;
-
+const SelectedActivities: React.FC<{
+  selectedActivity: string | null;
+  selectedActivities: ActivityType[] | null;
+}> = ({ selectedActivities, selectedActivity }) => {
   return (
-    <main className="page-activities">
-      <HeroSlider
-        slides={storySlides}
-        containerStyle={{ height: '35rem', marginTop: '1rem' }}
-        mediaStyle={{ height: '35rem' }}
+    <>
+      <ActivitiesHeader
+        selectedActivity={selectedActivity}
+        count={selectedActivities?.length}
       />
-      <h1 className="section-header">Nearby Activities</h1>
-      <section className={`all-activities flex flex-wrap max-w-[90vw] `}>
-        <ActivitiesButtons activitiesSelectHanlder={activitiesSelectHanlder} />
-      </section>
-      <h1 className="section-header">
-        Activities Near Me ({activities?.length})
-      </h1>
       <section className={`activities-nearby activities-group`}>
-        {activities && (
+        {selectedActivities && (
           <ActivityCardGroup
-            activities={activities}
+            activities={selectedActivities}
             likeHandler={(data) => alert(`Your are about to like: ${data}!`)}
             addHandler={(data) =>
               alert(`You are adding ${data} to your wishlist.`)
@@ -272,6 +222,74 @@ const ActivitiesPage: React.FC = () => {
           />
         )}
       </section>
+    </>
+  );
+};
+
+const ActivitiesPage: React.FC = () => {
+  const [loading, setLoading] = useState(false);
+  const [nearbyActivities, setNearbyActivities] = useState<
+    ActivityType[] | null
+  >(null);
+  const [selectedActivity, setSelectedActivity] = useState<string | null>(
+    'All Activities',
+  );
+  const [selectedActivities, setSelectedActivities] = useState<
+    ActivityType[] | null
+  >(null);
+  const [activityNames, setActivityNames] = useState<string[] | null>(null);
+
+  const {
+    activities,
+  }: {
+    activities: ActivityType[];
+  } = useSelector((state: any) => state.activities);
+
+  useEffect(() => {
+    const fetchNearbyActivities = async () => {
+      const result = await activitiesService.getActivitiesNearMe();
+      console.log('nearbyActivities', result);
+      setNearbyActivities(result);
+      setActivityNames(getActivityTypeNames(result));
+      setSelectedActivities(result);
+    };
+    if (activities.length === 0) {
+      fetchNearbyActivities();
+    }
+  }, []);
+
+  const activitiesSelectHanlder = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    const activityName = event.currentTarget.value;
+    console.log('selectActivity', activityName);
+    setSelectedActivity(activityName);
+    if (activityName === 'All Activities') {
+      setSelectedActivities(nearbyActivities);
+      return;
+    }
+    const filteredActivities = nearbyActivities?.filter(
+      (activity) => activity.type === activityName,
+    ) as ActivityType[];
+    setSelectedActivities(filteredActivities);
+  };
+
+  return (
+    <main className="page-activities">
+      <HeroSlider
+        slides={storySlides}
+        containerStyle={{ height: '35rem', marginTop: '1rem' }}
+        mediaStyle={{ height: '35rem' }}
+      />
+      <ActivitiesButtons
+        activityNames={activityNames}
+        selectedActivity={selectedActivity}
+        activitiesSelectHanlder={activitiesSelectHanlder as clickHandler}
+      />
+      <SelectedActivities
+        selectedActivity={selectedActivity}
+        selectedActivities={selectedActivities}
+      />
     </main>
   );
 };

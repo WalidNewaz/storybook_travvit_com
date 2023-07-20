@@ -1,6 +1,6 @@
 import type { Size, clickHandler } from '../../types';
 
-interface Button {
+interface Button extends Record<string, any> {
   /**
    * Is this the principal call to action on the page?
    */

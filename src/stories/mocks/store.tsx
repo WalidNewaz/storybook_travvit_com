@@ -2,71 +2,11 @@ import React from 'react';
 
 import { Provider } from 'react-redux';
 import { configureStore, createSlice } from '@reduxjs/toolkit';
+import nearbyActivities from './activities/nearby_activities.json';
 
 // A super-simple mock of the state of the store
 export const mockedState = {
-  activities: [
-    {
-      id: '1',
-      mediaType: 'image',
-      imageProps: {
-        sources: [
-          {
-            srcSet: 'red-rocks-trading-post-trail.webp',
-            type: 'image/webp',
-          },
-        ],
-        src: 'red-rocks-trading-post-trail.jpeg',
-        alt: 'Red Rocks Trading Post Trail',
-        className: '',
-      },
-      badges: ['Hiking'],
-      name: 'Red Rocks Trading Post Trail',
-      slug: 'red-rocks-trading-post-trail',
-      place: {
-        id: '1',
-        name: 'Red Rocks Trading Post Trail',
-        slug: 'red-rocks-trading-post-trail',
-      },
-      createdBy: {
-        id: '1',
-        name: 'John Doe',
-        avatar: 'avatar-john-doe-1.jpeg',
-        slug: 'john-doe-1',
-      },
-      rating: 4.5,
-    },
-    {
-      id: '2',
-      mediaType: 'image',
-      imageProps: {
-        sources: [
-          {
-            srcSet: 'red-rocks-trading-post-trail.webp',
-            type: 'image/webp',
-          },
-        ],
-        src: 'red-rocks-trading-post-trail.jpeg',
-        alt: 'Red Rocks Trading Post Trail',
-        className: '',
-      },
-      badges: ['Hiking'],
-      name: 'Red Rocks Trading Post Trail',
-      slug: 'red-rocks-trading-post-trail',
-      place: {
-        id: '1',
-        name: 'Red Rocks Trading Post Trail',
-        slug: 'red-rocks-trading-post-trail',
-      },
-      createdBy: {
-        id: '1',
-        name: 'John Doe',
-        avatar: 'avatar-john-doe-1.jpeg',
-        slug: 'john-doe-1',
-      },
-      rating: 4.5,
-    },
-  ],
+  activities: [],
   status: 'idle',
   error: null,
 };

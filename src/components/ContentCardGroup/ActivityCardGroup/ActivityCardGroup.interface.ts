@@ -8,11 +8,12 @@ import ResponsiveImage from '../../ResponsiveImage/ResponsiveImage.interface';
 
 export interface ActivityType {
   id: string;
+  name: string;
+  type: string;
+  slug: string;
+  badges: Array<string>;
   mediaType: MediaType;
   imageProps: ResponsiveImage;
-  badges: Array<string>;
-  name: string;
-  slug: string;
   place: {
     id: string;
     name: string;
