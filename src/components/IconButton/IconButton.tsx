@@ -39,6 +39,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
   return (
     <button
       type={type}
+      value={label.toLocaleLowerCase()}
       className={computedClasses}
       onClick={onClick}
       {...props}

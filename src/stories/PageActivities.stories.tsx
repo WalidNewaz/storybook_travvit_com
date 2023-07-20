@@ -26,6 +26,7 @@ import { ActivityCardGroup } from '../components/ContentCardGroup/ActivityCardGr
 import { ActivityType } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup.interface';
 
 import ActivitiesService from './mocks/activities.service';
+import type { clickHandler } from '../types';
 
 /** Assets */
 import { menuItems } from './mocks/menuItems';
@@ -60,82 +61,58 @@ type Story = StoryObj<typeof FullPageScroll>;
 
 const activitiesService = new ActivitiesService();
 
-const ActivitiesButtons: React.FC = () => (
+/**
+ * Returns an event handler for the activity buttons
+ * @param setSelectedActivity
+ * @returns event handler
+ */
+const getActivityHandler =
+  (setSelectedActivity: React.Dispatch<React.SetStateAction<string | null>>) =>
+  (event: React.MouseEvent<HTMLButtonElement>) => {
+    const selectActivity = event.currentTarget.value;
+    console.log('selectActivity', selectActivity);
+    setSelectedActivity(selectActivity);
+  };
+
+const ActivitiesButtons: React.FC<{
+  activitiesSelectHanlder: clickHandler;
+}> = ({ activitiesSelectHanlder }) => (
   <ContentRibbon>
     <IconButton
       className="flex m-2"
       label="Hiking"
+      onClick={activitiesSelectHanlder}
       icon={<FaPersonHiking className="w-6 h-6" aria-hidden="true" />}
     />
     <IconButton
       className="flex m-2"
       label="Climbing"
+      onClick={activitiesSelectHanlder}
       icon={<GiMountainClimbing className="w-6 h-6" aria-hidden="true" />}
     />
     <IconButton
       className="flex m-2"
       label="Camping"
+      onClick={activitiesSelectHanlder}
       icon={<FaCampground className="w-6 h-6" aria-hidden="true" />}
     />
     <IconButton
       className="flex m-2"
       label="Skiing"
+      onClick={activitiesSelectHanlder}
       icon={<FaPersonSkiing className="w-6 h-6" aria-hidden="true" />}
     />
     <IconButton
       className="flex m-2"
       label="Mtn Biking"
+      onClick={activitiesSelectHanlder}
       icon={<MdDirectionsBike className="w-6 h-6" aria-hidden="true" />}
     />
     <IconButton
       className="flex m-2"
       label="Running"
+      onClick={activitiesSelectHanlder}
       icon={<FaPersonRunning className="w-6 h-6" aria-hidden="true" />}
-    />
-    <IconButton
-      className="flex m-2"
-      label="Fishing"
-      icon={<GiFishing className="w-6 h-6" aria-hidden="true" />}
-    />
-    <IconButton
-      className="flex m-2"
-      label="Skiing"
-      icon={<FaPersonSkiing className="w-6 h-6" aria-hidden="true" />}
-    />
-    <IconButton
-      className="flex m-2"
-      label="Mtn Biking"
-      icon={<MdDirectionsBike className="w-6 h-6" aria-hidden="true" />}
-    />
-    <IconButton
-      className="flex m-2"
-      label="Running"
-      icon={<FaPersonRunning className="w-6 h-6" aria-hidden="true" />}
-    />
-    <IconButton
-      className="flex m-2"
-      label="Fishing"
-      icon={<GiFishing className="w-6 h-6" aria-hidden="true" />}
-    />
-    <IconButton
-      className="flex m-2"
-      label="Skiing"
-      icon={<FaPersonSkiing className="w-6 h-6" aria-hidden="true" />}
-    />
-    <IconButton
-      className="flex m-2"
-      label="Mtn Biking"
-      icon={<MdDirectionsBike className="w-6 h-6" aria-hidden="true" />}
-    />
-    <IconButton
-      className="flex m-2"
-      label="Running"
-      icon={<FaPersonRunning className="w-6 h-6" aria-hidden="true" />}
-    />
-    <IconButton
-      className="flex m-2"
-      label="Fishing"
-      icon={<GiFishing className="w-6 h-6" aria-hidden="true" />}
     />
   </ContentRibbon>
 );
@@ -263,6 +240,10 @@ const ActivitiesPage: React.FC = () => {
     }
   }, []);
 
+  const activitiesSelectHanlder: clickHandler = getActivityHandler(
+    setSelectedActivity,
+  ) as clickHandler;
+
   return (
     <main className="page-activities">
       <HeroSlider
@@ -270,9 +251,9 @@ const ActivitiesPage: React.FC = () => {
         containerStyle={{ height: '35rem', marginTop: '1rem' }}
         mediaStyle={{ height: '35rem' }}
       />
-      <h1 className="section-header">All Activities</h1>
+      <h1 className="section-header">Nearby Activities</h1>
       <section className={`all-activities flex flex-wrap max-w-[90vw] `}>
-        <ActivitiesButtons />
+        <ActivitiesButtons activitiesSelectHanlder={activitiesSelectHanlder} />
       </section>
       <h1 className="section-header">
         Activities Near Me ({activities?.length})
