@@ -7,7 +7,8 @@ import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
 import { Header as TravvitHeader } from '../components/Header/Header';
 import { PlaceCardGroup } from '../components/ContentCardGroup/PlaceCardGroup/PlaceCardGroup';
 import { ActivityCardGroup } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup';
-import { PlaceCardType, ActivitySummaryType } from '../interfaces';
+import { ActivitySummaryType } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup.interface';
+import { PlaceCardType } from '../components/ContentCardGroup/PlaceCardGroup/PlaceCardGroup.interface';
 
 /** Services */
 import PlacesService from './mocks/places.service';

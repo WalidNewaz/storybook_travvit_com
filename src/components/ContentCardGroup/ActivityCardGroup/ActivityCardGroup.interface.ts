@@ -6,7 +6,7 @@ import type {
 } from '../../../types';
 import ResponsiveImage from '../../ResponsiveImage/ResponsiveImage.interface';
 
-interface ActivitySummaryType {
+export interface ActivitySummaryType {
   id: string;
   mediaType: MediaType;
   imageProps: ResponsiveImage;

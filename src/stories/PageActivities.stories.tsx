@@ -20,7 +20,7 @@ import {
 import { GiMountainClimbing } from 'react-icons/gi';
 import { MdDirectionsBike } from 'react-icons/md';
 import { ActivityCardGroup } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup';
-import { ActivitySummaryType } from '../interfaces';
+import { ActivitySummaryType } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup.interface';
 
 import ActivitiesService from './mocks/activities.service';
 

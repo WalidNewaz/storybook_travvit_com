@@ -1,7 +1,7 @@
 import face1 from '../images/avatar-jane-1.jpeg';
-import { User } from '../../interfaces/';
+import type { User, UserType } from '../../types';
 
-export const user: User<'admin' | 'user'> = {
+export const user: User<UserType> = {
   id: 1,
   username: 'JaneDoe',
   email: 'jane@example.com',

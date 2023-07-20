@@ -1,4 +1,4 @@
-import { ResponsiveImageProps } from '../interfaces';
+import ResponsiveImageProps from '../components/ResponsiveImage/ResponsiveImage.interface';
 
 export const getAbsolutePath = (base: string, path: string) => {
   if (

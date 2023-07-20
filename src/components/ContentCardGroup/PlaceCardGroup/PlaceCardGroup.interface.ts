@@ -6,7 +6,7 @@ import type {
   MediaType,
 } from '../../../types';
 
-interface PlaceCardType {
+export interface PlaceCardType {
   id: string;
   mediaType: MediaType;
   imageProps: ResponsiveImage;

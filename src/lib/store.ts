@@ -1,14 +1,8 @@
 /* A simple redux store/actions/reducer implementation.
  * A true app would be more complex and separated into different files.
  */
-import {
-  configureStore,
-  createSlice,
-  createAsyncThunk,
-} from '@reduxjs/toolkit';
-import { createStore, combineReducers } from 'redux';
-import { ActivitySummaryType } from '../interfaces';
-import nearbyActivities from '../stories/mocks/nearby_activities.json';
+import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { ActivitySummaryType } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup.interface';
 
 /*
  * The initial state of our store when the app loads.

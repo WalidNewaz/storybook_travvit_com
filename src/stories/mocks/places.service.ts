@@ -1,5 +1,5 @@
 import popularPlaces from './popular_places.json';
-import { PlaceCardType } from '../../interfaces';
+import { PlaceCardType } from '../../components/ContentCardGroup/PlaceCardGroup/PlaceCardGroup.interface';
 
 export default class PlacesService {
   async getPopularPlaces(): Promise<PlaceCardType[]> {
