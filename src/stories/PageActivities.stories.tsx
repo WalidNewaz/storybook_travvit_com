@@ -23,7 +23,7 @@ import {
 import { GiMountainClimbing, GiFishing } from 'react-icons/gi';
 import { MdDirectionsBike } from 'react-icons/md';
 import { ActivityCardGroup } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup';
-import { ActivitySummaryType } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup.interface';
+import { ActivityType } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup.interface';
 
 import ActivitiesService from './mocks/activities.service';
 
@@ -223,24 +223,40 @@ const storySlides = [
   },
 ];
 
+const ActivitiesHeader: React.FC<{
+  selectedActivity: string;
+  count: number;
+}> = ({ selectedActivity, count }) =>
+  selectedActivity ? (
+    <h1 className="section-header">
+      {selectedActivity} Near Me ({count})
+    </h1>
+  ) : (
+    <h1 className="section-header">Activities Near Me ({count})</h1>
+  );
+
 const ActivitiesPage: React.FC = () => {
-  const [nearbyActivities, setNearbyActivities] = useState<
-    ActivitySummaryType[] | null
-  >(null);
   const [loading, setLoading] = useState(false);
+  const [nearbyActivities, setNearbyActivities] = useState<
+    ActivityType[] | null
+  >(null);
+  const [selectedActivity, setSelectedActivity] = useState<string | null>(null);
+  const [selectedActivities, setSelectedActivities] = useState<
+    ActivityType[] | null
+  >(null);
 
   const {
     activities,
   }: {
-    activities: ActivitySummaryType[];
+    activities: ActivityType[];
   } = useSelector((state: any) => state.activities);
 
   useEffect(() => {
-    console.log('activities', activities);
+    console.log('nearbyActivities', activities);
     const fetchNearbyActivities = async () => {
-      // const activities = loadNearbyActivitiesFromRedux();
       const result = await activitiesService.getActivitiesNearMe();
       setNearbyActivities(result);
+      setSelectedActivities(result);
     };
     if (activities.length === 0) {
       fetchNearbyActivities();
@@ -261,7 +277,7 @@ const ActivitiesPage: React.FC = () => {
       <h1 className="section-header">
         Activities Near Me ({activities?.length})
       </h1>
-      <section className={`activities-nearby places-group`}>
+      <section className={`activities-nearby activities-group`}>
         {activities && (
           <ActivityCardGroup
             activities={activities}

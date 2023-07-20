@@ -112,8 +112,8 @@
     background-color: transparent; /* Set the color of the scrollbar thumb */
   }
 
-  .places-group {
-    @apply grid justify-items-center grid-cols-1 gap-x-4 gap-y-36;
+  .places-group, .activities-group {
+    @apply grid justify-items-center grid-cols-1 gap-x-4 gap-y-44;
     @apply  md:justify-items-start md:grid-cols-2;
     @apply  lg:grid-cols-3;
     @apply  dt_small:grid-cols-3 gap-x-6;

@@ -6,7 +6,7 @@ import type {
 } from '../../../types';
 import ResponsiveImage from '../../ResponsiveImage/ResponsiveImage.interface';
 
-export interface ActivitySummaryType {
+export interface ActivityType {
   id: string;
   mediaType: MediaType;
   imageProps: ResponsiveImage;
@@ -29,7 +29,7 @@ export interface ActivitySummaryType {
 }
 
 interface ActivityCardGroup {
-  activities: ActivitySummaryType[];
+  activities: ActivityType[];
   likeHandler: likeHandler;
   addHandler: addHandler;
   shareHandler: shareHandler;

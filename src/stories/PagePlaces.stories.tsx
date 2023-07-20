@@ -7,7 +7,7 @@ import { TravvitFooter } from '../components/TravvitFooter/TravvitFooter';
 import { Header as TravvitHeader } from '../components/Header/Header';
 import { PlaceCardGroup } from '../components/ContentCardGroup/PlaceCardGroup/PlaceCardGroup';
 import { ActivityCardGroup } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup';
-import { ActivitySummaryType } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup.interface';
+import { ActivityType } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup.interface';
 import { PlaceCardType } from '../components/ContentCardGroup/PlaceCardGroup/PlaceCardGroup.interface';
 
 /** Services */
@@ -113,7 +113,7 @@ const PlacePage: React.FC = () => {
     null,
   );
   const [nearbyActivities, setNearbyActivities] = useState<
-    ActivitySummaryType[] | null
+    ActivityType[] | null
   >(null);
 
   useEffect(() => {

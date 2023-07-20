@@ -2,7 +2,7 @@
  * A true app would be more complex and separated into different files.
  */
 import { configureStore, createSlice } from '@reduxjs/toolkit';
-import { ActivitySummaryType } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup.interface';
+import { ActivityType } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup.interface';
 
 /*
  * The initial state of our store when the app loads.
@@ -55,7 +55,7 @@ export const { updateTaskState } = TasksSlice.actions;
 //       'https://jsonplaceholder.typicode.com/activities?userId=1',
 //     );
 //     const data = await response.json();
-//     // const result = data.map((activities: ActivitySummaryType[]) => ({
+//     // const result = data.map((activities: ActivityType[]) => ({
 //     //   id: `${task.id}`,
 //     //   title: task.title,
 //     //   state: task.completed ? 'TASK_ARCHIVED' : 'TASK_INBOX',
@@ -130,7 +130,7 @@ const defaultActivities = [
 ];
 
 interface ActivitiesPageDataType {
-  activities: ActivitySummaryType[];
+  activities: ActivityType[];
   status: string;
   error: null | string;
 }

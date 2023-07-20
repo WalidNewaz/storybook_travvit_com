@@ -13,7 +13,7 @@ module.exports = {
       dt_small: '1200px',
       dt_mid: '1440px',
       dt_lg: '1590px',
-      dt_xlg: '1920px',
+      dt_xl: '1920px',
     },
     // colors: {
     //   blue: '#35B5E8',
