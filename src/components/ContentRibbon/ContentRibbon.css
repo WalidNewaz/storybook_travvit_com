@@ -2,7 +2,6 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 16px;
 }
 
 .ribbon-scroll-container {
@@ -12,6 +11,7 @@
   scroll-behavior: smooth;
   scrollbar-width: none; /* For Firefox */
   -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  max-width: 100%;
 }
 
 .ribbon-scroll-container::-webkit-scrollbar {
@@ -47,13 +47,13 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.scroll-left {
+/* .scroll-left {
   left: 16px;
-}
+} */
 
-.scroll-right {
+/* .scroll-right {
   right: 16px;
-}
+} */
 
 /* #right-arrow::before {
   background: linear-gradient(to left,var(--yt-spec-base-background) 20%,rgba(255,255,255,0) 80%);

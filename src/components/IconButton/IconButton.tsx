@@ -17,7 +17,7 @@ const getModeClasses = (isPrimary: boolean) =>
 const BASE_BUTTON_CLASSES =
   'cursor-pointer rounded-full border-2 font-bold leading-none inline-block';
 
-const LABEL_CLASSES = 'inline-block pt-1 pl-2';
+const LABEL_CLASSES = 'inline-block pt-1 pl-2 whitespace-nowrap';
 
 export const IconButton: React.FC<IconButtonProps> = ({
   label,

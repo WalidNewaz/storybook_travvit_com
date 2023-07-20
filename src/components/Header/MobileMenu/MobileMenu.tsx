@@ -23,7 +23,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   );
   return (
     <div
-      className="fixed top-0 left-0 w-full h-full bg-gray-800 opacity-95 flex flex-col pl-8 pr-8 pt-5 z-20"
+      className="mobile-menu-container fixed top-0 left-0 w-screen h-full bg-gray-800 opacity-95 flex flex-col pl-8 pr-8 pt-5 z-20"
       data-testid="mobile-menu"
     >
       <div className="relative pt-4">

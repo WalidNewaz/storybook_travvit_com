@@ -3,7 +3,7 @@ import React from 'react';
 import { MediaLayer } from './MediaLayer/MediaLayer';
 import MediaCardProps from './MediaCard.interface';
 
-const CONTAINER_CLASSES = `media-card max-w-[100rem] overflow-hidden`;
+const CONTAINER_CLASSES = `media-card max-w-[95vw] overflow-hidden`;
 
 /**
  * This component is a card with a media layer (image or video) and

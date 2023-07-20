@@ -11,7 +11,10 @@ import ContentRibbonProps from './ContentRibbon.interface';
  * @param children Any number of React nodes
  * @returns A JSX component that wraps the children with a scrollable container.
  */
-const ContentRibbon: React.FC<ContentRibbonProps> = ({ children }) => {
+const ContentRibbon: React.FC<ContentRibbonProps> = ({
+  children,
+  className,
+}) => {
   const ribbonRef = useRef<HTMLDivElement>(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showScrollRight, setShowScrollRight] = useState(false);
@@ -51,13 +54,13 @@ const ContentRibbon: React.FC<ContentRibbonProps> = ({ children }) => {
   };
 
   return (
-    <div className="content-ribbon">
+    <div className={`content-ribbon ${className}`}>
       <div className="ribbon-scroll-container" ref={ribbonRef}>
         {children}
       </div>
       {scrollPosition > 0 && (
         <button
-          className="scroll-button scroll-left"
+          className="scroll-button scroll-left left-1"
           onClick={handleScrollLeft}
           data-testid="scroll-left-button"
         >
@@ -66,7 +69,7 @@ const ContentRibbon: React.FC<ContentRibbonProps> = ({ children }) => {
       )}
       {showScrollRight && (
         <button
-          className="scroll-button scroll-right"
+          className="scroll-button scroll-right right-1"
           onClick={handleScrollRight}
           data-testid="scroll-right-button"
         >
