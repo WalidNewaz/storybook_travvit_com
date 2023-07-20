@@ -58,7 +58,6 @@ export const TwoCards: Story = {
               onClick={() => {
                 console.log('You clicked me!');
               }}
-              buttonClasses="w-fit self-center"
               primary
             />
           </article>
@@ -82,7 +81,6 @@ export const TwoCards: Story = {
               onClick={() => {
                 console.log('You clicked me!');
               }}
-              buttonClasses="w-fit self-center"
             />
           </article>
         )}

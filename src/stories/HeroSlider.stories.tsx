@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
+import type { MediaType } from '../types';
 
 /** Component */
 import { HeroSlider } from '../components/HeroSlider/HeroSlider';
@@ -38,7 +39,7 @@ const storySlides = [
   },
   {
     media: zionJpeg,
-    mediaType: 'image',
+    mediaType: 'image' as MediaType,
     alt: 'Zion National Park',
     description: 'Come visit Zion National Park in Utah',
     descriptionClasses:
@@ -51,7 +52,7 @@ const storySlides = [
   },
   {
     media: ynpJpeg,
-    mediaType: 'image',
+    mediaType: 'image' as MediaType,
     alt: 'Yellowstone National Park',
     description: 'Explore Yellowstone National Park',
     descriptionClasses:

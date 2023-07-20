@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState, useEffect } from 'react';
+import type { MediaType } from '../types';
 
 /** Component */
 import { FullPageScroll } from '../components/FullPageScroll/FullPageScroll';
@@ -50,7 +51,7 @@ const storySlides = [
   },
   {
     media: zion,
-    mediaType: 'image',
+    mediaType: 'image' as MediaType,
     alt: 'Zion National Park',
     description: 'Come visit Zion National Park in Utah',
     descriptionClasses:
@@ -63,7 +64,7 @@ const storySlides = [
   },
   {
     media: ynp,
-    mediaType: 'image',
+    mediaType: 'image' as MediaType,
     alt: 'Yellowstone National Park',
     description: 'Explore Yellowstone National Park',
     descriptionClasses:
