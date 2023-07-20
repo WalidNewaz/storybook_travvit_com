@@ -22,8 +22,8 @@ describe('PageNotFound', () => {
     expect(getByText('Page not found')).toBeInTheDocument();
     expect(
       getByText(
-        "Sorry, but the area of the site you've currently ventured into does not exist or is unavailable at the moment."
-      )
+        "Sorry, but the area of the site you've currently ventured into does not exist or is unavailable at the moment.",
+      ),
     ).toBeInTheDocument();
 
     // Check if the image is rendered correctly

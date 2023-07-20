@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { MediaLayer } from './MediaLayer/MediaLayer';
-import { MediaCardProps } from '../../interfaces';
+import MediaCardProps from './MediaCard.interface';
 
 const CONTAINER_CLASSES = `media-card max-w-[100rem] overflow-hidden`;
 
@@ -25,8 +25,8 @@ export const MediaCard: React.FC<MediaCardProps> = ({
   videoProps,
   mediaType = 'image',
   actionLayer,
-  containerStyle = {},
-  mediaStyle = {},
+  containerStyle,
+  mediaStyle,
   className = '',
 }) => {
   return (
