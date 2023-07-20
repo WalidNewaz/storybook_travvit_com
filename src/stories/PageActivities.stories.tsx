@@ -236,7 +236,7 @@ const ActivitiesPage: React.FC = () => {
   } = useSelector((state: any) => state.activities);
 
   useEffect(() => {
-    console.log(activities);
+    console.log('activities', activities);
     const fetchNearbyActivities = async () => {
       // const activities = loadNearbyActivitiesFromRedux();
       const result = await activitiesService.getActivitiesNearMe();
@@ -258,33 +258,6 @@ const ActivitiesPage: React.FC = () => {
       <section className={`all-activities flex flex-wrap max-w-[90vw] `}>
         <ActivitiesButtons />
       </section>
-      {/* <h1 className="section-header">Popular Activities</h1>
-      <section className={`popular-activities category-group`}>
-        <CategoryCard
-          imageProps={imagePropsHiking}
-          heading="Hiking"
-          href="/activities/hiking"
-          mediaType="image"
-        />
-        <CategoryCard
-          imageProps={imagePropsClimbing}
-          heading="Climbing"
-          href="/activities/climbing"
-          mediaType="image"
-        />
-        <CategoryCard
-          imageProps={imagePropsCamping}
-          heading="Camping"
-          href="/activities/camping"
-          mediaType="image"
-        />
-        <CategoryCard
-          imageProps={imagePropsMtb}
-          heading="MTB"
-          href="/activities/mtb"
-          mediaType="image"
-        />
-      </section> */}
       <h1 className="section-header">
         Activities Near Me ({activities?.length})
       </h1>

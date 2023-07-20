@@ -141,7 +141,7 @@ export const TripCard: React.FC<TripCardProps> = ({
       ? groupMembers.length - MAX_AVATARS
       : null;
   return (
-    <div className="place-card flex flex-col relative w-96 h-80">
+    <div className="trip-card flex flex-col relative w-96 h-80">
       <MediaCard
         imageProps={{
           ...imageProps,

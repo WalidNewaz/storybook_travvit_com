@@ -17,7 +17,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
 }) => {
   return (
     <div
-      className={`activity-card flex flex-col relative ${MEDIA_DIMS_CLASSNAME} ${className}`}
+      className={`category-card flex flex-col relative ${MEDIA_DIMS_CLASSNAME} ${className}`}
     >
       <MediaCard
         imageProps={{
