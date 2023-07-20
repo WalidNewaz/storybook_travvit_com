@@ -1,6 +1,6 @@
 import React from 'react';
-import { MediaCard } from '../../MediaCard';
-import HeadingButtonActionLayer from '../../MediaCard/HeadingButtonActionLayer';
+import { MediaCard } from '../../MediaCard/MediaCard';
+import HeadingButtonActionLayer from '../../MediaCard/HeadingButtonActionLayer/HeadingButtonActionLayer';
 import SlideProps from './Slide.interface';
 
 const SLIDE_CLASSES = `absolute top-0 left-0 w-full h-full transition-opacity duration-500`;

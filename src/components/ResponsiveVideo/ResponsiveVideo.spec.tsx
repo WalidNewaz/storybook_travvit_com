@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { ResponsiveVideo, ResponsiveVideoProps } from './index';
+import { ResponsiveVideo } from './ResponsiveVideo';
+import ResponsiveVideoProps from './ResponsiveVideo.interface';
 
 describe('ResponsiveVideo', () => {
   test('renders video element with sources', () => {

@@ -1,10 +1,10 @@
 import React from 'react';
-import withOverlay from './withOverlay';
-import LikeActionIcon from '../ActionIcon/LikeAction/LikeAction';
-import AddActionIcon from '../ActionIcon/AddAction/AddAction';
-import ShareActionIcon from '../ActionIcon/ShareAction/ShareAction';
-import { Badge } from '../Badge/Badge';
-import type { clickHandler } from '../../types/eventHandler.types';
+import withOverlay from '../withOverlay';
+import LikeActionIcon from '../../ActionIcon/LikeAction/LikeAction';
+import AddActionIcon from '../../ActionIcon/AddAction/AddAction';
+import ShareActionIcon from '../../ActionIcon/ShareAction/ShareAction';
+import { Badge } from '../../Badge/Badge';
+import type { clickHandler } from '../../../types/eventHandler.types';
 
 const Badges: React.FC<{ badges: Array<string> }> = ({ badges }) => (
   <div className="grow flex items-end justify-end">
@@ -15,7 +15,7 @@ const Badges: React.FC<{ badges: Array<string> }> = ({ badges }) => (
   </div>
 );
 
-const SocialCategoryAction: React.FC<{
+const SocialCategoryActionLayer: React.FC<{
   likeHandler: clickHandler;
   addHandler: clickHandler;
   shareHandler: clickHandler;
@@ -50,4 +50,4 @@ const SocialCategoryAction: React.FC<{
   );
 };
 
-export default withOverlay(SocialCategoryAction);
+export default withOverlay(SocialCategoryActionLayer);

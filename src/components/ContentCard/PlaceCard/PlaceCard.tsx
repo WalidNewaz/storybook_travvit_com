@@ -1,6 +1,6 @@
 import React from 'react';
-import { MediaCard } from '../../MediaCard';
-import SocialCategoryActionLayer from '../../MediaCard/SocialCategoryActionLayer';
+import { MediaCard } from '../../MediaCard/MediaCard';
+import SocialCategoryActionLayer from '../../MediaCard/SocialCategoryActionLayer/SocialCategoryActionLayer';
 import { Badge } from '../../Badge/Badge';
 import { PiStarFill } from 'react-icons/pi';
 import PlaceCardProps from './PlaceCard.interface';

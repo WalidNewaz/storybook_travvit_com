@@ -2,8 +2,8 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import { MediaCard } from './index';
-import HeadingButtonActionLayer from './HeadingButtonActionLayer';
+import { MediaCard } from './MediaCard';
+import HeadingButtonActionLayer from './HeadingButtonActionLayer/HeadingButtonActionLayer';
 
 type MediaTypes = 'image' | 'video';
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { MediaCard } from '../../MediaCard';
-import SocialCategoryActionLayer from '../../MediaCard/SocialCategoryActionLayer';
+import { MediaCard } from '../../MediaCard/MediaCard';
+import SocialCategoryActionLayer from '../../MediaCard/SocialCategoryActionLayer/SocialCategoryActionLayer';
 import { FiMapPin } from 'react-icons/fi';
 import { Avatar } from '../../Avatar/Avatar';
 import { AvatarGroup } from '../../AvatarGroup/AvatarGroup';

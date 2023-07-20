@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MediaLayer } from './MediaLayer';
+import { MediaLayer } from './MediaLayer/MediaLayer';
 import { MediaCardProps } from '../../interfaces';
 
 const CONTAINER_CLASSES = `media-card max-w-[100rem] overflow-hidden`;

@@ -1,6 +1,6 @@
 import React from 'react';
-import { MediaCard } from '../../MediaCard';
-import LinkHeadingActionLayer from '../../MediaCard/LinkHeadingActionLayer';
+import { MediaCard } from '../../MediaCard/MediaCard';
+import LinkHeadingActionLayer from '../../MediaCard/LinkHeadingActionLayer/LinkHeadingActionLayer';
 import CategoryCardProps from './CategoryCard.interface';
 
 const MEDIA_DIMS_CLASSNAME = `

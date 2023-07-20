@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
-import { ResponsiveImage } from '../ResponsiveImage/ResponsiveImage';
-import { ResponsiveVideo } from '../ResponsiveVideo';
-import { MediaLayerProps } from '../../interfaces';
+import { ResponsiveImage } from '../../ResponsiveImage/ResponsiveImage';
+import { ResponsiveVideo } from '../../ResponsiveVideo/ResponsiveVideo';
+import MediaLayerProps from './MediaLayer.interface';
 
 const MEDIA_CLASSES = `absolute top-0 left-0 object-cover dark-img`;
 

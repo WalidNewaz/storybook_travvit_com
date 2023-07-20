@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { VideoSource, ResponsiveVideoProps } from '../../interfaces';
+import ResponsiveVideoProps, { VideoSource } from './ResponsiveVideo.interface';
 
 const MissingVideo: React.FC<{ requiredMediaType: string }> = ({
   requiredMediaType,
@@ -10,7 +10,12 @@ const Video: React.FC<{
   children?: ReactNode;
 }> = ({ sources, children, ...attributes }) => {
   const sourceElements = sources.map((source, index) => (
-    <source key={index} src={source.src} type={source.type} />
+    <source
+      key={index}
+      src={source.src}
+      type={source.type}
+      data-testid={`media-video-src-${index}`}
+    />
   ));
   return (
     <video {...attributes}>

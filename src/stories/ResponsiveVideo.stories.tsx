@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 /** Component */
-import { ResponsiveVideo } from '../components/ResponsiveVideo';
+import { ResponsiveVideo } from '../components/ResponsiveVideo/ResponsiveVideo';
 
 /** Assets */
 import flower from './video/flower.webm';

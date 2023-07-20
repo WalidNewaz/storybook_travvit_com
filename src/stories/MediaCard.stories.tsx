@@ -2,11 +2,11 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 /** Component */
-import { MediaCard } from '../components/MediaCard';
-import HeadingButtonActionLayer from '../components/MediaCard/HeadingButtonActionLayer';
-import LinkHeadingActionLayer from '../components/MediaCard/LinkHeadingActionLayer';
-import LinkTransparentActionLayer from '../components/MediaCard/LinkTransparentActionLayer';
-import SocialCategoryActionLayer from '../components/MediaCard/SocialCategoryActionLayer';
+import { MediaCard } from '../components/MediaCard/MediaCard';
+import HeadingButtonActionLayer from '../components/MediaCard/HeadingButtonActionLayer/HeadingButtonActionLayer';
+import LinkHeadingActionLayer from '../components/MediaCard/LinkHeadingActionLayer/LinkHeadingActionLayer';
+import LinkTransparentActionLayer from '../components/MediaCard/LinkTransparentActionLayer/LinkTransparentActionLayer';
+import SocialCategoryActionLayer from '../components/MediaCard/SocialCategoryActionLayer/SocialCategoryActionLayer';
 
 /** Assets */
 import mountainsLake from './images/mountains_lake.jpeg';
