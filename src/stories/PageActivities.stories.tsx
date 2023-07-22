@@ -120,7 +120,7 @@ const storySlides = [
 
 const ActivityTypesLoader = () => (
   <ContentLoader
-    height={130}
+    height={50}
     width={600}
     speed={2}
     foregroundColor="#f3f3f3"
@@ -129,6 +129,23 @@ const ActivityTypesLoader = () => (
     <rect x="5" y="10" rx="20" ry="20" width="135" height="40" />
     <rect x="160" y="10" rx="20" ry="20" width="100" height="40" />
     {/* <rect x="275" y="10" rx="20" ry="20" width="135" height="40" /> */}
+  </ContentLoader>
+);
+
+const ActivityCardGroupLoader = () => (
+  <ContentLoader
+    height={500}
+    width={360}
+    speed={2}
+    foregroundColor="#f3f3f3"
+    backgroundColor="#d9d7d7"
+  >
+    <rect x="0" y="5" rx="15" ry="15" width="352" height="304" />
+    <rect x="15" y="330" rx="14" ry="14" width="300" height="28" />
+    <rect x="15" y="365" rx="14" ry="14" width="250" height="28" />
+    <circle cx="30" cy="415" r="18" />
+    <rect x="55" y="405" rx="10" ry="10" width="125" height="20" />
+    <rect x="15" y="445" rx="10" ry="10" width="50" height="20" />
   </ContentLoader>
 );
 
@@ -249,31 +266,52 @@ const ActivitiesHeader: React.FC = () => {
 };
 
 const SelectedActivities: React.FC = () => {
-  const { data: activities }: ActivitiesState =
+  const { data: activities, status }: ActivitiesState =
     useSelector(selectAllActivities);
   const selectedActivity = useSelector(getSelectedActivityType);
+
+  const [showContent, setShowContent] = useState(false);
+  useEffect(() => {
+    if (status === 'succeeded') {
+      setShowContent(true);
+    }
+  }, [status]);
 
   const selectedActivities =
     selectedActivity === 'All Activities'
       ? activities
       : activities.filter((activity) => activity.type === selectedActivity);
 
+  let content;
+  if (status === 'loading') {
+    content = (
+      <>
+        <ActivityCardGroupLoader />
+        <ActivityCardGroupLoader />
+      </>
+    );
+  } else if (status === 'succeeded') {
+    content = (
+      <ActivityCardGroup
+        activities={selectedActivities}
+        likeHandler={(data) => alert(`Your are about to like: ${data}!`)}
+        addHandler={(data) => alert(`You are adding ${data} to your wishlist.`)}
+        shareHandler={(data) =>
+          alert(`You are about to share ${data} with others.`)
+        }
+        className={`transition-opacity duration-500 ${
+          showContent ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
+    );
+  } else if (status === 'failed') {
+    content = <div className="loader">Failed!</div>;
+  }
   return (
     <>
       <ActivitiesHeader />
       <section className={`activities-nearby activities-group`}>
-        {selectedActivities && (
-          <ActivityCardGroup
-            activities={selectedActivities}
-            likeHandler={(data) => alert(`Your are about to like: ${data}!`)}
-            addHandler={(data) =>
-              alert(`You are adding ${data} to your wishlist.`)
-            }
-            shareHandler={(data) =>
-              alert(`You are about to share ${data} with others.`)
-            }
-          />
-        )}
+        {selectedActivities && content}
       </section>
     </>
   );

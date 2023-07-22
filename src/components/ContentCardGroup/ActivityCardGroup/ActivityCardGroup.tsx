@@ -10,6 +10,7 @@ export const ActivityCardGroup: React.FC<ActivityCardGroupProps> = ({
   likeHandler,
   addHandler,
   shareHandler,
+  className,
 }) => {
   return activities.map((activity) => {
     // Make image URLs absolute b/c this component will be fed by API responses
@@ -34,6 +35,7 @@ export const ActivityCardGroup: React.FC<ActivityCardGroupProps> = ({
         createdBySrc={getAbsolutePath(IMG_BASE, activity.createdBy.avatar)}
         createdByLink={`/explorers/${activity.createdBy.slug}/${activity.createdBy.id}`}
         rating={activity.rating as string}
+        className={className}
       />
     );
   });

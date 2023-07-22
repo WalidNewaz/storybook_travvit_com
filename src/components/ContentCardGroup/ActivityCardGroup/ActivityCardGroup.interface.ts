@@ -34,6 +34,7 @@ interface ActivityCardGroup {
   likeHandler: likeHandler;
   addHandler: addHandler;
   shareHandler: shareHandler;
+  className?: string;
 }
 
 export default ActivityCardGroup;
