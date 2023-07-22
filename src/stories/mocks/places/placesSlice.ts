@@ -1,19 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
+import type { RequestStatus } from '../../../types';
+import { PlaceType } from '../../../components/ContentCardGroup/PlaceCardGroup/PlaceCardGroup.interface';
+
+interface DataState {
+  data: PlaceType[];
+  status: RequestStatus;
+  error: string | null;
+}
+
+const initialState: DataState = {
+  data: [],
+  status: 'idle',
+  error: null,
+};
 
 const placesSlice = createSlice({
   name: 'places',
-  initialState: {
-    data: [],
-    loading: false,
-    error: null,
-  },
-  reducers: {
-    getPlacesNearMe: (state) => {
-      state.loading = true;
-    },
-  },
+  initialState,
+  reducers: {},
 });
-
-export const { getPlacesNearMe } = placesSlice.actions;
 
 export default placesSlice.reducer;

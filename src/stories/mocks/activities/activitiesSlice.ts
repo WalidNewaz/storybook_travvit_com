@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ActivityType } from '../../../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup.interface';
 import ActivitiesService from './activities.service';
+import type { RequestStatus } from '../../../types';
 
 const activitiesService = new ActivitiesService();
 
@@ -16,13 +17,13 @@ interface AddActivitiesAction {
 
 interface DataState {
   data: ActivityType[];
-  loading: boolean;
+  status: RequestStatus;
   error: string | null;
 }
 
 const initialState: DataState = {
   data: [],
-  loading: false,
+  status: 'idle',
   error: null,
 };
 
@@ -35,7 +36,6 @@ const activitiesSlice = createSlice({
     },
     addActivities: (state, action: AddActivitiesAction) => {
       state.data = action.payload;
-      state.loading = false;
     },
   },
 });

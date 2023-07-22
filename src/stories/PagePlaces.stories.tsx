@@ -8,7 +8,7 @@ import { Header as TravvitHeader } from '../components/Header/Header';
 import { PlaceCardGroup } from '../components/ContentCardGroup/PlaceCardGroup/PlaceCardGroup';
 import { ActivityCardGroup } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup';
 import { ActivityType } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup.interface';
-import { PlaceCardType } from '../components/ContentCardGroup/PlaceCardGroup/PlaceCardGroup.interface';
+import { PlaceType } from '../components/ContentCardGroup/PlaceCardGroup/PlaceCardGroup.interface';
 
 /** Services */
 import PlacesService from './mocks/places/places.service';
@@ -43,10 +43,10 @@ const placesService = new PlacesService();
 const activitiesService = new ActivitiesService();
 
 const PlacesPage: React.FC = () => {
-  const [popularPlaces, setPopularPlaces] = useState<PlaceCardType[] | null>(
+  const [popularPlaces, setPopularPlaces] = useState<PlaceType[] | null>(
     null,
   );
-  const [nearbyPlaces, setNearbyPlaces] = useState<PlaceCardType[] | null>(
+  const [nearbyPlaces, setNearbyPlaces] = useState<PlaceType[] | null>(
     null,
   );
 
@@ -109,7 +109,7 @@ export const Places: Story = {
 };
 
 const PlacePage: React.FC = () => {
-  const [nearbyPlaces, setNearbyPlaces] = useState<PlaceCardType[] | null>(
+  const [nearbyPlaces, setNearbyPlaces] = useState<PlaceType[] | null>(
     null,
   );
   const [nearbyActivities, setNearbyActivities] = useState<

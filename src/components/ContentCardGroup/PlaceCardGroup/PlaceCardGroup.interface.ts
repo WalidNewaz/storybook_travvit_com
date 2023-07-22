@@ -6,7 +6,7 @@ import type {
   MediaType,
 } from '../../../types';
 
-export interface PlaceCardType {
+export interface PlaceType {
   id: string;
   mediaType: MediaType;
   imageProps: ResponsiveImage;
@@ -19,7 +19,7 @@ export interface PlaceCardType {
 }
 
 interface PlaceCardGroup {
-  places: PlaceCardType[];
+  places: PlaceType[];
   likeHandler: likeHandler;
   addHandler: addHandler;
   shareHandler: shareHandler;

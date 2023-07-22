@@ -18,4 +18,5 @@ export type Color =
   | 'indigo'
   | 'purple'
   | 'pink';
+export type RequestStatus = 'idle' | 'loading' | 'succeeded' | 'failed';
 export type StyleType = CSSProperties | StandardLonghandProperties;

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Mockstore, mockedState } from './mocks/store';
+import { Mockstore } from './mocks/store';
 import {
   getActivitiesNearMe,
   selectAllActivities,
@@ -174,7 +174,7 @@ const ActivitiesButtons: React.FC = () => {
   );
 };
 
-const ActivitiesHeader: React.FC<{}> = () => {
+const ActivitiesHeader: React.FC = () => {
   const activities: ActivityType[] = useSelector(selectAllActivities);
   const selectedActivity = useSelector(getSelectedActivityType);
   const count =
@@ -244,11 +244,7 @@ const ActivitiesPage: React.FC = () => {
 export const Activities: Story = {
   name: 'Activities',
   render: () => <ActivitiesPage />,
-  decorators: [
-    (story) => (
-      <Mockstore ActivitiesPageData={mockedState}>{story()}</Mockstore>
-    ),
-  ],
+  decorators: [(story) => <Mockstore>{story()}</Mockstore>],
 };
 
 // const ActivityPage: React.FC = () => {};

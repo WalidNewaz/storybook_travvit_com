@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { Provider } from 'react-redux';
-import { configureStore, createSlice } from '@reduxjs/toolkit';
-import nearbyActivities from './activities/nearby_activities.json';
+import { configureStore } from '@reduxjs/toolkit';
 import { user as defaultUser } from './user';
 import activitiesReducer from './activities/activitiesSlice';
 import placesReducer from './places/placesSlice';
@@ -29,18 +28,15 @@ export const mockedUserState = {
 };
 
 // A super-simple mock of a redux store
-export const Mockstore = ({ ActivitiesPageData, children }) => (
+export const Mockstore: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => (
   <Provider
     store={configureStore({
       reducer: {
         activities: activitiesReducer,
         places: placesReducer,
         selectedActivity: selectedActivityReducer,
-        // activities: createSlice({
-        //   name: 'nearbyActivities',
-        //   initialState: ActivitiesPageData,
-        //   reducers: {},
-        // }).reducer,
       },
     })}
   >
