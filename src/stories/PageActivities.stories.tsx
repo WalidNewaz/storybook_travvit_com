@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { useSelector, useDispatch } from 'react-redux';
+import ContentLoader from 'react-content-loader';
 import type { RequestStatus } from '../types';
 
 import { Mockstore } from './mocks/store';
@@ -14,6 +15,7 @@ import {
   setSelectedActivity,
   getSelectedActivityType,
 } from './mocks/activities/selectedActivitySlice';
+import withContentLoadFadeIn from '../hocs/withContentLoadFadeIn';
 
 /** Component */
 import { FullPageScroll } from '../components/FullPageScroll/FullPageScroll';
@@ -116,6 +118,20 @@ const storySlides = [
   },
 ];
 
+const ActivityTypesLoader = () => (
+  <ContentLoader
+    height={130}
+    width={600}
+    speed={2}
+    foregroundColor="#f3f3f3"
+    backgroundColor="#d9d7d7"
+  >
+    <rect x="5" y="10" rx="20" ry="20" width="135" height="40" />
+    <rect x="160" y="10" rx="20" ry="20" width="100" height="40" />
+    {/* <rect x="275" y="10" rx="20" ry="20" width="135" height="40" /> */}
+  </ContentLoader>
+);
+
 const ActivityTypes: React.FC = () => {
   const { data: activities, status }: ActivitiesState =
     useSelector(selectAllActivities);
@@ -161,11 +177,15 @@ const ActivityTypes: React.FC = () => {
 
   let content;
   if (status === 'loading') {
-    content = <div className="loader">Loading...</div>;
+    content = (
+      <div className="loader">
+        <ActivityTypesLoader />
+      </div>
+    );
   } else if (status === 'succeeded') {
     content = (
       <ContentRibbon
-        className={`all-activities flex flex-wrap max-w-[90vw] transition-opacity duration-500 ${
+        className={`transition-opacity duration-500 ${
           showContent ? 'opacity-100' : 'opacity-0'
         }`}
       >
