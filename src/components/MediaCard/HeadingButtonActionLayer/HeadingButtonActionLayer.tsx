@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '../../Button/Button';
-import withOverlay from '../withOverlay';
+import withOverlay from '../../../hocs/withOverlay';
 import HeadingButtonActionLayerProps from './HeadingButtonActionLayer.interface';
 
 const HeadingButtonActionLayer: React.FC<HeadingButtonActionLayerProps> = ({

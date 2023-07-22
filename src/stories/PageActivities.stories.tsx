@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { useSelector, useDispatch } from 'react-redux';
+import type { RequestStatus } from '../types';
 
 import { Mockstore } from './mocks/store';
 import {
-  getActivitiesNearMe,
+  getAllActivities,
   selectAllActivities,
+  DataState as ActivitiesState,
 } from './mocks/activities/activitiesSlice';
 import {
   setSelectedActivity,
@@ -114,9 +116,17 @@ const storySlides = [
   },
 ];
 
-const ActivitiesButtons: React.FC = () => {
-  const activities: ActivityType[] = useSelector(selectAllActivities);
+const ActivityTypes: React.FC = () => {
+  const { data: activities, status }: ActivitiesState =
+    useSelector(selectAllActivities);
   const selectedActivity = useSelector(getSelectedActivityType);
+
+  const [showContent, setShowContent] = useState(false);
+  useEffect(() => {
+    if (status === 'succeeded') {
+      setShowContent(true);
+    }
+  }, [status]);
 
   const dispatch = useDispatch();
   const activityNames = getActivityTypeNames(activities);
@@ -149,50 +159,78 @@ const ActivitiesButtons: React.FC = () => {
     ),
   );
 
+  let content;
+  if (status === 'loading') {
+    content = <div className="loader">Loading...</div>;
+  } else if (status === 'succeeded') {
+    content = (
+      <ContentRibbon
+        className={`all-activities flex flex-wrap max-w-[90vw] transition-opacity duration-500 ${
+          showContent ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        {activityNames && (
+          <>
+            <Button
+              className="flex m-2 whitespace-nowrap"
+              label="All Activities"
+              value="All Activities"
+              onClick={activitiesSelectHanlder as clickHandler}
+              {...(selectedActivity === 'All Activities' && {
+                primary: true,
+              })}
+            />
+            {activityButtons}
+          </>
+        )}
+      </ContentRibbon>
+    );
+  } else if (status === 'failed') {
+    content = <div className="loader">Failed!</div>;
+  }
+
   return (
     <>
-      <h1 className="section-header">Nearby Activities</h1>
-      <section className={`all-activities flex flex-wrap max-w-[90vw] `}>
-        <ContentRibbon>
-          {activityNames && (
-            <>
-              <Button
-                className="flex m-2 whitespace-nowrap"
-                label="All Activities"
-                value="All Activities"
-                onClick={activitiesSelectHanlder as clickHandler}
-                {...(selectedActivity === 'All Activities' && {
-                  primary: true,
-                })}
-              />
-              {activityButtons}
-            </>
-          )}
-        </ContentRibbon>
+      <h1 className="section-header">Activity Types</h1>
+      <section className={`all-activities flex flex-wrap max-w-[90vw]`}>
+        {content}
       </section>
     </>
   );
 };
 
 const ActivitiesHeader: React.FC = () => {
-  const activities: ActivityType[] = useSelector(selectAllActivities);
+  const { data: activities, status }: ActivitiesState =
+    useSelector(selectAllActivities);
   const selectedActivity = useSelector(getSelectedActivityType);
   const count =
     selectedActivity === 'All Activities'
       ? activities.length
       : activities.filter((activity) => activity.type === selectedActivity)
           .length;
+
+  let content;
+  if (status === 'loading') {
+    content = <div className="loader">Activities Near Me</div>;
+  } else if (status === 'succeeded') {
+    content = (
+      <h1 className="section-header">
+        {selectedActivity} Near Me ({count})
+      </h1>
+    );
+  } else if (status === 'failed') {
+    content = <div className="loader">Activities Near Me</div>;
+  }
   return selectedActivity ? (
-    <h1 className="section-header">
-      {selectedActivity} Near Me ({count})
-    </h1>
+    <h1 className="section-header">{content}</h1>
   ) : (
     <h1 className="section-header">Activities Near Me ({count})</h1>
   );
 };
 
 const SelectedActivities: React.FC = () => {
-  const activities: ActivityType[] = useSelector(selectAllActivities);
+  const { data: activities }: ActivitiesState =
+    useSelector(selectAllActivities);
   const selectedActivity = useSelector(getSelectedActivityType);
 
   const selectedActivities =
@@ -223,10 +261,15 @@ const SelectedActivities: React.FC = () => {
 
 const ActivitiesPage: React.FC = () => {
   const dispatch = useDispatch();
+  const activitiesStatus: RequestStatus = useSelector(
+    (state: any) => state.activities.status,
+  );
 
   useEffect(() => {
-    dispatch(getActivitiesNearMe());
-  }, [dispatch]);
+    if (activitiesStatus === 'idle') {
+      dispatch(getAllActivities());
+    }
+  }, [activitiesStatus, dispatch]);
 
   return (
     <main className="page-activities">
@@ -235,7 +278,7 @@ const ActivitiesPage: React.FC = () => {
         containerStyle={{ height: '35rem', marginTop: '1rem' }}
         mediaStyle={{ height: '35rem' }}
       />
-      <ActivitiesButtons />
+      <ActivityTypes />
       <SelectedActivities />
     </main>
   );

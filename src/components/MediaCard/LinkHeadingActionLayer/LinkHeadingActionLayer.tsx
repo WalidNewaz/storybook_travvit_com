@@ -1,5 +1,5 @@
 import React from 'react';
-import withOverlay from '../withOverlay';
+import withOverlay from '../../../hocs/withOverlay';
 import LinkHeadingActionLayerProps from './LinkHeadingActionLayer.interface';
 
 const LinkHeadingActionLayer: React.FC<LinkHeadingActionLayerProps> = ({

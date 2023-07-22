@@ -1,5 +1,5 @@
 import React from 'react';
-import withOverlay from '../withOverlay';
+import withOverlay from '../../../hocs/withOverlay';
 import LinkTransparentActionLayerProps from './LinkTransparentActionLayer.interface';
 
 const LinkTransparentActionLayer: React.FC<LinkTransparentActionLayerProps> = ({

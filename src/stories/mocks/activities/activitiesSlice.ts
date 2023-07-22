@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { ActivityType } from '../../../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup.interface';
 import ActivitiesService from './activities.service';
 import type { RequestStatus } from '../../../types';
@@ -15,10 +15,10 @@ interface AddActivitiesAction {
   payload: ActivityType[];
 }
 
-interface DataState {
+export interface DataState {
   data: ActivityType[];
   status: RequestStatus;
-  error: string | null;
+  error: string | null | undefined;
 }
 
 const initialState: DataState = {
@@ -38,36 +38,48 @@ const activitiesSlice = createSlice({
       state.data = action.payload;
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(getAllActivities.pending, (state, action) => {
+      state.status = 'loading';
+    });
+    builder.addCase(getAllActivities.fulfilled, (state, action) => {
+      state.status = 'succeeded';
+      state.data = action.payload;
+    });
+    builder.addCase(getAllActivities.rejected, (state, action) => {
+      state.status = 'failed';
+      state.error = action.error.message;
+    });
+  },
 });
 
 export const { addActivity } = activitiesSlice.actions;
 
 /** Thunks */
-export const getActivitiesNearMe = () => async (dispatch: any) => {
-  try {
-    // const response = await fetch('/api/activities');
-    const response = await activitiesService.getActivitiesNearMe();
-    // const data = await response.json();
-    dispatch(activitiesSlice.actions.addActivities(response));
-  } catch (error) {
-    console.error(error);
-  }
-};
-// export const getActivitiesNearMe = createAsyncThunk(
-//   'activities/getActivitiesNearMe',
-//   async () => {
-//     try {
-//       const response = await activitiesService.getActivitiesNearMe();
-//       // dispatch(activitiesSlice.actions.addActivities(response));
-//       return response;
-//     } catch (error) {
-//       throw error;
-//     }
-//   },
-// );
+// export const getActivitiesNearMe = () => async (dispatch: any) => {
+//   try {
+//     // const response = await fetch('/api/activities');
+//     const response = await activitiesService.getActivitiesNearMe();
+//     // const data = await response.json();
+//     dispatch(activitiesSlice.actions.addActivities(response));
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
+export const getAllActivities = createAsyncThunk(
+  'activities/getAllActivities',
+  async () => {
+    try {
+      const response = await activitiesService.getActivitiesNearMe();
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  },
+);
 
 /** Selectors */
-export const selectAllActivities = (state: any) => state.activities.data;
+export const selectAllActivities = (state: any) => state.activities;
 
 export const selectActivityById = (state: any, activityId: string) =>
   state.activities.data.find(
@@ -75,3 +87,5 @@ export const selectActivityById = (state: any, activityId: string) =>
   );
 
 export default activitiesSlice.reducer;
+
+// export const { getAllActivities } = activitiesSlice.actions;

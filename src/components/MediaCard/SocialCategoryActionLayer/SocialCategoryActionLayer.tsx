@@ -1,5 +1,5 @@
 import React from 'react';
-import withOverlay from '../withOverlay';
+import withOverlay from '../../../hocs/withOverlay';
 import LikeActionIcon from '../../ActionIcon/LikeAction/LikeAction';
 import AddActionIcon from '../../ActionIcon/AddAction/AddAction';
 import ShareActionIcon from '../../ActionIcon/ShareAction/ShareAction';

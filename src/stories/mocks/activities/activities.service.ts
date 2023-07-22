@@ -4,7 +4,11 @@ import { ActivityType } from '../../../components/ContentCardGroup/ActivityCardG
 
 export default class ActivitiesService {
   async getActivitiesNearMe(): Promise<ActivityType[]> {
-    console.log('ActivitiesService.getActivitiesNearMe');
-    return nearbyActivities;
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        console.log('ActivitiesService.getActivitiesNearMe');
+        resolve(nearbyActivities);
+      }, 3000);
+    });
   }
 }
