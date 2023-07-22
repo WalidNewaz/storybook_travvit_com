@@ -56,16 +56,6 @@ const activitiesSlice = createSlice({
 export const { addActivity } = activitiesSlice.actions;
 
 /** Thunks */
-// export const getActivitiesNearMe = () => async (dispatch: any) => {
-//   try {
-//     // const response = await fetch('/api/activities');
-//     const response = await activitiesService.getActivitiesNearMe();
-//     // const data = await response.json();
-//     dispatch(activitiesSlice.actions.addActivities(response));
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
 export const getAllActivities = createAsyncThunk(
   'activities/getAllActivities',
   async () => {

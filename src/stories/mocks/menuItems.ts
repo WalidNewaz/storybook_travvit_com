@@ -10,6 +10,9 @@ import {
   HiArrowRightOnRectangle,
   HiArrowLeftOnRectangle,
 } from 'react-icons/hi2';
+import { AnyAction, Dispatch } from '@reduxjs/toolkit';
+import { User, UserType } from '../../types';
+import { setSelectedActivity } from './activities/selectedActivitySlice';
 
 export function handleLogin(
   event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
@@ -84,4 +87,45 @@ export const menuItems = {
       onClick: handleLogin,
     },
   ],
+};
+
+export const getMenuItems = (
+  dispatch: Dispatch<AnyAction>,
+  login: any,
+  logout: any,
+) => {
+  const notLoggedIn = [
+    {
+      icon: HiArrowLeftOnRectangle,
+      label: 'Log In',
+      href: '#',
+      onClick: () => {
+        console.log('login');
+        dispatch(login({ username: 'john', password: 'pass' }));
+      },
+    },
+  ];
+
+  const logoutItem = {
+    icon: HiArrowRightOnRectangle,
+    label: 'Log Out',
+    href: '#',
+    onClick: () => {
+      console.log('logout');
+      dispatch(logout());
+    },
+  };
+
+  const loggedIn = menuItems.loggedIn.map((item) => {
+    if (item.label === 'Log Out') {
+      return logoutItem;
+    }
+    return item;
+  });
+
+  return {
+    discover: menuItems.discover,
+    loggedIn,
+    notLoggedIn,
+  };
 };

@@ -5,6 +5,9 @@ import { Popover, Transition } from '@headlessui/react';
 import { Avatar } from '../../Avatar/Avatar';
 import MenuItems from './MenuItems';
 import { LoginButton } from '../LoginButton/LoginButton';
+import { getAbsolutePath } from '../../../utils';
+
+const IMG_BASE = process.env.IMG_BASE || '';
 
 const DesktopMenuUserPopover: React.FC<{
   user: User<UserType>;
@@ -22,7 +25,7 @@ const DesktopMenuUserPopover: React.FC<{
         onClick={() => setIsShowing((isShowing) => !isShowing)}
         data-testid="user-button"
       >
-        <Avatar size="xs" src={user.avatar} />
+        <Avatar size="xs" src={getAbsolutePath(IMG_BASE, user.avatar)} />
       </Popover.Button>
 
       <Transition

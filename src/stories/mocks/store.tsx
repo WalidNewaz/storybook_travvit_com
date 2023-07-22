@@ -6,6 +6,7 @@ import { user as defaultUser } from './user';
 import activitiesReducer from './activities/activitiesSlice';
 import placesReducer from './places/placesSlice';
 import selectedActivityReducer from './activities/selectedActivitySlice';
+import profileReducer from './profile/profileSlice';
 
 // A super-simple mock of the state of the store
 export const mockedState = {
@@ -37,6 +38,7 @@ export const Mockstore: React.FC<{ children: React.ReactNode }> = ({
         activities: activitiesReducer,
         places: placesReducer,
         selectedActivity: selectedActivityReducer,
+        profile: profileReducer,
       },
     })}
   >

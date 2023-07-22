@@ -15,7 +15,7 @@ import {
   setSelectedActivity,
   getSelectedActivityType,
 } from './mocks/activities/selectedActivitySlice';
-import withContentLoadFadeIn from '../hocs/withContentLoadFadeIn';
+import { login, logout } from './mocks/profile/profileSlice';
 
 /** Component */
 import { FullPageScroll } from '../components/FullPageScroll/FullPageScroll';
@@ -31,27 +31,38 @@ import { ActivityType } from '../components/ContentCardGroup/ActivityCardGroup/A
 import type { clickHandler } from '../types';
 
 /** Assets */
-import { menuItems } from './mocks/menuItems';
+import { getMenuItems } from './mocks/menuItems';
 import hikingImgJpeg from './images/hennadii-hryshyn-hiking-lg.jpeg';
 import climbingImgJpeg from './images/fionn-claydon-climbing-lg.jpeg';
 import campingImgJpeg from './images/patrick-hendry-camping-lg.jpeg';
 import bikingImgJpeg from './images/axel-brunst-mtn-biking.jpeg';
 
+const WrappedHeader = () => {
+  const dispatch = useDispatch();
+  const menuItems = getMenuItems(dispatch, login, logout);
+  const user = useSelector((state: any) => state.profile.user);
+  return <TravvitHeader menuItems={menuItems} user={user} />;
+};
+
 export default {
   title: 'Pages/Activities',
   component: FullPageScroll,
   decorators: [
-    (story) => (
-      <div className="flex w-full">
-        <div className="left-column flex-1"></div>
-        <div className="middle-column flex-[0_1_92%] max-w-screen-dt_mid mt-8">
-          <TravvitHeader menuItems={menuItems} />
-          {story()}
-          <TravvitFooter />
-        </div>
-        <div className="right-column flex-1"></div>
-      </div>
-    ),
+    (story) => {
+      return (
+        <Mockstore>
+          <div className="flex w-full">
+            <div className="left-column flex-1"></div>
+            <div className="middle-column flex-[0_1_92%] max-w-screen-dt_mid mt-8">
+              <WrappedHeader />
+              {story()}
+              <TravvitFooter />
+            </div>
+            <div className="right-column flex-1"></div>
+          </div>
+        </Mockstore>
+      );
+    },
   ],
   tags: ['autodocs'],
 } as Meta;
@@ -140,7 +151,7 @@ const ActivityCardGroupLoader = () => (
     foregroundColor="#f3f3f3"
     backgroundColor="#d9d7d7"
   >
-    <rect x="0" y="5" rx="15" ry="15" width="352" height="304" />
+    <rect x="0" y="5" rx="15" ry="15" width="304" height="304" />
     <rect x="15" y="330" rx="14" ry="14" width="300" height="28" />
     <rect x="15" y="365" rx="14" ry="14" width="250" height="28" />
     <circle cx="30" cy="415" r="18" />
@@ -345,7 +356,7 @@ const ActivitiesPage: React.FC = () => {
 export const Activities: Story = {
   name: 'Activities',
   render: () => <ActivitiesPage />,
-  decorators: [(story) => <Mockstore>{story()}</Mockstore>],
+  // decorators: [(story) => <Mockstore>{story()}</Mockstore>],
 };
 
 // const ActivityPage: React.FC = () => {};
