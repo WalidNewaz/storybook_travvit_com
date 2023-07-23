@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { User, UserType } from '../../../types';
-import MenuItemType from '../MenuItem/MenuItem.interface';
+import MenuItemType from '../../Menu/MenuItem/MenuItem.interface';
 import { Popover, Transition } from '@headlessui/react';
 import { Avatar } from '../../Avatar/Avatar';
 import MenuItems from './MenuItems';

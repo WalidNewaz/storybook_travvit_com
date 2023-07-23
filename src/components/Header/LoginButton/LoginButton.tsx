@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuItemType from '../MenuItem/MenuItem.interface';
+import MenuItemType from '../../Menu/MenuItem/MenuItem.interface';
 import { IconProps } from '../../../interfaces';
 
 export const LoginButton: React.FC<MenuItemType> = ({

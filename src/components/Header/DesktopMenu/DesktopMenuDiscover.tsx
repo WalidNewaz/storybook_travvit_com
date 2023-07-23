@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MenuItemType from '../MenuItem/MenuItem.interface';
+import MenuItemType from '../../Menu/MenuItem/MenuItem.interface';
 import { Popover, Transition } from '@headlessui/react';
 import { FaChevronDown } from 'react-icons/fa6';
 import MenuItems from './MenuItems';

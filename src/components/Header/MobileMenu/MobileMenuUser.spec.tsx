@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render } from '@testing-library/react';
-import MenuItemType from '../MenuItem/MenuItem.interface';
+import MenuItemType from '../../Menu/MenuItem/MenuItem.interface';
 import MobileMenuUser from './MobileMenuUser';
 import { BiTrip } from 'react-icons/bi';
 import type { UserType } from '../../../types';

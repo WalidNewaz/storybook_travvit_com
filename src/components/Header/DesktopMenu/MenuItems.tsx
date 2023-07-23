@@ -1,6 +1,6 @@
 import React from 'react';
-import { MenuItem } from '../MenuItem/MenuItem';
-import MenuItemType from '../MenuItem/MenuItem.interface';
+import { MenuItem } from '../../Menu/MenuItem/MenuItem';
+import MenuItemType from '../../Menu/MenuItem/MenuItem.interface';
 
 const MenuItems: React.FC<{ items: MenuItemType[] }> = ({ items }) => (
   <div className="w-screen max-w-md flex-auto overflow-hidden rounded-2xl bg-white leading-6 shadow-lg ring-1 ring-gray-900/5">

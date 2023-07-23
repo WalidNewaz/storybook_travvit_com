@@ -7,7 +7,7 @@ const MenuItemWrapper: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
   const className = classNames(
-    'group relative flex gap-x-6 rounded-lg p-2 hover:bg-gray-50',
+    'group relative flex gap-x-6 rounded-lg p-2 hover:bg-gray-50 whitespace-nowrap',
   );
   return <div className={className}>{children}</div>;
 };

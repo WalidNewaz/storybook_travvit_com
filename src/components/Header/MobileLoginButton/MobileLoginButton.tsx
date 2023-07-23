@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuItemType from '../MenuItem/MenuItem.interface';
+import MenuItemType from '../../Menu/MenuItem/MenuItem.interface';
 import { IconProps } from '../../../interfaces';
 import { IconButton } from '../../IconButton/IconButton';
 

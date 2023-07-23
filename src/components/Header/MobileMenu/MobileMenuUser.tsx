@@ -1,6 +1,6 @@
 import React from 'react';
 import type { User, UserType } from '../../../types';
-import MenuItemType from '../MenuItem/MenuItem.interface';
+import MenuItemType from '../../Menu/MenuItem/MenuItem.interface';
 import MobileMenuItems from './MenuItems';
 import { MobileLoginButton } from '../MobileLoginButton/MobileLoginButton';
 

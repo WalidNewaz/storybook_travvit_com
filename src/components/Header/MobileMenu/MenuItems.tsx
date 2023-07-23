@@ -1,6 +1,6 @@
 import React from 'react';
-import MenuItemType from '../MenuItem/MenuItem.interface';
-import { MenuItem } from '../MenuItem/MenuItem';
+import MenuItemType from '../../Menu/MenuItem/MenuItem.interface';
+import { MenuItem } from '../../Menu/MenuItem/MenuItem';
 
 export const MenuItems: React.FC<{
   items: MenuItemType[];
