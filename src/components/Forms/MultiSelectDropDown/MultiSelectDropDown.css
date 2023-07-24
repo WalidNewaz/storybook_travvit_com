@@ -40,6 +40,11 @@
   background-color: #f0f0f0;
 }
 
+.options li.selected {
+  @apply bg-travvit-blue-900;
+  @apply text-white;
+}
+
 .modal {
   position: fixed;
   top: 0;

@@ -4,9 +4,14 @@ import './MultiSelect.css';
 interface MultiSelectProps {
   options: string[];
   onSelectAll?: () => void;
+  className?: string;
 }
 
-const MultiSelect: React.FC<MultiSelectProps> = ({ options, onSelectAll }) => {
+const MultiSelect: React.FC<MultiSelectProps> = ({
+  options,
+  onSelectAll,
+  className,
+}) => {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
   const toggleOption = (option: string) => {
@@ -31,7 +36,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({ options, onSelectAll }) => {
   };
 
   return (
-    <div className="multiselect">
+    <div className={`multiselect ${className}`}>
       {options.map((option) => (
         <div
           key={option}
