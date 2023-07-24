@@ -14,7 +14,7 @@ const MenuItems: React.FC<MenuItemsProps> = ({
   menuOpen && (
     <div
       ref={menuRef}
-      className={`absolute z-10 flex flex-col gap-2 bg-white p-2 rounded-md shadow-md ${
+      className={`menu-items fixed z-10 flex flex-col gap-2 bg-white p-2 rounded-md shadow-md ${
         position === 'top-left'
           ? 'top-2 left-2'
           : position === 'top-right'

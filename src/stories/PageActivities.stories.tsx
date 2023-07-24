@@ -27,6 +27,7 @@ import type { MediaTypes } from '../components/HeroSlider/HeroSlider';
 import ContentRibbon from '../components/ContentRibbon/ContentRibbon';
 import { ActivityCardGroup } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup';
 import { ActivityType } from '../components/ContentCardGroup/ActivityCardGroup/ActivityCardGroup.interface';
+import FloatingActionMenu from '../components/Menu/FloatingActionMenu/FloatingActionMenu';
 
 import type { clickHandler } from '../types';
 
@@ -36,6 +37,10 @@ import hikingImgJpeg from './images/hennadii-hryshyn-hiking-lg.jpeg';
 import climbingImgJpeg from './images/fionn-claydon-climbing-lg.jpeg';
 import campingImgJpeg from './images/patrick-hendry-camping-lg.jpeg';
 import bikingImgJpeg from './images/axel-brunst-mtn-biking.jpeg';
+import { AiOutlinePlus } from 'react-icons/ai';
+import { PiMountainsDuotone } from 'react-icons/pi';
+import { FaPersonHiking } from 'react-icons/fa6';
+import { BiTrip } from 'react-icons/bi';
 
 const WrappedHeader = () => {
   const dispatch = useDispatch();
@@ -328,6 +333,46 @@ const SelectedActivities: React.FC = () => {
   );
 };
 
+const FAM: React.FC = () => {
+  // const dispatch = useDispatch();
+  // const menuItems = getMenuItems(dispatch, login, logout);
+  const user = useSelector((state: any) => state.profile.user);
+
+  const handleAddTrip = () => {
+    console.log('Add a trip!');
+  };
+
+  const handleAddActivity = () => {
+    console.log('Add an activity!');
+  };
+
+  const handleAddPlace = () => {
+    console.log('Add a place!');
+  };
+
+  const content = user && (
+    <FloatingActionMenu
+      icon={<AiOutlinePlus className="w-6 h-6 text-white" />}
+      position="bottom-right"
+      menuItems={[
+        {
+          label: 'Add a Place',
+          onClick: handleAddPlace,
+          icon: PiMountainsDuotone,
+        },
+        {
+          label: 'Add an Activity',
+          onClick: handleAddActivity,
+          icon: FaPersonHiking,
+        },
+        { label: 'Add a Trip', onClick: handleAddTrip, icon: BiTrip },
+      ]}
+    />
+  );
+
+  return content;
+};
+
 const ActivitiesPage: React.FC = () => {
   const dispatch = useDispatch();
   const activitiesStatus: RequestStatus = useSelector(
@@ -337,6 +382,7 @@ const ActivitiesPage: React.FC = () => {
   useEffect(() => {
     if (activitiesStatus === 'idle') {
       dispatch(getAllActivities());
+      // dispatch({ type: 'activities/getAllActivities/pending' });
     }
   }, [activitiesStatus, dispatch]);
 
@@ -349,6 +395,7 @@ const ActivitiesPage: React.FC = () => {
       />
       <ActivityTypes />
       <SelectedActivities />
+      <FAM />
     </main>
   );
 };
