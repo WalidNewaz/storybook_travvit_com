@@ -8,7 +8,7 @@ export default {
   title: 'Components/Add Place Form',
   component: AddPlaceForm,
   decorators: [
-    (story) => <div className="bg-travvit-orange/10 h-screen">{story()}</div>,
+    (story) => <div className="bg-travvit-orange/10 h-full">{story()}</div>,
   ],
   tags: ['autodocs'],
 } as Meta;
