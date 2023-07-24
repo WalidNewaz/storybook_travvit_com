@@ -5,6 +5,7 @@ import {
   useConfirmAddress,
   config,
 } from '@mapbox/search-js-react';
+import { FeatureCollection } from 'geojson';
 /*
   This example requires some changes to your config:
   
@@ -24,10 +25,19 @@ import { FiMapPin } from 'react-icons/fi';
 
 const MAPBOX_ACCESS_TOKEN: string = process.env.MAPBOX_ACCESS_TOKEN as string;
 
+const defaultFeature = {
+  type: 'Feature',
+  geometry: {
+    type: 'Point',
+    coordinates: [-104.990251, 39.739236],
+    interpolated: true,
+  },
+};
+
 export default function AddPlaceForm() {
   const [showFormExpanded, setShowFormExpanded] = useState(false);
-  const [showMinimap, setShowMinimap] = useState(false);
-  const [feature, setFeature] = useState<any>();
+  const [showMinimap, setShowMinimap] = useState(true);
+  const [feature, setFeature] = useState<any>(defaultFeature);
   const [showValidationText, setShowValidationText] = useState(false);
   const [token, setToken] = useState('');
 
@@ -47,18 +57,16 @@ export default function AddPlaceForm() {
   });
 
   const handleRetrieve = useCallback(
-    (res) => {
+    (res: FeatureCollection) => {
+      console.log('res: ', res);
       const feature = res.features[0];
+      // console.log('feature: ', feature);
       setFeature(feature);
       setShowMinimap(true);
       setShowFormExpanded(true);
     },
     [setFeature, setShowMinimap],
   );
-
-  function handleSaveMarkerLocation(coordinate) {
-    console.log(`Marker moved to ${JSON.stringify(coordinate)}.`);
-  }
 
   const handleSubmit = useCallback(
     async (e: Event) => {
@@ -194,7 +202,8 @@ export default function AddPlaceForm() {
                     satelliteToggle={true}
                     feature={feature}
                     show={showMinimap}
-                    onSaveMarkerLocation={handleSaveMarkerLocation}
+                    footer={true}
+                    // onSaveMarkerLocation={handleSaveMarkerLocation}
                   />
                 </div>
 
