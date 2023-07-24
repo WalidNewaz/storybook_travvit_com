@@ -77,6 +77,7 @@ const config: StorybookConfig = {
     ...config,
     EXAMPLE_VAR: 'An environment variable configured in Storybook',
     IMG_BASE: 'http://localhost:6006/static/media/',
+    MAPBOX_ACCESS_TOKEN: 'pk.eyJ1Ijoid25ld2F6IiwiYSI6ImNsa2dpZnJmNTAwZmUzcXFwY2l3NmVmaGgifQ.gjIeqYQq2RT8mgiGPGjYvA',
   }),
 };
 export default config;
