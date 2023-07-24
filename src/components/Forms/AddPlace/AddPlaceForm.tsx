@@ -6,23 +6,11 @@ import {
   config,
 } from '@mapbox/search-js-react';
 import { FeatureCollection } from 'geojson';
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
 import { FiMapPin } from 'react-icons/fi';
 import ImageUploader from './ImageUploader';
-import MultiSelect from './MultiSelect';
+import MultiSelect from '../MultiSelect/MultiSelect';
+import DropDown from '../DropDown/DropDown';
+import MultiSelectDropDown from '../MultiSelectDropDown/MultiSelectDropDown';
 
 const MAPBOX_ACCESS_TOKEN: string = process.env.MAPBOX_ACCESS_TOKEN as string;
 
@@ -270,7 +258,10 @@ export default function AddPlaceForm() {
                   </div> */}
                 </div>
 
-                <div className="col-span-full flex justify-center my-4">
+                <div className="col-span-full flex justify-center my-4 flex-col">
+                  <h2 className="text-base font-semibold leading-7 text-gray-900">
+                    Accessible seasons
+                  </h2>
                   <MultiSelect
                     options={['summer', 'fall', 'winter', 'spring']}
                   />
@@ -287,6 +278,22 @@ export default function AddPlaceForm() {
               </p> */}
 
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div className="sm:col-span-3">
+                  <h2 className="text-base font-semibold leading-7 text-gray-900">
+                    Type (required)*
+                  </h2>
+                  <DropDown
+                    options={['Trail', 'Campsite', 'Mountain', 'Lake', 'River']}
+                  />
+                </div>
+                <div className="sm:col-span-3">
+                  <h2 className="text-base font-semibold leading-7 text-gray-900">
+                    Amenities
+                  </h2>
+                  <MultiSelectDropDown
+                    options={['Trail', 'Campsite', 'Mountain', 'Lake', 'River']}
+                  />
+                </div>
                 {/* <div className="sm:col-span-3">
                   <label
                     htmlFor="first-name"

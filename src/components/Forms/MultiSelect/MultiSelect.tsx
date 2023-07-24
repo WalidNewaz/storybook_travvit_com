@@ -3,7 +3,7 @@ import './MultiSelect.css';
 
 interface MultiSelectProps {
   options: string[];
-  onSelectAll: () => void;
+  onSelectAll?: () => void;
 }
 
 const MultiSelect: React.FC<MultiSelectProps> = ({ options, onSelectAll }) => {
