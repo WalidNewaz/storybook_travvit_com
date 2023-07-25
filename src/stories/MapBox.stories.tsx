@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React, { useRef } from 'react';
 
 /** Component */
-import MapBox from '../components/MapBox/MapBox';
+import MapBox from '../components/Map/MapBox';
 
 export default {
   title: 'Components/MapBox',
