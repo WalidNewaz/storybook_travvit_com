@@ -32,14 +32,11 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelected }) => {
         style={{ display: 'none' }}
         onChange={handleFileInputChange}
       />
-      {/* <button type="button" onClick={handleCameraButtonClick}>
-        Take Photo
-      </button> */}
       <IconButton
         label="Take Photo"
         icon={<FaCamera />}
         onClick={handleCameraButtonClick}
-        className="text-2xl flex items-center"
+        className="text-base flex items-center"
       />
     </div>
   );

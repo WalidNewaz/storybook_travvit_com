@@ -1,4 +1,4 @@
-import { FeatureCollection } from 'geojson';
+import { FeatureCollection, Feature } from 'geojson';
 import type { Geometry } from 'geojson';
 
 const MAPBOX_ACCESS_TOKEN: string = process.env.MAPBOX_ACCESS_TOKEN as string;
@@ -14,14 +14,14 @@ type AddressKeys =
 
 type TravvitLocationType = {
   text: string;
-  geometry: Geometry;
+  geometry?: Geometry;
 };
 
 type AddressTypes = {
-  [key in AddressKeys]: TravvitLocationType;
+  [key in AddressKeys]?: TravvitLocationType;
 };
 
-interface TravvitAddressType extends AddressTypes {
+export interface TravvitAddressType extends AddressTypes {
   fullName: string;
 }
 
@@ -67,5 +67,31 @@ export const getReverseGeocodedAddress = async (
     }
   } catch (error) {
     console.log('Error: ', error);
+  }
+};
+
+export const getGeocodedAddress = (
+  feature: any,
+): void | TravvitAddressType | undefined => {
+  if (feature?.type === 'Feature') {
+    const address: TravvitAddressType = feature.context.reduce(
+      (acc: any, context: any) => {
+        const placeType = context.id.split('.')[0];
+        const placeText = context.text;
+        const place = {
+          text: placeText,
+        };
+        acc[placeType] = place;
+        return acc;
+      },
+      {
+        fullName: feature.place_name,
+        address: {
+          text: `${feature.address} ${feature.text}`,
+          geometry: feature.geometry,
+        },
+      } as any,
+    );
+    return address;
   }
 };

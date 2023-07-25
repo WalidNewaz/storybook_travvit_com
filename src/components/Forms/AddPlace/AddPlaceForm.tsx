@@ -1,20 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import ImageUploader from './ImageUploader';
 import MultiSelect from '../MultiSelect/MultiSelect';
 import DropDown from '../DropDown/DropDown';
 import MultiSelectDropDown from '../MultiSelectDropDown/MultiSelectDropDown';
 import { Button } from '../../Button/Button';
-import MapBox from '../../Map/MapBox';
-import CurrentPositionButton from '../../Map/CurrentPositionButton';
-
-const defaultFeature = {
-  type: 'Feature',
-  geometry: {
-    type: 'Point',
-    coordinates: [-104.990251, 39.739236],
-    interpolated: true,
-  },
-};
+import MapBox from '../../Map/MapBox/MapBox';
+import CurrentPositionButton from '../../Map/CurrentPositionButton/CurrentPositionButton';
+import { TravvitAddressType } from '../../../utils/map';
 
 const SUBMIT_BTN_CLASSES = `
   flex justify-center
@@ -89,31 +82,111 @@ const Description = () => {
   );
 };
 
-const PlaceLocation = () => {
+const PlaceLocation: React.FC<{
+  selectedAddress: TravvitAddressType | undefined;
+  setSelectedAddress: React.Dispatch<
+    React.SetStateAction<TravvitAddressType | undefined>
+  >;
+  isCurrentPosition: boolean;
+  setIsCurrentPosition: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({
+  selectedAddress,
+  setSelectedAddress,
+  isCurrentPosition,
+  setIsCurrentPosition,
+}) => {
   return (
     <div className="col-span-full w-full min-h-[30vh] mx-auto">
       <label className="block text-sm font-medium leading-6 text-gray-900">
         Location (required)*
       </label>
-      <MapBox className="mt-2" />
+      <MapBox
+        className="mt-2"
+        selectedAddress={selectedAddress}
+        setSelectedAddress={setSelectedAddress}
+        isCurrentPosition={isCurrentPosition}
+        setIsCurrentPosition={setIsCurrentPosition}
+        mapInstance={null}
+        geocoderInstance={null}
+      />
     </div>
   );
 };
 
-const CurrentPosition = () => {
+const CurrentPosition: React.FC<{
+  setSelectedAddress: React.Dispatch<
+    React.SetStateAction<TravvitAddressType | undefined>
+  >;
+  setIsCurrentPosition: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ setSelectedAddress, setIsCurrentPosition }) => {
   return (
     <div className="col-span-full flex justify-center sm:justify-end">
-      <CurrentPositionButton />
+      <CurrentPositionButton
+        setSelectedAddress={setSelectedAddress}
+        setIsCurrentPosition={setIsCurrentPosition}
+      />
+    </div>
+  );
+};
+
+const Amenities = () => {
+  return (
+    <div className="col-span-full md:col-span-3">
+      <label
+        htmlFor="amenities"
+        className="block text-sm font-medium leading-6 text-gray-900"
+      >
+        Amenities
+      </label>
+      <div className="mt-2">
+        <MultiSelectDropDown
+          id="amenities"
+          options={['Trail', 'Campsite', 'Mountain', 'Lake', 'River']}
+        />
+      </div>
+    </div>
+  );
+};
+
+const AccessibleSeasons = () => {
+  return (
+    <div className="col-span-full md:col-span-3 lg:col-span-3 dt_small:col-span-2">
+      <label className="block text-sm font-medium leading-6 text-gray-900">
+        Accessible seasons
+      </label>
+      <div className="flex justify-center sm:justify-start mt-2 sm:mt-0">
+        <MultiSelect
+          options={['summer', 'fall', 'winter', 'spring']}
+          className="py-1.5"
+        />
+      </div>
+    </div>
+  );
+};
+
+const TakePhoto: React.FC<{
+  onImageSelected: (image: File | null | undefined) => void;
+}> = ({ onImageSelected }) => {
+  return (
+    <div className="col-span-full dt_small:col-span-1">
+      <label className="block text-sm font-medium leading-6 text-gray-900">
+        Upload photo
+      </label>
+      <div className="flex justify-center sm:justify-start mt-2 lg:mt-1">
+        <ImageUploader onImageSelected={onImageSelected} />
+      </div>
     </div>
   );
 };
 
 export default function AddPlaceForm() {
-  const [showFormExpanded, setShowFormExpanded] = useState(false);
-  const [feature, setFeature] = useState<any>(defaultFeature);
-  const [showValidationText, setShowValidationText] = useState(false);
-  // const [token, setToken] = useState('');
   const [selectedFile, setSelectedFile] = useState<File | null | undefined>();
+  const [selectedAddress, setSelectedAddress] = useState<TravvitAddressType>();
+  const [isCurrentPosition, setIsCurrentPosition] = useState<boolean>(false);
+
+  useEffect(() => {
+    console.log('selectedAddress', selectedAddress);
+  }, [selectedAddress]);
 
   function onImageSelected(image: File | null | undefined) {
     setSelectedFile(image);
@@ -124,8 +197,8 @@ export default function AddPlaceForm() {
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <h1 className="flex justify-center pb-8 text-gray-700">Add a place</h1>
         <form className="add-place">
-          <div className="space-y-12">
-            <div className="border-b border-gray-900/10 pb-12">
+          <div>
+            <div className="border-b border-gray-900/10 pb-8">
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <PlaceName />
 
@@ -133,36 +206,27 @@ export default function AddPlaceForm() {
 
                 <Description />
 
-                <PlaceLocation />
+                <PlaceLocation
+                  selectedAddress={selectedAddress}
+                  setSelectedAddress={setSelectedAddress}
+                  isCurrentPosition={isCurrentPosition}
+                  setIsCurrentPosition={setIsCurrentPosition}
+                />
 
-                <CurrentPosition />
+                <CurrentPosition
+                  setSelectedAddress={setSelectedAddress}
+                  setIsCurrentPosition={setIsCurrentPosition}
+                />
               </div>
             </div>
 
             <div className="border-b border-gray-900/10 pb-12">
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                <div className="sm:col-span-3">
-                  <h2 className="text-base font-semibold leading-7 text-gray-900">
-                    Amenities
-                  </h2>
-                  <MultiSelectDropDown
-                    options={['Trail', 'Campsite', 'Mountain', 'Lake', 'River']}
-                  />
-                </div>
-              </div>
+                <Amenities />
 
-              <div className="col-span-full flex justify-center my-4 flex-col">
-                <h2 className="text-base font-semibold leading-7 text-gray-900">
-                  Accessible seasons
-                </h2>
-                <MultiSelect
-                  options={['summer', 'fall', 'winter', 'spring']}
-                  className="py-1.5"
-                />
-              </div>
+                <AccessibleSeasons />
 
-              <div className="col-span-full flex justify-center mt-8">
-                <ImageUploader onImageSelected={onImageSelected} />
+                <TakePhoto onImageSelected={onImageSelected} />
               </div>
             </div>
           </div>
