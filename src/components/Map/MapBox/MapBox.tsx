@@ -55,7 +55,6 @@ const MapBox: React.FC<MapBoxProps> = ({
 
   useEffect(() => {
     if (selectedAddress && isCurrentPosition) {
-      console.log('currentPosition', selectedAddress);
       const geometry: Point = selectedAddress?.address?.geometry as Point;
       map.current?.setCenter(geometry.coordinates as [number, number]);
       map.current?.setZoom(16);
