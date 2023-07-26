@@ -9,28 +9,20 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
   setSelectedOptions,
 }) => {
   const toggleOption = (option: string) => {
-    if (option === 'all') {
-      setSelectedOptions(
-        selectedOptions?.length === options.length ? [] : options,
-      );
+    let selects: string[] | null = [];
+    if (selectedOptions?.includes(option)) {
+      selects = selectedOptions.filter((item) => item !== option);
     } else {
-      setSelectedOptions((prevSelectedOptions) =>
-        prevSelectedOptions?.includes(option)
-          ? prevSelectedOptions.filter((item) => item !== option)
-          : prevSelectedOptions && [...prevSelectedOptions, option],
-      );
+      selects = selectedOptions && [...selectedOptions, option];
     }
+    setSelectedOptions(selects);
   };
 
-  const isOptionSelected = (option: string) => {
-    return (
-      selectedOptions?.includes(option) ||
-      (option === 'all' && selectedOptions?.length === options.length)
-    );
-  };
+  const isOptionSelected = (option: string) =>
+    selectedOptions?.includes(option);
 
   return (
-    <div className={`multiselect flex flex-wrap ${className}`}>
+    <div className={`multiselect ${className}`}>
       {options.map((option) => (
         <div
           key={option}

@@ -1,17 +1,15 @@
-/* .multiselect {
+.multiselect {
   display: flex;
   flex-wrap: wrap;
-} */
+}
 
 .option {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 8px 16px;
-  /* margin: 4px; */
   border: 1px solid #ccc;
   border-left: none;
-  /* border-radius: 20px; */
   cursor: pointer;
   user-select: none;
 }
