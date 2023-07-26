@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import * as Yup from 'yup';
 import { Button } from '../../Button/Button';
 import { TravvitAddressType } from '../../../utils/map';
 import PlaceName from './PlaceName';
@@ -9,6 +10,7 @@ import CurrentPosition from './CurrentPosition';
 import PlaceAmenities from './PlaceAmenities';
 import PlaceAccessibleSeasons from './PlaceAccessibleSeasons';
 import PlacePhoto from './PlacePhoto';
+import ErrorListNotification from '../../Notification/ErrorListNotification';
 
 const SUBMIT_BTN_CLASSES = `
   flex justify-center
@@ -17,7 +19,19 @@ const SUBMIT_BTN_CLASSES = `
   hover:bg-travvit-orange
   hover:border-travvit-orange`;
 
-export default function AddPlaceForm() {
+const placeNameSchema = Yup.string()
+  .min(5, 'Place name must be 5 characters or more')
+  .required('Place name is required');
+
+const placeTypeSchema = Yup.string()
+  .min(3, 'Place type is invalid')
+  .required('Place type is required');
+
+const selectedAddressSchema = Yup.object().required(
+  'Place location is required',
+);
+
+const AddPlaceForm = () => {
   const [selectedAddress, setSelectedAddress] = useState<TravvitAddressType>();
   const [isCurrentPosition, setIsCurrentPosition] = useState<boolean>(false);
   const [placeName, setPlaceName] = useState<string | null>('');
@@ -33,15 +47,19 @@ export default function AddPlaceForm() {
     [],
   );
   const [selectedFile, setSelectedFile] = useState<File | null | undefined>();
+  const [errors, setErrors] = useState<string[]>([]);
+  const [hasError, setHasError] = useState<boolean>(false);
 
   useEffect(() => {
     setPlaceTypes(['Trail', 'Park', 'Campsite', 'Mountain', 'Lake', 'River']);
     setSeasons(['summer', 'fall', 'winter', 'spring']);
     setAmenities(['camping', 'water', 'bathroom', 'parking']);
-  }, []);
+    console.log('hasError', hasError);
+  }, [hasError]);
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setErrors([]);
 
     // Gather all form data
     const formData = {
@@ -56,14 +74,44 @@ export default function AddPlaceForm() {
 
     // Perform any necessary actions with the form data, e.g., sending it to a server
     console.log(formData);
+    placeNameSchema.validate(placeName).catch((err) => {
+      console.log(err.message);
+      addError(err.message);
+      setHasError(true);
+    });
+    placeTypeSchema.validate(placeType).catch((err) => {
+      console.log(err.message);
+      addError(err.message);
+      setHasError(true);
+    });
+    selectedAddressSchema.validate(selectedAddress).catch((err) => {
+      console.log(err.message);
+      addError(err.message);
+      setHasError(true);
+    });
   };
 
   function onImageSelected(image: File | null | undefined) {
     setSelectedFile(image);
   }
 
+  function onCloseNotification() {
+    setHasError(false);
+  }
+
+  function addError(error: string) {
+    setErrors((errors) => [...errors, error]);
+  }
+
   return (
     <>
+      <ErrorListNotification
+        heading="Please fix the following before submitting:"
+        listItems={errors}
+        hidden={!hasError}
+        onClose={onCloseNotification}
+        className="fixed"
+      />
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <h1 className="flex justify-center pb-8 text-gray-700">Add a place</h1>
         <form className="add-place" onSubmit={handleFormSubmit}>
@@ -127,4 +175,6 @@ export default function AddPlaceForm() {
       </div>
     </>
   );
-}
+};
+
+export default AddPlaceForm;
