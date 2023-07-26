@@ -1,32 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './MultiSelect.css';
 import MultiSelectProps from './MultiSelect.interface';
 
 const MultiSelect: React.FC<MultiSelectProps> = ({
   options,
-  onSelectAll,
   className,
+  selectedOptions,
+  setSelectedOptions,
 }) => {
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-
   const toggleOption = (option: string) => {
     if (option === 'all') {
       setSelectedOptions(
-        selectedOptions.length === options.length ? [] : options,
+        selectedOptions?.length === options.length ? [] : options,
       );
     } else {
       setSelectedOptions((prevSelectedOptions) =>
-        prevSelectedOptions.includes(option)
+        prevSelectedOptions?.includes(option)
           ? prevSelectedOptions.filter((item) => item !== option)
-          : [...prevSelectedOptions, option],
+          : prevSelectedOptions && [...prevSelectedOptions, option],
       );
     }
   };
 
   const isOptionSelected = (option: string) => {
     return (
-      selectedOptions.includes(option) ||
-      (option === 'all' && selectedOptions.length === options.length)
+      selectedOptions?.includes(option) ||
+      (option === 'all' && selectedOptions?.length === options.length)
     );
   };
 
@@ -41,9 +40,6 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
           {option}
         </div>
       ))}
-      {/* <div className="option select-all" onClick={onSelectAll}>
-        Select All
-      </div> */}
     </div>
   );
 };

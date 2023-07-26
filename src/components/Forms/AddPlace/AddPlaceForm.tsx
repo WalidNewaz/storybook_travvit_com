@@ -86,7 +86,6 @@ const Description: React.FC<{
           onChange={(e) => setTextValue(e.target.value)}
           onBlur={(e) => setPlaceDescription(e.target.value)}
           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-          defaultValue={''}
         />
       </div>
       <p className="mt-3 text-sm leading-6 text-gray-600">
@@ -113,8 +112,6 @@ const PlaceLocation: React.FC<{
         selectedAddress={selectedAddress}
         setSelectedAddress={setSelectedAddress}
         isCurrentPosition={isCurrentPosition}
-        mapInstance={null}
-        geocoderInstance={null}
       />
     </div>
   );
@@ -155,7 +152,11 @@ const Amenities = () => {
   );
 };
 
-const AccessibleSeasons = () => {
+const AccessibleSeasons: React.FC<{
+  seasons: string[];
+  accessibleSeasons: string[] | null;
+  setAccessibleSeasons: React.Dispatch<React.SetStateAction<string[] | null>>;
+}> = ({ seasons, accessibleSeasons, setAccessibleSeasons }) => {
   return (
     <div className="col-span-full md:col-span-3 lg:col-span-3 dt_small:col-span-2">
       <label className="block text-sm font-medium leading-6 text-gray-900">
@@ -163,8 +164,10 @@ const AccessibleSeasons = () => {
       </label>
       <div className="flex justify-center sm:justify-start mt-2 sm:mt-0">
         <MultiSelect
-          options={['summer', 'fall', 'winter', 'spring']}
+          options={seasons}
           className="py-1.5"
+          selectedOptions={accessibleSeasons}
+          setSelectedOptions={setAccessibleSeasons}
         />
       </div>
     </div>
@@ -193,13 +196,28 @@ export default function AddPlaceForm() {
   const [placeName, setPlaceName] = useState<string | null>('');
   const [placeType, setPlaceType] = useState<string | null>('');
   const [placeDescription, setPlaceDescription] = useState<string | null>('');
+  const [seasons, setSeasons] = useState<string[]>([]);
+  const [accessibleSeasons, setAccessibleSeasons] = useState<string[] | null>(
+    [],
+  );
+
+  useEffect(() => {
+    setSeasons(['summer', 'fall', 'winter', 'spring']);
+  }, []);
 
   useEffect(() => {
     console.log('placeName', placeName);
     console.log('placeType', placeType);
     console.log('placeDescription', placeDescription);
     console.log('selectedAddress', selectedAddress);
-  }, [selectedAddress, placeType, placeName, placeDescription]);
+    console.log('accessibleSeasons', accessibleSeasons);
+  }, [
+    selectedAddress,
+    placeType,
+    placeName,
+    placeDescription,
+    accessibleSeasons,
+  ]);
 
   function onImageSelected(image: File | null | undefined) {
     setSelectedFile(image);
@@ -239,7 +257,11 @@ export default function AddPlaceForm() {
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <Amenities />
 
-                <AccessibleSeasons />
+                <AccessibleSeasons
+                  seasons={seasons}
+                  accessibleSeasons={accessibleSeasons}
+                  setAccessibleSeasons={setAccessibleSeasons}
+                />
 
                 <TakePhoto onImageSelected={onImageSelected} />
               </div>

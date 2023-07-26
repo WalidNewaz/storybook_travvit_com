@@ -1,5 +1,6 @@
 export default interface MultiSelectProps {
   options: string[];
-  onSelectAll?: () => void;
   className?: string;
+  selectedOptions: string[] | null;
+  setSelectedOptions: React.Dispatch<React.SetStateAction<string[] | null>>;
 }
