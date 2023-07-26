@@ -1,6 +1,7 @@
 export default interface MultiSelectModalProps {
-  options: string[] | null;
   id: string;
+  options: string[] | null;
+  placeholder?: string;
   selectedOptions: string[] | null;
   setSelectedOptions: React.Dispatch<React.SetStateAction<string[] | null>>;
 }

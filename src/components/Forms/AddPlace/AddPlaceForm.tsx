@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ImageUploader from './ImageUploader';
+import ImageUploader from '../ImageUploader/ImageUploader';
 import MultiSelect from '../MultiSelect/MultiSelect';
 import DropDown from '../DropDown/DropDown';
 import MultiSelectModal from '../MultiSelectModal/MultiSelectModal';
@@ -151,6 +151,7 @@ const Amenities: React.FC<{
           options={amenities}
           selectedOptions={selectedAmenities}
           setSelectedOptions={setSelectedAmenities}
+          placeholder="Select amenities"
         />
       </div>
     </div>
@@ -188,14 +189,13 @@ const TakePhoto: React.FC<{
         Upload photo
       </label>
       <div className="flex justify-center sm:justify-start mt-2 lg:mt-1">
-        <ImageUploader onImageSelected={onImageSelected} />
+        <ImageUploader onImageSelected={onImageSelected} label="Take a photo" />
       </div>
     </div>
   );
 };
 
 export default function AddPlaceForm() {
-  const [selectedFile, setSelectedFile] = useState<File | null | undefined>();
   const [selectedAddress, setSelectedAddress] = useState<TravvitAddressType>();
   const [isCurrentPosition, setIsCurrentPosition] = useState<boolean>(false);
   const [placeName, setPlaceName] = useState<string | null>('');
@@ -209,6 +209,7 @@ export default function AddPlaceForm() {
   const [selectedAmenities, setSelectedAmenities] = useState<string[] | null>(
     [],
   );
+  const [selectedFile, setSelectedFile] = useState<File | null | undefined>();
 
   useEffect(() => {
     setSeasons(['summer', 'fall', 'winter', 'spring']);
@@ -222,6 +223,7 @@ export default function AddPlaceForm() {
     console.log('selectedAddress', selectedAddress);
     console.log('selectedAmenities', selectedAmenities);
     console.log('accessibleSeasons', accessibleSeasons);
+    console.log('selectedFile', selectedFile);
   }, [
     selectedAddress,
     placeType,
@@ -229,6 +231,7 @@ export default function AddPlaceForm() {
     placeDescription,
     accessibleSeasons,
     selectedAmenities,
+    selectedFile,
   ]);
 
   function onImageSelected(image: File | null | undefined) {
