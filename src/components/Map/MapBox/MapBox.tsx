@@ -14,8 +14,6 @@ const MapBox: React.FC<MapBoxProps> = ({
   setSelectedAddress,
   isCurrentPosition,
   className,
-  mapInstance,
-  geocoderInstance,
 }) => {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
@@ -53,7 +51,7 @@ const MapBox: React.FC<MapBoxProps> = ({
       });
       map.current.addControl(geoCoder, 'top-left');
     }
-  }, [mapInstance, geocoderInstance]);
+  }, []);
 
   useEffect(() => {
     if (selectedAddress && isCurrentPosition) {
@@ -75,7 +73,11 @@ const MapBox: React.FC<MapBoxProps> = ({
 
   return (
     <div className={`map-box flex flex-col h-full ${className}`}>
-      <div className="flex-grow" ref={mapContainer}></div>
+      <div
+        className="flex-grow"
+        ref={mapContainer}
+        data-testid="map-container"
+      ></div>
     </div>
   );
 };
