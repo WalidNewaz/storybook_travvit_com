@@ -7,7 +7,6 @@ export default interface MapBox {
     React.SetStateAction<TravvitAddressType | undefined>
   >;
   isCurrentPosition: boolean;
-  setIsCurrentPosition: React.Dispatch<React.SetStateAction<boolean>>;
   className?: string;
   mapInstance: Map | null;
   geocoderInstance: MapboxGeocoder | null;

@@ -10,8 +10,12 @@ jest.mock('../../../utils/map');
 describe('CurrentPositionButton', () => {
   test('renders correctly', () => {
     const setSelectedAddress = jest.fn();
+    const setIsCurrentPosition = jest.fn();
     const { getByLabelText } = render(
-      <CurrentPositionButton setSelectedAddress={setSelectedAddress} />,
+      <CurrentPositionButton
+        setSelectedAddress={setSelectedAddress}
+        setIsCurrentPosition={setIsCurrentPosition}
+      />,
     );
 
     const buttonElement = getByLabelText('Current Position');
@@ -22,6 +26,7 @@ describe('CurrentPositionButton', () => {
 
   test('clicking the button triggers geolocation', async () => {
     const setSelectedAddress = jest.fn().mockName('setSelectedAddress');
+    const setIsCurrentPosition = jest.fn().mockName('setIsCurrentPosition');
 
     Object.defineProperty(global.navigator, 'geolocation', {
       value: {},
@@ -39,7 +44,10 @@ describe('CurrentPositionButton', () => {
     });
 
     const { getByLabelText } = render(
-      <CurrentPositionButton setSelectedAddress={setSelectedAddress} />,
+      <CurrentPositionButton
+        setSelectedAddress={setSelectedAddress}
+        setIsCurrentPosition={setIsCurrentPosition}
+      />,
     );
 
     const buttonElement = getByLabelText('Current Position');
@@ -56,6 +64,7 @@ describe('CurrentPositionButton', () => {
         latitude: 12.34,
         longitude: 56.78,
       });
+      expect(setIsCurrentPosition).toHaveBeenCalledWith(true);
     });
   });
 });

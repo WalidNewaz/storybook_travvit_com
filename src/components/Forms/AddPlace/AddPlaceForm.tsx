@@ -88,13 +88,7 @@ const PlaceLocation: React.FC<{
     React.SetStateAction<TravvitAddressType | undefined>
   >;
   isCurrentPosition: boolean;
-  setIsCurrentPosition: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({
-  selectedAddress,
-  setSelectedAddress,
-  isCurrentPosition,
-  setIsCurrentPosition,
-}) => {
+}> = ({ selectedAddress, setSelectedAddress, isCurrentPosition }) => {
   return (
     <div className="col-span-full w-full min-h-[30vh] mx-auto">
       <label className="block text-sm font-medium leading-6 text-gray-900">
@@ -105,7 +99,6 @@ const PlaceLocation: React.FC<{
         selectedAddress={selectedAddress}
         setSelectedAddress={setSelectedAddress}
         isCurrentPosition={isCurrentPosition}
-        setIsCurrentPosition={setIsCurrentPosition}
         mapInstance={null}
         geocoderInstance={null}
       />
@@ -210,7 +203,6 @@ export default function AddPlaceForm() {
                   selectedAddress={selectedAddress}
                   setSelectedAddress={setSelectedAddress}
                   isCurrentPosition={isCurrentPosition}
-                  setIsCurrentPosition={setIsCurrentPosition}
                 />
 
                 <CurrentPosition

@@ -10,25 +10,11 @@ const CurrentPositionButton: React.FC<CurrentPositionButtonProps> = ({
   setSelectedAddress,
   setIsCurrentPosition,
 }) => {
-  // Check if the geolocation button on the map is active
-  // If it is, then we need to deactivate it
-  const deactivateGeolocateControl = () => {
-    const geolocateCtrl = document.querySelector(
-      '.mapboxgl-ctrl-geolocate-background',
-    ) as HTMLButtonElement | null;
-    if (geolocateCtrl) {
-      geolocateCtrl.click();
-    }
-  };
-
   const getCurrentPosition = (
     event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
   ) => {
-    // console.log('getCurrentPosition');
     event.preventDefault();
-    // deactivateGeolocateControl();
     navigator.geolocation.getCurrentPosition(async (position) => {
-      // console.log(position);
       const data = await getReverseGeocodedAddress(position);
       if (data) {
         setSelectedAddress(data);
