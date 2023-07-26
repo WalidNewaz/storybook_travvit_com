@@ -44,11 +44,6 @@ describe('MultiSelect', () => {
     await waitFor(() => {
       expect(setSelectedOptions).toHaveBeenCalledWith(['Option 1', 'Option 2']);
     });
-
-    // fireEvent.click(optionElement); // deselect the option
-    // await waitFor(() => {
-    //   expect(setSelectedOptions).toHaveBeenCalledWith(['Option 1']);
-    // });
   });
 
   test('removes option from selected options when clicked', async () => {

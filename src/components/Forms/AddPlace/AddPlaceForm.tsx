@@ -1,9 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
-import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import React, { useState, useEffect } from 'react';
 import ImageUploader from './ImageUploader';
 import MultiSelect from '../MultiSelect/MultiSelect';
 import DropDown from '../DropDown/DropDown';
-import MultiSelectDropDown from '../MultiSelectDropDown/MultiSelectDropDown';
+import MultiSelectModal from '../MultiSelectModal/MultiSelectModal';
 import { Button } from '../../Button/Button';
 import MapBox from '../../Map/MapBox/MapBox';
 import CurrentPositionButton from '../../Map/CurrentPositionButton/CurrentPositionButton';
@@ -133,7 +132,11 @@ const CurrentPosition: React.FC<{
   );
 };
 
-const Amenities = () => {
+const Amenities: React.FC<{
+  amenities: string[] | null;
+  selectedAmenities: string[] | null;
+  setSelectedAmenities: React.Dispatch<React.SetStateAction<string[] | null>>;
+}> = ({ amenities, selectedAmenities, setSelectedAmenities }) => {
   return (
     <div className="col-span-full md:col-span-3">
       <label
@@ -143,9 +146,11 @@ const Amenities = () => {
         Amenities
       </label>
       <div className="mt-2">
-        <MultiSelectDropDown
+        <MultiSelectModal
           id="amenities"
-          options={['Trail', 'Campsite', 'Mountain', 'Lake', 'River']}
+          options={amenities}
+          selectedOptions={selectedAmenities}
+          setSelectedOptions={setSelectedAmenities}
         />
       </div>
     </div>
@@ -200,9 +205,14 @@ export default function AddPlaceForm() {
   const [accessibleSeasons, setAccessibleSeasons] = useState<string[] | null>(
     [],
   );
+  const [amenities, setAmenities] = useState<string[] | null>([]);
+  const [selectedAmenities, setSelectedAmenities] = useState<string[] | null>(
+    [],
+  );
 
   useEffect(() => {
     setSeasons(['summer', 'fall', 'winter', 'spring']);
+    setAmenities(['camping', 'water', 'bathroom', 'parking']);
   }, []);
 
   useEffect(() => {
@@ -210,6 +220,7 @@ export default function AddPlaceForm() {
     console.log('placeType', placeType);
     console.log('placeDescription', placeDescription);
     console.log('selectedAddress', selectedAddress);
+    console.log('selectedAmenities', selectedAmenities);
     console.log('accessibleSeasons', accessibleSeasons);
   }, [
     selectedAddress,
@@ -217,6 +228,7 @@ export default function AddPlaceForm() {
     placeName,
     placeDescription,
     accessibleSeasons,
+    selectedAmenities,
   ]);
 
   function onImageSelected(image: File | null | undefined) {
@@ -255,7 +267,11 @@ export default function AddPlaceForm() {
 
             <div className="border-b border-gray-900/10 pb-12">
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                <Amenities />
+                <Amenities
+                  amenities={amenities}
+                  selectedAmenities={selectedAmenities}
+                  setSelectedAmenities={setSelectedAmenities}
+                />
 
                 <AccessibleSeasons
                   seasons={seasons}
