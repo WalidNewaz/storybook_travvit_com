@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 import './MultiSelect.css';
-
-interface MultiSelectProps {
-  options: string[];
-  onSelectAll?: () => void;
-  className?: string;
-}
+import MultiSelectProps from './MultiSelect.interface';
 
 const MultiSelect: React.FC<MultiSelectProps> = ({
   options,
@@ -36,7 +31,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
   };
 
   return (
-    <div className={`multiselect ${className}`}>
+    <div className={`multiselect flex flex-wrap ${className}`}>
       {options.map((option) => (
         <div
           key={option}

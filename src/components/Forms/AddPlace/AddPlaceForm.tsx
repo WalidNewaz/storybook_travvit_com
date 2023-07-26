@@ -16,7 +16,9 @@ const SUBMIT_BTN_CLASSES = `
   hover:bg-travvit-orange
   hover:border-travvit-orange`;
 
-const PlaceName = () => {
+const PlaceName: React.FC<{
+  setPlaceName: React.Dispatch<React.SetStateAction<string | null>>;
+}> = ({ setPlaceName }) => {
   return (
     <div className="sm:col-span-4">
       <label
@@ -32,13 +34,16 @@ const PlaceName = () => {
           type="text"
           autoComplete="text"
           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          onChange={(e) => setPlaceName(e.target.value)}
         />
       </div>
     </div>
   );
 };
 
-const PlaceType = () => {
+const PlaceType: React.FC<{
+  setPlaceType: React.Dispatch<React.SetStateAction<string | null>>;
+}> = ({ setPlaceType }) => {
   return (
     <div className="sm:col-span-2">
       <label
@@ -51,26 +56,35 @@ const PlaceType = () => {
         <DropDown
           options={['Trail', 'Park', 'Campsite', 'Mountain', 'Lake', 'River']}
           id="place_type"
+          setDropdownValue={setPlaceType}
         />
       </div>
     </div>
   );
 };
 
-const Description = () => {
+const Description: React.FC<{
+  placeDescription: string | null;
+  setPlaceDescription: React.Dispatch<React.SetStateAction<string | null>>;
+}> = ({ placeDescription, setPlaceDescription }) => {
+  const [textValue, setTextValue] = useState(placeDescription);
+
   return (
     <div className="col-span-full">
       <label
-        htmlFor="about"
+        htmlFor="description"
         className="block text-sm font-medium leading-6 text-gray-900"
       >
         Description
       </label>
       <div className="mt-2">
         <textarea
-          id="about"
-          name="about"
+          id="description"
+          name="description"
           rows={3}
+          value={textValue as string}
+          onChange={(e) => setTextValue(e.target.value)}
+          onBlur={(e) => setPlaceDescription(e.target.value)}
           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           defaultValue={''}
         />
@@ -176,10 +190,16 @@ export default function AddPlaceForm() {
   const [selectedFile, setSelectedFile] = useState<File | null | undefined>();
   const [selectedAddress, setSelectedAddress] = useState<TravvitAddressType>();
   const [isCurrentPosition, setIsCurrentPosition] = useState<boolean>(false);
+  const [placeName, setPlaceName] = useState<string | null>('');
+  const [placeType, setPlaceType] = useState<string | null>('');
+  const [placeDescription, setPlaceDescription] = useState<string | null>('');
 
   useEffect(() => {
+    console.log('placeName', placeName);
+    console.log('placeType', placeType);
+    console.log('placeDescription', placeDescription);
     console.log('selectedAddress', selectedAddress);
-  }, [selectedAddress]);
+  }, [selectedAddress, placeType, placeName, placeDescription]);
 
   function onImageSelected(image: File | null | undefined) {
     setSelectedFile(image);
@@ -193,11 +213,14 @@ export default function AddPlaceForm() {
           <div>
             <div className="border-b border-gray-900/10 pb-8">
               <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                <PlaceName />
+                <PlaceName setPlaceName={setPlaceName} />
 
-                <PlaceType />
+                <PlaceType setPlaceType={setPlaceType} />
 
-                <Description />
+                <Description
+                  placeDescription={placeDescription}
+                  setPlaceDescription={setPlaceDescription}
+                />
 
                 <PlaceLocation
                   selectedAddress={selectedAddress}
