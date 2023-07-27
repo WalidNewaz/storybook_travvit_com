@@ -113,7 +113,10 @@ const AddPlaceForm: React.FC<{ submissionStatus?: FormStates }> = ({
         onClose={onCloseNotification}
         className="fixed"
       />
-
+      <FormSubmissionOverlay
+        formState={formState}
+        hidden={formState !== FormStates.LOADING}
+      />
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <h1 className="flex justify-center pb-8 text-gray-700">Add a place</h1>
         <form className="add-place" onSubmit={handleFormSubmit}>
@@ -175,10 +178,6 @@ const AddPlaceForm: React.FC<{ submissionStatus?: FormStates }> = ({
           </div>
         </form>
       </div>
-      <FormSubmissionOverlay
-        formState={formState}
-        hidden={formState !== FormStates.LOADING}
-      />
     </>
   );
 };

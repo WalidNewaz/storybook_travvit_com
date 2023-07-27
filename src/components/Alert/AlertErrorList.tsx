@@ -1,32 +1,35 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import Alert from './Alert';
+import { IoCloseCircle } from 'react-icons/io5';
 
-const FormSubmissionOverlay = ({ loading, success, failure, redirectUrl }) => {
-  const submissionStatus = useSelector((state) => state.formSubmissionStatus);
-
-  const renderOverlay = () => {
-    if (submissionStatus === 'LOADING' || loading) {
-      return (
-        <div className="form-submission-overlay">
-          <div className="overlay-spinner"></div>
-        </div>
-      );
-    } else if (submissionStatus === 'SUCCESS' || success) {
-      // You can perform any additional actions for success, like redirecting to a URL
-      // For example, using React Router's history.push(redirectUrl) to navigate to the desired URL
-      return null;
-    } else if (submissionStatus === 'FAILURE' || failure) {
-      // Handle failure scenario and display any errors, if applicable
-      return (
-        <div className="form-submission-overlay failure">
-          <p>Form submission failed. Please try again.</p>
-        </div>
-      );
-    }
-    return null;
-  };
-
-  return renderOverlay();
+const Message: React.FC<{ listItems: string[] }> = ({ listItems }) => {
+  return (
+    <ul role="list" className="pl-4 list-disc">
+      {listItems.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  );
 };
 
-export default FormSubmissionOverlay;
+const AlertErrorList: React.FC<{
+  heading: string;
+  listItems: string[];
+  hidden?: boolean;
+  onClose?: () => void;
+}> = ({ heading, listItems, hidden = true, onClose }) => {
+  return (
+    <Alert
+      bgColor="bg-red-50"
+      heading={heading}
+      headingColor="text-red-700"
+      message={<Message listItems={listItems} />}
+      messageColor="text-red-700"
+      icon={<IoCloseCircle className="w-6 h-6 text-red-600" />}
+      hidden={hidden}
+      onClose={onClose}
+    />
+  );
+};
+
+export default AlertErrorList;
