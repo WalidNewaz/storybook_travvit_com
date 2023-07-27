@@ -15,7 +15,7 @@ const Notification: React.FC<{
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    console.log('useEffect', hidden);
+    // console.log('useEffect', hidden);
     if (hidden) return;
     // Use a timeout to wait for the component to be rendered
     const timeoutId = setTimeout(() => {

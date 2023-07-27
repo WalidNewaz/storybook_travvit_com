@@ -2,6 +2,6 @@
 export enum FormStates {
   IDLE = 'idle',
   LOADING = 'loading',
-  SUCCESS = 'success',
-  FAILURE = 'failure',
+  SUCCEEDED = 'succeeded',
+  FAILED = 'failed',
 }

@@ -7,26 +7,35 @@ import activitiesReducer from './activities/activitiesSlice';
 import placesReducer from './places/placesSlice';
 import selectedActivityReducer from './activities/selectedActivitySlice';
 import profileReducer from './profile/profileSlice';
+import formSubmissionReducer from './forms/formSubmissionSlice';
 
-// A super-simple mock of the state of the store
-export const mockedState = {
-  activities: [],
-  loggedInUser: {
-    user: defaultUser,
-    status: 'idle',
-    error: null,
-  },
-  status: 'idle',
-  error: null,
-};
+// // A super-simple mock of the state of the store
+// export const mockedState = {
+//   activities: [],
+//   loggedInUser: {
+//     user: defaultUser,
+//     status: 'idle',
+//     error: null,
+//   },
+//   status: 'idle',
+//   error: null,
+// };
 
-export const mockedUserState = {
-  loggedInUser: {
-    user: defaultUser,
-    status: 'idle',
-    error: null,
-  },
-};
+// export const mockedUserState = {
+//   loggedInUser: {
+//     user: defaultUser,
+//     status: 'idle',
+//     error: null,
+//   },
+// };
+
+export interface RootState {
+  activities: any;
+  places: any;
+  selectedActivity: any;
+  profile: any;
+  formSubmission: any;
+}
 
 // A super-simple mock of a redux store
 export const Mockstore: React.FC<{ children: React.ReactNode }> = ({
@@ -39,6 +48,7 @@ export const Mockstore: React.FC<{ children: React.ReactNode }> = ({
         places: placesReducer,
         selectedActivity: selectedActivityReducer,
         profile: profileReducer,
+        formSubmission: formSubmissionReducer,
       },
     })}
   >

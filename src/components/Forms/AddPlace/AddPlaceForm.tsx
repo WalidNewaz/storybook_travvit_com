@@ -33,8 +33,9 @@ const selectedAddressSchema = Yup.object().required(
   'Place location is required',
 );
 
-const AddPlaceForm: React.FC<{ submissionStatus?: FormStates }> = ({
-  submissionStatus = FormStates.IDLE,
+const AddPlaceForm: React.FC<{ createPlace: any; formState: FormStates }> = ({
+  createPlace,
+  formState,
 }) => {
   const [selectedAddress, setSelectedAddress] = useState<TravvitAddressType>();
   const [isCurrentPosition, setIsCurrentPosition] = useState<boolean>(false);
@@ -52,7 +53,7 @@ const AddPlaceForm: React.FC<{ submissionStatus?: FormStates }> = ({
   );
   const [selectedFile, setSelectedFile] = useState<File | null | undefined>();
   const [errors, setErrors] = useState<string[]>([]);
-  const [formState, setFormState] = useState<FormStates>(FormStates.IDLE);
+  // const [formState, setFormState] = useState<FormStates>(FormStates.IDLE);
 
   useEffect(() => {
     setPlaceTypes(['Trail', 'Park', 'Campsite', 'Mountain', 'Lake', 'River']);
@@ -60,7 +61,7 @@ const AddPlaceForm: React.FC<{ submissionStatus?: FormStates }> = ({
     setAmenities(['camping', 'water', 'bathroom', 'parking']);
   }, []);
 
-  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setErrors([]);
 
@@ -77,19 +78,29 @@ const AddPlaceForm: React.FC<{ submissionStatus?: FormStates }> = ({
 
     // Perform any necessary actions with the form data, e.g., sending it to a server
     console.log(formData);
-    placeNameSchema.validate(placeName).catch((err) => {
-      console.log(err.message);
-      addError(err.message);
-    });
-    placeTypeSchema.validate(placeType).catch((err) => {
-      console.log(err.message);
-      addError(err.message);
-    });
-    selectedAddressSchema.validate(selectedAddress).catch((err) => {
-      console.log(err.message);
-      addError(err.message);
-    });
-    setFormState(FormStates.LOADING);
+
+    const results = await Promise.allSettled([
+      placeNameSchema.validate(placeName),
+      placeTypeSchema.validate(placeType),
+      selectedAddressSchema.validate(selectedAddress),
+    ]);
+    const errMsgs = results.reduce((acc, result) => {
+      if (result.status === 'rejected') {
+        acc.push(result.reason.message);
+      }
+      return acc;
+    }, [] as string[]);
+    setErrors((errors) => [...errors, ...errMsgs]);
+
+    if (errMsgs.length === 0) {
+      // setErrors((errors) => [...errors, ...errMsgs]);
+      // setFormState(FormStates.LOADING);
+      createPlace(formData);
+      // setTimeout(() => {
+      //   setFormState(FormStates.SUCCESS);
+      //   // setErrors([]);
+      // }, 5000);
+    }
   };
 
   function onImageSelected(image: File | null | undefined) {
@@ -111,13 +122,13 @@ const AddPlaceForm: React.FC<{ submissionStatus?: FormStates }> = ({
         listItems={errors}
         hidden={errors.length === 0}
         onClose={onCloseNotification}
-        className="fixed"
+        className="fixed md:max-w-screen-md lg:max-w-screen-lg dt_small:max-w-screen-dt_small dt_mid:max-w-screen-dt_mid"
       />
       <FormSubmissionOverlay
         formState={formState}
         hidden={formState !== FormStates.LOADING}
       />
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="add-place flex flex-1 flex-col px-6 py-12 lg:px-8">
         <h1 className="flex justify-center pb-8 text-gray-700">Add a place</h1>
         <form className="add-place" onSubmit={handleFormSubmit}>
           <div>

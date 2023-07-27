@@ -13,12 +13,9 @@ const FormSubmissionOverlay: React.FC<{
   loadingMessage = 'Submitting...',
   className,
 }) => {
-  console.log('formState', formState);
-
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    console.log('useEffect', hidden);
     if (hidden) return;
     // Use a timeout to wait for the component to be rendered
     const timeoutId = setTimeout(() => {
