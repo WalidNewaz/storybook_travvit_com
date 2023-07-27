@@ -11,6 +11,8 @@ import PlaceAmenities from './PlaceAmenities';
 import PlaceAccessibleSeasons from './PlaceAccessibleSeasons';
 import PlacePhoto from './PlacePhoto';
 import ErrorListNotification from '../../Notification/ErrorListNotification';
+import FormSubmissionOverlay from '../FormSubmissionOverlay/FormSubmissionOverlay';
+import { FormStates } from '../enums';
 
 const SUBMIT_BTN_CLASSES = `
   flex justify-center
@@ -31,7 +33,9 @@ const selectedAddressSchema = Yup.object().required(
   'Place location is required',
 );
 
-const AddPlaceForm = () => {
+const AddPlaceForm: React.FC<{ submissionStatus?: FormStates }> = ({
+  submissionStatus = FormStates.IDLE,
+}) => {
   const [selectedAddress, setSelectedAddress] = useState<TravvitAddressType>();
   const [isCurrentPosition, setIsCurrentPosition] = useState<boolean>(false);
   const [placeName, setPlaceName] = useState<string | null>('');
@@ -48,14 +52,13 @@ const AddPlaceForm = () => {
   );
   const [selectedFile, setSelectedFile] = useState<File | null | undefined>();
   const [errors, setErrors] = useState<string[]>([]);
-  const [hasError, setHasError] = useState<boolean>(false);
+  const [formState, setFormState] = useState<FormStates>(FormStates.IDLE);
 
   useEffect(() => {
     setPlaceTypes(['Trail', 'Park', 'Campsite', 'Mountain', 'Lake', 'River']);
     setSeasons(['summer', 'fall', 'winter', 'spring']);
     setAmenities(['camping', 'water', 'bathroom', 'parking']);
-    console.log('hasError', hasError);
-  }, [hasError]);
+  }, []);
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -77,18 +80,16 @@ const AddPlaceForm = () => {
     placeNameSchema.validate(placeName).catch((err) => {
       console.log(err.message);
       addError(err.message);
-      setHasError(true);
     });
     placeTypeSchema.validate(placeType).catch((err) => {
       console.log(err.message);
       addError(err.message);
-      setHasError(true);
     });
     selectedAddressSchema.validate(selectedAddress).catch((err) => {
       console.log(err.message);
       addError(err.message);
-      setHasError(true);
     });
+    setFormState(FormStates.LOADING);
   };
 
   function onImageSelected(image: File | null | undefined) {
@@ -96,7 +97,7 @@ const AddPlaceForm = () => {
   }
 
   function onCloseNotification() {
-    setHasError(false);
+    setErrors([]);
   }
 
   function addError(error: string) {
@@ -108,10 +109,11 @@ const AddPlaceForm = () => {
       <ErrorListNotification
         heading="Please fix the following before submitting:"
         listItems={errors}
-        hidden={!hasError}
+        hidden={errors.length === 0}
         onClose={onCloseNotification}
         className="fixed"
       />
+
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <h1 className="flex justify-center pb-8 text-gray-700">Add a place</h1>
         <form className="add-place" onSubmit={handleFormSubmit}>
@@ -173,6 +175,10 @@ const AddPlaceForm = () => {
           </div>
         </form>
       </div>
+      <FormSubmissionOverlay
+        formState={formState}
+        hidden={formState !== FormStates.LOADING}
+      />
     </>
   );
 };
