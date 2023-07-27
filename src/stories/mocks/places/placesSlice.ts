@@ -3,6 +3,7 @@ import type { RequestStatus } from '../../../types';
 import { PlaceType } from '../../../components/ContentCardGroup/PlaceCardGroup/PlaceCardGroup.interface';
 import PlacesService from './places.service';
 import { RootState } from '../store';
+import { error } from 'console';
 
 const placesService = new PlacesService();
 
@@ -21,7 +22,12 @@ const initialState: DataState = {
 const placesSlice = createSlice({
   name: 'places',
   initialState,
-  reducers: {},
+  reducers: {
+    resetStatus: (state) => {
+      state.status = 'idle';
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getAllPlaces.pending, (state, action) => {
       state.status = 'loading';
@@ -82,6 +88,8 @@ const placesSlice = createSlice({
 });
 
 export default placesSlice.reducer;
+
+export const { resetStatus } = placesSlice.actions;
 
 /** Thunks */
 export const getAllPlaces = createAsyncThunk(

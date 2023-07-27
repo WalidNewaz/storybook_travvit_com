@@ -33,10 +33,10 @@ const selectedAddressSchema = Yup.object().required(
   'Place location is required',
 );
 
-const AddPlaceForm: React.FC<{ createPlace: any; formState: FormStates }> = ({
-  createPlace,
-  formState,
-}) => {
+const AddPlaceForm: React.FC<{
+  createPlace: any;
+  formState: FormStates;
+}> = ({ createPlace, formState }) => {
   const [selectedAddress, setSelectedAddress] = useState<TravvitAddressType>();
   const [isCurrentPosition, setIsCurrentPosition] = useState<boolean>(false);
   const [placeName, setPlaceName] = useState<string | null>('');
@@ -53,13 +53,24 @@ const AddPlaceForm: React.FC<{ createPlace: any; formState: FormStates }> = ({
   );
   const [selectedFile, setSelectedFile] = useState<File | null | undefined>();
   const [errors, setErrors] = useState<string[]>([]);
-  // const [formState, setFormState] = useState<FormStates>(FormStates.IDLE);
 
   useEffect(() => {
     setPlaceTypes(['Trail', 'Park', 'Campsite', 'Mountain', 'Lake', 'River']);
     setSeasons(['summer', 'fall', 'winter', 'spring']);
     setAmenities(['camping', 'water', 'bathroom', 'parking']);
   }, []);
+
+  useEffect(() => {
+    if (formState === FormStates.SUCCEEDED) {
+      setPlaceName('');
+      setPlaceType('');
+      setPlaceDescription('');
+      setSelectedAddress(undefined);
+      setSelectedAmenities([]);
+      setAccessibleSeasons([]);
+      setSelectedFile(undefined);
+    }
+  }, [formState]);
 
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

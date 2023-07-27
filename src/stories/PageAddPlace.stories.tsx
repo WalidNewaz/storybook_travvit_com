@@ -6,7 +6,7 @@ import ContentLoader from 'react-content-loader';
 import type { RequestStatus } from '../types';
 import { Mockstore } from './mocks/store';
 import { login, logout } from './mocks/profile/profileSlice';
-import { createPlace } from './mocks/places/placesSlice';
+import { createPlace, resetStatus } from './mocks/places/placesSlice';
 import { FormStates } from '../components/Forms/enums';
 
 /** Component */
@@ -54,10 +54,18 @@ type Story = StoryObj<typeof FullPageScroll>;
 
 const AddPlacePage: React.FC = () => {
   const dispatch = useDispatch();
-  const onCreatePlace = (place: any) => {
-    dispatch(createPlace(place));
+  const onCreatePlace = async (place: any) => {
+    await dispatch(createPlace(place));
   };
   const formState = useSelector((state: any) => state.places.status);
+
+  useEffect(() => {
+    if (formState === FormStates.SUCCEEDED) {
+      dispatch(resetStatus());
+      // TODO: Redirect to the place page
+    }
+  }, [formState]);
+
   return <AddPlaceForm createPlace={onCreatePlace} formState={formState} />;
 };
 
