@@ -1,4 +1,4 @@
-import { FeatureCollection, Feature } from 'geojson';
+import { FeatureCollection } from 'geojson';
 import type { Geometry } from 'geojson';
 
 const MAPBOX_ACCESS_TOKEN: string = process.env.MAPBOX_ACCESS_TOKEN as string;
