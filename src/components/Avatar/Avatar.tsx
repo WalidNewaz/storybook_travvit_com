@@ -31,7 +31,7 @@ export const Avatar: React.FC<AvatarProps> = ({
 }) => {
   const computedClasses = classNames(
     BASE_AVATAR_CLASSES,
-    sizeClasses[size],
+    sizeClasses[size as Size],
     className,
   );
 
