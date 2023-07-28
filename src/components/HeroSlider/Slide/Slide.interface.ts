@@ -1,5 +1,4 @@
-import type { clickHandler } from '../../../types/eventHandler.types';
-import type { StyleType } from '../../../types';
+import type { StyleType, clickHandler } from '../../../types';
 
 interface Slide {
   index: number;
