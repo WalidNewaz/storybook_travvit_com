@@ -1,5 +1,4 @@
-import type { clickHandler } from '../../../types/eventHandler.types';
-import type { MediaType, StyleType } from '../../../types';
+import type { MediaType, StyleType, clickHandler } from '../../../types';
 
 export interface SlideProps {
   media: string;
