@@ -1,4 +1,4 @@
-import type { clickHandler } from '../../types';
+import type { clickHandler } from '../../../types';
 
 interface FloatingActionButton {
   onClick: clickHandler;
