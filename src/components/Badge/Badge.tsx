@@ -22,9 +22,9 @@ export const Badge: React.FC<BadgeProps> = ({
   className = '',
   children,
 }) => {
-  const badgeClassName = `${BASE_CLASS_NAME} ${colorClassNames[color]} ${
-    rounded ? 'rounded-full' : 'rounded-md'
-  } ${className}`;
+  const badgeClassName = `${BASE_CLASS_NAME} ${
+    colorClassNames[color as Color]
+  } ${rounded ? 'rounded-full' : 'rounded-md'} ${className}`;
 
   return <span className={badgeClassName}>{children ? children : label}</span>;
 };
