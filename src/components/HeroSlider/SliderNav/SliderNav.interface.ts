@@ -1,4 +1,4 @@
-import type { clickHandler } from '../../../types/eventHandler.types';
+import type { clickHandler } from '../../../types';
 
 interface SliderNav {
   handlePrevSlide: clickHandler;
