@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import MenuItems from './MenuItems';
-import FloatingActionButton from '../../Buttons/FloatingActionButton';
+import FloatingActionButton from '../../Buttons/FloatingActionButton/FloatingActionButton';
 import FloatingActionMenuProps from './FloatingActionMenu.interface';
 
 const FloatingActionMenu: React.FC<FloatingActionMenuProps> = ({

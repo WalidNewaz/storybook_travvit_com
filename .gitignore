@@ -2,6 +2,11 @@ node_modules/
 .cache/
 public
 src/gatsby-types.d.ts
-.vscode/
 /coverage
+# Misc
 .DS_Store
+**/.DS_Store
+.vscode/
+# Storybook
+storybook-static/*
+

@@ -2,7 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from '../components/Button/Button';
-import FloatingActionButton from '../components/Buttons/FloatingActionButton';
+import FloatingActionButton from '../components/Buttons/FloatingActionButton/FloatingActionButton';
 import FloatingActionMenu from '../components/Menu/FloatingActionMenu/FloatingActionMenu';
 
 /** Assets */
