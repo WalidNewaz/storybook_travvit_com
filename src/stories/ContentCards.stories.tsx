@@ -6,6 +6,7 @@ import ContentCard from '../components/ContentCard/ContentCard';
 import { PlaceCard } from '../components/ContentCard/PlaceCard/PlaceCard';
 import { ActivityCard } from '../components/ContentCard/ActivityCard/ActivityCard';
 import { TripCard } from '../components/ContentCard/TripCard/TripCard';
+import { TripActivityCard } from '../components/ContentCard/TripActivityCard/TripActivityCard';
 import { ExplorerCard } from '../components/ContentCard/ExplorerCard/ExplorerCard';
 import { CategoryCard } from '../components/ContentCard/CategoryCard/CategoryCard';
 
@@ -152,6 +153,30 @@ export const Trip: Story = {
       groupMembers={avatarProps}
       joinHandler={() => alert('You clicked join!')}
       followHandler={() => alert('You clicked follow!')}
+    />
+  ),
+};
+
+export const TripActivity: Story = {
+  name: 'Trip Activity Card',
+  render: () => (
+    <TripActivityCard
+      mediaType="image"
+      imageProps={imagePropsActivity}
+      likeHandler={() => alert('You clicked like!')}
+      addHandler={() => alert('You clicked add!')}
+      shareHandler={() => alert('You clicked share!')}
+      badges={['Hiking', 'Moderate']}
+      startTime={new Date().toLocaleString()}
+      duration={{
+        amount: 3,
+        unit: 'day',
+      }}
+      heading="Lake Haiyaha Hike"
+      headingLink="#"
+      place="Rocky Mountain National Park"
+      placeLink="#"
+      groupMembers={avatarProps}
     />
   ),
 };
