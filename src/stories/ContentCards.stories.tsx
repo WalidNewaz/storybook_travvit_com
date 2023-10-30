@@ -8,6 +8,7 @@ import { ActivityCard } from '../components/ContentCard/ActivityCard/ActivityCar
 import { TripCard } from '../components/ContentCard/TripCard/TripCard';
 import { TripActivityCard } from '../components/ContentCard/TripActivityCard/TripActivityCard';
 import { ExplorerCard } from '../components/ContentCard/ExplorerCard/ExplorerCard';
+import { TripMemberCard } from '../components/ContentCard/TripMemberCard/TripMemberCard';
 import { CategoryCard } from '../components/ContentCard/CategoryCard/CategoryCard';
 
 /** Assets */
@@ -192,6 +193,20 @@ export const Explorer: Story = {
       locationLink="/places/colorado"
       numTrips={5}
       followHandler={() => alert('You clicked follow!')}
+    />
+  ),
+};
+
+export const TripMember: Story = {
+  name: 'Trip memner Card',
+  render: () => (
+    <TripMemberCard
+      src={jane3Jpeg}
+      name="Jane Doe"
+      profileLink="/explorer/@jane-doe"
+      explorerLocation="Colorado, USA"
+      locationLink="/places/colorado"
+      // isLeader={true}
     />
   ),
 };
