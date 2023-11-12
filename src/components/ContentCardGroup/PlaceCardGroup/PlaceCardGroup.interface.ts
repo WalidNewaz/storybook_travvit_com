@@ -1,10 +1,5 @@
 import ResponsiveImage from '../../ResponsiveImage/ResponsiveImage.interface';
-import type {
-  likeHandler,
-  addHandler,
-  shareHandler,
-  MediaType,
-} from '../../../types';
+import type { bookmarkHandler, MediaType } from '../../../types';
 
 export interface PlaceType {
   id: string;
@@ -16,13 +11,12 @@ export interface PlaceType {
   parent: string;
   parentSlug: string;
   rating: string | number;
+  bookmarked?: boolean;
 }
 
 interface PlaceCardGroup {
   places: PlaceType[];
-  likeHandler: likeHandler;
-  addHandler: addHandler;
-  shareHandler: shareHandler;
+  bookmarkHandler: bookmarkHandler;
 }
 
 export default PlaceCardGroup;

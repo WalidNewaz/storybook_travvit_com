@@ -5,6 +5,7 @@ interface ActionIconProps {
   icon?: IconType;
   label: string;
   onClick: clickHandler;
+  selected?: boolean;
   className?: string;
 }
 

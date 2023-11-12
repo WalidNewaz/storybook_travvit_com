@@ -43,12 +43,8 @@ const placesService = new PlacesService();
 const activitiesService = new ActivitiesService();
 
 const PlacesPage: React.FC = () => {
-  const [popularPlaces, setPopularPlaces] = useState<PlaceType[] | null>(
-    null,
-  );
-  const [nearbyPlaces, setNearbyPlaces] = useState<PlaceType[] | null>(
-    null,
-  );
+  const [popularPlaces, setPopularPlaces] = useState<PlaceType[] | null>(null);
+  const [nearbyPlaces, setNearbyPlaces] = useState<PlaceType[] | null>(null);
 
   useEffect(() => {
     const fetchPopularPlaces = async () => {
@@ -71,12 +67,8 @@ const PlacesPage: React.FC = () => {
         {popularPlaces && (
           <PlaceCardGroup
             places={popularPlaces}
-            likeHandler={(data) => alert(`Your are about to like: ${data}!`)}
-            addHandler={(data) =>
-              alert(`You are adding ${data} to your wishlist.`)
-            }
-            shareHandler={(data) =>
-              alert(`You are about to share ${data} with others.`)
+            bookmarkHandler={(data) =>
+              alert(`Your are about to bookmark: ${data}!`)
             }
           />
         )}
@@ -87,14 +79,8 @@ const PlacesPage: React.FC = () => {
         {nearbyPlaces && (
           <PlaceCardGroup
             places={nearbyPlaces}
-            likeHandler={(data) =>
-              alert(`Your are about to like the nearby place: ${data}!`)
-            }
-            addHandler={(data) =>
-              alert(`You are adding ${data} to your wishlist.`)
-            }
-            shareHandler={(data) =>
-              alert(`You are about to share ${data} with others.`)
+            bookmarkHandler={(data) =>
+              alert(`Your are about to bookmark the nearby place: ${data}!`)
             }
           />
         )}
@@ -109,9 +95,7 @@ export const Places: Story = {
 };
 
 const PlacePage: React.FC = () => {
-  const [nearbyPlaces, setNearbyPlaces] = useState<PlaceType[] | null>(
-    null,
-  );
+  const [nearbyPlaces, setNearbyPlaces] = useState<PlaceType[] | null>(null);
   const [nearbyActivities, setNearbyActivities] = useState<
     ActivityType[] | null
   >(null);
@@ -139,12 +123,8 @@ const PlacePage: React.FC = () => {
         {nearbyPlaces && (
           <PlaceCardGroup
             places={nearbyPlaces}
-            likeHandler={(data) => alert(`Your are about to like: ${data}!`)}
-            addHandler={(data) =>
-              alert(`You are adding ${data} to your wishlist.`)
-            }
-            shareHandler={(data) =>
-              alert(`You are about to share ${data} with others.`)
+            bookmarkHandler={(data) =>
+              alert(`Your are about to bookmark: ${data}!`)
             }
           />
         )}

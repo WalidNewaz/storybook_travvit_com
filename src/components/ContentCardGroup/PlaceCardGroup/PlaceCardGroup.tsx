@@ -7,9 +7,7 @@ const IMG_BASE = process.env.IMG_BASE || '';
 
 export const PlaceCardGroup: React.FC<PlaceCardGroupProps> = ({
   places,
-  likeHandler,
-  addHandler,
-  shareHandler,
+  bookmarkHandler,
 }) => {
   return places.map((place) => {
     // Make image URLs absolute b/c this component will be fed by API responses
@@ -19,9 +17,8 @@ export const PlaceCardGroup: React.FC<PlaceCardGroupProps> = ({
         key={place.id}
         mediaType={place.mediaType}
         imageProps={imageProps}
-        likeHandler={() => likeHandler && likeHandler(place.id)}
-        addHandler={() => addHandler && addHandler(place.id)}
-        shareHandler={() => shareHandler && shareHandler(place.id)}
+        bookmarkHandler={() => bookmarkHandler && bookmarkHandler(place.id)}
+        bookmarked={place.bookmarked}
         badges={place.badges}
         heading={place.name}
         headingLink={`/places/${place.slug}/${place.id}`}

@@ -46,7 +46,8 @@
     "slug": "the-grand-canyon",
     "location": "Arizona, USA",
     "locationSlug": "arizona-usa",
-    "rating": 4.5
+    "rating": 4.5,
+    "bookmarked": true
   }, {
     "id": "3",
     "mediaType": "image",
@@ -70,7 +71,8 @@
     "slug": "niagra-falls",
     "location": "New York, USA",
     "locationSlug": "new-york-usa",
-    "rating": 4.7
+    "rating": 4.7,
+    "bookmarked": true
   }, {
     "id": "4",
     "mediaType": "image",

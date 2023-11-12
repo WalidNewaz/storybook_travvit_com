@@ -6,9 +6,7 @@ import type { MediaType } from '../../../types';
 
 describe('PlaceCardGroup', () => {
   // Mocked event handlers
-  const likeHandler = jest.fn();
-  const addHandler = jest.fn();
-  const shareHandler = jest.fn();
+  const bookmarkHandler = jest.fn();
 
   test('renders the activity card group', () => {
     // Mocked places data
@@ -46,12 +44,7 @@ describe('PlaceCardGroup', () => {
     ];
 
     const { container } = render(
-      <PlaceCardGroup
-        places={places}
-        likeHandler={likeHandler}
-        addHandler={addHandler}
-        shareHandler={shareHandler}
-      />,
+      <PlaceCardGroup places={places} bookmarkHandler={bookmarkHandler} />,
     );
 
     // Use the `getByRole` query to select the container element
@@ -81,22 +74,11 @@ describe('PlaceCardGroup', () => {
     ];
 
     const { getByTestId } = render(
-      <PlaceCardGroup
-        places={places}
-        likeHandler={likeHandler}
-        addHandler={addHandler}
-        shareHandler={shareHandler}
-      />,
+      <PlaceCardGroup places={places} bookmarkHandler={bookmarkHandler} />,
     );
 
-    const likeBtn = getByTestId('button-element-Likebutton');
-    fireEvent.click(likeBtn);
-    expect(likeHandler).toHaveBeenCalledTimes(1);
-    const addBtn = getByTestId('button-element-Addbutton');
-    fireEvent.click(addBtn);
-    expect(addHandler).toHaveBeenCalledTimes(1);
-    const shareBtn = getByTestId('button-element-Sharebutton');
-    fireEvent.click(shareBtn);
-    expect(shareHandler).toHaveBeenCalledTimes(1);
+    const bookmarkBtn = getByTestId('button-element-Bookmarkbutton');
+    fireEvent.click(bookmarkBtn);
+    expect(bookmarkHandler).toHaveBeenCalledTimes(1);
   });
 });

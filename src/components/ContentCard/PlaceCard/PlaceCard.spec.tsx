@@ -15,9 +15,7 @@ describe('PlaceCard', () => {
           src: 'image.jpg',
           alt: 'Place Image',
         }}
-        likeHandler={() => {}}
-        addHandler={() => {}}
-        shareHandler={() => {}}
+        bookmarkHandler={() => {}}
         badges={['New', 'Featured']}
         heading="Place Name"
         headingLink="/place"

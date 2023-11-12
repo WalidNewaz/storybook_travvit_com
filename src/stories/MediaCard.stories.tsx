@@ -7,6 +7,7 @@ import HeadingButtonActionLayer from '../components/MediaCard/HeadingButtonActio
 import LinkHeadingActionLayer from '../components/MediaCard/LinkHeadingActionLayer/LinkHeadingActionLayer';
 import LinkTransparentActionLayer from '../components/MediaCard/LinkTransparentActionLayer/LinkTransparentActionLayer';
 import SocialCategoryActionLayer from '../components/MediaCard/SocialCategoryActionLayer/SocialCategoryActionLayer';
+import BookmarkCategoryActionLayer from '../components/MediaCard/BookmarkCategoryActionLayer/BookmarkCategoryActionLayer';
 
 /** Assets */
 import mountainsLake from './images/mountains_lake.jpeg';
@@ -155,6 +156,33 @@ export const SocialCategoryAction: Story = {
         likeHandler={() => alert('You clicked like!')}
         addHandler={() => alert('You clicked add!')}
         shareHandler={() => alert('You clicked share!')}
+        className="w-56 h-60"
+      />
+    </div>
+  ),
+};
+
+export const BookmarkCategoryAction1: Story = {
+  name: 'Action Layer/Bookmark Category unmarked',
+  render: () => (
+    <div className="w-60 h-60 bg-slate-50 relative rounded-2xl">
+      <BookmarkCategoryActionLayer
+        badges={['Hike', 'National Park']}
+        bookmarkHandler={() => alert('You are bookmarking!')}
+        className="w-56 h-60"
+      />
+    </div>
+  ),
+};
+
+export const BookmarkCategoryAction2: Story = {
+  name: 'Action Layer/Bookmark Category marked',
+  render: () => (
+    <div className="w-60 h-60 bg-slate-50 relative rounded-2xl">
+      <BookmarkCategoryActionLayer
+        badges={['Hike', 'National Park']}
+        bookmarkHandler={() => alert('You are bookmarking!')}
+        bookmarked
         className="w-56 h-60"
       />
     </div>
