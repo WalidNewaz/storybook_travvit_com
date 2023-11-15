@@ -1,9 +1,4 @@
-import type {
-  MediaType,
-  likeHandler,
-  addHandler,
-  shareHandler,
-} from '../../../types';
+import type { MediaType, bookmarkHandler } from '../../../types';
 import ResponsiveImage from '../../ResponsiveImage/ResponsiveImage.interface';
 
 export interface ActivityType {
@@ -25,15 +20,14 @@ export interface ActivityType {
     avatar: string;
     slug: string;
   };
-  rating: string | number;
+  rating?: string | number;
+  bookmarked?: boolean;
   className?: string;
 }
 
 interface ActivityCardGroup {
   activities: ActivityType[];
-  likeHandler: likeHandler;
-  addHandler: addHandler;
-  shareHandler: shareHandler;
+  bookmarkHandler: bookmarkHandler;
   className?: string;
 }
 

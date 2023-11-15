@@ -4,9 +4,8 @@ import type { clickHandler, MediaType } from '../../../types';
 interface ActivityCard {
   mediaType: MediaType;
   imageProps: ResponsiveImage;
-  likeHandler: clickHandler;
-  addHandler: clickHandler;
-  shareHandler: clickHandler;
+  bookmarkHandler: clickHandler;
+  bookmarked?: boolean;
   badges: Array<string>;
   name: string;
   slug: string;

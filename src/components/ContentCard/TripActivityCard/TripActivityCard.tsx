@@ -5,7 +5,7 @@ import { FiMapPin } from 'react-icons/fi';
 import { Avatar } from '../../Avatar/Avatar';
 import { AvatarGroup } from '../../AvatarGroup/AvatarGroup';
 import { pluralize } from 'inflection';
-import TripCardProps from './TripCard.interface';
+import TripActivityCardProps from './TripActivityCard.interface';
 import AvatarProps from '../../Avatar/Avatar.interface';
 import type { TimeUnit } from '../../../types';
 
@@ -100,7 +100,7 @@ const Description: React.FC<{
   </div>
 );
 
-export const TripActivityCard: React.FC<TripCardProps> = ({
+export const TripActivityCard: React.FC<TripActivityCardProps> = ({
   mediaType = 'image',
   imageProps,
   likeHandler,

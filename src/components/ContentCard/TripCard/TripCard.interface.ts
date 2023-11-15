@@ -5,9 +5,8 @@ import type { clickHandler, MediaType, TimeUnit } from '../../../types';
 interface TripCard {
   mediaType: MediaType;
   imageProps: ResponsiveImage;
-  likeHandler: clickHandler;
-  addHandler: clickHandler;
-  shareHandler: clickHandler;
+  bookmarkHandler: clickHandler;
+  bookmarked?: boolean;
   badges: Array<string>;
   startTime: string;
   duration: {
@@ -20,7 +19,7 @@ interface TripCard {
   placeLink: string;
   groupMembers: Avatar[];
   joinHandler?: clickHandler;
-  followHandler?: clickHandler;
+  className?: string;
 }
 
 export default TripCard;

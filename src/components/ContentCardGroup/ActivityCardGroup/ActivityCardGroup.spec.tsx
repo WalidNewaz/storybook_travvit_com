@@ -15,6 +15,7 @@ describe('ActivityCardGroup', () => {
         src: '/test-image.jpg',
         alt: 'Test Image',
       },
+      type: 'hiking',
       badges: ['badge1', 'badge2'],
       name: 'Activity 1',
       slug: 'activity-1',
@@ -26,6 +27,7 @@ describe('ActivityCardGroup', () => {
         slug: 'creator-1',
       },
       rating: '4.5',
+      bookmarked: true,
     },
     {
       id: '2',
@@ -35,6 +37,7 @@ describe('ActivityCardGroup', () => {
         src: '/test-image.jpg',
         alt: 'Test Image',
       },
+      type: 'hiking',
       badges: ['badge1', 'badge2'],
       name: 'Activity 2',
       slug: 'activity-2',
@@ -46,21 +49,18 @@ describe('ActivityCardGroup', () => {
         slug: 'creator-2',
       },
       rating: '3.5',
+      bookmarked: false,
     },
   ];
 
   // Mocked event handlers
-  const likeHandler = jest.fn();
-  const addHandler = jest.fn();
-  const shareHandler = jest.fn();
+  const bookmarkHandler = jest.fn();
 
   test('renders the activity card group', () => {
     const { container } = render(
       <ActivityCardGroup
         activities={activities}
-        likeHandler={likeHandler}
-        addHandler={addHandler}
-        shareHandler={shareHandler}
+        bookmarkHandler={bookmarkHandler}
       />,
     );
 
@@ -74,20 +74,12 @@ describe('ActivityCardGroup', () => {
     const { getByTestId } = render(
       <ActivityCardGroup
         activities={[activities[1]]}
-        likeHandler={likeHandler}
-        addHandler={addHandler}
-        shareHandler={shareHandler}
+        bookmarkHandler={bookmarkHandler}
       />,
     );
 
-    const likeBtn = getByTestId('button-element-Likebutton');
-    fireEvent.click(likeBtn);
-    expect(likeHandler).toHaveBeenCalledTimes(1);
-    const addBtn = getByTestId('button-element-Addbutton');
-    fireEvent.click(addBtn);
-    expect(addHandler).toHaveBeenCalledTimes(1);
-    const shareBtn = getByTestId('button-element-Sharebutton');
-    fireEvent.click(shareBtn);
-    expect(shareHandler).toHaveBeenCalledTimes(1);
+    const bookmarkBtn = getByTestId('button-element-Bookmarkbutton');
+    fireEvent.click(bookmarkBtn);
+    expect(bookmarkHandler).toHaveBeenCalledTimes(1);
   });
 });

@@ -2,7 +2,7 @@ import ResponsiveImage from '../../ResponsiveImage/ResponsiveImage.interface';
 import Avatar from '../../Avatar/Avatar.interface';
 import type { clickHandler, MediaType, TimeUnit } from '../../../types';
 
-interface TripCard {
+interface TripActivityCard {
   mediaType: MediaType;
   imageProps: ResponsiveImage;
   likeHandler: clickHandler;
@@ -21,4 +21,4 @@ interface TripCard {
   groupMembers: Avatar[];
 }
 
-export default TripCard;
+export default TripActivityCard;

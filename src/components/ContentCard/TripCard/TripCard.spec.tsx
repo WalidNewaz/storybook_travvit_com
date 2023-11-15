@@ -15,9 +15,7 @@ describe('TripCard', () => {
           src: 'image.jpg',
           alt: 'Trip Image',
         }}
-        likeHandler={() => {}}
-        addHandler={() => {}}
-        shareHandler={() => {}}
+        bookmarkHandler={() => {}}
         badges={['New', 'Featured']}
         startTime="9:00 AM"
         duration={{
@@ -33,7 +31,6 @@ describe('TripCard', () => {
           { src: 'avatar2.jpg', alt: 'Avatar 2' },
         ]}
         joinHandler={() => {}}
-        followHandler={() => {}}
       />,
     );
 
@@ -42,14 +39,12 @@ describe('TripCard', () => {
     const headingElement = screen.getByText('Trip Name');
     const placeElement = screen.getByText('Trip Location');
     const joinButtonElement = screen.getByText('Join');
-    const followButtonElement = screen.getByText('Follow');
 
     expect(startTimeElement).toBeInTheDocument();
     expect(durationElement).toBeInTheDocument();
     expect(headingElement).toBeInTheDocument();
     expect(placeElement).toBeInTheDocument();
     expect(joinButtonElement).toBeInTheDocument();
-    expect(followButtonElement).toBeInTheDocument();
   });
 
   // Add more test cases as needed

@@ -7,9 +7,7 @@ const IMG_BASE = process.env.IMG_BASE || '';
 
 export const ActivityCardGroup: React.FC<ActivityCardGroupProps> = ({
   activities,
-  likeHandler,
-  addHandler,
-  shareHandler,
+  bookmarkHandler,
   className,
 }) => {
   return activities.map((activity) => {
@@ -23,9 +21,8 @@ export const ActivityCardGroup: React.FC<ActivityCardGroupProps> = ({
         key={activity.id}
         mediaType={activity.mediaType}
         imageProps={imageProps}
-        likeHandler={() => likeHandler && likeHandler(activity.id)}
-        addHandler={() => addHandler && addHandler(activity.id)}
-        shareHandler={() => shareHandler && shareHandler(activity.id)}
+        bookmarkHandler={() => bookmarkHandler && bookmarkHandler(activity.id)}
+        bookmarked={activity.bookmarked}
         badges={activity.badges}
         name={activity.name}
         slug={`/activities/${activity.slug}/${activity.id}`}

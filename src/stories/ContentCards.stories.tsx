@@ -60,9 +60,7 @@ export const Place: Story = {
     <PlaceCard
       mediaType="image"
       imageProps={imagePropsPlace}
-      likeHandler={() => alert('You clicked like!')}
-      addHandler={() => alert('You clicked add!')}
-      shareHandler={() => alert('You clicked share!')}
+      bookmarkHandler={() => alert('You clicked bookmark!')}
       badges={['Hiking', 'Fishing', 'National Park']}
       heading="Rocky Mountain National Park"
       headingLink="#"
@@ -86,14 +84,12 @@ export const Activity: Story = {
     <ActivityCard
       mediaType="image"
       imageProps={imagePropsActivity}
-      likeHandler={() => alert('You clicked like!')}
-      addHandler={() => alert('You clicked add!')}
-      shareHandler={() => alert('You clicked share!')}
+      bookmarkHandler={() => alert('You clicked bookmark!')}
       badges={['Hiking', 'Moderate']}
-      heading="Lake Haiyaha Hike"
-      headingLink="#"
-      subHeading="Rocky Mountain National Park"
-      subHeadingLink="#"
+      name="Lake Haiyaha Hike"
+      slug="#"
+      place="Rocky Mountain National Park"
+      placeSlug="#"
       createdBy="Jane Doe"
       createdBySrc={jane1Jpeg}
       createdByLink="/explorer/@jane-doe"
@@ -138,9 +134,7 @@ export const Trip: Story = {
     <TripCard
       mediaType="image"
       imageProps={imagePropsTrip}
-      likeHandler={() => alert('You clicked like!')}
-      addHandler={() => alert('You clicked add!')}
-      shareHandler={() => alert('You clicked share!')}
+      bookmarkHandler={() => alert('You clicked bookmark!')}
       badges={['Trail Running', 'Difficult', 'Guided']}
       startTime="Tue Jul 11, 2023, 6:30 PM MDT"
       duration={{
@@ -153,7 +147,6 @@ export const Trip: Story = {
       placeLink="#"
       groupMembers={avatarProps}
       joinHandler={() => alert('You clicked join!')}
-      followHandler={() => alert('You clicked follow!')}
     />
   ),
 };

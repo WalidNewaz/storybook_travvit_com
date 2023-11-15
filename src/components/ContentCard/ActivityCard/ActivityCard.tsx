@@ -1,6 +1,6 @@
 import React from 'react';
 import { MediaCard } from '../../MediaCard/MediaCard';
-import SocialCategoryActionLayer from '../../MediaCard/SocialCategoryActionLayer/SocialCategoryActionLayer';
+import BookmarkCategoryActionLayer from '../../MediaCard/BookmarkCategoryActionLayer/BookmarkCategoryActionLayer';
 import { Badge } from '../../Badge/Badge';
 import { PiStarFill } from 'react-icons/pi';
 import { Avatar } from '../../Avatar/Avatar';
@@ -53,9 +53,8 @@ const Description: React.FC<DescriptionProps> = ({
 export const ActivityCard: React.FC<ActivityCardProps> = ({
   mediaType = 'image',
   imageProps,
-  likeHandler,
-  addHandler,
-  shareHandler,
+  bookmarkHandler,
+  bookmarked,
   badges,
   className,
   ...descriptionProps
@@ -71,11 +70,10 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({
         }}
         mediaType={mediaType}
         actionLayer={
-          <SocialCategoryActionLayer
+          <BookmarkCategoryActionLayer
             badges={badges}
-            likeHandler={likeHandler}
-            addHandler={addHandler}
-            shareHandler={shareHandler}
+            bookmarkHandler={bookmarkHandler}
+            bookmarked={bookmarked}
             className={`${MEDIA_DIMS_CLASSNAME} pr-4`}
           />
         }
