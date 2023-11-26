@@ -5,8 +5,9 @@ interface ExplorerCard {
   name: string;
   profileLink: string;
   explorerLocation: string;
-  locationLink: string;
+  locationLink?: string;
   numTrips: number;
+  badges?: Array<string>;
   followHandler?: clickHandler;
 }
 

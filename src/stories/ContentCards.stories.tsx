@@ -183,8 +183,9 @@ export const Explorer: Story = {
       name="Jane Doe"
       profileLink="/explorer/@jane-doe"
       explorerLocation="Colorado, USA"
-      locationLink="/places/colorado"
+      // locationLink="/places/colorado"
       numTrips={5}
+      // badges={['Hiking', 'Fishing']}
       followHandler={() => alert('You clicked follow!')}
     />
   ),
