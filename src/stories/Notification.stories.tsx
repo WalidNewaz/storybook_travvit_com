@@ -7,6 +7,7 @@ import SuccessNotification from '../components/Notification/SuccessNotification'
 import WarningNotification from '../components/Notification/WarningNotification';
 import ErrorNotification from '../components/Notification/ErrorNotification';
 import ErrorListNotification from '../components/Notification/ErrorListNotification';
+import InfoActionNotification from '../components/Notification/InfoActionNotification';
 
 export default {
   title: 'Components/Notification',
@@ -68,4 +69,27 @@ export const ErrorList: Story = {
       hidden={false}
     />
   ),
+};
+
+export const ActionAlert: Story = {
+  name: 'Action Notification',
+  render: () => {
+    const onProceed = () => {
+      console.log('Proceed');
+    };
+
+    const onDismiss = () => {
+      console.log('Dismiss');
+    };
+
+    return (
+      <InfoActionNotification
+        heading="Login required!"
+        message="You must be logged in to perform this action."
+        hidden={false}
+        onProceed={onProceed}
+        onDismiss={onDismiss}
+      />
+    );
+  },
 };
