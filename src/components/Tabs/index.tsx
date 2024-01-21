@@ -46,7 +46,7 @@ const TabPane: React.FC<TabPaneProps> = ({ tabs }) => {
       </div>
 
       {/* Content of the active tab */}
-      <div className="mt-4">{tabs[activeTab].content}</div>
+      <div>{tabs[activeTab].content}</div>
     </div>
   );
 };
