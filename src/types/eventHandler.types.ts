@@ -25,6 +25,8 @@ export type bookmarkHandler = genericDataHandler;
 
 export type menuHandler = genericDataHandler;
 
+export type submitHandler = genericDataHandler;
+
 export type changeHandler =
   | React.ChangeEventHandler<HTMLInputElement>
   | undefined;

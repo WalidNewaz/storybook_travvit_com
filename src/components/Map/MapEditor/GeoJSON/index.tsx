@@ -10,7 +10,8 @@ const GeoJSONEditor: React.FC<{
   setGeometry: React.Dispatch<any>;
 }> = ({ geometry, setGeometry }) => {
   function onChange(newValue: any) {
-    setGeometry(newValue);
+    const uglifiedGeometry = JSON.stringify(JSON.parse(newValue));
+    setGeometry(uglifiedGeometry);
   }
 
   const beautifiedGeometry =

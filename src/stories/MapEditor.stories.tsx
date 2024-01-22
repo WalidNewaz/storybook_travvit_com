@@ -26,9 +26,13 @@ type Story = StoryObj<typeof MapEditor>;
 export const MapEditorStory: Story = {
   name: 'Map Editor',
   render: () => {
+    const saveMap = (geoJson: string) => {
+      console.log(geoJson);
+    };
+
     return (
       <div className="App">
-        <MapEditor />
+        <MapEditor onSave={saveMap} />
       </div>
     );
   },
