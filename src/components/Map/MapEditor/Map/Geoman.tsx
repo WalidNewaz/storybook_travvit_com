@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { Map, Layer, LayerGroup, polygon, LatLngExpression } from 'leaflet';
-import { FeatureCollection, Polygon, Position } from 'geojson';
+import { Map, Layer, LayerGroup } from 'leaflet';
 import {
   useLeafletContext,
   LeafletContextInterface,
@@ -16,6 +15,9 @@ import {
   setupMap,
   getDrawFinishHandler,
   getLayerRemovedHandler,
+  getLayerDragEndHandler,
+  getLayerChangeHandler,
+  getLayerEditedHandler,
 } from '../utils';
 
 type ControlledLayer = {
@@ -30,54 +32,24 @@ export type GeomanContainerType = LayerGroup | ControlledLayer | Map;
  * @returns
  */
 const Geoman: React.FC<{
-  geometry: any;
   setGeometry: React.Dispatch<any>;
-}> = ({ geometry, setGeometry }) => {
+}> = ({ setGeometry }) => {
   const context: LeafletContextInterface = useLeafletContext();
 
   useEffect(() => {
-    const leafletContainer: GeomanContainerType =
-      context.layerContainer || context.map;
-
-    setupMap(leafletContainer as Map);
-
-    if (geometry && (geometry as string).length > 0) {
-      console.log('geometry', geometry);
-      // const feature = polygon(geometry);
-      // // (leafletContainer as Map).addLayer(feature);
-      // feature.addTo(leafletContainer as Map);
-    }
-
-    (leafletContainer as Map).on(
-      MapEvents.CREATE,
-      getDrawFinishHandler(leafletContainer as Map, setGeometry),
-    );
-
-    (leafletContainer as Map).on(
-      MapEvents.REMOVE,
-      getLayerRemovedHandler(leafletContainer as Map),
-    );
+    const map = context.map;
+    setupMap(map);
+    map.on(MapEvents.CREATE, getDrawFinishHandler(map, setGeometry));
+    map.on(MapEvents.REMOVE, getLayerRemovedHandler(map, setGeometry));
+    map.on(MapEvents.DRAG_END, getLayerDragEndHandler(map, setGeometry));
+    map.on(MapEvents.CHANGE, getLayerChangeHandler(map, setGeometry));
+    map.on(MapEvents.EDIT, getLayerEditedHandler(map, setGeometry));
+    map.on(MapEvents.UPDATE, getLayerEditedHandler(map, setGeometry));
 
     return () => {
-      (leafletContainer as Map).pm.removeControls();
-      // (leafletContainer as Map).pm.setGlobalOptions({ pmIgnore: true });
+      map.pm.removeControls();
     };
   }, [context]);
-
-  useEffect(() => {
-    const leafletContainer: GeomanContainerType =
-      context.layerContainer || context.map;
-    if (geometry && (geometry as string).length > 0) {
-      console.log('geometry', geometry);
-      const featureCollection: FeatureCollection = JSON.parse(geometry);
-      const feature = polygon(
-        (featureCollection.features[0].geometry as Polygon)
-          .coordinates as LatLngExpression[][],
-      );
-      // // (leafletContainer as Map).addLayer(feature);
-      feature.addTo(leafletContainer as Map);
-    }
-  }, []);
 
   return null;
 };

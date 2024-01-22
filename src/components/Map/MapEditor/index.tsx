@@ -17,7 +17,15 @@ const MapEditor: React.FC = () => {
     },
   ];
 
-  return <TabPane tabs={tabs} />;
+  return (
+    <>
+      <TabPane tabs={tabs} />
+      <p className="px-8 w-full text-sm leading-6 text-gray-600">
+        Features cannot be edited once you switch tabs or save. If you need to
+        edit a feature, delete it and create a new one.
+      </p>
+    </>
+  );
 };
 
 export default MapEditor;

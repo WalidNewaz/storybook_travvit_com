@@ -10,8 +10,9 @@ import { MapEvents } from './Map/mapEvents.enum';
 export const setupMap = (map: Map) => {
   map.pm.addControls({
     drawText: false,
+    drawCircle: false,
   });
-  map.setView([51.505, -0.09], 13);
+  map.pm.globalEditModeEnabled();
 };
 
 /**
@@ -23,22 +24,13 @@ export const getDrawFinishHandler =
   (e: { shape: PM.SUPPORTED_SHAPES; layer: L.Layer }) => {
     if (e.layer && (e.layer as LayerGroup).pm) {
       const shape = e;
-      console.log('Added shape:', shape);
-
       // enable editing of circle
       (shape.layer as LayerGroup).pm.enable();
 
-      // shape.layer.addTo();
-
-      console.log(`object created: ${(shape.layer as Path).pm.getShape()}`);
+      console.log(`Shape created: ${(shape.layer as Path).pm.getShape()}`);
       const geoJson = JSON.stringify(map.pm.getGeomanLayers(true).toGeoJSON());
-      console.log(geoJson);
       setGeometry(geoJson);
-      map.pm.getGeomanLayers(true).bindPopup('i am whole').openPopup();
-      map.pm
-        .getGeomanLayers()
-        .map((layer, index) => layer.bindPopup(`I am figure N° ${index}`));
-      shape.layer.on(MapEvents.EDIT, getLayerEditedHandler(map));
+      shape.layer.on(MapEvents.EDIT, getLayerEditedHandler(map, setGeometry));
     }
   };
 
@@ -47,19 +39,39 @@ export const getDrawFinishHandler =
  * @param map
  * @returns
  */
-export const getLayerEditedHandler = (map: Map) => (e: { layer: L.Layer }) => {
-  const event = e;
-  console.log('Edited layer:', event);
-  console.log(JSON.stringify(map.pm.getGeomanLayers(true).toGeoJSON()));
-};
+export const getLayerEditedHandler =
+  (map: Map, setGeometry: React.Dispatch<any>) => (e: { layer: L.Layer }) => {
+    const shape = e;
+    console.log(`Shape edited: ${(shape.layer as Path).pm.getShape()}`);
+    const geoJson = JSON.stringify(map.pm.getGeomanLayers(true).toGeoJSON());
+    setGeometry(geoJson);
+  };
 
 /**
  * Get layer removed handler
  * @param map
  * @returns
  */
-export const getLayerRemovedHandler = (map: Map) => (e: { layer: L.Layer }) => {
-  const event = e;
-  console.log('Removed layer:', event);
-  console.log(JSON.stringify(map.pm.getGeomanLayers(true).toGeoJSON()));
-};
+export const getLayerRemovedHandler =
+  (map: Map, setGeometry: React.Dispatch<any>) => (e: { layer: L.Layer }) => {
+    const shape = e;
+    console.log(`Shape removed: ${(shape.layer as Path).pm.getShape()}`);
+    const geoJson = JSON.stringify(map.pm.getGeomanLayers(true).toGeoJSON());
+    setGeometry(geoJson);
+  };
+
+export const getLayerDragEndHandler =
+  (map: Map, setGeometry: React.Dispatch<any>) => (e: { layer: L.Layer }) => {
+    const shape = e;
+    console.log(`Shape dragged: ${(shape.layer as Path).pm.getShape()}`);
+    const geoJson = JSON.stringify(map.pm.getGeomanLayers(true).toGeoJSON());
+    setGeometry(geoJson);
+  };
+
+export const getLayerChangeHandler =
+  (map: Map, setGeometry: React.Dispatch<any>) => (e: { layer: L.Layer }) => {
+    const shape = e;
+    console.log(`Shape changed: ${(shape.layer as Path).pm.getShape()}`);
+    const geoJson = JSON.stringify(map.pm.getGeomanLayers(true).toGeoJSON());
+    setGeometry(geoJson);
+  };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AceEditor from 'react-ace';
 
 import 'ace-builds/src-noconflict/mode-json';
@@ -9,10 +9,7 @@ const GeoJSONEditor: React.FC<{
   geometry: any;
   setGeometry: React.Dispatch<any>;
 }> = ({ geometry, setGeometry }) => {
-  // const [textValue, setTextValue] = useState(placeDescription);
-
   function onChange(newValue: any) {
-    console.log('change', newValue);
     setGeometry(newValue);
   }
 
@@ -22,11 +19,10 @@ const GeoJSONEditor: React.FC<{
   return (
     <div className="col-span-full">
       <AceEditor
-        placeholder="Placeholder Text"
+        placeholder="GeoJSON string here..."
         mode="json"
         theme="tomorrow"
         name="blah2"
-        // onLoad={this.onLoad}
         onChange={onChange}
         fontSize={16}
         showPrintMargin={true}
@@ -41,7 +37,7 @@ const GeoJSONEditor: React.FC<{
           tabSize: 2,
         }}
         width="100%"
-        height="85vh"
+        height="75vh"
       />
     </div>
   );

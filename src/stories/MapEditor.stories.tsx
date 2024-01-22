@@ -12,7 +12,7 @@ export default {
   decorators: [
     (story) => {
       return (
-        <div className="bg-travvit-orange/10 min-h-[85vh] h-[75vh] w-[100vw]">
+        <div className="bg-travvit-orange/10 min-h-[85vh] h-[100vh] w-[100vw]">
           {story()}
         </div>
       );
