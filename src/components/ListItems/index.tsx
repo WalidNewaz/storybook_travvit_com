@@ -24,6 +24,10 @@ export {
   default as ActivityGearListItem,
   ActivityGear,
 } from './ActivityGearListItem';
+export {
+  default as UserProfileSummaryItem,
+  UserProfileSummary,
+} from './UserProfileSummary';
 
 /**
  * Components that may be displayed in a list.

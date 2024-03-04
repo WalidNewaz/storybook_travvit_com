@@ -14,7 +14,9 @@ import {
   FaArrowRotateLeft,
   FaRegPenToSquare,
   FaRegTrashCan,
+  FaUserSlash,
 } from 'react-icons/fa6';
+
 import ListItems, {
   UserConnectionListItem,
   UserConnection,
@@ -31,6 +33,8 @@ import ListItems, {
   BannedUser,
   ActivityGearListItem,
   ActivityGear,
+  UserProfileSummary,
+  UserProfileSummaryItem,
 } from '../components/ListItems';
 
 /** Interfaces */
@@ -470,3 +474,54 @@ export const ActivityGearStory: StoryObj<typeof ActivityGearListItem> = {
     return <ActivityGearListItem {...activityGear} menuItems={menuItems} />;
   },
 };
+
+// User profile summary
+import { UserStatus } from '../components/ListItems/UserProfileSummary/StatusBadge';
+import { UserRole } from '../components/ListItems/UserProfileSummary/RoleBadge';
+const userProfile: Pick<
+  UserProfileSummary,
+  | 'id'
+  | 'name'
+  | 'email'
+  | 'username'
+  | 'role'
+  | 'status'
+  | 'imageUrl'
+  | 'location'
+  | 'createdAt'
+  | 'menuItems'
+> = {
+  id: '1' as string,
+  name: 'Jane Doe',
+  email: 'jane123@email.com',
+  username: 'jane123',
+  role: UserRole.USER,
+  status: UserStatus.ACTIVE,
+  imageUrl: jane1Jpeg,
+  location: 'Denver, CO',
+  createdAt: new Date(),
+  menuItems: [
+    {
+      label: 'View Profile',
+      onClick: (id: string) => console.log('View profile', id),
+      icon: FaRegCircleUser,
+    },
+    {
+      label: 'Message',
+      onClick: (id: string) => console.log('Message user', id),
+      icon: FaRegEnvelope,
+    },
+    {
+      label: 'Suspend',
+      onClick: (id: string) => console.log('Suspend user', id),
+      icon: FaUserSlash,
+    },
+  ],
+};
+
+// User profile summary story
+export const UserProfileSummaryStory: StoryObj<typeof UserProfileSummaryItem> =
+  {
+    name: 'User profile summary',
+    render: () => <UserProfileSummaryItem {...userProfile} />,
+  };

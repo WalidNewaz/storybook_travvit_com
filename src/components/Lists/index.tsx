@@ -7,6 +7,7 @@ export { default as TripInviteList } from './TripInviteList';
 export { default as TripWaitlist } from './TripWaitlist';
 export { default as TripBannedUserList } from './TripBannedUserList';
 export { default as ActivityGearList } from './ActivityGearList';
+export { default as UserProfileList } from './UserProfileList';
 
 /**
  * A list of items.

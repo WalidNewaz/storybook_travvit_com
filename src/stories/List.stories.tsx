@@ -14,6 +14,7 @@ import {
   FaArrowRotateLeft,
   FaRegPenToSquare,
   FaRegTrashCan,
+  FaUserSlash,
 } from 'react-icons/fa6';
 import {
   TripUser,
@@ -24,6 +25,7 @@ import {
   WailistedUser,
   BannedUser,
   ActivityGear,
+  UserProfileSummary,
 } from '../components/ListItems';
 import Lists, {
   TripUserList,
@@ -33,6 +35,7 @@ import Lists, {
   TripWaitlist,
   TripBannedUserList,
   ActivityGearList,
+  UserProfileList,
 } from '../components/Lists';
 
 /** Interfaces */
@@ -611,12 +614,7 @@ export const BlockedListStory: StoryObj<typeof UserConnectionList> = {
 // Activity gear
 const activityGear: Pick<
   ActivityGear,
-  | 'id'
-  | 'name'
-  | 'description'
-  | 'imageUrl'
-  | 'quantity'
-  | 'quantityUnit'
+  'id' | 'name' | 'description' | 'imageUrl' | 'quantity' | 'quantityUnit'
 >[] = [
   {
     id: '1',
@@ -688,5 +686,64 @@ export const ActivityGearListStory: StoryObj<typeof ActivityGearList> = {
     ];
 
     return <ActivityGearList items={activityGear} menuItems={menuItems} />;
+  },
+};
+
+// User profiles
+import { UserStatus } from '../components/ListItems/UserProfileSummary/StatusBadge';
+import { UserRole } from '../components/ListItems/UserProfileSummary/RoleBadge';
+const userProfiles: Partial<UserProfileSummary>[] = [
+  {
+    id: '1',
+    name: 'Test User',
+    email: 'test.user@email.com',
+    username: 'testuser',
+    role: UserRole.USER,
+    status: UserStatus.ACTIVE,
+    imageUrl: jane1Jpeg,
+    location: 'Denver, CO',
+    createdAt: new Date(),
+  },
+  {
+    id: '2',
+    name: 'Test User 2',
+    email: 'test.user2@email.com',
+    username: 'testuser',
+    role: UserRole.USER,
+    status: UserStatus.PENDING,
+    imageUrl: jane1Jpeg,
+    location: 'Aspen, CO',
+    createdAt: new Date(),
+  },
+  {
+    id: '3',
+    name: 'Jane Doe',
+    email: 'jane.doe@email.com',
+    username: 'testuser',
+    role: UserRole.ADMIN,
+    status: UserStatus.ACTIVE,
+    imageUrl: jane1Jpeg,
+    location: 'Boulder, CO',
+    createdAt: new Date(),
+  },
+];
+
+// User profile list story
+export const UserProfileListStory: StoryObj<typeof UserProfileList> = {
+  name: 'User profile list',
+  render: () => {
+    const menuItems: Pick<MenuItemType, 'label' | 'onClick' | 'icon'>[] = [
+      {
+        label: 'View Profile',
+        onClick: (id: string) => console.log('View profile', id),
+        icon: FaRegCircleUser,
+      },
+      {
+        label: 'Suspend',
+        onClick: (id: string) => console.log('Suspend user', id),
+        icon: FaUserSlash,
+      },
+    ];
+    return <UserProfileList items={userProfiles} menuItems={menuItems} />;
   },
 };

@@ -12,7 +12,7 @@ const ListItemDropdownMenu: React.FC<{ menuItems: MenuItemType[] }> = ({
   menuItems,
 }) => {
   return (
-    <div className="block sm:ml-8">
+    <div className="block">
       <DropdownMenu
         items={menuItems}
         label="List Item Actions"
